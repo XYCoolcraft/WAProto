@@ -1,6 +1,6 @@
 name: Update WAProto (mirror)
 
-# Mencari WAProto.proto di repo (folder mana pun), mengecek sumber yang lebih baru,
+# search WAProto.proto di repo (folder mana pun), mengecek sumber yang lebih baru,
 # lalu memprosesnya otomatis (merge aditif -> generate index.js / index.d.ts -> verifikasi).
 # Hasilnya dibuka sebagai Pull Request (default) atau langsung di-commit.
 #
