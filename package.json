@@ -1,0 +1,12 @@
+{
+  "name": "wa-proto-updater",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Update otomatis WAProto (proto WhatsApp): deteksi lokasi, cek sumber terbaru, merge, generate js/d.ts/json/structure/version.",
+  "scripts": {
+    "check": "node update-proto.js --dry-run",
+    "update": "node update-proto.js"
+  },
+  "engines": { "node": ">=20" }
+}

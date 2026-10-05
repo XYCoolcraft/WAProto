@@ -1,0 +1,106 @@
+name: Update WAProto (mirror)
+
+# Mencari WAProto.proto di repo (folder mana pun), mengecek sumber yang lebih baru,
+# lalu memprosesnya otomatis (merge aditif -> generate index.js / index.d.ts -> verifikasi).
+# Hasilnya dibuka sebagai Pull Request (default) atau langsung di-commit.
+#
+# Cara menaruh proto baru sendiri: taruh file .proto di folder utama repo atau di incoming/,
+# lalu push. File itu otomatis diproses dan dihapus dari inbox setelah berhasil.
+
+on:
+  schedule:
+    - cron: "17 */3 * * *"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Paksa proses ulang walau versinya sama"
+        type: boolean
+        default: false
+      bump_version:
+        description: "Ikut naikkan versi WA di kode jika ada (butuh akses ke web.whatsapp.com)"
+        type: boolean
+        default: false
+      mode:
+        description: "commit = langsung ke branch ini, pr = buka Pull Request"
+        type: choice
+        options:
+          - pr
+          - commit
+        default: commit
+  push:
+    branches: [main, master]
+    paths:
+      - "*.proto"
+      - "incoming/**"
+      - "proto-inbox/**"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: update-waproto
+  cancel-in-progress: false
+
+jobs:
+  update:
+    name: Cek dan update WAProto
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Cari dan proses WAProto
+        id: proto
+        env:
+          FORCE: ${{ inputs.force }}
+          BUMP: ${{ inputs.bump_version }}
+        run: |
+          set -euo pipefail
+          args=()
+          if [ "${FORCE:-}" = "true" ]; then args+=(--force); fi
+          if [ "${BUMP:-}" = "true" ]; then args+=(--bump-version); fi
+          node update-proto.js "${args[@]}"
+
+      - name: Simpan hasil (Pull Request atau commit)
+        if: steps.proto.outputs.updated == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          MODE: ${{ inputs.mode || 'commit' }}
+          TO: ${{ steps.proto.outputs.to }}
+          REPORT: ${{ steps.proto.outputs.report }}
+          BASE: ${{ github.ref_name }}
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Tidak ada perubahan untuk disimpan."
+            exit 0
+          fi
+          msg="chore(proto): update WAProto ke ${TO}"
+
+          if [ "$MODE" = "commit" ]; then
+            git commit -m "$msg"
+            git push origin "HEAD:${BASE}"
+            exit 0
+          fi
+
+          branch="auto/update-waproto"
+          git checkout -B "$branch"
+          git commit -m "$msg"
+          git push --force origin "$branch"
+          existing="$(gh pr list --head "$branch" --state open --json number --jq '.[0].number // empty')"
+          if [ -n "$existing" ]; then
+            gh pr edit "$existing" --title "$msg" --body-file "$REPORT" || echo "::warning::Gagal memperbarui PR #$existing"
+          else
+            gh pr create --base "$BASE" --head "$branch" --title "$msg" --body-file "$REPORT" \
+              || echo "::warning::Branch $branch sudah di-push, tapi PR gagal dibuat. Buka PR manual, atau aktifkan Settings > Actions > General > 'Allow GitHub Actions to create and approve pull requests'."
+          fi

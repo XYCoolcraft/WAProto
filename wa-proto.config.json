@@ -1,0 +1,9 @@
+{
+  "mode": "replace",
+  "outputs": ["js", "dts", "json", "structure", "version"],
+  "sources": [
+    "https://raw.githubusercontent.com/WhiskeySockets/Baileys/master/WAProto/WAProto.proto",
+    "npm:@whiskeysockets/baileys"
+  ],
+  "keepInbox": false
+}
