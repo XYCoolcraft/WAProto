@@ -54,7 +54,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 20
 
       - name: Cari dan proses WAProto
         id: proto
