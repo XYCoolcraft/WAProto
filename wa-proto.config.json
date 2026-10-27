@@ -1,7 +1,15 @@
 {
-  "mode": "merge",
-  "outputs": ["js", "dts", "json", "structure", "version"],
+  "mode": "replace",
+  "outputs": [
+    "js",
+    "dts",
+    "json",
+    "structure",
+    "version"
+  ],
   "sources": [
+    "https://raw.githubusercontent.com/wppconnect-team/wa-proto/main/WAProto.proto",
+    "npm:@wppconnect/wa-proto",
     "https://raw.githubusercontent.com/WhiskeySockets/Baileys/master/WAProto/WAProto.proto",
     "npm:@whiskeysockets/baileys"
   ],

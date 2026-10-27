@@ -1,8 +1,8 @@
 {
- "protoVersion": "2.3000.1047787617",
+ "protoVersion": "2.3000.1050756511",
  "counts": {
-  "messages": 600,
-  "enums": 208
+  "messages": 727,
+  "enums": 222
  },
  "fields": "[nomor, tipe, label]",
  "messages": {
@@ -605,9 +605,13 @@
    "participants": [14, "ParticipantInfo", "repeated"],
    "callType": [15, "CallType", "optional"]
   },
+  "CallLogRecord.GuestInfo": {
+   "pushName": [1, "string", "optional"]
+  },
   "CallLogRecord.ParticipantInfo": {
    "userJid": [1, "string", "optional"],
-   "callResult": [2, "CallLogRecord.CallResult", "optional"]
+   "callResult": [2, "CallLogRecord.CallResult", "optional"],
+   "guestInfo": [3, "CallLogRecord.GuestInfo", "optional"]
   },
   "CertChain": {
    "leaf": [1, "NoiseCertificate", "optional"],
@@ -659,10 +663,10 @@
    "phone": [4, "string", "optional"]
   },
   "Citation": {
-   "title": [1, "string", "required"],
-   "subtitle": [2, "string", "required"],
-   "cmsId": [3, "string", "required"],
-   "imageUrl": [4, "string", "required"]
+   "title": [1, "string", "optional"],
+   "subtitle": [2, "string", "optional"],
+   "cmsId": [3, "string", "optional"],
+   "imageUrl": [4, "string", "optional"]
   },
   "ClientPairingProps": {
    "isChatDbLidMigrated": [1, "bool", "optional"],
@@ -708,7 +712,8 @@
    "preacksCount": [45, "int32", "optional"],
    "processingQueueSize": [46, "int32", "optional"],
    "pairedPeripherals": [47, "string", "repeated"],
-   "testIsolationId": [48, "bytes", "optional"]
+   "testIsolationId": [48, "bytes", "optional"],
+   "messageSts": [49, "int64", "optional"]
   },
   "ClientPayload.DNSSource": {
    "dnsMethod": [15, "DNSResolutionMethod", "optional"],
@@ -788,6 +793,17 @@
    "value": [2, "SyncdValue", "optional"],
    "dirtyVersion": [3, "uint64", "optional"],
    "operation": [4, "SyncdMutation.SyncdOperation", "optional"]
+  },
+  "CombinedFingerprint": {
+   "version": [1, "uint32", "optional"],
+   "localFingerprint": [2, "FingerprintData", "optional"],
+   "remoteFingerprint": [3, "FingerprintData", "optional"]
+  },
+  "Command": {
+   "commandType": [1, "COMMAND_COMMAND_TYPE", "optional"],
+   "offset": [2, "uint32", "optional"],
+   "length": [3, "uint32", "optional"],
+   "validationToken": [4, "string", "optional"]
   },
   "CommentMetadata": {
    "commentParentKey": [1, "MessageKey", "optional"],
@@ -950,7 +966,15 @@
    "agmTitleStrategy": [30, "int32", "optional"],
    "agmSubtitleStrategy": [31, "int32", "optional"],
    "agmHeaderInteractionStrategy": [32, "int32", "optional"],
-   "containsCtwaFlowsAutoLabel": [33, "bool", "optional"]
+   "containsCtwaFlowsAutoLabel": [33, "bool", "optional"],
+   "productId": [34, "string", "optional"],
+   "containsCtwaPromo": [35, "bool", "optional"],
+   "ctwaPromoResponseId": [36, "string", "optional"],
+   "ctwaPromoOfferId": [37, "string", "optional"],
+   "ctwaPromoAdEntryId": [38, "string", "optional"],
+   "ctwaPromoResponseExpiresAtSeconds": [39, "uint64", "optional"],
+   "ctwaPromoSchemaVersion": [40, "uint32", "optional"],
+   "ctwaPromoAdgroupId": [41, "string", "optional"]
   },
   "ContextInfo.FeatureEligibilities": {
    "cannotBeReactedTo": [1, "bool", "optional"],
@@ -988,7 +1012,7 @@
    "utmCampaign": [2, "string", "optional"]
   },
   "Conversation": {
-   "id": [1, "string", "required"],
+   "id": [1, "string", "optional"],
    "messages": [2, "HistorySyncMsg", "repeated"],
    "newJid": [3, "string", "optional"],
    "oldJid": [4, "string", "optional"],
@@ -1051,7 +1075,121 @@
    "authAgentParentCompanyName": [61, "string", "optional"],
    "authAgentObaPhoneNumber": [62, "string", "optional"],
    "identityVerification": [63, "IdentityVerificationState", "optional"],
-   "acp2Setting": [64, "ACP2Setting", "optional"]
+   "acp2Setting": [64, "ACP2Setting", "optional"],
+   "acp2HistoryWithheld": [65, "bool", "optional"]
+  },
+  "DecryptMekForDistributionFromTransportSenderInput": {
+   "mekDistribution": [1, "TransportSenderMEKDistributionSingleRecipient", "optional"],
+   "mekId": [2, "bytes", "optional"],
+   "rosterHash": [3, "bytes", "optional"],
+   "recipientEncSk": [4, "bytes", "optional"],
+   "version": [5, "uint64", "optional"],
+   "conf": [6, "MinosClientConfig", "optional"]
+  },
+  "DecryptMekForDistributionFromTransportSenderInput.TransportSenderMEKDistributionSingleRecipient": {
+   "encryptedMek": [1, "bytes", "optional"],
+   "ephemeralEncryptionPk": [2, "bytes", "optional"],
+   "signingPk": [3, "bytes", "optional"],
+   "signature": [4, "bytes", "optional"],
+   "recipientEpochHead": [5, "bytes", "optional"]
+  },
+  "DecryptMekForDistributionFromTransportSenderResult": {
+   "success": [1, "DecryptMekForDistributionFromTransportSenderSuccess", ""],
+   "errorMessage": [2, "string", ""]
+  },
+  "DecryptMekForDistributionFromTransportSenderSuccess": {
+   "mek": [1, "bytes", "optional"]
+  },
+  "DecryptMekForDistributionInput": {
+   "toMailboxSk": [1, "bytes", "optional"],
+   "fromPk": [2, "bytes", "optional"],
+   "mekId": [3, "bytes", "optional"],
+   "senderEpochHead": [4, "bytes", "optional"],
+   "rosterHash": [5, "bytes", "optional"],
+   "ciphertext": [6, "bytes", "optional"],
+   "toEpochHead": [7, "bytes", "optional"],
+   "mekEncryptionVersion": [8, "int32", "optional"],
+   "conf": [9, "MinosClientConfig", "optional"]
+  },
+  "DecryptMekForDistributionResult": {
+   "success": [1, "DecryptMekForDistributionSuccess", ""],
+   "errorMessage": [2, "string", ""]
+  },
+  "DecryptMekForDistributionSuccess": {
+   "mek": [1, "bytes", "optional"]
+  },
+  "DecryptSelfMmkDistributionInput": {
+   "encryptedMmk": [1, "bytes", "optional"],
+   "exportRootKey": [2, "bytes", "optional"],
+   "mmkPublicData": [3, "MessagingMailboxPublicData", "optional"]
+  },
+  "DecryptSelfMmkDistributionResult": {
+   "success": [1, "DecryptSelfMmkDistributionSuccess", ""],
+   "errorMessage": [2, "string", ""]
+  },
+  "DecryptSelfMmkDistributionSuccess": {
+   "mmkSeed": [1, "bytes", "optional"]
+  },
+  "DeriveAttachmentAccessTokenSecretInput": {
+   "mediaKey": [1, "bytes", "optional"]
+  },
+  "DeriveAttachmentAccessTokenSecretResult": {
+   "attachmentAccessTokenSecret": [1, "bytes", "optional"]
+  },
+  "DeriveAttachmentPrimaryKeySecretInput": {
+   "mediaKey": [1, "bytes", "optional"]
+  },
+  "DeriveAttachmentPrimaryKeySecretResult": {
+   "attachmentPrimaryKeySecret": [1, "bytes", "optional"]
+  },
+  "DeriveMailboxAuthKeypairInput": {
+   "exportRootKey": [1, "bytes", "optional"],
+   "epochNumber": [2, "uint64", "optional"]
+  },
+  "DeriveMailboxAuthKeypairResult": {
+   "mailboxAuthPublicKey": [1, "bytes", "optional"],
+   "mailboxAuthPrivateKey": [2, "bytes", "optional"]
+  },
+  "DeriveMailboxEncryptionKeypairInput": {
+   "exportRootKey": [1, "bytes", "optional"],
+   "epochNumber": [2, "uint64", "optional"]
+  },
+  "DeriveMailboxEncryptionKeypairResult": {
+   "mailboxEncryptionPublicKey": [1, "bytes", "optional"],
+   "mailboxEncryptionPrivateKey": [2, "bytes", "optional"]
+  },
+  "DeriveMailboxSigningKeypairInput": {
+   "exportRootKey": [1, "bytes", "optional"],
+   "epochNumber": [2, "uint64", "optional"]
+  },
+  "DeriveMailboxSigningKeypairResult": {
+   "success": [1, "DeriveMailboxSigningKeypairSuccess", ""],
+   "errorMessage": [2, "string", ""]
+  },
+  "DeriveMailboxSigningKeypairSuccess": {
+   "mailboxSigningPublicKey": [1, "bytes", "optional"],
+   "mailboxSigningPrivateKey": [2, "bytes", "optional"]
+  },
+  "DeriveMessagingMailboxKeypairsInput": {
+   "mmkSeed": [1, "bytes", "optional"]
+  },
+  "DeriveMessagingMailboxKeypairsResult": {
+   "success": [1, "DeriveMessagingMailboxKeypairsSuccess", ""],
+   "errorMessage": [2, "string", ""]
+  },
+  "DeriveMessagingMailboxKeypairsSuccess": {
+   "encSk": [1, "bytes", "optional"],
+   "encPk": [2, "bytes", "optional"],
+   "authSk": [3, "bytes", "optional"],
+   "authPk": [4, "bytes", "optional"]
+  },
+  "DetachedDevicePublicData": {
+   "deviceId": [1, "uint64", "optional"],
+   "name": [2, "bytes", "optional"],
+   "sigPk": [3, "bytes", "optional"],
+   "authPk": [4, "bytes", "optional"],
+   "encPk": [5, "bytes", "optional"],
+   "signature": [6, "bytes", "optional"]
   },
   "DeviceCapabilities": {
    "chatLockSupportLevel": [1, "ChatLockSupportLevel", "optional"],
@@ -1062,7 +1200,10 @@
    "aiThread": [6, "AiThread", "optional"],
    "aiFbidMigration": [7, "AiFbidMigration", "optional"],
    "bizAiSettingsSync": [8, "BizAiSettingsSync", "optional"],
-   "contactRefresh": [9, "ContactRefresh", "optional"]
+   "contactRefresh": [9, "ContactRefresh", "optional"],
+   "reverseHistorySync": [10, "ReverseHistorySync", "optional"],
+   "newsletterChatsMigration": [11, "NewsletterChatsMigration", "optional"],
+   "hostWriteMutationSupport": [12, "HostWriteMutationSupport", "optional"]
   },
   "DeviceCapabilities.AiFbidMigration": {
    "chatDbMigrationTimestamp": [1, "uint64", "optional"],
@@ -1085,8 +1226,19 @@
   "DeviceCapabilities.ContactRefresh": {
    "refreshSupported": [1, "bool", "optional"]
   },
+  "DeviceCapabilities.HostWriteMutationSupport": {
+   "mutationNames": [1, "string", "repeated"]
+  },
   "DeviceCapabilities.LIDMigration": {
    "chatDbMigrationTimestamp": [1, "uint64", "optional"]
+  },
+  "DeviceCapabilities.NewsletterChatsMigration": {
+   "effectiveMigrated": [1, "bool", "optional"],
+   "countdownEndsAt": [2, "int64", "optional"],
+   "rolledBack": [3, "bool", "optional"]
+  },
+  "DeviceCapabilities.ReverseHistorySync": {
+   "enabledProducts": [1, "Product", "repeated"]
   },
   "DeviceCapabilities.UserHasAvatar": {
    "userHasAvatar": [1, "bool", "optional"]
@@ -1144,7 +1296,9 @@
    "supportHatchHistory": [22, "bool", "optional"],
    "supportedBotChannelFbids": [23, "string", "repeated"],
    "supportInlineContacts": [24, "bool", "optional"],
-   "supportNewsletter": [25, "bool", "optional"]
+   "supportNewsletter": [25, "bool", "optional"],
+   "supportUniversalReachChat": [26, "bool", "optional"],
+   "supportOmittedConversationIndex": [27, "bool", "optional"]
   },
   "DisappearingMode": {
    "initiator": [1, "Initiator", "optional"],
@@ -1176,6 +1330,40 @@
    "derivedContentStartTimeInMs": [13, "int64", "optional"],
    "overlapDurationInMs": [14, "int64", "optional"]
   },
+  "EncryptMekForDistributionInput": {
+   "senderEpochHead": [1, "bytes", "optional"],
+   "toMailboxPk": [2, "bytes", "optional"],
+   "fromKeypair": [3, "MailboxAuthKP", "optional"],
+   "mek": [4, "MekBundle", "optional"],
+   "toEpochHead": [5, "bytes", "optional"],
+   "conf": [6, "MinosClientConfig", "optional"]
+  },
+  "EncryptMekForDistributionInput.MailboxAuthKP": {
+   "sk": [1, "bytes", "optional"],
+   "pk": [2, "bytes", "optional"]
+  },
+  "EncryptMekForDistributionResult": {
+   "ciphertext": [1, "bytes", "optional"],
+   "version": [2, "uint64", "optional"]
+  },
+  "EncryptMeksForDistributionFromTransportSenderInput": {
+   "mek": [1, "MekBundle", "optional"],
+   "transportSigningKp": [2, "TransportSigningKP", "optional"],
+   "recipientMailboxEncryptionPks": [3, "bytes", "repeated"],
+   "recipientEpochHeads": [4, "bytes", "repeated"],
+   "conf": [5, "MinosClientConfig", "optional"]
+  },
+  "EncryptMeksForDistributionFromTransportSenderInput.TransportSigningKP": {
+   "sk": [1, "bytes", "optional"],
+   "pk": [2, "bytes", "optional"]
+  },
+  "EncryptMeksForDistributionFromTransportSenderResult": {
+   "encryptedMeks": [1, "bytes", "repeated"],
+   "ephemeralEncryptionPk": [2, "bytes", "optional"],
+   "signingPk": [3, "bytes", "optional"],
+   "signature": [4, "bytes", "optional"],
+   "version": [5, "uint64", "optional"]
+  },
   "EncryptedPairingRequest": {
    "encryptedPayload": [1, "bytes", "optional"],
    "iv": [2, "bytes", "optional"]
@@ -1184,8 +1372,23 @@
    "duration": [1, "sfixed32", "optional"],
    "timestamp": [2, "sfixed64", "optional"]
   },
+  "EpochPublicData": {
+   "epochNumber": [1, "uint64", "optional"],
+   "userFbid": [2, "string", "optional"],
+   "mailboxSigningPk": [3, "bytes", "optional"],
+   "mailboxEncryptionPk": [4, "bytes", "optional"],
+   "mailboxAuthPk": [5, "bytes", "optional"],
+   "previousEpochHead": [6, "bytes", "optional"]
+  },
+  "EpochSignatures": {
+   "selfSignature": [1, "bytes", "optional"],
+   "prevSignature": [2, "bytes", "optional"]
+  },
   "EventAdditionalMetadata": {
    "isStale": [1, "bool", "optional"]
+  },
+  "EventInviteAdditionalMetadata": {
+   "isUpdated": [1, "bool", "optional"]
   },
   "EventResponse": {
    "eventResponseMessageKey": [1, "MessageKey", "optional"],
@@ -1196,6 +1399,45 @@
   "ExitCode": {
    "code": [1, "uint64", "optional"],
    "text": [2, "string", "optional"]
+  },
+  "ExtendedContentMessage": {
+   "associatedMessage": [1, "SubProtocol", "optional"],
+   "targetType": [2, "EXTENDED_CONTENT_MESSAGE_EXTENDED_CONTENT_TYPE", "optional"],
+   "targetUsername": [3, "string", "optional"],
+   "targetId": [4, "string", "optional"],
+   "targetExpiringAtSec": [5, "int64", "optional"],
+   "xmaLayoutType": [6, "EXTENDED_CONTENT_MESSAGE_XMA_LAYOUT_TYPE", "optional"],
+   "ctas": [7, "CTA", "repeated"],
+   "previews": [8, "SubProtocol", "repeated"],
+   "titleText": [9, "string", "optional"],
+   "subtitleText": [10, "string", "optional"],
+   "maxTitleNumOfLines": [11, "uint32", "optional"],
+   "maxSubtitleNumOfLines": [12, "uint32", "optional"],
+   "favicon": [13, "SubProtocol", "optional"],
+   "headerImage": [14, "SubProtocol", "optional"],
+   "headerTitle": [15, "string", "optional"],
+   "overlayIconGlyph": [16, "EXTENDED_CONTENT_MESSAGE_OVERLAY_ICON_GLYPH", "optional"],
+   "overlayTitle": [17, "string", "optional"],
+   "overlayDescription": [18, "string", "optional"],
+   "sentWithMessageId": [19, "string", "optional"],
+   "messageText": [20, "string", "optional"],
+   "headerSubtitle": [21, "string", "optional"],
+   "xmaDataclass": [22, "string", "optional"],
+   "contentRef": [23, "string", "optional"],
+   "mentionedJid": [24, "string", "repeated"],
+   "commands": [25, "Command", "repeated"],
+   "mentions": [26, "Mention", "repeated"],
+   "xmaDataclassType": [27, "EXTENDED_CONTENT_MESSAGE_XMA_DATACLASS_TYPE", "optional"],
+   "signedXmaDataclassValidation": [28, "string", "optional"],
+   "featureSharedSessionId": [29, "string", "optional"]
+  },
+  "ExtendedContentMessage.CTA": {
+   "buttonType": [1, "EXTENDED_CONTENT_MESSAGE_CTA_BUTTON_TYPE", "optional"],
+   "title": [2, "string", "optional"],
+   "actionUrl": [3, "string", "optional"],
+   "nativeUrl": [4, "string", "optional"],
+   "ctaType": [5, "string", "optional"],
+   "actionContentBlob": [6, "string", "optional"]
   },
   "ExternalBlobReference": {
    "mediaKey": [1, "bytes", "optional"],
@@ -1212,10 +1454,30 @@
    "isMessage": [4, "bool", "optional"],
    "subfield": [5, "map<uint32, Field>", ""]
   },
+  "FingerprintData": {
+   "publicKey": [1, "bytes", "optional"],
+   "pnIdentifier": [2, "bytes", "optional"],
+   "lidIdentifier": [3, "bytes", "optional"],
+   "usernameIdentifier": [4, "bytes", "optional"],
+   "hostedState": [5, "HostedState", "optional"],
+   "hashedPublicKey": [6, "bytes", "optional"]
+  },
   "ForwardedAIBotMessageInfo": {
    "botName": [1, "string", "optional"],
    "botJid": [2, "string", "optional"],
    "creatorName": [3, "string", "optional"]
+  },
+  "GenerateMekInput": {
+   "epochHeads": [1, "bytes", "repeated"]
+  },
+  "GenerateMekResult": {
+   "mek": [1, "MekBundle", "optional"]
+  },
+  "GenerateMekRosterHashInput": {
+   "epochHeads": [1, "bytes", "repeated"]
+  },
+  "GenerateMekRosterHashResult": {
+   "rosterHash": [1, "bytes", "optional"]
   },
   "GlobalSettings": {
    "lightThemeWallpaper": [1, "WallpaperSettings", "optional"],
@@ -1239,6 +1501,13 @@
    "chatLockSettings": [19, "ChatLockSettings", "optional"],
    "chatDbLidMigrationTimestamp": [20, "int64", "optional"]
   },
+  "GroupHistory": {
+   "messages": [1, "WebMessageInfo", "repeated"],
+   "uncountedAssociatedMessageLists": [2, "UnCountedAssociatedMessageList", "repeated"],
+   "commentMessages": [3, "WebMessageInfo", "repeated"],
+   "outOfWindowPinnedMessages": [4, "WebMessageInfo", "repeated"],
+   "themeMessage": [5, "WebMessageInfo", "optional"]
+  },
   "GroupHistoryBundleInfo": {
    "deprecatedMessageHistoryBundle": [1, "Message.MessageHistoryBundle", "optional"],
    "processState": [2, "ProcessState", "optional"]
@@ -1247,12 +1516,19 @@
    "bundleMessageKey": [1, "MessageKey", "optional"],
    "editedAfterReceivedAsHistory": [2, "bool", "optional"]
   },
+  "GroupHistoryWithMessageBytes": {
+   "messages": [1, "WebMessageInfoWithMessageBytes", "repeated"],
+   "uncountedAssociatedMessageLists": [2, "UnCountedAssociatedMessageListWithMessageBytes", "repeated"],
+   "commentMessages": [3, "WebMessageInfoWithMessageBytes", "repeated"],
+   "outOfWindowPinnedMessages": [4, "WebMessageInfoWithMessageBytes", "repeated"],
+   "themeMessage": [5, "WebMessageInfoWithMessageBytes", "optional"]
+  },
   "GroupMention": {
    "groupJid": [1, "string", "optional"],
    "groupSubject": [2, "string", "optional"]
   },
   "GroupParticipant": {
-   "userJid": [1, "string", "required"],
+   "userJid": [1, "string", "optional"],
    "rank": [2, "Rank", "optional"],
    "memberLabel": [3, "MemberLabel", "optional"]
   },
@@ -1303,7 +1579,7 @@
    "requestId": [3, "string", "optional"]
   },
   "HistorySync": {
-   "syncType": [1, "HistorySyncType", "required"],
+   "syncType": [1, "HistorySyncType", "optional"],
    "conversations": [2, "Conversation", "repeated"],
    "statusV3Messages": [3, "WebMessageInfo", "repeated"],
    "chunkOrder": [5, "uint32", "optional"],
@@ -1322,7 +1598,10 @@
    "accounts": [18, "Account", "repeated"],
    "nctSalt": [19, "bytes", "optional"],
    "inlineContacts": [20, "InlineContact", "repeated"],
-   "inlineContactsProvided": [21, "bool", "optional"]
+   "inlineContactsProvided": [21, "bool", "optional"],
+   "favoriteStickers": [22, "StickerMetadata", "repeated"],
+   "omittedConversations": [23, "RecoverableHistoryConversation", "repeated"],
+   "omittedConversationsProvided": [24, "bool", "optional"]
   },
   "HistorySyncMsg": {
    "message": [1, "WebMessageInfo", "optional"],
@@ -1451,6 +1730,152 @@
    "degreesLongitude": [2, "double", "optional"],
    "name": [3, "string", "optional"]
   },
+  "MandrakeCreateMmkInput": {
+   "exportRootKey": [1, "bytes", "optional"],
+   "epochNumber": [2, "uint64", "optional"],
+   "epochHead": [3, "bytes", "optional"],
+   "prevMmk": [4, "MessagingMailboxPublicData", "optional"],
+   "currentPeers": [5, "DetachedDevicePublicData", "repeated"],
+   "newPeers": [6, "DetachedDevicePublicData", "repeated"]
+  },
+  "MandrakeCreateMmkResult": {
+   "success": [1, "SignedMmkDistributionFromMailbox", ""],
+   "errorMessage": [2, "string", ""]
+  },
+  "MandrakeDecryptMekInput": {
+   "encryptedMek": [1, "bytes", "optional"],
+   "mmkSender": [2, "MandrakeDecryptMekInput.MmkSenderPublicData", ""],
+   "epochSender": [3, "MandrakeDecryptMekInput.EpochSenderPublicData", ""],
+   "recipientsHash": [4, "bytes", "optional"],
+   "recipientEncSk": [5, "bytes", "optional"],
+   "mekEncryptionVersion": [6, "uint64", "optional"],
+   "conf": [7, "MinosClientConfig", "optional"],
+   "recipientMmk": [8, "MessagingMailboxPublicData", "optional"],
+   "mekId": [9, "bytes", "optional"],
+   "recipientMembershipProof": [10, "MerkleMembershipProof", "optional"],
+   "precomputedEpochSender": [11, "MandrakeDecryptMekInput.PrecomputedEpochSenderPublicData", ""]
+  },
+  "MandrakeDecryptMekInput.EpochSenderPublicData": {
+   "epochPublicData": [1, "EpochPublicData", "optional"]
+  },
+  "MandrakeDecryptMekInput.MmkSenderPublicData": {
+   "mmkPublicData": [1, "MessagingMailboxPublicData", "optional"]
+  },
+  "MandrakeDecryptMekInput.PrecomputedEpochSenderPublicData": {
+   "authPk": [1, "bytes", "optional"],
+   "epochHead": [2, "bytes", "optional"]
+  },
+  "MandrakeDecryptMekResult": {
+   "success": [1, "MandrakeDecryptMekSuccess", ""],
+   "errorMessage": [2, "string", ""]
+  },
+  "MandrakeDecryptMekSuccess": {
+   "mek": [1, "bytes", "optional"]
+  },
+  "MandrakeEncryptMekInput": {
+   "mek": [1, "MandrakeMekBundle", "optional"],
+   "recipients": [2, "MessagingMailboxPublicData", "repeated"],
+   "mmkSender": [3, "MandrakeEncryptMekInput.MmkSender", ""],
+   "epochSender": [4, "MandrakeEncryptMekInput.EpochSender", ""],
+   "conf": [5, "MinosClientConfig", "optional"],
+   "detachedDeviceSender": [6, "MandrakeEncryptMekInput.DetachedDeviceSender", ""]
+  },
+  "MandrakeEncryptMekInput.DetachedDeviceSender": {
+   "detachedDevicePublicData": [1, "DetachedDevicePublicData", "optional"],
+   "authSk": [2, "bytes", "optional"],
+   "authPk": [3, "bytes", "optional"]
+  },
+  "MandrakeEncryptMekInput.EpochSender": {
+   "epochPublicData": [1, "EpochPublicData", "optional"],
+   "authSk": [2, "bytes", "optional"],
+   "authPk": [3, "bytes", "optional"]
+  },
+  "MandrakeEncryptMekInput.MmkSender": {
+   "mmkPublicData": [1, "MessagingMailboxPublicData", "optional"],
+   "authSk": [2, "bytes", "optional"],
+   "authPk": [3, "bytes", "optional"]
+  },
+  "MandrakeEncryptMekResult": {
+   "success": [1, "MandrakeEncryptMekSuccess", ""],
+   "errorMessage": [2, "string", ""]
+  },
+  "MandrakeEncryptMekSuccess": {
+   "distributions": [1, "MekDistributionSingleRecipient", "repeated"],
+   "recipientsHash": [2, "bytes", "optional"],
+   "version": [3, "uint64", "optional"]
+  },
+  "MandrakeEncryptMekSuccess.MekDistributionSingleRecipient": {
+   "encryptedMek": [1, "bytes", "optional"],
+   "toMmk": [2, "MessagingMailboxPublicData", "optional"],
+   "recipientMembershipProof": [3, "MerkleMembershipProof", "optional"]
+  },
+  "MandrakeMekBundle": {
+   "key": [1, "bytes", "optional"],
+   "mekId": [2, "bytes", "optional"],
+   "mailboxHeadHash": [3, "bytes", "optional"]
+  },
+  "MandrakeOpenEpochInput": {
+   "userFbid": [1, "string", "optional"],
+   "epochNumber": [2, "uint64", "optional"],
+   "exportRootKey": [3, "bytes", "optional"],
+   "previousExportRootKey": [4, "bytes", "optional"],
+   "previousEpochNumber": [5, "uint64", "optional"],
+   "previousEpochHead": [6, "bytes", "optional"],
+   "previousMmk": [7, "MessagingMailboxPublicData", "optional"],
+   "detachedDevices": [8, "DetachedDevicePublicData", "repeated"]
+  },
+  "MandrakeOpenEpochResult": {
+   "success": [1, "MandrakeOpenEpochSuccess", ""],
+   "errorMessage": [2, "string", ""]
+  },
+  "MandrakeOpenEpochSuccess": {
+   "minosSignedEpoch": [1, "MinosSignedEpoch", "optional"],
+   "signedMmkDistribution": [2, "SignedMmkDistributionFromMailbox", "optional"]
+  },
+  "MandrakeOpenInitialEpochInput": {
+   "userFbid": [1, "string", "optional"],
+   "epochNumber": [2, "uint64", "optional"],
+   "exportRootKey": [3, "bytes", "optional"],
+   "detachedDevices": [4, "DetachedDevicePublicData", "repeated"]
+  },
+  "MandrakeOpenInitialEpochResult": {
+   "success": [1, "MandrakeOpenEpochSuccess", ""],
+   "errorMessage": [2, "string", ""]
+  },
+  "MandrakeValidateAndDecryptSelfMmkInput": {
+   "newMmk": [1, "MessagingMailboxPublicData", "optional"],
+   "signature": [2, "bytes", "optional"],
+   "existingMmk": [3, "MessagingMailboxPublicData", "optional"],
+   "exportRootKey": [4, "bytes", "optional"],
+   "epochNumber": [5, "uint64", "optional"],
+   "expectedEpochHead": [6, "bytes", "optional"],
+   "encryptedMmk": [7, "bytes", "optional"],
+   "version": [8, "uint64", "optional"],
+   "latestStoredMmk": [9, "MessagingMailboxPublicData", "optional"]
+  },
+  "MandrakeValidateAndDecryptSelfMmkResult": {
+   "success": [1, "MandrakeValidateAndDecryptSelfMmkSuccess", ""],
+   "errorMessage": [2, "string", ""]
+  },
+  "MandrakeValidateAndDecryptSelfMmkSuccess": {
+   "mmkSeed": [1, "bytes", "optional"],
+   "mailboxHeadHash": [2, "bytes", "optional"]
+  },
+  "MandrakeValidateNewMmkFromDetachedDeviceInput": {
+   "mmkFromDevice": [1, "MmkFromDetachedDevice", "optional"],
+   "signature": [2, "bytes", "optional"],
+   "prevMmk": [3, "MessagingMailboxPublicData", "optional"]
+  },
+  "MandrakeValidateNewMmkFromMailboxInput": {
+   "newMmk": [1, "MessagingMailboxPublicData", "optional"],
+   "signature": [2, "bytes", "optional"],
+   "prevMmk": [3, "MessagingMailboxPublicData", "optional"],
+   "epochPublicData": [4, "EpochPublicData", "optional"]
+  },
+  "MandrakeValidateNewMmkResult": {
+   "valid": [1, "bool", ""],
+   "errorMessage": [2, "string", ""]
+  },
   "MediaData": {
    "localPath": [1, "string", "optional"]
   },
@@ -1500,9 +1925,26 @@
    "result": [3, "ResultType", "optional"],
    "messageSecret": [4, "bytes", "optional"]
   },
+  "MekBundle": {
+   "key": [1, "bytes", "optional"],
+   "mekId": [2, "bytes", "optional"],
+   "rosterHash": [3, "bytes", "optional"]
+  },
   "MemberLabel": {
    "label": [1, "string", "optional"],
    "labelTimestamp": [2, "int64", "optional"]
+  },
+  "Mention": {
+   "mentionType": [1, "MENTION_MENTION_TYPE", "optional"],
+   "mentionedJid": [2, "string", "optional"],
+   "offset": [3, "uint32", "optional"],
+   "length": [4, "uint32", "optional"]
+  },
+  "MerkleMembershipProof": {
+   "proof": [1, "bytes", "optional"],
+   "root": [2, "bytes", "optional"],
+   "leafIndex": [3, "uint64", "optional"],
+   "totalLeaves": [4, "uint64", "optional"]
   },
   "Message": {
    "conversation": [1, "string", "optional"],
@@ -1617,7 +2059,11 @@
    "botPlatformRegistrationSuccessMessage": [131, "FutureProofMessage", "optional"],
    "newsletterScheduledMessage": [132, "FutureProofMessage", "optional"],
    "acp2SettingMessage": [133, "FutureProofMessage", "optional"],
-   "audioStickerMessage": [134, "FutureProofMessage", "optional"]
+   "audioStickerMessage": [134, "FutureProofMessage", "optional"],
+   "instantImageMessage": [135, "ImageMessage", "optional"],
+   "requestLocationMessage": [136, "RequestLocationMessage", "optional"],
+   "botGroupParticipantMessage": [137, "FutureProofMessage", "optional"],
+   "requestLocationUpdateMessage": [138, "RequestLocationUpdateMessage", "optional"]
   },
   "Message.AlbumMessage": {
    "expectedImageCount": [2, "uint32", "optional"],
@@ -1758,9 +2204,11 @@
    "isDoodleEnabled": [1, "bool", "optional"]
   },
   "Message.ChatSolidColorWallpaper": {
-   "colorLight": [1, "string", "optional"],
-   "colorDark": [2, "string", "optional"],
-   "isDoodleEnabled": [3, "bool", "optional"]
+   "backgroundLightArgb": [1, "fixed32", "optional"],
+   "backgroundDarkArgb": [2, "fixed32", "optional"],
+   "isDoodleEnabled": [3, "bool", "optional"],
+   "doodleLightArgb": [4, "fixed32", "optional"],
+   "doodleDarkArgb": [5, "fixed32", "optional"]
   },
   "Message.ChatStockImageWallpaper": {
    "stockImageId": [1, "string", "optional"],
@@ -1787,6 +2235,10 @@
   "Message.CloudAPIThreadControlNotification.CloudAPIThreadControlNotificationContent": {
    "handoffNotificationText": [1, "string", "optional"],
    "extraJson": [2, "string", "optional"]
+  },
+  "Message.CoexConnectionDescriptor": {
+   "providerId": [1, "int64", "optional"],
+   "product": [2, "string", "optional"]
   },
   "Message.CommentMessage": {
    "message": [1, "Message", "optional"],
@@ -1864,7 +2316,11 @@
    "caption": [6, "string", "optional"],
    "isCanceled": [7, "bool", "optional"],
    "endTime": [8, "int64", "optional"],
-   "callLink": [9, "string", "optional"]
+   "callLink": [9, "string", "optional"],
+   "coverImageHandle": [10, "string", "optional"],
+   "locationName": [11, "string", "optional"],
+   "lastUpdatedTsUsec": [12, "int64", "optional"],
+   "status": [13, "EventStatus", "optional"]
   },
   "Message.EventMessage": {
    "contextInfo": [1, "ContextInfo", "optional"],
@@ -1926,7 +2382,8 @@
   "Message.FullHistorySyncOnDemandRequestMetadata": {
    "requestId": [1, "string", "optional"],
    "businessProduct": [2, "string", "optional"],
-   "opaqueClientData": [3, "bytes", "optional"]
+   "opaqueClientData": [3, "bytes", "optional"],
+   "connection": [4, "Message.CoexConnectionDescriptor", "optional"]
   },
   "Message.FutureProofMessage": {
    "message": [1, "Message", "optional"]
@@ -2609,7 +3066,8 @@
    "coexStateSync": [33, "CoexStateSync", "optional"],
    "acp2Setting": [35, "ACP2Setting", "optional"],
    "sharedDeviceContactHashKeyShare": [36, "Message.SharedDeviceContactHashKeyShare", "optional"],
-   "sharedDeviceContactHashKeyRequest": [37, "Message.SharedDeviceContactHashKeyRequest", "optional"]
+   "sharedDeviceContactHashKeyRequest": [37, "Message.SharedDeviceContactHashKeyRequest", "optional"],
+   "additionalPromptIds": [38, "string", "repeated"]
   },
   "Message.QuestionResponseMessage": {
    "key": [1, "MessageKey", "optional"],
@@ -2620,6 +3078,14 @@
    "text": [2, "string", "optional"],
    "groupingKey": [3, "string", "optional"],
    "senderTimestampMs": [4, "int64", "optional"]
+  },
+  "Message.RequestLocationMessage": {
+   "contextInfo": [1, "ContextInfo", "optional"]
+  },
+  "Message.RequestLocationUpdateMessage": {
+   "key": [1, "MessageKey", "optional"],
+   "updateType": [2, "UpdateType", "optional"],
+   "senderTimestampMs": [3, "int64", "optional"]
   },
   "Message.RequestPaymentMessage": {
    "currencyCodeIso4217": [1, "string", "optional"],
@@ -2823,10 +3289,10 @@
    "fbExperimentId": [1, "uint32", "optional"]
   },
   "Message.VideoEndCard": {
-   "username": [1, "string", "required"],
-   "caption": [2, "string", "required"],
-   "thumbnailImageUrl": [3, "string", "required"],
-   "profilePictureUrl": [4, "string", "required"]
+   "username": [1, "string", "optional"],
+   "caption": [2, "string", "optional"],
+   "thumbnailImageUrl": [3, "string", "optional"],
+   "profilePictureUrl": [4, "string", "optional"]
   },
   "Message.VideoMessage": {
    "url": [1, "string", "optional"],
@@ -2915,6 +3381,163 @@
    "encIv": [2, "bytes", "optional"],
    "encPayload": [3, "bytes", "optional"]
   },
+  "MessageText": {
+   "text": [1, "string", "optional"],
+   "mentionedJid": [2, "string", "repeated"],
+   "commands": [3, "Command", "repeated"],
+   "mentions": [4, "Mention", "repeated"]
+  },
+  "MessagingMailboxPublicData": {
+   "epochHead": [1, "bytes", "optional"],
+   "deviceRosterHash": [2, "bytes", "optional"],
+   "sequenceNumber": [3, "uint64", "optional"],
+   "sigPk": [4, "bytes", "optional"],
+   "encPk": [5, "bytes", "optional"],
+   "authPk": [6, "bytes", "optional"]
+  },
+  "MinosClientConfig": {
+   "preferredMessageEncryptionVersion": [1, "int32", "optional"],
+   "preferredMekEncryptionVersion": [2, "int32", "optional"]
+  },
+  "MinosCommand": {
+   "encryptAndSignMessage": [1, "MinosEncryptAndSignMessageInput", ""],
+   "decryptAndVerifyMessage": [2, "MinosDecryptAndVerifyMessageInput", ""],
+   "generateMek": [3, "GenerateMekInput", ""],
+   "generateMekRosterHash": [4, "GenerateMekRosterHashInput", ""],
+   "encryptMekForDistribution": [5, "EncryptMekForDistributionInput", ""],
+   "decryptMekForDistribution": [6, "DecryptMekForDistributionInput", ""],
+   "encryptMeksForDistributionFromTransportSender": [7, "EncryptMeksForDistributionFromTransportSenderInput", ""],
+   "decryptMekForDistributionFromTransportSender": [8, "DecryptMekForDistributionFromTransportSenderInput", ""],
+   "wrapTransportSigningPublicKey": [9, "WrapTransportSigningPublicKeyInput", ""],
+   "wrapTransportSigningSecretKey": [10, "WrapTransportSigningSecretKeyInput", ""],
+   "deriveMailboxSigningKeypair": [11, "DeriveMailboxSigningKeypairInput", ""],
+   "deriveMailboxEncryptionKeypair": [12, "DeriveMailboxEncryptionKeypairInput", ""],
+   "deriveMailboxAuthKeypair": [13, "DeriveMailboxAuthKeypairInput", ""],
+   "deriveAttachmentAccessTokenSecret": [14, "DeriveAttachmentAccessTokenSecretInput", ""],
+   "deriveAttachmentPrimaryKeySecret": [15, "DeriveAttachmentPrimaryKeySecretInput", ""],
+   "minosOpenInitialEpoch": [16, "MinosOpenInitialEpochInput", ""],
+   "minosOpenEpoch": [17, "MinosOpenEpochInput", ""],
+   "minosValidateEpoch": [18, "MinosValidateEpochInput", ""],
+   "minosVerifySingleEpoch": [19, "MinosVerifySingleEpochInput", ""],
+   "minosThreadIdFromOneToOneThread": [20, "MinosThreadIdFromOneToOneThreadInput", ""],
+   "minosThreadIdFromActThreadId": [21, "MinosThreadIdFromActThreadIdInput", ""],
+   "mandrakeOpenEpoch": [22, "MandrakeOpenEpochInput", ""],
+   "mandrakeEncryptMek": [23, "MandrakeEncryptMekInput", ""],
+   "mandrakeDecryptMek": [24, "MandrakeDecryptMekInput", ""],
+   "mandrakeOpenInitialEpoch": [25, "MandrakeOpenInitialEpochInput", ""],
+   "mandrakeValidateNewMmkFromMailbox": [27, "MandrakeValidateNewMmkFromMailboxInput", ""],
+   "mandrakeValidateNewMmkFromDetachedDevice": [28, "MandrakeValidateNewMmkFromDetachedDeviceInput", ""],
+   "deriveMessagingMailboxKeypairs": [29, "DeriveMessagingMailboxKeypairsInput", ""],
+   "decryptSelfMmkDistribution": [30, "DecryptSelfMmkDistributionInput", ""],
+   "mandrakeValidateAndDecryptSelfMmk": [31, "MandrakeValidateAndDecryptSelfMmkInput", ""],
+   "mandrakeCreateMmk": [32, "MandrakeCreateMmkInput", ""]
+  },
+  "MinosDecryptAndVerifyMessageInput": {
+   "transportSigningPk": [1, "bytes", "optional"],
+   "mek": [2, "bytes", "optional"],
+   "encryptedMessageCiphertext": [3, "bytes", "optional"],
+   "encryptedMessageSignature": [4, "bytes", "optional"],
+   "metadata": [5, "MinosMessageMetadata", "optional"],
+   "messageEncryptionVersion": [6, "int32", "optional"],
+   "conf": [7, "MinosClientConfig", "optional"]
+  },
+  "MinosDecryptAndVerifyMessageResult": {
+   "success": [1, "MinosDecryptAndVerifyMessageSuccess", ""],
+   "errorMessage": [2, "string", ""]
+  },
+  "MinosDecryptAndVerifyMessageSuccess": {
+   "plaintext": [1, "bytes", "optional"]
+  },
+  "MinosEncryptAndSignMessageInput": {
+   "transportSigningSk": [1, "bytes", "optional"],
+   "mek": [2, "bytes", "optional"],
+   "plaintext": [3, "bytes", "optional"],
+   "metadata": [4, "MinosMessageMetadata", "optional"],
+   "transportSigningPk": [5, "bytes", "optional"],
+   "conf": [6, "MinosClientConfig", "optional"]
+  },
+  "MinosEncryptAndSignMessageResult": {
+   "ciphertext": [1, "bytes", "optional"],
+   "signature": [2, "bytes", "optional"],
+   "version": [3, "int32", "optional"]
+  },
+  "MinosMessageMetadata": {
+   "mekId": [1, "bytes", "optional"],
+   "timestamp": [2, "uint64", "optional"],
+   "messageId": [3, "string", "optional"],
+   "threadId": [4, "bytes", "optional"]
+  },
+  "MinosOpenEpochInput": {
+   "userFbid": [1, "string", "optional"],
+   "epochNumber": [2, "uint64", "optional"],
+   "exportRootKey": [3, "bytes", "optional"],
+   "previousExportRootKey": [4, "bytes", "optional"],
+   "previousEpochNumber": [5, "uint64", "optional"],
+   "previousEpochHead": [6, "bytes", "optional"]
+  },
+  "MinosOpenEpochResult": {
+   "minosSignedEpoch": [1, "MinosSignedEpoch", "optional"]
+  },
+  "MinosOpenInitialEpochInput": {
+   "userFbid": [1, "string", "optional"],
+   "epochNumber": [2, "uint64", "optional"],
+   "exportRootKey": [3, "bytes", "optional"]
+  },
+  "MinosOpenInitialEpochResult": {
+   "minosSignedEpoch": [1, "MinosSignedEpoch", "optional"]
+  },
+  "MinosSignedEpoch": {
+   "epochPublicData": [1, "EpochPublicData", "optional"],
+   "signatures": [2, "EpochSignatures", "optional"],
+   "epochHead": [3, "bytes", "optional"]
+  },
+  "MinosThreadIdFromActThreadIdInput": {
+   "actThreadId": [1, "string", "optional"]
+  },
+  "MinosThreadIdFromActThreadIdResult": {
+   "threadId": [1, "bytes", "optional"]
+  },
+  "MinosThreadIdFromOneToOneThreadInput": {
+   "actThreadId": [1, "string", "optional"],
+   "selfFbid": [2, "string", "optional"]
+  },
+  "MinosThreadIdFromOneToOneThreadResult": {
+   "threadId": [1, "bytes", "optional"]
+  },
+  "MinosValidateEpochInput": {
+   "epochPublicData": [1, "EpochPublicData", "optional"],
+   "previousEpochPublicData": [2, "EpochPublicData", "optional"],
+   "signatures": [3, "EpochSignatures", "optional"]
+  },
+  "MinosValidateEpochResult": {
+   "valid": [1, "bool", ""],
+   "errorMessage": [2, "string", ""]
+  },
+  "MinosVerifySingleEpochInput": {
+   "epochPublicData": [1, "EpochPublicData", "optional"],
+   "signature": [2, "bytes", "optional"]
+  },
+  "MinosVerifySingleEpochResult": {
+   "valid": [1, "bool", "optional"]
+  },
+  "MmkDistribution": {
+   "toDetachedDevices": [1, "MmkDistributionToDetachedDevice", "repeated"],
+   "toMailbox": [2, "MmkDistributionToMailbox", "optional"],
+   "version": [3, "uint64", "optional"]
+  },
+  "MmkDistributionToDetachedDevice": {
+   "encryptedMmk": [1, "bytes", "optional"],
+   "recipDeviceHash": [2, "bytes", "optional"]
+  },
+  "MmkDistributionToMailbox": {
+   "encryptedMmk": [1, "bytes", "optional"],
+   "recipMailboxHeadHash": [2, "bytes", "optional"]
+  },
+  "MmkFromDetachedDevice": {
+   "mmk": [1, "MessagingMailboxPublicData", "optional"],
+   "fromDetachedDevice": [2, "DetachedDevicePublicData", "optional"],
+   "membershipProof": [3, "MerkleMembershipProof", "optional"]
+  },
   "Money": {
    "value": [1, "int64", "optional"],
    "offset": [2, "uint32", "optional"],
@@ -2977,7 +3600,8 @@
    "sharableEventInviteJpegThumbnail": [59, "bytes", "optional"],
    "sharableEventInviteCallLink": [60, "string", "optional"],
    "mediaPngThumbnail": [61, "string", "optional"],
-   "qrUrl": [62, "string", "optional"]
+   "qrUrl": [62, "string", "optional"],
+   "musicData": [63, "MusicData", "optional"]
   },
   "MsgOpaqueData.EventLocation": {
    "degreesLatitude": [1, "double", "optional"],
@@ -2986,6 +3610,26 @@
    "address": [4, "string", "optional"],
    "url": [5, "string", "optional"],
    "jpegThumbnail": [6, "bytes", "optional"]
+  },
+  "MsgOpaqueData.MusicData": {
+   "musicContentMediaId": [1, "string", "optional"],
+   "songId": [2, "string", "optional"],
+   "author": [3, "string", "optional"],
+   "title": [4, "string", "optional"],
+   "songUri": [5, "string", "optional"],
+   "artworkUri": [6, "string", "optional"],
+   "style": [7, "int32", "optional"],
+   "songStartTimeMs": [8, "int32", "optional"],
+   "clipDurationMs": [9, "int32", "optional"],
+   "isExplicit": [10, "bool", "optional"],
+   "countryBlocklist": [11, "bytes", "optional"],
+   "artistAttribution": [12, "string", "optional"],
+   "artworkDirectPath": [13, "string", "optional"],
+   "artworkSha256": [14, "bytes", "optional"],
+   "artworkEncSha256": [15, "bytes", "optional"],
+   "artworkMediaKey": [16, "bytes", "optional"],
+   "consumptionCheckedAtS": [17, "int64", "optional"],
+   "isAvailableForConsumption": [18, "bool", "optional"]
   },
   "MsgOpaqueData.PollOption": {
    "name": [1, "string", "optional"],
@@ -3116,7 +3760,8 @@
   },
   "PollAdditionalMetadata": {
    "pollInvalidated": [1, "bool", "optional"],
-   "pollNameHashHistory": [2, "PollNameHashHistoryEntry", "repeated"]
+   "pollNameHashHistory": [2, "PollNameHashHistoryEntry", "repeated"],
+   "originalOptions": [3, "Message.PollCreationMessage.Option", "repeated"]
   },
   "PollAdditionalMetadata.PollNameHashHistoryEntry": {
    "editStanzaId": [1, "string", "optional"],
@@ -3176,13 +3821,13 @@
   },
   "QP": {},
   "QP.Filter": {
-   "filterName": [1, "string", "required"],
+   "filterName": [1, "string", "optional"],
    "parameters": [2, "QP.FilterParameters", "repeated"],
    "filterResult": [3, "QP.FilterResult", "optional"],
-   "clientNotSupportedConfig": [4, "QP.FilterClientNotSupportedConfig", "required"]
+   "clientNotSupportedConfig": [4, "QP.FilterClientNotSupportedConfig", "optional"]
   },
   "QP.FilterClause": {
-   "clauseType": [1, "QP.ClauseType", "required"],
+   "clauseType": [1, "QP.ClauseType", "optional"],
    "clauses": [2, "QP.FilterClause", "repeated"],
    "filters": [3, "QP.Filter", "repeated"]
   },
@@ -3209,6 +3854,10 @@
    "currentSession": [1, "SessionStructure", "optional"],
    "previousSessions": [2, "SessionStructure", "repeated"]
   },
+  "RecoverableHistoryConversation": {
+   "historyChatId": [1, "string", "optional"],
+   "accountLid": [2, "string", "optional"]
+  },
   "Reportable": {
    "minVersion": [1, "uint32", "optional"],
    "maxVersion": [2, "uint32", "optional"],
@@ -3218,6 +3867,14 @@
   "ReportingTokenInfo": {
    "reportingTag": [1, "bytes", "optional"],
    "reportingTagTimestamp": [2, "uint64", "optional"]
+  },
+  "RoutingInfo": {
+   "regionId": [1, "int32", "repeated"],
+   "clusterId": [2, "int32", "repeated"],
+   "taskId": [3, "int32", "optional"],
+   "debug": [4, "bool", "optional"],
+   "tcpBbr": [5, "bool", "optional"],
+   "tcpKeepalive": [6, "bool", "optional"]
   },
   "ScheduledMessageMetadata": {
    "revealKeyId": [1, "string", "optional"],
@@ -3317,6 +3974,11 @@
    "previousCounter": [3, "uint32", "optional"],
    "ciphertext": [4, "bytes", "optional"]
   },
+  "SignedMmkDistributionFromMailbox": {
+   "mmkDistribution": [1, "MmkDistribution", "optional"],
+   "signature": [2, "bytes", "optional"],
+   "fromMailbox": [3, "MessagingMailboxPublicData", "optional"]
+  },
   "SignedPreKeyRecordStructure": {
    "id": [1, "uint32", "optional"],
    "publicKey": [2, "bytes", "optional"],
@@ -3371,7 +4033,7 @@
    "quotedStatus": [1, "Message", "optional"]
   },
   "StatusPSA": {
-   "campaignId": [44, "uint64", "required"],
+   "campaignId": [44, "uint64", "optional"],
    "campaignExpirationTimestamp": [45, "uint64", "optional"]
   },
   "StickerMetadata": {
@@ -3389,6 +4051,10 @@
    "isLottie": [12, "bool", "optional"],
    "imageHash": [13, "string", "optional"],
    "isAvatarSticker": [14, "bool", "optional"]
+  },
+  "SubProtocol": {
+   "payload": [1, "bytes", "optional"],
+   "version": [2, "int32", "optional"]
   },
   "SyncActionData": {
    "index": [1, "bytes", "optional"],
@@ -3483,7 +4149,11 @@
    "ctwaMessageReceivedAction": [93, "CtwaMessageReceivedAction", "optional"],
    "sharedDeviceAllowlistAction": [94, "SharedDeviceAllowlistAction", "optional"],
    "contactManagerMetadataAction": [95, "ContactManagerMetadataAction", "optional"],
-   "businessFolderActivationAction": [96, "BusinessFolderActivationAction", "optional"]
+   "businessFolderActivationAction": [96, "BusinessFolderActivationAction", "optional"],
+   "groupHistoryToggleAction": [97, "GroupHistoryToggleAction", "optional"],
+   "bbProPendingCustomerBaseAction": [98, "BBProPendingCustomerBaseAction", "optional"],
+   "communityNestingStateAction": [99, "CommunityNestingStateAction", "optional"],
+   "sharedDeviceSecretAction": [100, "SharedDeviceSecretAction", "optional"]
   },
   "SyncActionValue.AgentAction": {
    "name": [1, "string", "optional"],
@@ -3507,6 +4177,9 @@
    "eventType": [1, "AvatarEventType", "optional"],
    "recentAvatarStickers": [2, "SyncActionValue.StickerAction", "repeated"]
   },
+  "SyncActionValue.BBProPendingCustomerBaseAction": {
+   "pending": [1, "bool", "optional"]
+  },
   "SyncActionValue.BizAISettingsNudgeAction": {
    "category": [1, "BizAISettingsCategory", "optional"],
    "version": [2, "int64", "optional"],
@@ -3516,7 +4189,7 @@
    "isSent": [1, "bool", "optional"]
   },
   "SyncActionValue.BroadcastListParticipant": {
-   "lidJid": [1, "string", "required"],
+   "lidJid": [1, "string", "optional"],
    "pnJid": [2, "string", "optional"]
   },
   "SyncActionValue.BubbleLockMessageAction": {
@@ -3571,13 +4244,17 @@
   "SyncActionValue.CoexV2VersionAction": {
    "version": [1, "uint64", "optional"]
   },
+  "SyncActionValue.CommunityNestingStateAction": {
+   "nestingState": [1, "NestingState", "optional"]
+  },
   "SyncActionValue.ContactAction": {
    "fullName": [1, "string", "optional"],
    "firstName": [2, "string", "optional"],
    "lidJid": [3, "string", "optional"],
    "saveOnPrimaryAddressbook": [4, "bool", "optional"],
    "pnJid": [5, "string", "optional"],
-   "username": [6, "string", "optional"]
+   "username": [6, "string", "optional"],
+   "birthday": [7, "string", "optional"]
   },
   "SyncActionValue.ContactManagerMetadataAction": {
    "isHidden": [1, "bool", "optional"]
@@ -3589,14 +4266,14 @@
    "isCtwaPerCustomerDataSharingEnabled": [1, "bool", "optional"]
   },
   "SyncActionValue.CustomPaymentMethod": {
-   "credentialId": [1, "string", "required"],
-   "country": [2, "string", "required"],
-   "type": [3, "string", "required"],
+   "credentialId": [1, "string", "optional"],
+   "country": [2, "string", "optional"],
+   "type": [3, "string", "optional"],
    "metadata": [4, "SyncActionValue.CustomPaymentMethodMetadata", "repeated"]
   },
   "SyncActionValue.CustomPaymentMethodMetadata": {
-   "key": [1, "string", "required"],
-   "value": [2, "string", "required"]
+   "key": [1, "string", "optional"],
+   "value": [2, "string", "optional"]
   },
   "SyncActionValue.CustomPaymentMethodsAction": {
    "customPaymentMethods": [1, "SyncActionValue.CustomPaymentMethod", "repeated"]
@@ -3637,8 +4314,11 @@
   "SyncActionValue.FavoritesAction.Favorite": {
    "id": [1, "string", "optional"]
   },
+  "SyncActionValue.GroupHistoryToggleAction": {
+   "groupHistoryToggleMode": [1, "GroupHistoryToggleMode", "optional"]
+  },
   "SyncActionValue.InteractiveMessageAction": {
-   "type": [1, "InteractiveMessageActionMode", "required"],
+   "type": [1, "InteractiveMessageActionMode", "optional"],
    "agmId": [2, "string", "optional"]
   },
   "SyncActionValue.KeyExpiration": {
@@ -3668,7 +4348,8 @@
   "SyncActionValue.LidContactAction": {
    "fullName": [1, "string", "optional"],
    "firstName": [2, "string", "optional"],
-   "username": [3, "string", "optional"]
+   "username": [3, "string", "optional"],
+   "birthday": [4, "string", "optional"]
   },
   "SyncActionValue.LocaleSetting": {
    "locale": [1, "string", "optional"]
@@ -3697,8 +4378,8 @@
    "repliedCount": [1, "int32", "optional"]
   },
   "SyncActionValue.MerchantPaymentPartnerAction": {
-   "status": [1, "Status", "required"],
-   "country": [2, "string", "required"],
+   "status": [1, "Status", "optional"],
+   "country": [2, "string", "optional"],
    "gatewayName": [3, "string", "optional"],
    "credentialId": [4, "string", "optional"]
   },
@@ -3739,8 +4420,8 @@
    "cpi": [1, "string", "optional"]
   },
   "SyncActionValue.PaymentTosAction": {
-   "paymentNotice": [1, "PaymentNotice", "required"],
-   "accepted": [2, "bool", "required"]
+   "paymentNotice": [1, "PaymentNotice", "optional"],
+   "accepted": [2, "bool", "optional"]
   },
   "SyncActionValue.PinAction": {
    "pinned": [1, "bool", "optional"]
@@ -3821,6 +4502,10 @@
   },
   "SyncActionValue.SharedDeviceAllowlistAction": {
    "allowed": [1, "bool", "optional"]
+  },
+  "SyncActionValue.SharedDeviceSecretAction": {
+   "secret": [1, "bytes", "optional"],
+   "ttlMs": [2, "int64", "optional"]
   },
   "SyncActionValue.StarAction": {
    "starred": [1, "bool", "optional"]
@@ -3946,6 +4631,11 @@
    "deviceIndex": [8, "uint32", "optional"],
    "clientDebugData": [9, "bytes", "optional"]
   },
+  "SyncdPlainTextRecord": {
+   "value": [1, "SyncActionData", "optional"],
+   "keyId": [2, "bytes", "optional"],
+   "mac": [3, "bytes", "optional"]
+  },
   "SyncdRecord": {
    "index": [1, "SyncdIndex", "optional"],
    "value": [2, "SyncdValue", "optional"],
@@ -3956,6 +4646,12 @@
    "records": [2, "SyncdRecord", "repeated"],
    "mac": [3, "bytes", "optional"],
    "keyId": [4, "KeyId", "optional"]
+  },
+  "SyncdSnapshotRecovery": {
+   "version": [1, "SyncdVersion", "optional"],
+   "collectionName": [2, "string", "optional"],
+   "mutationRecords": [3, "SyncdPlainTextRecord", "repeated"],
+   "collectionLthash": [4, "bytes", "optional"]
   },
   "SyncdValue": {
    "blob": [1, "bytes", "optional"]
@@ -3989,6 +4685,15 @@
    "threadType": [1, "ThreadType", "optional"],
    "threadKey": [2, "MessageKey", "optional"]
   },
+  "UnCountedAssociatedMessageList": {
+   "messages": [1, "WebMessageInfo", "repeated"],
+   "parentMessage": [2, "MessageKey", "optional"],
+   "associationType": [3, "MessageAssociation.AssociationType", "optional"]
+  },
+  "UnCountedAssociatedMessageListWithMessageBytes": {
+   "messages": [1, "WebMessageInfoWithMessageBytes", "repeated"],
+   "parentMessage": [2, "MessageKey", "optional"]
+  },
   "UrlTrackingMap": {
    "urlTrackingMapElements": [1, "UrlTrackingMapElement", "repeated"]
   },
@@ -4013,7 +4718,7 @@
    "asUnsignedInteger": [2, "uint32", ""]
   },
   "UserReceipt": {
-   "userJid": [1, "string", "required"],
+   "userJid": [1, "string", "optional"],
    "receiptTimestamp": [2, "int64", "optional"],
    "readTimestamp": [3, "int64", "optional"],
    "playedTimestamp": [4, "int64", "optional"],
@@ -4085,7 +4790,7 @@
    "noDeleteMessageTimeLimit": [49, "Flag", "optional"]
   },
   "WebMessageInfo": {
-   "key": [1, "MessageKey", "required"],
+   "key": [1, "MessageKey", "optional"],
    "message": [2, "Message", "optional"],
    "messageTimestamp": [3, "uint64", "optional"],
    "status": [4, "Status", "optional"],
@@ -4156,13 +4861,30 @@
    "ephemeralExpirationTimestamp": [80, "uint64", "optional"],
    "scheduledMessageMetadata": [81, "ScheduledMessageMetadata", "optional"],
    "decisionId": [82, "string", "optional"],
-   "decisionSources": [83, "string", "repeated"]
+   "decisionSources": [83, "string", "repeated"],
+   "eventInviteAdditionalMetadata": [84, "EventInviteAdditionalMetadata", "optional"]
+  },
+  "WebMessageInfoWithMessageBytes": {
+   "key": [1, "MessageKey", "optional"],
+   "messageBytes": [2, "bytes", "optional"]
   },
   "WebNotificationsInfo": {
    "timestamp": [2, "uint64", "optional"],
    "unreadChats": [3, "uint32", "optional"],
    "notifyMessageCount": [4, "uint32", "optional"],
    "notifyMessages": [5, "WebMessageInfo", "repeated"]
+  },
+  "WrapTransportSigningPublicKeyInput": {
+   "keyBytes": [1, "bytes", "optional"]
+  },
+  "WrapTransportSigningPublicKeyResult": {
+   "prefixedKey": [1, "bytes", "optional"]
+  },
+  "WrapTransportSigningSecretKeyInput": {
+   "keyBytes": [1, "bytes", "optional"]
+  },
+  "WrapTransportSigningSecretKeyResult": {
+   "prefixedKey": [1, "bytes", "optional"]
   }
  },
  "enums": {
@@ -4227,7 +4949,8 @@
    "UNKNOWN": 0,
    "DEFAULT": 1,
    "INCOGNITO": 2,
-   "SIDE_CHAT": 3
+   "SIDE_CHAT": 3,
+   "PRIVATE_SEARCH_CHAT": 4
   },
   "BizAIMetadataSync.ServerEvent.ProtocolEvent": {
    "UNSPECIFIED": 0,
@@ -4329,7 +5052,18 @@
    "AI_RICH_RESPONSE_EMAIL_CALENDAR_ENABLED": 68,
    "AI_RICH_RESPONSE_REMINDERS_ENABLED": 69,
    "AI_STOP_GENERATION_ENABLED": 70,
-   "AI_RICH_RESPONSE_3P_LINKING_CARD_ENABLED": 71
+   "AI_RICH_RESPONSE_3P_LINKING_CARD_ENABLED": 71,
+   "HATCH_NOTIFICATION_METADATA_EVENT_ENABLED": 72,
+   "AI_SUGGESTED_REPLIES_ENABLED": 73,
+   "RICH_RESPONSE_IN_APP_SURVEY_BLOKS": 74,
+   "RICH_RESPONSE_IMAGE_SOURCE_ATTRIBUTION": 75,
+   "HATCH_CONNECTOR_ACTION_CARD_ENABLED": 76,
+   "HATCH_SECURE_CREDENTIAL_CARD_ENABLED": 77,
+   "HATCH_BROWSER_TASK_CARD_ENABLED": 78,
+   "HATCH_ARTIFACT_CARD_ENABLED": 79,
+   "AI_STUDY_CENTER_ENABLED": 80,
+   "AI_MUSE_JARVIS_SCHEMA_ENABLED": 81,
+   "AI_STUDY_QUIZ_ENABLED": 82
   },
   "BotDocumentMessageMetadata.DocumentPluginType": {
    "TEXT_EXTRACTION": 0,
@@ -4390,7 +5124,8 @@
    "RIGHT": 3
   },
   "BotMessageOrigin.BotMessageOriginType": {
-   "BOT_MESSAGE_ORIGIN_TYPE_AI_INITIATED": 0
+   "BOT_MESSAGE_ORIGIN_TYPE_AI_INITIATED": 0,
+   "BOT_MESSAGE_ORIGIN_TYPE_META_AI_THREAD_WELCOME": 1
   },
   "BotMetricsEntryPoint": {
    "UNDEFINED_ENTRY_POINT": 0,
@@ -4442,7 +5177,8 @@
    "CHATLIST_SEARCH": 55,
    "NEW_CHAT_LIST": 56,
    "CONTACTS_TAB": 57,
-   "NEW_3P_AGENT_CREATION": 58
+   "NEW_3P_AGENT_CREATION": 58,
+   "SHARE": 59
   },
   "BotMetricsThreadEntryPoint": {
    "AI_TAB_THREAD": 1,
@@ -4540,6 +5276,12 @@
    "GOOGLE": 2,
    "SUPPORT": 3,
    "OTHER": 4
+  },
+  "COMMAND_COMMAND_TYPE": {
+   "EVERYONE": 1,
+   "SILENT": 2,
+   "AI": 3,
+   "AI_IMAGINE": 4
   },
   "CallLogRecord.CallResult": {
    "CONNECTED": 0,
@@ -4680,7 +5422,8 @@
    "AR_WRIST": 37,
    "WAIL": 38,
    "WORK_ANDROID": 39,
-   "WORK_IOS": 40
+   "WORK_IOS": 40,
+   "AUTOMOTIVE": 41
   },
   "ClientPayload.UserAgent.ReleaseChannel": {
    "RELEASE": 0,
@@ -4772,7 +5515,11 @@
    "MOTION_PHOTO_PARENT": 5,
    "MOTION_PHOTO_CHILD": 6,
    "HEVC_VIDEO_PARENT": 7,
-   "HEVC_VIDEO_CHILD": 8
+   "HEVC_VIDEO_CHILD": 8,
+   "AV1_VIDEO_PARENT": 9,
+   "AV1_VIDEO_CHILD": 10,
+   "STREAMED_VIDEO_PARENT": 11,
+   "STREAMED_VIDEO_CHILD": 12
   },
   "ContextInfo.QuotedType": {
    "EXPLICIT": 0,
@@ -4824,6 +5571,10 @@
    "RECEIVER_ENABLED": 1,
    "SENDER_ENABLED": 2
   },
+  "DeviceCapabilities.ReverseHistorySync.Product": {
+   "PRODUCT_UNSPECIFIED": 0,
+   "HATCH": 1
+  },
   "DeviceProps.PlatformType": {
    "UNKNOWN": 0,
    "CHROME": 1,
@@ -4852,7 +5603,10 @@
    "SMARTGLASSES": 24,
    "WAIL": 25,
    "WASS": 26,
-   "BUSINESS_BACK_OFFICE": 27
+   "BUSINESS_BACK_OFFICE": 27,
+   "WAIL_WAI": 28,
+   "WAIL_ALEXA": 29,
+   "AUTOMOTIVE": 30
   },
   "DisappearingMode.Initiator": {
    "CHANGED_IN_CHAT": 0,
@@ -4867,6 +5621,132 @@
    "BULK_CHANGE": 3,
    "BIZ_SUPPORTS_FB_HOSTING": 4,
    "UNKNOWN_GROUPS": 5
+  },
+  "EXTENDED_CONTENT_MESSAGE_CTA_BUTTON_TYPE": {
+   "OPEN_NATIVE": 11
+  },
+  "EXTENDED_CONTENT_MESSAGE_EXTENDED_CONTENT_TYPE": {
+   "UNSUPPORTED": -1,
+   "IG_STORY_PHOTO_MENTION": 4,
+   "IG_SINGLE_IMAGE_POST_SHARE": 9,
+   "IG_MULTIPOST_SHARE": 10,
+   "IG_SINGLE_VIDEO_POST_SHARE": 11,
+   "IG_STORY_PHOTO_SHARE": 12,
+   "IG_STORY_VIDEO_SHARE": 13,
+   "IG_CLIPS_SHARE": 14,
+   "IG_IGTV_SHARE": 15,
+   "IG_SHOP_SHARE": 16,
+   "IG_PROFILE_SHARE": 19,
+   "IG_STORY_PHOTO_HIGHLIGHT_SHARE": 20,
+   "IG_STORY_VIDEO_HIGHLIGHT_SHARE": 21,
+   "IG_STORY_REPLY": 22,
+   "IG_STORY_REACTION": 23,
+   "IG_STORY_VIDEO_MENTION": 24,
+   "IG_STORY_HIGHLIGHT_REPLY": 25,
+   "IG_STORY_HIGHLIGHT_REACTION": 26,
+   "IG_EXTERNAL_LINK": 27,
+   "IG_RECEIVER_FETCH": 28,
+   "FB_FEED_SHARE": 1000,
+   "FB_STORY_REPLY": 1001,
+   "FB_STORY_SHARE": 1002,
+   "FB_STORY_MENTION": 1003,
+   "FB_FEED_VIDEO_SHARE": 1004,
+   "FB_GAMING_CUSTOM_UPDATE": 1005,
+   "FB_PRODUCER_STORY_REPLY": 1006,
+   "FB_EVENT": 1007,
+   "FB_FEED_POST_PRIVATE_REPLY": 1008,
+   "FB_SHORT": 1009,
+   "FB_COMMENT_MENTION_SHARE": 1010,
+   "FB_POST_MENTION": 1011,
+   "FB_PROFILE_DIRECTORY_ITEM": 1013,
+   "FB_FEED_POST_REACTION_REPLY": 1014,
+   "FB_QUICKSNAP_REPLY": 1015,
+   "MSG_STATUS_REPLY": 1016,
+   "FB_GROUP_POST": 1017,
+   "FB_DAILY_GAME_CHALLENGE": 1018,
+   "FB_QUICKSNAP_REACTION_REPLY": 1019,
+   "MSG_EXTERNAL_LINK_SHARE": 2000,
+   "MSG_P2P_PAYMENT": 2001,
+   "MSG_LOCATION_SHARING": 2002,
+   "MSG_LOCATION_SHARING_V2": 2003,
+   "MSG_HIGHLIGHTS_TAB_FRIEND_UPDATES_REPLY": 2004,
+   "MSG_HIGHLIGHTS_TAB_LOCAL_EVENT_REPLY": 2005,
+   "MSG_RECEIVER_FETCH": 2006,
+   "MSG_IG_MEDIA_SHARE": 2007,
+   "MSG_GEN_AI_SEARCH_PLUGIN_RESPONSE": 2008,
+   "MSG_REELS_LIST": 2009,
+   "MSG_CONTACT": 2010,
+   "MSG_THREADS_POST_SHARE": 2011,
+   "MSG_FILE": 2012,
+   "MSG_AVATAR_DETAILS": 2013,
+   "MSG_AI_CONTACT": 2014,
+   "MSG_MEMORIES_SHARE": 2015,
+   "MSG_SHARED_ALBUM_REPLY": 2016,
+   "MSG_SHARED_ALBUM": 2017,
+   "MSG_OCCAMADILLO_XMA": 2018,
+   "MSG_GEN_AI_SUBSCRIPTION": 2021,
+   "MSG_GEN_AI_REMINDER": 2022,
+   "MSG_GEN_AI_MEMU_ONBOARDING_RESPONSE": 2023,
+   "MSG_NOTE_REPLY": 2024,
+   "MSG_NOTE_MENTION": 2025,
+   "GEN_AI_ENTITY": 2026,
+   "MSG_OPG_P2P_PAYMENT": 2027,
+   "GEN_AI_RICH_RESPONSE": 2028,
+   "MSG_MUSIC_STICKER": 2029,
+   "MSG_PHONE_NUMBER": 2030,
+   "AI_ACTIVITY_SHARE": 2031,
+   "MSG_PRIVATE_XMA": 2032,
+   "MSG_SOCIAL_CUE_MEMORIES": 2033,
+   "MSG_MANUS_GROWTH_REFERRAL": 2060,
+   "MSG_MOMENT_LINK": 2061,
+   "MSG_HORIZON_WEEL": 2062,
+   "MSG_MOMENT_ADDED": 2063,
+   "MSG_STORYTELLING_PROMPT": 2067,
+   "MSG_SUPERVISION_INVITE": 2068,
+   "MSG_SOCIAL_CUE_MLE": 2069,
+   "MSG_SOCIAL_CUE_POST": 2070,
+   "RTC_AUDIO_CALL": 3000,
+   "RTC_VIDEO_CALL": 3001,
+   "RTC_MISSED_AUDIO_CALL": 3002,
+   "RTC_MISSED_VIDEO_CALL": 3003,
+   "RTC_GROUP_AUDIO_CALL": 3004,
+   "RTC_GROUP_VIDEO_CALL": 3005,
+   "RTC_MISSED_GROUP_AUDIO_CALL": 3006,
+   "RTC_MISSED_GROUP_VIDEO_CALL": 3007,
+   "RTC_ONGOING_AUDIO_CALL": 3008,
+   "RTC_ONGOING_VIDEO_CALL": 3009,
+   "MSG_RECEIVER_FETCH_FALLBACK": 3025,
+   "DATACLASS_SENDER_COPY": 4000
+  },
+  "EXTENDED_CONTENT_MESSAGE_OVERLAY_ICON_GLYPH": {
+   "INFO": 0,
+   "EYE_OFF": 1,
+   "NEWS_OFF": 2,
+   "WARNING": 3,
+   "PRIVATE": 4,
+   "NONE": 5,
+   "MEDIA_LABEL": 6,
+   "POST_COVER": 7,
+   "POST_LABEL": 8,
+   "WARNING_SCREENS": 9
+  },
+  "EXTENDED_CONTENT_MESSAGE_XMA_DATACLASS_TYPE": {
+   "SENDER_COPY": 0,
+   "SERVER": 1,
+   "SIGNED_CLIENT": 2
+  },
+  "EXTENDED_CONTENT_MESSAGE_XMA_LAYOUT_TYPE": {
+   "SINGLE": 0,
+   "HSCROLL": 1,
+   "PORTRAIT": 3,
+   "STANDARD_DXMA": 12,
+   "LIST_DXMA": 15,
+   "GRID": 16
+  },
+  "FUTURE_PROOF_BEHAVIOR": {
+   "PLACEHOLDER": 0,
+   "NO_PLACEHOLDER": 1,
+   "IGNORE": 2
   },
   "GroupHistoryBundleInfo.ProcessState": {
    "NOT_INJECTED": 0,
@@ -4906,6 +5786,10 @@
    "NON_BLOCKING_DATA": 5,
    "ON_DEMAND": 6
   },
+  "HostedState": {
+   "E2EE": 0,
+   "HOSTED": 1
+  },
   "HydratedTemplateButton.HydratedURLButton.WebviewPresentationType": {
    "FULL": 1,
    "TALL": 2,
@@ -4926,6 +5810,9 @@
    "CHAT_SETTING": 1,
    "BIZ_SUPPORTS_FB_HOSTING": 2,
    "UNKNOWN_GROUP": 3
+  },
+  "MENTION_MENTION_TYPE": {
+   "PROFILE": 0
   },
   "MediaKeyDomain": {
    "MEDIA_KEY_DOMAIN_UNKNOWN": 0,
@@ -4990,6 +5877,15 @@
   "Message.ConditionalRevealMessage.ConditionalRevealMessageType": {
    "UNKNOWN": 0,
    "SCHEDULED_MESSAGE": 1
+  },
+  "Message.EventInviteMessage.EventStatus": {
+   "UNKNOWN": 0,
+   "ACTIVE": 1,
+   "CANCELED": 2,
+   "SUSPENDED": 3,
+   "DELETED": 4,
+   "LEFT_EVENT": 5,
+   "REMOVED_FROM_INVITE_LIST": 6
   },
   "Message.EventResponseMessage.EventResponseType": {
    "UNKNOWN": 0,
@@ -5100,7 +5996,9 @@
   },
   "Message.MusicMessage.MusicMessageStyle": {
    "UNKNOWN": 0,
-   "VINYL": 1
+   "VINYL": 1,
+   "MESSAGE_BUBBLE": 2,
+   "LYRICS": 3
   },
   "Message.OrderMessage.OrderStatus": {
    "INQUIRY": 1,
@@ -5233,6 +6131,10 @@
    "SHARED_DEVICE_CONTACT_HASH_KEY_SHARE": 40,
    "SHARED_DEVICE_CONTACT_HASH_KEY_REQUEST": 41
   },
+  "Message.RequestLocationUpdateMessage.UpdateType": {
+   "UNKNOWN": 0,
+   "CANCEL": 1
+  },
   "Message.RequestWelcomeMessageMetadata.LocalChatState": {
    "EMPTY": 0,
    "NON_EMPTY": 1
@@ -5307,7 +6209,8 @@
    "REACTION": 1,
    "EVENT_RESPONSE": 2,
    "POLL_UPDATE": 3,
-   "PIN_IN_CHAT": 4
+   "PIN_IN_CHAT": 4,
+   "REQUEST_LOCATION_UPDATE": 5
   },
   "MessageAssociation.AssociationType": {
    "UNKNOWN": 0,
@@ -5330,7 +6233,9 @@
    "STATUS_ADD_YOURS_DIWALI": 17,
    "STATUS_REACTION": 18,
    "HEVC_VIDEO_DUAL_UPLOAD": 19,
-   "POLL_ADD_OPTION": 20
+   "POLL_ADD_OPTION": 20,
+   "AV1_VIDEO_DUAL_UPLOAD": 21,
+   "STREAMED_HD_VIDEO_DUAL_UPLOAD": 22
   },
   "MessageContextInfo.MessageAddonExpiryType": {
    "STATIC": 1,
@@ -5436,6 +6341,10 @@
    "SHARED_DEVICE_ALLOWLIST_ACTION": 94,
    "CONTACT_MANAGER_METADATA_ACTION": 95,
    "BUSINESS_FOLDER_ACTIVATION_ACTION": 96,
+   "GROUP_HISTORY_TOGGLE_ACTION": 97,
+   "BB_PRO_PENDING_CUSTOMER_BASE_ACTION": 98,
+   "COMMUNITY_NESTING_STATE_ACTION": 99,
+   "SHARED_DEVICE_SECRET_ACTION": 100,
    "SHARE_OWN_PN": 10001,
    "BUSINESS_BROADCAST_ACTION": 10002,
    "AI_THREAD_DELETE_ACTION": 10003
@@ -5634,6 +6543,16 @@
    "FAILED": 4,
    "SENT": 5
   },
+  "SyncActionValue.CommunityNestingStateAction.NestingState": {
+   "NESTING_STATE_UNKNOWN": 0,
+   "NESTING_STATE_NESTED": 1,
+   "NESTING_STATE_UNNESTED": 2
+  },
+  "SyncActionValue.GroupHistoryToggleAction.GroupHistoryToggleMode": {
+   "GROUP_HISTORY_TOGGLE_MODE_UNKNOWN": 0,
+   "GROUP_HISTORY_TOGGLE_MODE_ON": 1,
+   "GROUP_HISTORY_TOGGLE_MODE_OFF": 2
+  },
   "SyncActionValue.InteractiveMessageAction.InteractiveMessageActionMode": {
    "DISABLE_CTA": 1
   },
@@ -5657,7 +6576,8 @@
    "LEAD": 16,
    "MENTIONS_AND_REPLIES": 17,
    "REQUESTS": 18,
-   "BUSINESS": 19
+   "BUSINESS": 19,
+   "ONE_ON_ONE": 20
   },
   "SyncActionValue.MaibaAIFeaturesControlAction.MaibaAIFeatureStatus": {
    "ENABLED": 0,
@@ -6043,13 +6963,40 @@
    "IDENTITY_TRUST_REVOKED": 228,
    "CTWA_CONSUMER_DISCLOSURE": 230,
    "CHANGE_ACP2_SETTING": 240,
+   "BIZ_CALLBACK_DISABLED": 244,
    "BIZ_CALLBACK_ENABLED": 247,
    "EPHEMERAL_CHANGED_FOR_COEX": 248,
    "UGC_BOT_PROFILE_UPDATED": 249,
    "ORDER_EPHEMERAL_EXEMPTION": 250,
+   "GROUP_DEFAULT_SUB_GROUP_DEMOTE": 251,
+   "BIZ_BUSINESS_BROADCAST_ENTRY_POINT": 252,
+   "BOT_INLINE_TOS_CHAT": 253,
    "CAMEO_CHAT_CREATED": 254,
    "SENDER_SIDE_CONTACT_INFO": 255,
-   "CAMEO_TRANSITIONED": 256
+   "CAMEO_TRANSITIONED": 256,
+   "CAMEO_REGISTERED_WITH_NEW_CHAT": 257,
+   "PRIVACY_SYSTEM_MESSAGE": 258,
+   "BIZ_AI_LEARNING_ENABLED_DISCLOSURE": 259,
+   "BIZ_AI_LEARNING_DISABLED_DISCLOSURE": 260,
+   "BIZ_AI_REPLIES_MUTED_HISTORICAL_CHAT": 261,
+   "INVITE_FROM_IG": 262,
+   "GROUP_ADMIN_FIRST_JOIN_VIA_LINK": 263,
+   "GROUP_ADMIN_FLOOD_JOIN_VIA_LINK": 264,
+   "BIZ_AI_REPLIES_MUTED_IRRELEVANT_HISTORICAL_CHAT": 265,
+   "PENDING_INVITE_CREATED": 266,
+   "CAMEO_CHAT_EXPIRED": 267,
+   "GROUP_PUSHNAME_SHARED": 270,
+   "BIZ_POST_SEND_OPT_OUT": 271,
+   "BB_PRO_BROADCAST_CHAT_CARD": 272,
+   "BOT_PROACTIVE_MESSAGE_ENABLED": 273,
+   "BOT_PROACTIVE_MESSAGE_DISABLED": 274,
+   "BOT_PROACTIVE_MESSAGE_FIRST_TIME": 275,
+   "DYNAMIC_AUDIENCE_LIST_CREATE": 276,
+   "DYNAMIC_AUDIENCE_LIST_UPDATE_LINK": 277,
+   "CHAT_WITH_BUSINESS_IN_DIRECTORY": 283,
+   "META_AI_THREAD_CREATED": 284,
+   "META_AI_CONNECTOR_LINKED": 285,
+   "SPLIT_PAYMENT_MARKED_AS_PAID": 289
   }
  }
 }

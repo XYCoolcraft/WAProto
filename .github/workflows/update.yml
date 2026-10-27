@@ -1,6 +1,6 @@
 name: Update WAProto (mirror)
 
-# search WAProto.proto di repo (folder mana pun), mengecek sumber yang lebih baru,
+# Mencari WAProto.proto di repo (folder mana pun), mengecek sumber yang lebih baru,
 # lalu memprosesnya otomatis (merge aditif -> generate index.js / index.d.ts -> verifikasi).
 # Hasilnya dibuka sebagai Pull Request (default) atau langsung di-commit.
 #
@@ -17,9 +17,9 @@ on:
         type: boolean
         default: false
       bump_version:
-        description: "Ikut naikkan versi WA di kode jika ada (butuh akses ke web.whatsapp.com)"
+        description: "Ikut naikkan versi WA di kode (build WA Web berlaku ±60 hari)"
         type: boolean
-        default: false
+        default: true
       mode:
         description: "commit = langsung ke branch ini, pr = buka Pull Request"
         type: choice
@@ -54,19 +54,19 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
 
       - name: Cari dan proses WAProto
         id: proto
         env:
           FORCE: ${{ inputs.force }}
-          BUMP: ${{ inputs.bump_version }}
+          BUMP: ${{ github.event_name == 'workflow_dispatch' && inputs.bump_version || github.event_name != 'workflow_dispatch' }}
         run: |
           set -euo pipefail
           args=()
           if [ "${FORCE:-}" = "true" ]; then args+=(--force); fi
           if [ "${BUMP:-}" = "true" ]; then args+=(--bump-version); fi
-          node update-proto.js "${args[@]}"
+          node update-proto.mjs "${args[@]}"
 
       - name: Simpan hasil (Pull Request atau commit)
         if: steps.proto.outputs.updated == 'true'

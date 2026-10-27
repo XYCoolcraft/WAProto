@@ -208,13 +208,17 @@ function cmpVer(a, b) {
   for (let i = 0; i < n; i++) { const d = (x[i] || 0) - (y[i] || 0); if (d) return d < 0 ? -1 : 1; }
   return 0;
 }
+// Beberapa ekstraktor (mis. wppconnect-team/wa-proto) memakai "package waproto;". Kode Baileys mengharapkan namespace "proto",
+// jadi package dinormalkan ke "proto" saat sumber dibaca (tidak ada rujukan "waproto." di dalam isi proto).
+const PKG_RE = /package\s+(?:proto|waproto)\s*;/;
+const normalizePackage = (t) => t.replace(/^(\s*)package\s+waproto\s*;/m, '$1package proto;').replace(/\bwaproto\.(?=[A-Za-z_])/g, 'proto.');
 const syntaxOf = (t) => (/^\s*syntax\s*=\s*"(proto[23])"/m.exec(t) || [])[1] || 'proto2';
 
 function validateProtoText(text, label) {
   if (typeof text !== 'string' || text.length < 20000) throw new Fail(`${label}: isi terlalu kecil untuk proto WhatsApp`);
   if (text.length > MAX_PROTO) throw new Fail(`${label}: terlalu besar`);
   if (text.includes('\0')) throw new Fail(`${label}: berisi karakter biner`);
-  if (!/package\s+proto\s*;/.test(text) || !/message\s+WebMessageInfo\b/.test(text)) throw new Fail(`${label}: bukan proto WhatsApp (tidak ada "package proto" / WebMessageInfo)`);
+  if (!PKG_RE.test(text) || !/message\s+WebMessageInfo\b/.test(text)) throw new Fail(`${label}: bukan proto WhatsApp (tidak ada "package proto|waproto" / WebMessageInfo)`);
   if (/^\s*import\s+(public\s+|weak\s+)?"/m.test(text)) throw new Fail(`${label}: berisi perintah "import" — ditolak demi keamanan`);
   if (/^\s*(service|extend)\s+\w+/m.test(text)) throw new Fail(`${label}: berisi "service/extend" — tidak dikenal sebagai proto WhatsApp`);
   const st = parseStructure(text);
@@ -284,8 +288,15 @@ function ownLines(node) {
   return out;
 }
 function adaptLine(line, from, to) {
-  if (from === 'proto2' && to === 'proto3') return line.replace(/^(\s*)required\s+/, '$1optional ').replace(/\s*\[\s*default\s*=[^\]]*\]/, '');
+  // Target proto3 tidak boleh berisi "required" atau [default = x]. Sumber yang menyebut dirinya proto3 pun sering masih
+  // memuatnya (hasil ekstraksi), jadi diadaptasi apa pun sintaks sumbernya.
+  if (to === 'proto3') return line.replace(/^(\s*)required\s+/, '$1optional ').replace(/\s*\[\s*default\s*=[^\]]*\]/, '');
   return line;
+}
+
+/** Teks proto3 tidak boleh memuat "required" / [default = x]; sumber hasil ekstraksi sering masih memuatnya. */
+function adaptWhole(text) {
+  return syntaxOf(text) === 'proto3' ? text.replace(/^(\s*)required\s+/gm, '$1optional ').replace(/\s*\[\s*default\s*=[^\]]*\]/g, '') : text;
 }
 
 function applyMerge(localText, remoteText, plan) {
@@ -444,7 +455,7 @@ function* walk(dir, depth = 0, max = 7) {
     else if (e.isFile()) yield p;
   }
 }
-const isWaProto = (t) => /package\s+proto\s*;/.test(t) && /message\s+WebMessageInfo\b/.test(t);
+const isWaProto = (t) => PKG_RE.test(t) && /message\s+WebMessageInfo\b/.test(t);
 
 function detectLayout(root, cfg) {
   const inboxDirs = cfg.inboxDirs.map((d) => path.join(root, d) + path.sep);
@@ -504,7 +515,11 @@ async function collectCandidates(cfg, root, inboxFiles) {
   results.forEach((r, i) => { if (r.status === 'fulfilled') cands.push(r.value); else problems.push(`${cfg.sources[i]}: ${r.reason?.message || r.reason}`); });
   const valid = [];
   for (const c of cands) {
-    try { c.struct = validateProtoText(c.text, c.label); c.version = parseVersion(c.text); valid.push(c); }
+    try {
+      validateProtoText(c.text, c.label);
+      if (/package\s+waproto\s*;/.test(c.text)) { c.text = normalizePackage(c.text); c.note = 'package waproto -> proto'; }
+      c.struct = parseStructure(c.text); c.version = parseVersion(c.text); valid.push(c);
+    }
     catch (e) { problems.push(e.message); }
   }
   valid.sort((a, b) => cmpVer(b.version, a.version) || ORIGIN_RANK[a.origin] - ORIGIN_RANK[b.origin]);
@@ -647,12 +662,27 @@ function writeIfChanged(file, content, changed, root) {
 
 async function fetchWaRevision(cfg, args) {
   if (Number.isFinite(args.waRevision) && args.waRevision > 0) return args.waRevision;
-  try {
-    // header yang sama dengan fetchLatestWaWebVersion() di Baileys (web.whatsapp.com menolak permintaan tanpa header browser)
-    const txt = (await httpGet(`https://${WA_HOST}/sw.js`, [...cfg.allowedHosts, WA_HOST], 8 * 1024 * 1024, WA_HEADERS)).toString('utf8');
-    const m = /\\?"client_revision\\?":\s*(\d+)/.exec(txt);
-    return m ? Number(m[1]) : null;
-  } catch (e) { warn(`Versi WA Web tidak bisa diambil: ${e.message}`); return null; }
+  const attempts = [
+    // 1) langsung dari WhatsApp Web — header yang sama dengan fetchLatestWaWebVersion() di Baileys (tanpa header browser, ditolak)
+    ['web.whatsapp.com', async () => {
+      const txt = (await httpGet(`https://${WA_HOST}/sw.js`, [...cfg.allowedHosts, WA_HOST], 8 * 1024 * 1024, WA_HEADERS)).toString('utf8');
+      const m = /\\?"client_revision\\?":\s*(\d+)/.exec(txt);
+      return m ? Number(m[1]) : null;
+    }],
+    // 2) cadangan: daftar build WhatsApp Web yang dirawat wppconnect-team (build sama dengan sumber proto-nya)
+    ['wppconnect-team/wa-version', async () => {
+      const j = JSON.parse((await httpGet('https://raw.githubusercontent.com/wppconnect-team/wa-version/main/versions.json', cfg.allowedHosts, 16 * 1024 * 1024)).toString('utf8'));
+      const m = /^2\.3000\.(\d+)/.exec(String(j.currentVersion || ''));
+      return m ? Number(m[1]) : null;
+    }],
+  ];
+  const errors = [];
+  for (const [name, fn] of attempts) {
+    try { const n = await fn(); if (n) return n; errors.push(`${name}: tidak ada angka versi`); }
+    catch (e) { errors.push(`${name}: ${e.message}`); }
+  }
+  warn(`Versi WA Web tidak bisa diambil (${errors.join('; ')})`);
+  return null;
 }
 function bumpVersionFiles(root, revision, dry) {
   const changes = [];
@@ -702,15 +732,25 @@ function buildReport({ results, best, problems, cfg, waRevision, bumps, dry, not
   return L.join('\n') + '\n';
 }
 
-function changesMd(r, best) {
-  const L = [`# Perubahan WAProto ${r.from || '-'} → ${r.to}`, '', `Sumber: ${best.label}`, ''];
-  const sec = (title, arr) => { if (arr.length) { L.push(`## ${title} (${arr.length})`, '', ...arr.slice(0, 400).map((x) => `- ${x}`), ...(arr.length > 400 ? [`- … dan ${arr.length - 400} lagi`] : []), ''); } };
-  sec('Tipe baru', r.plan.missing);
-  sec('Field baru', r.plan.newFields.map((x) => `${x.k}.${x.f} = ${x.v[0]}`));
-  sec('Nilai enum baru', r.plan.newEnum.map((x) => `${x.k}.${x.f} = ${x.v}`));
-  sec('Dilewati: nomor sama, nama beda', r.plan.renamed.map((x) => `${x.k}.${x.f} = ${x.v[0]} (sudah ada: ${x.same.join(', ')})`));
+/** Satu bagian riwayat untuk update ini (terbaru ditaruh paling atas oleh mergeChanges). */
+function changesSection(r, best) {
+  const L = [`## ${r.from || '-'} → ${r.to}`, '', `Sumber: ${best.label}`, ''];
+  const sec = (title, arr) => { if (arr.length) { L.push(`### ${title} (${arr.length})`, '', ...arr.slice(0, 400).map((x) => `- ${x}`), ...(arr.length > 400 ? [`- … dan ${arr.length - 400} lagi`] : []), ''); } };
+  const p = r.plan;
+  if (!p.missing.length && !p.newFields.length && !p.newEnum.length) L.push('Hanya nomor versi yang naik — tidak ada tipe/field/enum baru.', '');
+  sec('Tipe baru', p.missing);
+  sec('Field baru', p.newFields.map((x) => `${x.k}.${x.f} = ${x.v[0]}`));
+  sec('Nilai enum baru', p.newEnum.map((x) => `${x.k}.${x.f} = ${x.v}`));
+  sec('Dilewati: nomor sama, nama beda (nama lama dipertahankan)', p.renamed.map((x) => `${x.k}.${x.f} = ${x.v[0]} (sudah ada: ${x.same.join(', ')})`));
   if (r.removed?.length) sec('Ada di versi lama, tidak ada di sumber baru (mode replace)', r.removed);
   return L.join('\n');
+}
+/** Riwayat: bagian baru di atas, bagian lama dipertahankan (maksimal 25 bagian). */
+function mergeChanges(existing, section) {
+  const head = '# Riwayat perubahan WAProto\n\nTerbaru di atas. Dibuat otomatis oleh update-proto.mjs.\n\n';
+  const old = (existing || '').replace(/^# [^\n]*\n+(?:Terbaru di atas[^\n]*\n+)?/, '');
+  const parts = (old ? old.split(/\n(?=## )/) : []).filter((x) => x.trim().startsWith('## '));
+  return head + [section, ...parts].slice(0, 25).join('\n\n').replace(/\n{3,}/g, '\n\n').trimEnd() + '\n';
 }
 
 // ───────────────────────── Proses satu target ─────────────────────────
@@ -734,7 +774,7 @@ async function processTarget(t, ctx) {
       decision = !!args.force || planSize(plan) > 0 || cmp > 0;   // versi naik walau struktur sama -> catat versinya
       if (!decision) why = 'sudah sama';
     } else {
-      const same = localText.replace(/\r\n/g, '\n') === best.text.replace(/\r\n/g, '\n');
+      const same = adaptWhole(localText).replace(/\r\n/g, '\n') === adaptWhole(best.text).replace(/\r\n/g, '\n');
       decision = !!args.force || cmp > 0 || (cmp === 0 && !same);
       if (!decision) why = 'sudah sama';
     }
@@ -744,9 +784,9 @@ async function processTarget(t, ctx) {
   if (decision) {
     let finalText;
     if (!t.exists || mode === 'replace') {
-      finalText = best.text;
+      finalText = adaptWhole(best.text);
       if (t.exists) r.removed = [...localStruct.keys()].filter((k) => !best.struct.has(k));
-      r.log = [`proto ${t.exists ? 'diganti dengan' : 'dibuat dari'} ${best.label}`];
+      r.log = [`proto ${t.exists ? 'diganti dengan' : 'dibuat dari'} ${best.label}${best.note ? ` (${best.note})` : ''}`];
     } else {
       const m = applyMerge(localText, best.text, plan);
       // header versi hanya boleh naik (sumber lama + --allow-older tidak boleh menurunkannya)
@@ -760,6 +800,7 @@ async function processTarget(t, ctx) {
     if (noZero.length && syntaxOf(finalText) === 'proto3') r.warnings.push(`${noZero.length} enum baru tidak punya nilai 0 (proto3): ${noZero.slice(0, 3).map(([k]) => k).join(', ')}${noZero.length > 3 ? '…' : ''}`);
     r.to = parseVersion(finalText) || best.version || r.from;
     r.source = best.label;
+    if (best.note) r.warnings.push(`sumber memakai ${best.note} (dinormalkan otomatis)`);
 
     if (args.dryRun) { r.updated = true; r.dry = true; return r; }
 
@@ -784,7 +825,10 @@ async function processTarget(t, ctx) {
     for (const [p, buf] of backup) if (fs.existsSync(p) && !fs.readFileSync(p).equals(buf)) changed.add(rel(root, p));
     for (const n of names) { const p = path.join(t.dir, n); if (!backup.has(p) && fs.existsSync(p)) changed.add(rel(root, p)); }
     if (cfg.outputs.includes('structure')) writeIfChanged(path.join(t.dir, 'structure.json'), structureJson(newStruct, r.to), changed, root);
-    if (t.exists) writeIfChanged(path.join(t.dir, 'CHANGES.md'), changesMd(r, best), changed, root);
+    if (t.exists) {
+      const cf = path.join(t.dir, 'CHANGES.md');
+      writeIfChanged(cf, mergeChanges(fs.existsSync(cf) ? fs.readFileSync(cf, 'utf8') : '', changesSection(r, best)), changed, root);
+    }
     r.files = [...changed].sort();
     r.updated = changed.size > 0;
   } else {

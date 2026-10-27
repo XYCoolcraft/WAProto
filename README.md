@@ -40,17 +40,22 @@ WAProto/
 
 ## Sumber proto — baca ini
 
-**Tidak ada sumber resmi tunggal untuk proto WhatsApp terbaru.** Bawaan repo ini memakai dua sumber publik:
-Baileys di GitHub dan paket npm `@whiskeysockets/baileys`. Saat repo ini dibuat, keduanya bertanda
-`2.3000.1029496320`, sedangkan seed di repo ini `2.3000.1047787617` — jadi **sumber bawaan lebih lama dan akan diabaikan**
-(skrip tidak pernah menurunkan versi). Update baru akan masuk kalau:
+**Tidak ada sumber resmi tunggal untuk proto WhatsApp terbaru.** Bawaan repo ini (dari yang pertama):
 
-- sumber di `wa-proto.config.json` punya versi lebih tinggi (tambahkan URL/paket lain di `sources`), atau
-- kamu menaruh file `.proto` baru di folder utama / `incoming/` (cara paling mudah), atau
-- menjalankan `node update-proto.mjs --from-file ./WAProto-baru.proto`.
+1. `wppconnect-team/wa-proto` (GitHub `main/WAProto.proto`) dan paket npm `@wppconnect/wa-proto` — hasil ekstraksi otomatis dari WhatsApp Web,
+   **diperbarui beberapa kali sehari**. Inilah sumber yang membuat repo ini selalu terbaru.
+2. Baileys di GitHub dan paket npm `@whiskeysockets/baileys` — sebagai cadangan. **Proto Baileys terakhir diubah 6 Nov 2025**
+   (ekstraktornya rusak di upstream), jadi hampir selalu lebih lama dan akan diabaikan.
 
-Format `sources`: `"https://…/WAProto.proto"` · `"npm:nama-paket"` · `"npm:nama-paket@1.2.3"` · `"path/ke/file.proto"`.
-Versi dibaca dari baris `/// WhatsApp Version: x.y.z` di bagian atas file; yang paling tinggi dipakai.
+Yang versinya paling tinggi (baris `/// WhatsApp Version: x.y.z` di atas file) dipakai; skrip tidak pernah menurunkan versi.
+Sumber yang menulis `package waproto;` otomatis dinormalkan menjadi `package proto;`, dan label `required` / `[default = x]`
+(tidak sah di proto3) diubah supaya hasil generate valid.
+
+Build WhatsApp Web berlaku sekitar 60 hari. Kalau pakai `--bump-version` / opsi `version`, angka build terbaru diambil dari
+web.whatsapp.com, atau dari daftar `wppconnect-team/wa-version` kalau WhatsApp memblokir permintaannya.
+
+Ingin sumber lain? Tambahkan di `sources` (`"https://…/WAProto.proto"` · `"npm:nama-paket"` · `"npm:nama-paket@1.2.3"` · `"path/ke/file.proto"`),
+taruh file `.proto` di folder utama / `incoming/`, atau jalankan `node update-proto.mjs --from-file ./WAProto-baru.proto`.
 
 ## Config (`wa-proto.config.json`)
 
@@ -58,7 +63,7 @@ Versi dibaca dari baris `/// WhatsApp Version: x.y.z` di bagian atas file; yang 
 {
   "mode": "replace",
   "outputs": ["js", "dts", "json", "structure", "version"],
-  "sources": ["https://raw.githubusercontent.com/WhiskeySockets/Baileys/master/WAProto/WAProto.proto", "npm:@whiskeysockets/baileys"],
+  "sources": ["https://raw.githubusercontent.com/wppconnect-team/wa-proto/main/WAProto.proto", "npm:@wppconnect/wa-proto", "https://raw.githubusercontent.com/WhiskeySockets/Baileys/master/WAProto/WAProto.proto", "npm:@whiskeysockets/baileys"],
   "keepInbox": false
 }
 ```
