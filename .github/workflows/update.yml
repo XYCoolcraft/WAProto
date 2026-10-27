@@ -54,7 +54,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 20
 
       - name: Cari dan proses WAProto
         id: proto
@@ -66,7 +66,7 @@ jobs:
           args=()
           if [ "${FORCE:-}" = "true" ]; then args+=(--force); fi
           if [ "${BUMP:-}" = "true" ]; then args+=(--bump-version); fi
-          node update-proto.mjs "${args[@]}"
+          node update-proto.js "${args[@]}"
 
       - name: Simpan hasil (Pull Request atau commit)
         if: steps.proto.outputs.updated == 'true'
