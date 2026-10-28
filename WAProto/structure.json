@@ -1,8 +1,8 @@
 {
- "protoVersion": "2.3000.1050756511",
+ "protoVersion": "2.3000.1051955322",
  "counts": {
-  "messages": 727,
-  "enums": 222
+  "messages": 734,
+  "enums": 223
  },
  "fields": "[nomor, tipe, label]",
  "messages": {
@@ -244,7 +244,8 @@
    "whatsappAcctNumber": [2, "string", "optional"],
    "issueTime": [3, "uint64", "optional"],
    "hostStorage": [4, "HostStorageType", "optional"],
-   "accountType": [5, "AccountType", "optional"]
+   "accountType": [5, "AccountType", "optional"],
+   "whatsappAcctEmail": [6, "string", "optional"]
   },
   "BizAccountPayload": {
    "vnameCert": [1, "VerifiedNameCertificate", "optional"],
@@ -352,6 +353,10 @@
    "toolsUsed": [2, "string", "repeated"],
    "isThinking": [3, "bool", "optional"]
   },
+  "BotInterjectionMetadata": {
+   "targetPromptMessageId": [1, "string", "optional"],
+   "foldedPromptMessageIds": [2, "string", "repeated"]
+  },
   "BotLinkedAccount": {
    "type": [1, "BotLinkedAccountType", "optional"]
   },
@@ -382,7 +387,8 @@
    "faceImages": [1, "BotMediaMetadata", "repeated"]
   },
   "BotMessageOrigin": {
-   "type": [1, "BotMessageOriginType", "optional"]
+   "type": [1, "BotMessageOriginType", "optional"],
+   "proactiveMessageCampaignId": [2, "string", "optional"]
   },
   "BotMessageOriginMetadata": {
    "origins": [1, "BotMessageOrigin", "repeated"]
@@ -435,6 +441,7 @@
    "pttPromptMetadata": [42, "BotPttPromptMetadata", "optional"],
    "botHistoryShareMetadata": [43, "BotHistoryShareMetadata", "optional"],
    "responseStoppedByUser": [44, "bool", "optional"],
+   "interjectionMetadata": [45, "BotInterjectionMetadata", "optional"],
    "internalMetadata": [999, "bytes", "optional"]
   },
   "BotMetricsMetadata": {
@@ -674,7 +681,8 @@
    "isSyncdSnapshotRecoveryEnabled": [3, "bool", "optional"],
    "isHsThumbnailSyncEnabled": [4, "bool", "optional"],
    "subscriptionSyncPayload": [5, "bytes", "optional"],
-   "isBotJidDbMigrated": [6, "bool", "optional"]
+   "isBotJidDbMigrated": [6, "bool", "optional"],
+   "companionAddPeerPayload": [7, "bytes", "optional"]
   },
   "ClientPayload": {
    "username": [1, "uint64", "optional"],
@@ -887,7 +895,9 @@
    "instagramThreadLink": [80, "InstagramThreadLink", "optional"],
    "aiProvenance": [81, "AIProvenance", "optional"],
    "experienceIds": [82, "uint32", "repeated"],
-   "partnerDeepLinkToken": [83, "string", "optional"]
+   "partnerDeepLinkToken": [83, "string", "optional"],
+   "sourceExperienceId": [84, "uint32", "optional"],
+   "sourceExperienceIds": [85, "uint32", "repeated"]
   },
   "ContextInfo.AdReplyInfo": {
    "advertiserName": [1, "string", "optional"],
@@ -1005,7 +1015,8 @@
   "ContextInfo.StatusAudienceMetadata": {
    "audienceType": [1, "AudienceType", "optional"],
    "listName": [2, "string", "optional"],
-   "listEmoji": [3, "string", "optional"]
+   "listEmoji": [3, "string", "optional"],
+   "orgId": [4, "string", "optional"]
   },
   "ContextInfo.UTMInfo": {
    "utmSource": [1, "string", "optional"],
@@ -1203,7 +1214,8 @@
    "contactRefresh": [9, "ContactRefresh", "optional"],
    "reverseHistorySync": [10, "ReverseHistorySync", "optional"],
    "newsletterChatsMigration": [11, "NewsletterChatsMigration", "optional"],
-   "hostWriteMutationSupport": [12, "HostWriteMutationSupport", "optional"]
+   "hostWriteMutationSupport": [12, "HostWriteMutationSupport", "optional"],
+   "bizAiWebOnboarding": [13, "BizAiWebOnboarding", "optional"]
   },
   "DeviceCapabilities.AiFbidMigration": {
    "chatDbMigrationTimestamp": [1, "uint64", "optional"],
@@ -1214,6 +1226,9 @@
   },
   "DeviceCapabilities.BizAiSettingsSync": {
    "handoffRemovalTimingEnabled": [1, "bool", "optional"]
+  },
+  "DeviceCapabilities.BizAiWebOnboarding": {
+   "version": [1, "uint32", "optional"]
   },
   "DeviceCapabilities.BusinessBroadcast": {
    "importListEnabled": [1, "bool", "optional"],
@@ -1298,7 +1313,8 @@
    "supportInlineContacts": [24, "bool", "optional"],
    "supportNewsletter": [25, "bool", "optional"],
    "supportUniversalReachChat": [26, "bool", "optional"],
-   "supportOmittedConversationIndex": [27, "bool", "optional"]
+   "supportOmittedConversationIndex": [27, "bool", "optional"],
+   "supportOmittedConversationMetadata": [28, "bool", "optional"]
   },
   "DisappearingMode": {
    "initiator": [1, "Initiator", "optional"],
@@ -1601,7 +1617,9 @@
    "inlineContactsProvided": [21, "bool", "optional"],
    "favoriteStickers": [22, "StickerMetadata", "repeated"],
    "omittedConversations": [23, "RecoverableHistoryConversation", "repeated"],
-   "omittedConversationsProvided": [24, "bool", "optional"]
+   "omittedConversationsProvided": [24, "bool", "optional"],
+   "omittedConversationMetadata": [25, "OmittedConversationMetadata", "optional"],
+   "omittedConversationMetadataSnapshotId": [26, "string", "optional"]
   },
   "HistorySyncMsg": {
    "message": [1, "WebMessageInfo", "optional"],
@@ -2711,7 +2729,23 @@
    "songUri": [2, "string", "optional"],
    "artworkUri": [3, "string", "optional"],
    "style": [4, "int32", "optional"],
-   "contextInfo": [5, "ContextInfo", "optional"]
+   "contextInfo": [5, "ContextInfo", "optional"],
+   "lyrics": [6, "Lyrics", "optional"]
+  },
+  "Message.MusicMessage.Lyrics": {
+   "lines": [1, "Line", "repeated"]
+  },
+  "Message.MusicMessage.Lyrics.Line": {
+   "startTimeInMs": [1, "int64", "optional"],
+   "endTimeInMs": [2, "int64", "optional"],
+   "text": [3, "string", "optional"],
+   "wordOffsets": [4, "WordOffset", "repeated"]
+  },
+  "Message.MusicMessage.Lyrics.Line.WordOffset": {
+   "startIndex": [1, "int32", "optional"],
+   "endIndex": [2, "int32", "optional"],
+   "startOffsetMs": [3, "int64", "optional"],
+   "endOffsetMs": [4, "int64", "optional"]
   },
   "Message.NewsletterAdminInviteMessage": {
    "newsletterJid": [1, "string", "optional"],
@@ -2794,7 +2828,8 @@
    "galaxyFlowAction": [9, "GalaxyFlowAction", "optional"],
    "companionCanonicalUserNonceFetchRequest": [10, "CompanionCanonicalUserNonceFetchRequest", "optional"],
    "bizBroadcastInsightsContactListRequest": [11, "BizBroadcastInsightsContactListRequest", "optional"],
-   "bizBroadcastInsightsRefreshRequest": [12, "BizBroadcastInsightsRefreshRequest", "optional"]
+   "bizBroadcastInsightsRefreshRequest": [12, "BizBroadcastInsightsRefreshRequest", "optional"],
+   "recentConversationsOnDemandRequest": [13, "RecentConversationsOnDemandRequest", "optional"]
   },
   "Message.PeerDataOperationRequestMessage.BizBroadcastInsightsContactListRequest": {
    "campaignId": [1, "string", "optional"]
@@ -2830,10 +2865,15 @@
    "onDemandMsgCount": [4, "int32", "optional"],
    "oldestMsgTimestampMs": [5, "int64", "optional"],
    "accountLid": [6, "string", "optional"],
-   "supportInlineResponse": [7, "bool", "optional"]
+   "supportInlineResponse": [7, "bool", "optional"],
+   "mode": [8, "Mode", "optional"]
   },
   "Message.PeerDataOperationRequestMessage.PlaceholderMessageResendRequest": {
    "messageKey": [1, "MessageKey", "optional"]
+  },
+  "Message.PeerDataOperationRequestMessage.RecentConversationsOnDemandRequest": {
+   "conversationCount": [1, "uint32", "optional"],
+   "messagesPerConversation": [2, "uint32", "optional"]
   },
   "Message.PeerDataOperationRequestMessage.RequestStickerReupload": {
    "fileSha256": [1, "string", "optional"]
@@ -3368,7 +3408,8 @@
    "accountEncryptionAttestation": [18, "NonE2EEAttestation", "optional"],
    "associatedPrimaryIdentityKey": [19, "bytes", "optional"],
    "teeContextAnchorMessageId": [20, "string", "optional"],
-   "acp2Setting": [21, "ACP2Setting", "optional"]
+   "acp2Setting": [21, "ACP2Setting", "optional"],
+   "lightE2Ee": [22, "bool", "optional"]
   },
   "MessageKey": {
    "remoteJid": [1, "string", "optional"],
@@ -3601,7 +3642,8 @@
    "sharableEventInviteCallLink": [60, "string", "optional"],
    "mediaPngThumbnail": [61, "string", "optional"],
    "qrUrl": [62, "string", "optional"],
-   "musicData": [63, "MusicData", "optional"]
+   "musicData": [63, "MusicData", "optional"],
+   "pollAddedOptionName": [64, "string", "optional"]
   },
   "MsgOpaqueData.EventLocation": {
    "degreesLatitude": [1, "double", "optional"],
@@ -3634,7 +3676,9 @@
   "MsgOpaqueData.PollOption": {
    "name": [1, "string", "optional"],
    "hash": [2, "string", "optional"],
-   "addOptionMsgKey": [3, "string", "optional"]
+   "addOptionMsgKey": [3, "string", "optional"],
+   "localId": [4, "uint32", "optional"],
+   "addOptionMsgT": [5, "uint32", "optional"]
   },
   "MsgOpaqueData.PollVoteSnapshot": {
    "option": [1, "MsgOpaqueData.PollOption", "optional"],
@@ -3674,6 +3718,14 @@
    "lowPriorityNotifications": [4, "bool", "optional"],
    "reactionsMuted": [5, "bool", "optional"],
    "callVibrate": [6, "string", "optional"]
+  },
+  "OmittedConversationMetadata": {
+   "snapshotId": [1, "string", "optional"],
+   "snapshotTimestampMs": [2, "uint64", "optional"],
+   "batchIndex": [3, "uint32", "optional"],
+   "batchCount": [4, "uint32", "optional"],
+   "complete": [5, "bool", "optional"],
+   "conversations": [6, "Conversation", "repeated"]
   },
   "PairingRequest": {
    "companionPublicKey": [1, "bytes", "optional"],
@@ -5063,7 +5115,8 @@
    "HATCH_ARTIFACT_CARD_ENABLED": 79,
    "AI_STUDY_CENTER_ENABLED": 80,
    "AI_MUSE_JARVIS_SCHEMA_ENABLED": 81,
-   "AI_STUDY_QUIZ_ENABLED": 82
+   "AI_STUDY_QUIZ_ENABLED": 82,
+   "HATCH_CVM_ENABLED": 83
   },
   "BotDocumentMessageMetadata.DocumentPluginType": {
    "TEXT_EXTRACTION": 0,
@@ -5534,7 +5587,9 @@
   },
   "ContextInfo.StatusAudienceMetadata.AudienceType": {
    "UNKNOWN": 0,
-   "CLOSE_FRIENDS": 1
+   "CLOSE_FRIENDS": 1,
+   "CUSTOM_LIST": 2,
+   "ORG": 3
   },
   "ContextInfo.StatusSourceType": {
    "IMAGE": 0,
@@ -5784,7 +5839,8 @@
    "RECENT": 3,
    "PUSH_NAME": 4,
    "NON_BLOCKING_DATA": 5,
-   "ON_DEMAND": 6
+   "ON_DEMAND": 6,
+   "RECENT_CONVERSATIONS_ON_DEMAND": 9
   },
   "HostedState": {
    "E2EE": 0,
@@ -5943,7 +5999,8 @@
    "NON_BLOCKING_DATA": 5,
    "ON_DEMAND": 6,
    "NO_HISTORY": 7,
-   "MESSAGE_ACCESS_STATUS": 8
+   "MESSAGE_ACCESS_STATUS": 8,
+   "RECENT_CONVERSATIONS_ON_DEMAND": 9
   },
   "Message.ImageMessage.ImageSourceType": {
    "USER_IMAGE": 0,
@@ -6042,6 +6099,10 @@
    "NOTIFY_LAUNCH": 1,
    "DOWNLOAD_RESPONSES": 2
   },
+  "Message.PeerDataOperationRequestMessage.HistorySyncOnDemandRequest.Mode": {
+   "MODE_UNSPECIFIED": 0,
+   "INITIAL_REVERSE_HISTORY": 1
+  },
   "Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.FullHistorySyncOnDemandResponseCode": {
    "REQUEST_SUCCESS": 0,
    "REQUEST_TIME_EXPIRED": 1,
@@ -6075,7 +6136,8 @@
    "GALAXY_FLOW_ACTION": 11,
    "BUSINESS_BROADCAST_INSIGHTS_DELIVERED_TO": 12,
    "BUSINESS_BROADCAST_INSIGHTS_REFRESH": 13,
-   "CONTACT_REFRESH_REQUEST": 14
+   "CONTACT_REFRESH_REQUEST": 14,
+   "RECENT_CONVERSATIONS_ON_DEMAND_REQUEST": 15
   },
   "Message.PinInChatMessage.Type": {
    "UNKNOWN_TYPE": 0,
@@ -6996,7 +7058,9 @@
    "CHAT_WITH_BUSINESS_IN_DIRECTORY": 283,
    "META_AI_THREAD_CREATED": 284,
    "META_AI_CONNECTOR_LINKED": 285,
-   "SPLIT_PAYMENT_MARKED_AS_PAID": 289
+   "SPLIT_PAYMENT_MARKED_AS_PAID": 289,
+   "POLL_OPTIONS_REMOVED": 290,
+   "POLL_ADDED_OPTION_REMOVED": 291
   }
  }
 }

@@ -2,6 +2,53 @@
 
 Terbaru di atas. Dibuat otomatis oleh update-proto.mjs.
 
+## 2.3000.1050756511 → 2.3000.1051955322
+
+Sumber: https://raw.githubusercontent.com/wppconnect-team/wa-proto/main/WAProto.proto
+
+### Tipe baru (8)
+
+- BotInterjectionMetadata
+- DeviceCapabilities.BizAiWebOnboarding
+- Message.MusicMessage.Lyrics
+- Message.MusicMessage.Lyrics.Line
+- Message.MusicMessage.Lyrics.Line.WordOffset
+- Message.PeerDataOperationRequestMessage.HistorySyncOnDemandRequest.Mode
+- Message.PeerDataOperationRequestMessage.RecentConversationsOnDemandRequest
+- OmittedConversationMetadata
+
+### Field baru (18)
+
+- BizAccountLinkInfo.whatsappAcctEmail = 6
+- BotMessageOrigin.proactiveMessageCampaignId = 2
+- BotMetadata.interjectionMetadata = 45
+- ClientPairingProps.companionAddPeerPayload = 7
+- ContextInfo.sourceExperienceId = 84
+- ContextInfo.sourceExperienceIds = 85
+- ContextInfo.StatusAudienceMetadata.orgId = 4
+- DeviceCapabilities.bizAiWebOnboarding = 13
+- DeviceProps.HistorySyncConfig.supportOmittedConversationMetadata = 28
+- HistorySync.omittedConversationMetadata = 25
+- HistorySync.omittedConversationMetadataSnapshotId = 26
+- Message.MusicMessage.lyrics = 6
+- Message.PeerDataOperationRequestMessage.recentConversationsOnDemandRequest = 13
+- Message.PeerDataOperationRequestMessage.HistorySyncOnDemandRequest.mode = 8
+- MessageContextInfo.lightE2Ee = 22
+- MsgOpaqueData.pollAddedOptionName = 64
+- MsgOpaqueData.PollOption.localId = 4
+- MsgOpaqueData.PollOption.addOptionMsgT = 5
+
+### Nilai enum baru (8)
+
+- BotCapabilityMetadata.BotCapabilityType.HATCH_CVM_ENABLED = 83
+- ContextInfo.StatusAudienceMetadata.AudienceType.CUSTOM_LIST = 2
+- ContextInfo.StatusAudienceMetadata.AudienceType.ORG = 3
+- HistorySync.HistorySyncType.RECENT_CONVERSATIONS_ON_DEMAND = 9
+- Message.HistorySyncType.RECENT_CONVERSATIONS_ON_DEMAND = 9
+- Message.PeerDataOperationRequestType.RECENT_CONVERSATIONS_ON_DEMAND_REQUEST = 15
+- WebMessageInfo.StubType.POLL_OPTIONS_REMOVED = 290
+- WebMessageInfo.StubType.POLL_ADDED_OPTION_REMOVED = 291
+
 ## 2.3000.1050735291 → 2.3000.1050756511
 
 Sumber: https://raw.githubusercontent.com/wppconnect-team/wa-proto/main/WAProto.proto

@@ -2042,6 +2042,11 @@
               "oneof": [
                 "accountType"
               ]
+            },
+            "_whatsappAcctEmail": {
+              "oneof": [
+                "whatsappAcctEmail"
+              ]
             }
           },
           "fields": {
@@ -2076,6 +2081,13 @@
             "accountType": {
               "type": "AccountType",
               "id": 5,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "whatsappAcctEmail": {
+              "type": "string",
+              "id": 6,
               "options": {
                 "proto3_optional": true
               }
@@ -2439,7 +2451,8 @@
                 "HATCH_ARTIFACT_CARD_ENABLED": 79,
                 "AI_STUDY_CENTER_ENABLED": 80,
                 "AI_MUSE_JARVIS_SCHEMA_ENABLED": 81,
-                "AI_STUDY_QUIZ_ENABLED": 82
+                "AI_STUDY_QUIZ_ENABLED": 82,
+                "HATCH_CVM_ENABLED": 83
               }
             }
           }
@@ -3372,12 +3385,24 @@
               "oneof": [
                 "type"
               ]
+            },
+            "_proactiveMessageCampaignId": {
+              "oneof": [
+                "proactiveMessageCampaignId"
+              ]
             }
           },
           "fields": {
             "type": {
               "type": "BotMessageOriginType",
               "id": 1,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "proactiveMessageCampaignId": {
+              "type": "string",
+              "id": 2,
               "options": {
                 "proto3_optional": true
               }
@@ -3651,6 +3676,11 @@
             "_internalMetadata": {
               "oneof": [
                 "internalMetadata"
+              ]
+            },
+            "_interjectionMetadata": {
+              "oneof": [
+                "interjectionMetadata"
               ]
             }
           },
@@ -3959,6 +3989,13 @@
             "internalMetadata": {
               "type": "bytes",
               "id": 999,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "interjectionMetadata": {
+              "type": "BotInterjectionMetadata",
+              "id": 45,
               "options": {
                 "proto3_optional": true
               }
@@ -6152,6 +6189,11 @@
               "oneof": [
                 "isBotJidDbMigrated"
               ]
+            },
+            "_companionAddPeerPayload": {
+              "oneof": [
+                "companionAddPeerPayload"
+              ]
             }
           },
           "fields": {
@@ -6193,6 +6235,13 @@
             "isBotJidDbMigrated": {
               "type": "bool",
               "id": 6,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "companionAddPeerPayload": {
+              "type": "bytes",
+              "id": 7,
               "options": {
                 "proto3_optional": true
               }
@@ -8078,6 +8127,11 @@
               "oneof": [
                 "partnerDeepLinkToken"
               ]
+            },
+            "_sourceExperienceId": {
+              "oneof": [
+                "sourceExperienceId"
+              ]
             }
           },
           "fields": {
@@ -8536,6 +8590,21 @@
               "id": 83,
               "options": {
                 "proto3_optional": true
+              }
+            },
+            "sourceExperienceId": {
+              "type": "uint32",
+              "id": 84,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "sourceExperienceIds": {
+              "rule": "repeated",
+              "type": "uint32",
+              "id": 85,
+              "options": {
+                "packed": true
               }
             }
           },
@@ -9758,6 +9827,11 @@
                   "oneof": [
                     "listEmoji"
                   ]
+                },
+                "_orgId": {
+                  "oneof": [
+                    "orgId"
+                  ]
                 }
               },
               "fields": {
@@ -9781,13 +9855,22 @@
                   "options": {
                     "proto3_optional": true
                   }
+                },
+                "orgId": {
+                  "type": "string",
+                  "id": 4,
+                  "options": {
+                    "proto3_optional": true
+                  }
                 }
               },
               "nested": {
                 "AudienceType": {
                   "values": {
                     "UNKNOWN": 0,
-                    "CLOSE_FRIENDS": 1
+                    "CLOSE_FRIENDS": 1,
+                    "CUSTOM_LIST": 2,
+                    "ORG": 3
                   }
                 }
               }
@@ -11543,6 +11626,11 @@
               "oneof": [
                 "hostWriteMutationSupport"
               ]
+            },
+            "_bizAiWebOnboarding": {
+              "oneof": [
+                "bizAiWebOnboarding"
+              ]
             }
           },
           "fields": {
@@ -11626,6 +11714,13 @@
             "hostWriteMutationSupport": {
               "type": "HostWriteMutationSupport",
               "id": 12,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "bizAiWebOnboarding": {
+              "type": "BizAiWebOnboarding",
+              "id": 13,
               "options": {
                 "proto3_optional": true
               }
@@ -11914,6 +12009,24 @@
               "fields": {
                 "userHasAvatar": {
                   "type": "bool",
+                  "id": 1,
+                  "options": {
+                    "proto3_optional": true
+                  }
+                }
+              }
+            },
+            "BizAiWebOnboarding": {
+              "oneofs": {
+                "_version": {
+                  "oneof": [
+                    "version"
+                  ]
+                }
+              },
+              "fields": {
+                "version": {
+                  "type": "uint32",
                   "id": 1,
                   "options": {
                     "proto3_optional": true
@@ -12310,6 +12423,11 @@
                   "oneof": [
                     "supportOmittedConversationIndex"
                   ]
+                },
+                "_supportOmittedConversationMetadata": {
+                  "oneof": [
+                    "supportOmittedConversationMetadata"
+                  ]
                 }
               },
               "fields": {
@@ -12496,6 +12614,13 @@
                 "supportOmittedConversationIndex": {
                   "type": "bool",
                   "id": 27,
+                  "options": {
+                    "proto3_optional": true
+                  }
+                },
+                "supportOmittedConversationMetadata": {
+                  "type": "bool",
+                  "id": 28,
                   "options": {
                     "proto3_optional": true
                   }
@@ -15225,6 +15350,16 @@
               "oneof": [
                 "omittedConversationsProvided"
               ]
+            },
+            "_omittedConversationMetadata": {
+              "oneof": [
+                "omittedConversationMetadata"
+              ]
+            },
+            "_omittedConversationMetadataSnapshotId": {
+              "oneof": [
+                "omittedConversationMetadataSnapshotId"
+              ]
             }
           },
           "fields": {
@@ -15366,6 +15501,20 @@
               "options": {
                 "proto3_optional": true
               }
+            },
+            "omittedConversationMetadata": {
+              "type": "OmittedConversationMetadata",
+              "id": 25,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "omittedConversationMetadataSnapshotId": {
+              "type": "string",
+              "id": 26,
+              "options": {
+                "proto3_optional": true
+              }
             }
           },
           "nested": {
@@ -15383,7 +15532,8 @@
                 "RECENT": 3,
                 "PUSH_NAME": 4,
                 "NON_BLOCKING_DATA": 5,
-                "ON_DEMAND": 6
+                "ON_DEMAND": 6,
+                "RECENT_CONVERSATIONS_ON_DEMAND": 9
               }
             }
           }
@@ -23397,7 +23547,8 @@
                 "NON_BLOCKING_DATA": 5,
                 "ON_DEMAND": 6,
                 "NO_HISTORY": 7,
-                "MESSAGE_ACCESS_STATUS": 8
+                "MESSAGE_ACCESS_STATUS": 8,
+                "RECENT_CONVERSATIONS_ON_DEMAND": 9
               }
             },
             "ImageMessage": {
@@ -25734,6 +25885,11 @@
                   "oneof": [
                     "contextInfo"
                   ]
+                },
+                "_lyrics": {
+                  "oneof": [
+                    "lyrics"
+                  ]
                 }
               },
               "fields": {
@@ -25771,6 +25927,13 @@
                   "options": {
                     "proto3_optional": true
                   }
+                },
+                "lyrics": {
+                  "type": "Lyrics",
+                  "id": 6,
+                  "options": {
+                    "proto3_optional": true
+                  }
                 }
               },
               "nested": {
@@ -25780,6 +25943,120 @@
                     "VINYL": 1,
                     "MESSAGE_BUBBLE": 2,
                     "LYRICS": 3
+                  }
+                },
+                "Lyrics": {
+                  "fields": {
+                    "lines": {
+                      "rule": "repeated",
+                      "type": "Line",
+                      "id": 1
+                    }
+                  },
+                  "nested": {
+                    "Line": {
+                      "oneofs": {
+                        "_startTimeInMs": {
+                          "oneof": [
+                            "startTimeInMs"
+                          ]
+                        },
+                        "_endTimeInMs": {
+                          "oneof": [
+                            "endTimeInMs"
+                          ]
+                        },
+                        "_text": {
+                          "oneof": [
+                            "text"
+                          ]
+                        }
+                      },
+                      "fields": {
+                        "startTimeInMs": {
+                          "type": "int64",
+                          "id": 1,
+                          "options": {
+                            "proto3_optional": true
+                          }
+                        },
+                        "endTimeInMs": {
+                          "type": "int64",
+                          "id": 2,
+                          "options": {
+                            "proto3_optional": true
+                          }
+                        },
+                        "text": {
+                          "type": "string",
+                          "id": 3,
+                          "options": {
+                            "proto3_optional": true
+                          }
+                        },
+                        "wordOffsets": {
+                          "rule": "repeated",
+                          "type": "WordOffset",
+                          "id": 4
+                        }
+                      },
+                      "nested": {
+                        "WordOffset": {
+                          "oneofs": {
+                            "_startIndex": {
+                              "oneof": [
+                                "startIndex"
+                              ]
+                            },
+                            "_endIndex": {
+                              "oneof": [
+                                "endIndex"
+                              ]
+                            },
+                            "_startOffsetMs": {
+                              "oneof": [
+                                "startOffsetMs"
+                              ]
+                            },
+                            "_endOffsetMs": {
+                              "oneof": [
+                                "endOffsetMs"
+                              ]
+                            }
+                          },
+                          "fields": {
+                            "startIndex": {
+                              "type": "int32",
+                              "id": 1,
+                              "options": {
+                                "proto3_optional": true
+                              }
+                            },
+                            "endIndex": {
+                              "type": "int32",
+                              "id": 2,
+                              "options": {
+                                "proto3_optional": true
+                              }
+                            },
+                            "startOffsetMs": {
+                              "type": "int64",
+                              "id": 3,
+                              "options": {
+                                "proto3_optional": true
+                              }
+                            },
+                            "endOffsetMs": {
+                              "type": "int64",
+                              "id": 4,
+                              "options": {
+                                "proto3_optional": true
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
                   }
                 }
               }
@@ -26540,6 +26817,11 @@
                   "oneof": [
                     "bizBroadcastInsightsRefreshRequest"
                   ]
+                },
+                "_recentConversationsOnDemandRequest": {
+                  "oneof": [
+                    "recentConversationsOnDemandRequest"
+                  ]
                 }
               },
               "fields": {
@@ -26617,6 +26899,13 @@
                 "bizBroadcastInsightsRefreshRequest": {
                   "type": "BizBroadcastInsightsRefreshRequest",
                   "id": 12,
+                  "options": {
+                    "proto3_optional": true
+                  }
+                },
+                "recentConversationsOnDemandRequest": {
+                  "type": "RecentConversationsOnDemandRequest",
+                  "id": 13,
                   "options": {
                     "proto3_optional": true
                   }
@@ -26883,6 +27172,11 @@
                       "oneof": [
                         "supportInlineResponse"
                       ]
+                    },
+                    "_mode": {
+                      "oneof": [
+                        "mode"
+                      ]
                     }
                   },
                   "fields": {
@@ -26933,6 +27227,21 @@
                       "id": 7,
                       "options": {
                         "proto3_optional": true
+                      }
+                    },
+                    "mode": {
+                      "type": "Mode",
+                      "id": 8,
+                      "options": {
+                        "proto3_optional": true
+                      }
+                    }
+                  },
+                  "nested": {
+                    "Mode": {
+                      "values": {
+                        "MODE_UNSPECIFIED": 0,
+                        "INITIAL_REVERSE_HISTORY": 1
                       }
                     }
                   }
@@ -27026,6 +27335,36 @@
                     },
                     "timestamp": {
                       "type": "int64",
+                      "id": 2,
+                      "options": {
+                        "proto3_optional": true
+                      }
+                    }
+                  }
+                },
+                "RecentConversationsOnDemandRequest": {
+                  "oneofs": {
+                    "_conversationCount": {
+                      "oneof": [
+                        "conversationCount"
+                      ]
+                    },
+                    "_messagesPerConversation": {
+                      "oneof": [
+                        "messagesPerConversation"
+                      ]
+                    }
+                  },
+                  "fields": {
+                    "conversationCount": {
+                      "type": "uint32",
+                      "id": 1,
+                      "options": {
+                        "proto3_optional": true
+                      }
+                    },
+                    "messagesPerConversation": {
+                      "type": "uint32",
                       "id": 2,
                       "options": {
                         "proto3_optional": true
@@ -28006,7 +28345,8 @@
                 "GALAXY_FLOW_ACTION": 11,
                 "BUSINESS_BROADCAST_INSIGHTS_DELIVERED_TO": 12,
                 "BUSINESS_BROADCAST_INSIGHTS_REFRESH": 13,
-                "CONTACT_REFRESH_REQUEST": 14
+                "CONTACT_REFRESH_REQUEST": 14,
+                "RECENT_CONVERSATIONS_ON_DEMAND_REQUEST": 15
               }
             },
             "PinInChatMessage": {
@@ -31998,6 +32338,11 @@
               "oneof": [
                 "acp2Setting"
               ]
+            },
+            "_lightE2Ee": {
+              "oneof": [
+                "lightE2Ee"
+              ]
             }
           },
           "fields": {
@@ -32142,6 +32487,13 @@
             "acp2Setting": {
               "type": "ACP2Setting",
               "id": 21,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "lightE2Ee": {
+              "type": "bool",
+              "id": 22,
               "options": {
                 "proto3_optional": true
               }
@@ -33717,6 +34069,11 @@
               "oneof": [
                 "musicData"
               ]
+            },
+            "_pollAddedOptionName": {
+              "oneof": [
+                "pollAddedOptionName"
+              ]
             }
           },
           "fields": {
@@ -34123,6 +34480,13 @@
               "options": {
                 "proto3_optional": true
               }
+            },
+            "pollAddedOptionName": {
+              "type": "string",
+              "id": 64,
+              "options": {
+                "proto3_optional": true
+              }
             }
           },
           "nested": {
@@ -34449,6 +34813,16 @@
                   "oneof": [
                     "addOptionMsgKey"
                   ]
+                },
+                "_localId": {
+                  "oneof": [
+                    "localId"
+                  ]
+                },
+                "_addOptionMsgT": {
+                  "oneof": [
+                    "addOptionMsgT"
+                  ]
                 }
               },
               "fields": {
@@ -34469,6 +34843,20 @@
                 "addOptionMsgKey": {
                   "type": "string",
                   "id": 3,
+                  "options": {
+                    "proto3_optional": true
+                  }
+                },
+                "localId": {
+                  "type": "uint32",
+                  "id": 4,
+                  "options": {
+                    "proto3_optional": true
+                  }
+                },
+                "addOptionMsgT": {
+                  "type": "uint32",
+                  "id": 5,
                   "options": {
                     "proto3_optional": true
                   }
@@ -46054,7 +46442,9 @@
                 "CHAT_WITH_BUSINESS_IN_DIRECTORY": 283,
                 "META_AI_THREAD_CREATED": 284,
                 "META_AI_CONNECTOR_LINKED": 285,
-                "SPLIT_PAYMENT_MARKED_AS_PAID": 289
+                "SPLIT_PAYMENT_MARKED_AS_PAID": 289,
+                "POLL_OPTIONS_REMOVED": 290,
+                "POLL_ADDED_OPTION_REMOVED": 291
               }
             }
           }
@@ -46205,6 +46595,100 @@
               "options": {
                 "proto3_optional": true
               }
+            }
+          }
+        },
+        "BotInterjectionMetadata": {
+          "oneofs": {
+            "_targetPromptMessageId": {
+              "oneof": [
+                "targetPromptMessageId"
+              ]
+            }
+          },
+          "fields": {
+            "targetPromptMessageId": {
+              "type": "string",
+              "id": 1,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "foldedPromptMessageIds": {
+              "rule": "repeated",
+              "type": "string",
+              "id": 2
+            }
+          }
+        },
+        "OmittedConversationMetadata": {
+          "oneofs": {
+            "_snapshotId": {
+              "oneof": [
+                "snapshotId"
+              ]
+            },
+            "_snapshotTimestampMs": {
+              "oneof": [
+                "snapshotTimestampMs"
+              ]
+            },
+            "_batchIndex": {
+              "oneof": [
+                "batchIndex"
+              ]
+            },
+            "_batchCount": {
+              "oneof": [
+                "batchCount"
+              ]
+            },
+            "_complete": {
+              "oneof": [
+                "complete"
+              ]
+            }
+          },
+          "fields": {
+            "snapshotId": {
+              "type": "string",
+              "id": 1,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "snapshotTimestampMs": {
+              "type": "uint64",
+              "id": 2,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "batchIndex": {
+              "type": "uint32",
+              "id": 3,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "batchCount": {
+              "type": "uint32",
+              "id": 4,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "complete": {
+              "type": "bool",
+              "id": 5,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "conversations": {
+              "rule": "repeated",
+              "type": "Conversation",
+              "id": 6
             }
           }
         }
