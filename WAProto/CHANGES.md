@@ -2,6 +2,12 @@
 
 Terbaru di atas. Dibuat otomatis oleh update-proto.mjs.
 
+## 2.3000.1051955322 → 2.3000.1052015443
+
+Sumber: https://raw.githubusercontent.com/wppconnect-team/wa-proto/main/WAProto.proto
+
+Hanya nomor versi yang naik — tidak ada tipe/field/enum baru.
+
 ## 2.3000.1050756511 → 2.3000.1051955322
 
 Sumber: https://raw.githubusercontent.com/wppconnect-team/wa-proto/main/WAProto.proto
