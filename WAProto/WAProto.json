@@ -35038,7 +35038,8 @@
             "SHARED_DEVICE_SECRET_ACTION": 100,
             "SHARE_OWN_PN": 10001,
             "BUSINESS_BROADCAST_ACTION": 10002,
-            "AI_THREAD_DELETE_ACTION": 10003
+            "AI_THREAD_DELETE_ACTION": 10003,
+            "HATCH_CVM_SECRET_ACTION": 101
           }
         },
         "NoiseCertificate": {
@@ -39305,6 +39306,11 @@
               "oneof": [
                 "sharedDeviceSecretAction"
               ]
+            },
+            "_hatchCvmSecretAction": {
+              "oneof": [
+                "hatchCvmSecretAction"
+              ]
             }
           },
           "fields": {
@@ -39941,6 +39947,13 @@
             "sharedDeviceSecretAction": {
               "type": "SharedDeviceSecretAction",
               "id": 100,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "hatchCvmSecretAction": {
+              "type": "HatchCVMSecretAction",
+              "id": 101,
               "options": {
                 "proto3_optional": true
               }
@@ -42565,6 +42578,11 @@
                   "oneof": [
                     "stockWallpaperImageId"
                   ]
+                },
+                "_mediaAutoDownloadQuality": {
+                  "oneof": [
+                    "mediaAutoDownloadQuality"
+                  ]
                 }
               },
               "fields": {
@@ -42805,6 +42823,13 @@
                   "options": {
                     "proto3_optional": true
                   }
+                },
+                "mediaAutoDownloadQuality": {
+                  "type": "MediaAutoDownloadQualitySetting",
+                  "id": 35,
+                  "options": {
+                    "proto3_optional": true
+                  }
                 }
               },
               "nested": {
@@ -42859,7 +42884,8 @@
                     "SHOULD_PLAY_SOUND_FOR_CALL_NOTIFICATION": 31,
                     "CHAT_THEME_ID": 32,
                     "COLOR_SCHEME_ID": 33,
-                    "STOCK_WALLPAPER_IMAGE_ID": 34
+                    "STOCK_WALLPAPER_IMAGE_ID": 34,
+                    "MEDIA_AUTO_DOWNLOAD_QUALITY": 35
                   }
                 },
                 "SettingPlatform": {
@@ -42869,6 +42895,14 @@
                     "HYBRID": 2,
                     "WINDOWS": 3,
                     "MAC": 4
+                  }
+                },
+                "MediaAutoDownloadQualitySetting": {
+                  "values": {
+                    "MEDIA_AUTO_DOWNLOAD_QUALITY_UNKNOWN": 0,
+                    "MEDIA_AUTO_DOWNLOAD_QUALITY_STANDARD": 1,
+                    "MEDIA_AUTO_DOWNLOAD_QUALITY_HD": 2,
+                    "MEDIA_AUTO_DOWNLOAD_QUALITY_AUTO": 3
                   }
                 }
               }
@@ -43753,6 +43787,36 @@
                 "identifier": {
                   "type": "string",
                   "id": 1,
+                  "options": {
+                    "proto3_optional": true
+                  }
+                }
+              }
+            },
+            "HatchCVMSecretAction": {
+              "oneofs": {
+                "_secret": {
+                  "oneof": [
+                    "secret"
+                  ]
+                },
+                "_generation": {
+                  "oneof": [
+                    "generation"
+                  ]
+                }
+              },
+              "fields": {
+                "secret": {
+                  "type": "bytes",
+                  "id": 1,
+                  "options": {
+                    "proto3_optional": true
+                  }
+                },
+                "generation": {
+                  "type": "int64",
+                  "id": 2,
                   "options": {
                     "proto3_optional": true
                   }

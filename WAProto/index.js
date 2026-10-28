@@ -128831,6 +128831,7 @@ export const proto = $root.proto = (() => {
         values[valuesById[10001] = "SHARE_OWN_PN"] = 10001;
         values[valuesById[10002] = "BUSINESS_BROADCAST_ACTION"] = 10002;
         values[valuesById[10003] = "AI_THREAD_DELETE_ACTION"] = 10003;
+        values[valuesById[101] = "HATCH_CVM_SECRET_ACTION"] = 101;
         return values;
     })();
 
@@ -144147,6 +144148,7 @@ export const proto = $root.proto = (() => {
         SyncActionValue.prototype.bbProPendingCustomerBaseAction = null;
         SyncActionValue.prototype.communityNestingStateAction = null;
         SyncActionValue.prototype.sharedDeviceSecretAction = null;
+        SyncActionValue.prototype.hatchCvmSecretAction = null;
 
         let $oneOfFields;
 
@@ -144696,6 +144698,12 @@ export const proto = $root.proto = (() => {
             set: $util.oneOfSetter($oneOfFields)
         });
 
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(SyncActionValue.prototype, "_hatchCvmSecretAction", {
+            get: $util.oneOfGetter($oneOfFields = ["hatchCvmSecretAction"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
         SyncActionValue.create = function(properties) {
             return new SyncActionValue(properties);
         };
@@ -144889,6 +144897,8 @@ export const proto = $root.proto = (() => {
                 $root.proto.SyncActionValue.CommunityNestingStateAction.encode(m.communityNestingStateAction, w.uint32(794).fork(), q + 1).ldelim();
             if (m.sharedDeviceSecretAction != null && $Object.hasOwnProperty.call(m, "sharedDeviceSecretAction"))
                 $root.proto.SyncActionValue.SharedDeviceSecretAction.encode(m.sharedDeviceSecretAction, w.uint32(802).fork(), q + 1).ldelim();
+            if (m.hatchCvmSecretAction != null && $Object.hasOwnProperty.call(m, "hatchCvmSecretAction"))
+                $root.proto.SyncActionValue.HatchCVMSecretAction.encode(m.hatchCvmSecretAction, w.uint32(810).fork(), q + 1).ldelim();
             if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                 for (var i = 0; i < m.$unknowns.length; ++i)
                     w.raw(m.$unknowns[i]);
@@ -145559,6 +145569,13 @@ export const proto = $root.proto = (() => {
                         m._sharedDeviceSecretAction = "sharedDeviceSecretAction";
                         continue;
                     }
+                case 101: {
+                        if (u !== 2)
+                            break;
+                        m.hatchCvmSecretAction = $root.proto.SyncActionValue.HatchCVMSecretAction.decode(r, r.size(), $undefined, q + 1, m.hatchCvmSecretAction);
+                        m._hatchCvmSecretAction = "hatchCvmSecretAction";
+                        continue;
+                    }
                 }
                 r.skipType(u, q, t);
                 if (!r.discardUnknown) {
@@ -146046,6 +146063,11 @@ export const proto = $root.proto = (() => {
                     throw $TypeError(".proto.SyncActionValue.sharedDeviceSecretAction: object expected");
                 m.sharedDeviceSecretAction = $root.proto.SyncActionValue.SharedDeviceSecretAction.fromObject(d.sharedDeviceSecretAction, q + 1);
             }
+            if (d.hatchCvmSecretAction != null) {
+                if (!$util.isObject(d.hatchCvmSecretAction))
+                    throw $TypeError(".proto.SyncActionValue.hatchCvmSecretAction: object expected");
+                m.hatchCvmSecretAction = $root.proto.SyncActionValue.HatchCVMSecretAction.fromObject(d.hatchCvmSecretAction, q + 1);
+            }
             return m;
         };
 
@@ -146334,6 +146356,9 @@ export const proto = $root.proto = (() => {
             }
             if (m.sharedDeviceSecretAction != null && $Object.hasOwnProperty.call(m, "sharedDeviceSecretAction")) {
                 d.sharedDeviceSecretAction = $root.proto.SyncActionValue.SharedDeviceSecretAction.toObject(m.sharedDeviceSecretAction, o, q + 1);
+            }
+            if (m.hatchCvmSecretAction != null && $Object.hasOwnProperty.call(m, "hatchCvmSecretAction")) {
+                d.hatchCvmSecretAction = $root.proto.SyncActionValue.HatchCVMSecretAction.toObject(m.hatchCvmSecretAction, o, q + 1);
             }
             return d;
         };
@@ -158907,6 +158932,7 @@ export const proto = $root.proto = (() => {
             SettingsSyncAction.prototype.chatThemeId = null;
             SettingsSyncAction.prototype.colorSchemeId = null;
             SettingsSyncAction.prototype.stockWallpaperImageId = null;
+            SettingsSyncAction.prototype.mediaAutoDownloadQuality = null;
 
             let $oneOfFields;
 
@@ -159114,6 +159140,12 @@ export const proto = $root.proto = (() => {
                 set: $util.oneOfSetter($oneOfFields)
             });
 
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(SettingsSyncAction.prototype, "_mediaAutoDownloadQuality", {
+                get: $util.oneOfGetter($oneOfFields = ["mediaAutoDownloadQuality"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
             SettingsSyncAction.create = function(properties) {
                 return new SettingsSyncAction(properties);
             };
@@ -159193,6 +159225,8 @@ export const proto = $root.proto = (() => {
                     w.uint32(266).string(m.colorSchemeId);
                 if (m.stockWallpaperImageId != null && $Object.hasOwnProperty.call(m, "stockWallpaperImageId"))
                     w.uint32(274).string(m.stockWallpaperImageId);
+                if (m.mediaAutoDownloadQuality != null && $Object.hasOwnProperty.call(m, "mediaAutoDownloadQuality"))
+                    w.uint32(280).int32(m.mediaAutoDownloadQuality);
                 if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                     for (var i = 0; i < m.$unknowns.length; ++i)
                         w.raw(m.$unknowns[i]);
@@ -159464,6 +159498,13 @@ export const proto = $root.proto = (() => {
                             m._stockWallpaperImageId = "stockWallpaperImageId";
                             continue;
                         }
+                    case 35: {
+                            if (u !== 0)
+                                break;
+                            m.mediaAutoDownloadQuality = r.int32();
+                            m._mediaAutoDownloadQuality = "mediaAutoDownloadQuality";
+                            continue;
+                        }
                     }
                     r.skipType(u, q, t);
                     if (!r.discardUnknown) {
@@ -159643,6 +159684,27 @@ export const proto = $root.proto = (() => {
                 if (d.stockWallpaperImageId != null) {
                     m.stockWallpaperImageId = $String(d.stockWallpaperImageId);
                 }
+                switch (d.mediaAutoDownloadQuality) {
+                case "MEDIA_AUTO_DOWNLOAD_QUALITY_UNKNOWN":
+                case 0:
+                    m.mediaAutoDownloadQuality = 0;
+                    break;
+                case "MEDIA_AUTO_DOWNLOAD_QUALITY_STANDARD":
+                case 1:
+                    m.mediaAutoDownloadQuality = 1;
+                    break;
+                case "MEDIA_AUTO_DOWNLOAD_QUALITY_HD":
+                case 2:
+                    m.mediaAutoDownloadQuality = 2;
+                    break;
+                case "MEDIA_AUTO_DOWNLOAD_QUALITY_AUTO":
+                case 3:
+                    m.mediaAutoDownloadQuality = 3;
+                    break;
+                default:
+                    if (typeof d.mediaAutoDownloadQuality === "number" && (d.mediaAutoDownloadQuality | 0) === d.mediaAutoDownloadQuality)
+                        m.mediaAutoDownloadQuality = d.mediaAutoDownloadQuality;
+                }
                 return m;
             };
 
@@ -159756,6 +159818,9 @@ export const proto = $root.proto = (() => {
                 if (m.stockWallpaperImageId != null && $Object.hasOwnProperty.call(m, "stockWallpaperImageId")) {
                     d.stockWallpaperImageId = m.stockWallpaperImageId;
                 }
+                if (m.mediaAutoDownloadQuality != null && $Object.hasOwnProperty.call(m, "mediaAutoDownloadQuality")) {
+                    d.mediaAutoDownloadQuality = o.enums === $String ? $root.proto.SyncActionValue.SettingsSyncAction.MediaAutoDownloadQualitySetting[m.mediaAutoDownloadQuality] === $undefined ? m.mediaAutoDownloadQuality : $root.proto.SyncActionValue.SettingsSyncAction.MediaAutoDownloadQualitySetting[m.mediaAutoDownloadQuality] : m.mediaAutoDownloadQuality;
+                }
                 return d;
             };
 
@@ -159823,6 +159888,7 @@ export const proto = $root.proto = (() => {
                 values[valuesById[32] = "CHAT_THEME_ID"] = 32;
                 values[valuesById[33] = "COLOR_SCHEME_ID"] = 33;
                 values[valuesById[34] = "STOCK_WALLPAPER_IMAGE_ID"] = 34;
+                values[valuesById[35] = "MEDIA_AUTO_DOWNLOAD_QUALITY"] = 35;
                 return values;
             })();
 
@@ -159833,6 +159899,15 @@ export const proto = $root.proto = (() => {
                 values[valuesById[2] = "HYBRID"] = 2;
                 values[valuesById[3] = "WINDOWS"] = 3;
                 values[valuesById[4] = "MAC"] = 4;
+                return values;
+            })();
+
+            SettingsSyncAction.MediaAutoDownloadQualitySetting = (function() {
+                const valuesById = $Object.create(null), values = $Object.create(valuesById);
+                values[valuesById[0] = "MEDIA_AUTO_DOWNLOAD_QUALITY_UNKNOWN"] = 0;
+                values[valuesById[1] = "MEDIA_AUTO_DOWNLOAD_QUALITY_STANDARD"] = 1;
+                values[valuesById[2] = "MEDIA_AUTO_DOWNLOAD_QUALITY_HD"] = 2;
+                values[valuesById[3] = "MEDIA_AUTO_DOWNLOAD_QUALITY_AUTO"] = 3;
                 return values;
             })();
 
@@ -164113,6 +164188,175 @@ export const proto = $root.proto = (() => {
             };
 
             return WamoUserIdentifierAction;
+        })();
+
+        SyncActionValue.HatchCVMSecretAction = (function() {
+
+            const HatchCVMSecretAction = function (p) {
+                if (p)
+                    for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                        if (p[ks[i]] != null && ks[i] !== "__proto__")
+                            this[ks[i]] = p[ks[i]];
+            };
+
+            HatchCVMSecretAction.prototype.secret = null;
+            HatchCVMSecretAction.prototype.generation = null;
+
+            let $oneOfFields;
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(HatchCVMSecretAction.prototype, "_secret", {
+                get: $util.oneOfGetter($oneOfFields = ["secret"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(HatchCVMSecretAction.prototype, "_generation", {
+                get: $util.oneOfGetter($oneOfFields = ["generation"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            HatchCVMSecretAction.create = function(properties) {
+                return new HatchCVMSecretAction(properties);
+            };
+
+            HatchCVMSecretAction.encode = function (m, w, q) {
+                if (!w)
+                    w = $Writer.create();
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                if (m.secret != null && $Object.hasOwnProperty.call(m, "secret"))
+                    w.uint32(10).bytes(m.secret);
+                if (m.generation != null && $Object.hasOwnProperty.call(m, "generation"))
+                    w.uint32(16).int64(m.generation);
+                if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                    for (var i = 0; i < m.$unknowns.length; ++i)
+                        w.raw(m.$unknowns[i]);
+                return w;
+            };
+
+            HatchCVMSecretAction.decode = function (r, l, z, q, g) {
+                if (!(r instanceof $Reader))
+                    r = $Reader.create(r);
+                if (q === $undefined)
+                    q = 0;
+                if (q > $Reader.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.proto.SyncActionValue.HatchCVMSecretAction();
+                while (r.pos < c) {
+                    var s = r.pos;
+                    var t = r.tag();
+                    if (t === z) {
+                        z = $undefined;
+                        break;
+                    }
+                    var u = t & 7;
+                    switch (t >>>= 3) {
+                    case 1: {
+                            if (u !== 2)
+                                break;
+                            m.secret = r.bytes();
+                            m._secret = "secret";
+                            continue;
+                        }
+                    case 2: {
+                            if (u !== 0)
+                                break;
+                            m.generation = r.int64();
+                            m._generation = "generation";
+                            continue;
+                        }
+                    }
+                    r.skipType(u, q, t);
+                    if (!r.discardUnknown) {
+                        $util.makeProp(m, "$unknowns", false);
+                        (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                    }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
+                }
+                if (z !== $undefined)
+                    throw $Error("missing end group");
+                return m;
+            };
+
+            HatchCVMSecretAction.fromObject = function (d, q) {
+                if (d instanceof $root.proto.SyncActionValue.HatchCVMSecretAction)
+                    return d;
+                if (!$util.isObject(d))
+                    throw $TypeError(".proto.SyncActionValue.HatchCVMSecretAction: object expected");
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var m = new $root.proto.SyncActionValue.HatchCVMSecretAction();
+                if (d.secret != null) {
+                    if (typeof d.secret === "string")
+                        $util.base64.decode(d.secret, m.secret = $util.newBuffer($util.base64.length(d.secret)), 0);
+                    else if (d.secret.length >= 0)
+                        m.secret = d.secret;
+                }
+                if (d.generation != null) {
+                    if ($util.Long)
+                        m.generation = $util.Long.fromValue(d.generation, false);
+                    else if (typeof d.generation === "string")
+                        m.generation = $parseInt(d.generation, 10);
+                    else if (typeof d.generation === "number")
+                        m.generation = d.generation;
+                    else if (typeof d.generation === "object")
+                        m.generation = new $util.LongBits(d.generation.low >>> 0, d.generation.high >>> 0).toNumber();
+                }
+                return m;
+            };
+
+            HatchCVMSecretAction.toObject = function (m, o, q) {
+                if (!o)
+                    o = {};
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var d = {};
+                if (m.secret != null && $Object.hasOwnProperty.call(m, "secret")) {
+                    d.secret = o.bytes === $String ? $util.base64.encode(m.secret, 0, m.secret.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.secret) : m.secret;
+                }
+                if (m.generation != null && $Object.hasOwnProperty.call(m, "generation")) {
+                    if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
+                        d.generation = typeof m.generation === "number" ? $BigInt(m.generation) : $util.Long.fromBits(m.generation.low >>> 0, m.generation.high >>> 0, false).toBigInt();
+                    else if (typeof m.generation === "number")
+                        d.generation = o.longs === $String ? $String(m.generation) : m.generation;
+                    else
+                        d.generation = o.longs === $String ? $util.Long.prototype.toString.call(m.generation) : o.longs === $Number ? new $util.LongBits(m.generation.low >>> 0, m.generation.high >>> 0).toNumber() : m.generation;
+                }
+                return d;
+            };
+
+            HatchCVMSecretAction.prototype.toJSON = function() {
+                return HatchCVMSecretAction.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            HatchCVMSecretAction.getTypeUrl = function(prefix) {
+                if (prefix === $undefined)
+                    prefix = "type.googleapis.com";
+                return prefix + "/proto.SyncActionValue.HatchCVMSecretAction";
+            };
+
+            return HatchCVMSecretAction;
         })();
 
         return SyncActionValue;

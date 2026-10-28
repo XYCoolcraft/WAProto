@@ -2,6 +2,25 @@
 
 Terbaru di atas. Dibuat otomatis oleh update-proto.mjs.
 
+## 2.3000.1052015443 → 2.3000.1052070306
+
+Sumber: https://raw.githubusercontent.com/wppconnect-team/wa-proto/main/WAProto.proto
+
+### Tipe baru (2)
+
+- SyncActionValue.HatchCVMSecretAction
+- SyncActionValue.SettingsSyncAction.MediaAutoDownloadQualitySetting
+
+### Field baru (2)
+
+- SyncActionValue.hatchCvmSecretAction = 101
+- SyncActionValue.SettingsSyncAction.mediaAutoDownloadQuality = 35
+
+### Nilai enum baru (2)
+
+- MutationProps.HATCH_CVM_SECRET_ACTION = 101
+- SyncActionValue.SettingsSyncAction.SettingKey.MEDIA_AUTO_DOWNLOAD_QUALITY = 35
+
 ## 2.3000.1051955322 → 2.3000.1052015443
 
 Sumber: https://raw.githubusercontent.com/wppconnect-team/wa-proto/main/WAProto.proto

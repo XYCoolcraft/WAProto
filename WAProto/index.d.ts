@@ -20303,7 +20303,8 @@ export namespace proto {
         SHARED_DEVICE_SECRET_ACTION = 100,
         SHARE_OWN_PN = 10001,
         BUSINESS_BROADCAST_ACTION = 10002,
-        AI_THREAD_DELETE_ACTION = 10003
+        AI_THREAD_DELETE_ACTION = 10003,
+        HATCH_CVM_SECRET_ACTION = 101
     }
 
     interface INoiseCertificate extends proto.NoiseCertificate.$Properties {
@@ -22793,6 +22794,7 @@ export namespace proto {
         bbProPendingCustomerBaseAction?: (proto.SyncActionValue.BBProPendingCustomerBaseAction.$Properties|null);
         communityNestingStateAction?: (proto.SyncActionValue.CommunityNestingStateAction.$Properties|null);
         sharedDeviceSecretAction?: (proto.SyncActionValue.SharedDeviceSecretAction.$Properties|null);
+        hatchCvmSecretAction?: (proto.SyncActionValue.HatchCVMSecretAction.$Properties|null);
         static create(properties: proto.SyncActionValue.$Shape): proto.SyncActionValue & proto.SyncActionValue.$Shape;
         static create(properties?: proto.SyncActionValue.$Properties): proto.SyncActionValue;
         static encode(m: proto.SyncActionValue.$Properties, w?: $protobuf.Writer): $protobuf.Writer;
@@ -22896,6 +22898,7 @@ export namespace proto {
             bbProPendingCustomerBaseAction?: (proto.SyncActionValue.BBProPendingCustomerBaseAction.$Properties|null);
             communityNestingStateAction?: (proto.SyncActionValue.CommunityNestingStateAction.$Properties|null);
             sharedDeviceSecretAction?: (proto.SyncActionValue.SharedDeviceSecretAction.$Properties|null);
+            hatchCvmSecretAction?: (proto.SyncActionValue.HatchCVMSecretAction.$Properties|null);
             $unknowns?: Uint8Array[];
         }
         type $Shape = {
@@ -22990,6 +22993,7 @@ export namespace proto {
           bbProPendingCustomerBaseAction?: proto.SyncActionValue.BBProPendingCustomerBaseAction.$Shape|null;
           communityNestingStateAction?: proto.SyncActionValue.CommunityNestingStateAction.$Shape|null;
           sharedDeviceSecretAction?: proto.SyncActionValue.SharedDeviceSecretAction.$Shape|null;
+          hatchCvmSecretAction?: proto.SyncActionValue.HatchCVMSecretAction.$Shape|null;
           $unknowns?: Uint8Array[];
         };
 
@@ -25177,6 +25181,7 @@ export namespace proto {
             chatThemeId?: (string|null);
             colorSchemeId?: (string|null);
             stockWallpaperImageId?: (string|null);
+            mediaAutoDownloadQuality?: (proto.SyncActionValue.SettingsSyncAction.MediaAutoDownloadQualitySetting|null);
             static create(properties: proto.SyncActionValue.SettingsSyncAction.$Shape): proto.SyncActionValue.SettingsSyncAction & proto.SyncActionValue.SettingsSyncAction.$Shape;
             static create(properties?: proto.SyncActionValue.SettingsSyncAction.$Properties): proto.SyncActionValue.SettingsSyncAction;
             static encode(m: proto.SyncActionValue.SettingsSyncAction.$Properties, w?: $protobuf.Writer): $protobuf.Writer;
@@ -25223,6 +25228,7 @@ export namespace proto {
                 chatThemeId?: (string|null);
                 colorSchemeId?: (string|null);
                 stockWallpaperImageId?: (string|null);
+                mediaAutoDownloadQuality?: (proto.SyncActionValue.SettingsSyncAction.MediaAutoDownloadQualitySetting|null);
                 $unknowns?: Uint8Array[];
             }
             type $Shape = proto.SyncActionValue.SettingsSyncAction.$Properties;
@@ -25275,7 +25281,8 @@ export namespace proto {
                 SHOULD_PLAY_SOUND_FOR_CALL_NOTIFICATION = 31,
                 CHAT_THEME_ID = 32,
                 COLOR_SCHEME_ID = 33,
-                STOCK_WALLPAPER_IMAGE_ID = 34
+                STOCK_WALLPAPER_IMAGE_ID = 34,
+                MEDIA_AUTO_DOWNLOAD_QUALITY = 35
             }
 
             enum SettingPlatform {
@@ -25284,6 +25291,13 @@ export namespace proto {
                 HYBRID = 2,
                 WINDOWS = 3,
                 MAC = 4
+            }
+
+            enum MediaAutoDownloadQualitySetting {
+                MEDIA_AUTO_DOWNLOAD_QUALITY_UNKNOWN = 0,
+                MEDIA_AUTO_DOWNLOAD_QUALITY_STANDARD = 1,
+                MEDIA_AUTO_DOWNLOAD_QUALITY_HD = 2,
+                MEDIA_AUTO_DOWNLOAD_QUALITY_AUTO = 3
             }
         }
 
@@ -25966,6 +25980,33 @@ export namespace proto {
                 $unknowns?: Uint8Array[];
             }
             type $Shape = proto.SyncActionValue.WamoUserIdentifierAction.$Properties;
+        }
+
+        interface IHatchCVMSecretAction extends proto.SyncActionValue.HatchCVMSecretAction.$Properties {
+        }
+
+        class HatchCVMSecretAction {
+            constructor(p?: proto.SyncActionValue.HatchCVMSecretAction.$Properties);
+            $unknowns?: Uint8Array[];
+            secret?: (Uint8Array|null);
+            generation?: (number|Long|null);
+            static create(properties: proto.SyncActionValue.HatchCVMSecretAction.$Shape): proto.SyncActionValue.HatchCVMSecretAction & proto.SyncActionValue.HatchCVMSecretAction.$Shape;
+            static create(properties?: proto.SyncActionValue.HatchCVMSecretAction.$Properties): proto.SyncActionValue.HatchCVMSecretAction;
+            static encode(m: proto.SyncActionValue.HatchCVMSecretAction.$Properties, w?: $protobuf.Writer): $protobuf.Writer;
+            static decode(r: ($protobuf.Reader|Uint8Array), l?: number): proto.SyncActionValue.HatchCVMSecretAction & proto.SyncActionValue.HatchCVMSecretAction.$Shape;
+            static fromObject(d: { [k: string]: any }): proto.SyncActionValue.HatchCVMSecretAction;
+            static toObject(m: proto.SyncActionValue.HatchCVMSecretAction, o?: $protobuf.IConversionOptions): { [k: string]: any };
+            toJSON(): { [k: string]: any };
+            static getTypeUrl(prefix?: string): string;
+        }
+
+        namespace HatchCVMSecretAction {
+            interface $Properties {
+                secret?: (Uint8Array|null);
+                generation?: (number|Long|null);
+                $unknowns?: Uint8Array[];
+            }
+            type $Shape = proto.SyncActionValue.HatchCVMSecretAction.$Properties;
         }
     }
 

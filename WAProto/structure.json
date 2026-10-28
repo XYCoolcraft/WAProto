@@ -1,8 +1,8 @@
 {
- "protoVersion": "2.3000.1052015443",
+ "protoVersion": "2.3000.1052070306",
  "counts": {
-  "messages": 734,
-  "enums": 223
+  "messages": 735,
+  "enums": 224
  },
  "fields": "[nomor, tipe, label]",
  "messages": {
@@ -4205,7 +4205,8 @@
    "groupHistoryToggleAction": [97, "GroupHistoryToggleAction", "optional"],
    "bbProPendingCustomerBaseAction": [98, "BBProPendingCustomerBaseAction", "optional"],
    "communityNestingStateAction": [99, "CommunityNestingStateAction", "optional"],
-   "sharedDeviceSecretAction": [100, "SharedDeviceSecretAction", "optional"]
+   "sharedDeviceSecretAction": [100, "SharedDeviceSecretAction", "optional"],
+   "hatchCvmSecretAction": [101, "HatchCVMSecretAction", "optional"]
   },
   "SyncActionValue.AgentAction": {
    "name": [1, "string", "optional"],
@@ -4368,6 +4369,10 @@
   },
   "SyncActionValue.GroupHistoryToggleAction": {
    "groupHistoryToggleMode": [1, "GroupHistoryToggleMode", "optional"]
+  },
+  "SyncActionValue.HatchCVMSecretAction": {
+   "secret": [1, "bytes", "optional"],
+   "generation": [2, "int64", "optional"]
   },
   "SyncActionValue.InteractiveMessageAction": {
    "type": [1, "InteractiveMessageActionMode", "optional"],
@@ -4550,7 +4555,8 @@
    "shouldPlaySoundForCallNotification": [31, "bool", "optional"],
    "chatThemeId": [32, "string", "optional"],
    "colorSchemeId": [33, "string", "optional"],
-   "stockWallpaperImageId": [34, "string", "optional"]
+   "stockWallpaperImageId": [34, "string", "optional"],
+   "mediaAutoDownloadQuality": [35, "MediaAutoDownloadQualitySetting", "optional"]
   },
   "SyncActionValue.SharedDeviceAllowlistAction": {
    "allowed": [1, "bool", "optional"]
@@ -6407,6 +6413,7 @@
    "BB_PRO_PENDING_CUSTOMER_BASE_ACTION": 98,
    "COMMUNITY_NESTING_STATE_ACTION": 99,
    "SHARED_DEVICE_SECRET_ACTION": 100,
+   "HATCH_CVM_SECRET_ACTION": 101,
    "SHARE_OWN_PN": 10001,
    "BUSINESS_BROADCAST_ACTION": 10002,
    "AI_THREAD_DELETE_ACTION": 10003
@@ -6682,6 +6689,12 @@
    "NEVER": 2,
    "ONLY_WHEN_APP_IS_OPEN": 3
   },
+  "SyncActionValue.SettingsSyncAction.MediaAutoDownloadQualitySetting": {
+   "MEDIA_AUTO_DOWNLOAD_QUALITY_UNKNOWN": 0,
+   "MEDIA_AUTO_DOWNLOAD_QUALITY_STANDARD": 1,
+   "MEDIA_AUTO_DOWNLOAD_QUALITY_HD": 2,
+   "MEDIA_AUTO_DOWNLOAD_QUALITY_AUTO": 3
+  },
   "SyncActionValue.SettingsSyncAction.MediaQualitySetting": {
    "MEDIA_QUALITY_UNKNOWN": 0,
    "STANDARD": 1,
@@ -6722,7 +6735,8 @@
    "SHOULD_PLAY_SOUND_FOR_CALL_NOTIFICATION": 31,
    "CHAT_THEME_ID": 32,
    "COLOR_SCHEME_ID": 33,
-   "STOCK_WALLPAPER_IMAGE_ID": 34
+   "STOCK_WALLPAPER_IMAGE_ID": 34,
+   "MEDIA_AUTO_DOWNLOAD_QUALITY": 35
   },
   "SyncActionValue.SettingsSyncAction.SettingPlatform": {
    "PLATFORM_UNKNOWN": 0,

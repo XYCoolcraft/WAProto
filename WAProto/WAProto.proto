@@ -1,7 +1,7 @@
 syntax = "proto3";
 package proto;
 
-/// WhatsApp Version: 2.3000.1052015443
+/// WhatsApp Version: 2.3000.1052070306
 
 message ACP2Setting {
     optional bool enabled = 1;
@@ -5755,6 +5755,7 @@ enum MutationProps {
     SHARE_OWN_PN = 10001;
     BUSINESS_BROADCAST_ACTION = 10002;
     AI_THREAD_DELETE_ACTION = 10003;
+    HATCH_CVM_SECRET_ACTION = 101;
 }
 message NoiseCertificate {
     optional bytes details = 1;
@@ -6498,6 +6499,7 @@ message SyncActionValue {
     optional BBProPendingCustomerBaseAction bbProPendingCustomerBaseAction = 98;
     optional CommunityNestingStateAction communityNestingStateAction = 99;
     optional SharedDeviceSecretAction sharedDeviceSecretAction = 100;
+    optional HatchCVMSecretAction hatchCvmSecretAction = 101;
     message AgentAction {
         optional string name = 1;
         optional int32 deviceId = 2;
@@ -7020,6 +7022,7 @@ message SyncActionValue {
         optional string chatThemeId = 32;
         optional string colorSchemeId = 33;
         optional string stockWallpaperImageId = 34;
+        optional MediaAutoDownloadQualitySetting mediaAutoDownloadQuality = 35;
         enum DisplayMode {
             DISPLAY_MODE_UNKNOWN = 0;
             ALWAYS = 1;
@@ -7067,6 +7070,7 @@ message SyncActionValue {
             CHAT_THEME_ID = 32;
             COLOR_SCHEME_ID = 33;
             STOCK_WALLPAPER_IMAGE_ID = 34;
+            MEDIA_AUTO_DOWNLOAD_QUALITY = 35;
         }
         enum SettingPlatform {
             PLATFORM_UNKNOWN = 0;
@@ -7074,6 +7078,13 @@ message SyncActionValue {
             HYBRID = 2;
             WINDOWS = 3;
             MAC = 4;
+        }
+
+        enum MediaAutoDownloadQualitySetting {
+            MEDIA_AUTO_DOWNLOAD_QUALITY_UNKNOWN = 0;
+            MEDIA_AUTO_DOWNLOAD_QUALITY_STANDARD = 1;
+            MEDIA_AUTO_DOWNLOAD_QUALITY_HD = 2;
+            MEDIA_AUTO_DOWNLOAD_QUALITY_AUTO = 3;
         }
     }
     
@@ -7230,6 +7241,11 @@ message SyncActionValue {
         optional string identifier = 1;
     }
     
+
+    message HatchCVMSecretAction {
+        optional bytes secret = 1;
+        optional int64 generation = 2;
+    }
 }
 
 message SyncdIndex {
