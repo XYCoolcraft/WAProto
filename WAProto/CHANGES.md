@@ -4,8 +4,6 @@ Terbaru di atas. Dibuat otomatis oleh update-proto.mjs.
 
 ## 2.3000.1052015443 → 2.3000.1052070306
 
-Sumber: https://raw.githubusercontent.com/wppconnect-team/wa-proto/main/WAProto.proto
-
 ### Tipe baru (2)
 
 - SyncActionValue.HatchCVMSecretAction
@@ -23,13 +21,9 @@ Sumber: https://raw.githubusercontent.com/wppconnect-team/wa-proto/main/WAProto.
 
 ## 2.3000.1051955322 → 2.3000.1052015443
 
-Sumber: https://raw.githubusercontent.com/wppconnect-team/wa-proto/main/WAProto.proto
-
 Hanya nomor versi yang naik — tidak ada tipe/field/enum baru.
 
 ## 2.3000.1050756511 → 2.3000.1051955322
-
-Sumber: https://raw.githubusercontent.com/wppconnect-team/wa-proto/main/WAProto.proto
 
 ### Tipe baru (8)
 
@@ -76,13 +70,9 @@ Sumber: https://raw.githubusercontent.com/wppconnect-team/wa-proto/main/WAProto.
 
 ## 2.3000.1050735291 → 2.3000.1050756511
 
-Sumber: https://raw.githubusercontent.com/wppconnect-team/wa-proto/main/WAProto.proto
-
 Hanya nomor versi yang naik — tidak ada tipe/field/enum baru.
 
 ## 2.3000.1047787617 → 2.3000.1050735291
-
-Sumber: https://raw.githubusercontent.com/wppconnect-team/wa-proto/main/WAProto.proto
 
 ### Tipe baru (141)
 
