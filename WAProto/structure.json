@@ -1,5 +1,5 @@
 {
- "protoVersion": "2.3000.1052070306",
+ "protoVersion": "2.3000.1052191878",
  "counts": {
   "messages": 735,
   "enums": 224
@@ -5122,7 +5122,8 @@
    "AI_STUDY_CENTER_ENABLED": 80,
    "AI_MUSE_JARVIS_SCHEMA_ENABLED": 81,
    "AI_STUDY_QUIZ_ENABLED": 82,
-   "HATCH_CVM_ENABLED": 83
+   "HATCH_CVM_ENABLED": 83,
+   "RICH_RESPONSE_SOCIAL_ENTITY_PREFETCH_SCHEDULER_ENABLED": 84
   },
   "BotDocumentMessageMetadata.DocumentPluginType": {
    "TEXT_EXTRACTION": 0,
@@ -5432,7 +5433,9 @@
    "TABLET": 1,
    "DESKTOP": 2,
    "WEARABLE": 3,
-   "VR": 4
+   "VR": 4,
+   "SMART_DISPLAY": 5,
+   "SMART_SPEAKER": 6
   },
   "ClientPayload.UserAgent.DistributionChannel": {
    "APPSTORE": 0,

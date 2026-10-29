@@ -2,6 +2,16 @@
 
 Terbaru di atas. Dibuat otomatis oleh update-proto.mjs.
 
+## 2.3000.1052070306 → 2.3000.1052191878
+
+By: https://t.me/XYCoolcrafts
+
+### Nilai enum baru (3)
+
+- BotCapabilityMetadata.BotCapabilityType.RICH_RESPONSE_SOCIAL_ENTITY_PREFETCH_SCHEDULER_ENABLED = 84
+- ClientPayload.UserAgent.DeviceType.SMART_DISPLAY = 5
+- ClientPayload.UserAgent.DeviceType.SMART_SPEAKER = 6
+
 ## 2.3000.1052015443 → 2.3000.1052070306
 
 ### Tipe baru (2)

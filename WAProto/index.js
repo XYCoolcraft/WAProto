@@ -10557,6 +10557,10 @@ export const proto = $root.proto = (() => {
                     case 83:
                         m.capabilities[m.capabilities.length] = 83;
                         break;
+                    case "RICH_RESPONSE_SOCIAL_ENTITY_PREFETCH_SCHEDULER_ENABLED":
+                    case 84:
+                        m.capabilities[m.capabilities.length] = 84;
+                        break;
                     default:
                         if (typeof d.capabilities[i] === "number" && (d.capabilities[i] | 0) === d.capabilities[i])
                             m.capabilities[m.capabilities.length] = d.capabilities[i];
@@ -10682,6 +10686,7 @@ export const proto = $root.proto = (() => {
             values[valuesById[81] = "AI_MUSE_JARVIS_SCHEMA_ENABLED"] = 81;
             values[valuesById[82] = "AI_STUDY_QUIZ_ENABLED"] = 82;
             values[valuesById[83] = "HATCH_CVM_ENABLED"] = 83;
+            values[valuesById[84] = "RICH_RESPONSE_SOCIAL_ENTITY_PREFETCH_SCHEDULER_ENABLED"] = 84;
             return values;
         })();
 
@@ -28577,6 +28582,14 @@ export const proto = $root.proto = (() => {
                 case 4:
                     m.deviceType = 4;
                     break;
+                case "SMART_DISPLAY":
+                case 5:
+                    m.deviceType = 5;
+                    break;
+                case "SMART_SPEAKER":
+                case 6:
+                    m.deviceType = 6;
+                    break;
                 default:
                     if (typeof d.deviceType === "number" && (d.deviceType | 0) === d.deviceType)
                         m.deviceType = d.deviceType;
@@ -28907,6 +28920,8 @@ export const proto = $root.proto = (() => {
                 values[valuesById[2] = "DESKTOP"] = 2;
                 values[valuesById[3] = "WEARABLE"] = 3;
                 values[valuesById[4] = "VR"] = 4;
+                values[valuesById[5] = "SMART_DISPLAY"] = 5;
+                values[valuesById[6] = "SMART_SPEAKER"] = 6;
                 return values;
             })();
 
