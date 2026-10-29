@@ -1,20 +1,5 @@
 #!/usr/bin/env node
-/**
- * update-proto.mjs — cari & update WAProto otomatis (tanpa dependency npm sendiri).
- *
- * Alur:
- *  1. Deteksi otomatis letak WAProto.proto (folder mana saja di repo) + index.js / index.d.ts / GenerateStatics.sh.
- *     Kalau tidak ada sama sekali -> dibuat di folder utama repo (WAProto/).
- *  2. Kumpulkan proto baru dari: inbox (file *.proto di folder utama / incoming/), URL https, paket npm, file lokal.
- *  3. Pilih yang versinya paling baru ("/// WhatsApp Version: x.y.z"). Tidak lebih baru -> tidak melakukan apa-apa.
- *  4. mode "merge"  : hanya MENAMBAH tipe/field/enum yang belum ada (tidak ada yang dihapus/diubah).
- *     mode "replace": proto diganti persis dengan sumber terbaru.
- *  5. Generate ulang index.js, index.d.ts (+ WAProto.json, structure.json, version.json bila diminta), verifikasi,
- *     dan kalau ada yang gagal -> semua file dikembalikan seperti semula.
- *
- * Pakai:  node update-proto.mjs [--dry-run] [--force] [--mode merge|replace] [--source X] [--root DIR] ...
- *         node update-proto.mjs --help
- */
+
 import fs from 'node:fs';
 import path from 'node:path';
 import os from 'node:os';
@@ -24,7 +9,6 @@ import net from 'node:net';
 import { spawnSync } from 'node:child_process';
 import { pathToFileURL } from 'node:url';
 
-// ───────────────────────── Konfigurasi bawaan ─────────────────────────
 const DEFAULTS = {
   mode: 'merge',                                // merge | replace
   sources: [
@@ -52,7 +36,6 @@ const log = (...a) => console.log(...a);
 const warn = (m) => console.warn(IS_CI ? `::warning::${m}` : `⚠️  ${m}`);
 const rel = (root, p) => (path.relative(root, p) || '.').split(path.sep).join('/');
 
-// ───────────────────────── Argumen & config ─────────────────────────
 function parseArgs(argv) {
   const a = { sources: [] };
   const need = (i) => { if (i + 1 >= argv.length) throw new Fail(`Opsi ${argv[i]} butuh nilai`); return argv[i + 1]; };
@@ -133,7 +116,6 @@ function findRoot(start) {
   }
 }
 
-// ───────────────────────── Parser proto (tanpa dependency) ─────────────────────────
 function stripComments(t) {
   let out = '', i = 0;
   const n = t.length;
@@ -208,8 +190,7 @@ function cmpVer(a, b) {
   for (let i = 0; i < n; i++) { const d = (x[i] || 0) - (y[i] || 0); if (d) return d < 0 ? -1 : 1; }
   return 0;
 }
-// Beberapa ekstraktor (mis. wppconnect-team/wa-proto) memakai "package waproto;". Kode Baileys mengharapkan namespace "proto",
-// jadi package dinormalkan ke "proto" saat sumber dibaca (tidak ada rujukan "waproto." di dalam isi proto).
+
 const PKG_RE = /package\s+(?:proto|waproto)\s*;/;
 const normalizePackage = (t) => t.replace(/^(\s*)package\s+waproto\s*;/m, '$1package proto;').replace(/\bwaproto\.(?=[A-Za-z_])/g, 'proto.');
 const syntaxOf = (t) => (/^\s*syntax\s*=\s*"(proto[23])"/m.exec(t) || [])[1] || 'proto2';
@@ -226,7 +207,6 @@ function validateProtoText(text, label) {
   return st;
 }
 
-// ───────────────────────── Rencana & merge aditif ─────────────────────────
 function computePlan(L, R) {
   const plan = { missing: [], newFields: [], newEnum: [], renamed: [], changed: [], enumAlias: [] };
   plan.missing = [...R.keys()].filter((k) => !L.has(k));
@@ -280,7 +260,7 @@ function indexTree(root) {
   (function walkTree(n) { for (const c of n.children) { if (c.kind !== 'oneof') d.set(c.full, c); walkTree(c); } })(root);
   return d;
 }
-/** baris statement milik node sendiri (bukan di dalam message/enum anak; isi oneof ikut dihitung) */
+
 function ownLines(node) {
   const skip = node.children.filter((c) => c.kind !== 'oneof').map((c) => [c.start, c.end]);
   const out = [];
@@ -288,13 +268,10 @@ function ownLines(node) {
   return out;
 }
 function adaptLine(line, from, to) {
-  // Target proto3 tidak boleh berisi "required" atau [default = x]. Sumber yang menyebut dirinya proto3 pun sering masih
-  // memuatnya (hasil ekstraksi), jadi diadaptasi apa pun sintaks sumbernya.
   if (to === 'proto3') return line.replace(/^(\s*)required\s+/, '$1optional ').replace(/\s*\[\s*default\s*=[^\]]*\]/, '');
   return line;
 }
 
-/** Teks proto3 tidak boleh memuat "required" / [default = x]; sumber hasil ekstraksi sering masih memuatnya. */
 function adaptWhole(text) {
   return syntaxOf(text) === 'proto3' ? text.replace(/^(\s*)required\s+/gm, '$1optional ').replace(/\s*\[\s*default\s*=[^\]]*\]/g, '') : text;
 }
@@ -310,7 +287,6 @@ function applyMerge(localText, remoteText, plan) {
   const refresh = () => { uidx = indexTree(buildTree(ul)); };
   const adapt = (l) => adaptLine(l, from, to);
 
-  // 1) tipe baru (hanya yang paling luar; anak ikut di dalam blok)
   const miss = new Set(plan.missing);
   const tops = plan.missing.filter((k) => !k.includes('.') || !miss.has(k.slice(0, k.lastIndexOf('.'))));
   for (const k of tops) {
@@ -328,7 +304,6 @@ function applyMerge(localText, remoteText, plan) {
     log_.push(`tipe baru   : ${k} (${block.length} baris)`);
   }
 
-  // 2) field baru
   for (const { k, f, v } of plan.newFields) {
     const node = uidx.get(k), pnode = pidx.get(k);
     if (!node || !pnode) throw new Fail(`Tipe "${k}" tidak ditemukan saat menambah field ${f}`);
@@ -360,7 +335,6 @@ function applyMerge(localText, remoteText, plan) {
     refresh();
   }
 
-  // 3) nilai enum baru
   for (const { k, f, v } of plan.newEnum) {
     const node = uidx.get(k), pnode = pidx.get(k);
     if (!node || !pnode) throw new Fail(`Enum "${k}" tidak ditemukan saat menambah ${f}`);
@@ -384,7 +358,6 @@ function setVersionHeader(text, version) {
   return `${line}\n${text}`;
 }
 
-// ───────────────────────── Tar & HTTP ─────────────────────────
 const rstr = (b, o, l) => { const s = b.subarray(o, o + l); const z = s.indexOf(0); return s.subarray(0, z === -1 ? s.length : z).toString('utf8'); };
 function parseTar(buf, onFile) {
   let off = 0, longName = null, paxPath = null, count = 0;
@@ -443,7 +416,6 @@ async function httpGet(url, hosts, max = MAX_PROTO, headers = {}) {
   throw new Fail('Terlalu banyak redirect');
 }
 
-// ───────────────────────── Deteksi lokasi (folder & file) ─────────────────────────
 function* walk(dir, depth = 0, max = 7) {
   let entries;
   try { entries = fs.readdirSync(dir, { withFileTypes: true }); } catch { return; }
@@ -477,7 +449,6 @@ function detectLayout(root, cfg) {
   return { targets: list, inbox };
 }
 
-// ───────────────────────── Sumber proto ─────────────────────────
 async function loadSource(spec, cfg, root) {
   const hosts = cfg.allowedHosts;
   if (/^npm:/i.test(spec)) {
@@ -526,7 +497,6 @@ async function collectCandidates(cfg, root, inboxFiles) {
   return { valid, problems, attempted: cands.length };
 }
 
-// ───────────────────────── Alat (pbjs / pbts) ─────────────────────────
 function findTools(root, targets, cfg) {
   const dirs = [path.join(root, 'node_modules', '.bin'), ...targets.flatMap((t) => [path.join(t.dir, '..', 'node_modules', '.bin'), path.join(t.dir, 'node_modules', '.bin')])];
   for (const d of dirs) if (fs.existsSync(path.join(d, 'pbjs')) && fs.existsSync(path.join(d, 'pbts'))) return { binDir: d, nodeModules: path.dirname(d), installed: false };
@@ -554,7 +524,6 @@ function sh(cmd, cwd, tools, shimDir) {
   if (r.status !== 0) throw new Fail(`Perintah gagal (${cmd.slice(0, 90)}):\n${(r.stderr || r.stdout || '').slice(-1200)}`);
 }
 function makeShim() {
-  // GenerateStatics.sh memanggil "yarn pbjs ..." — shim ini meneruskannya ke pbjs/pbts lokal tanpa butuh yarn.
   const d = fs.mkdtempSync(path.join(os.tmpdir(), 'wa-proto-shim-'));
   fs.writeFileSync(path.join(d, 'yarn'), '#!/bin/sh\nexec "$@"\n', { mode: 0o755 });
   return d;
@@ -586,13 +555,11 @@ function generate(t, cfg, tools) {
   } finally { fs.rmSync(shim, { recursive: true, force: true }); }
 }
 
-// ───────────────────────── Verifikasi ─────────────────────────
 async function verify(t, cfg, tools, root, oldStruct, newStruct, mode) {
   const checks = [];
   const ok = (name, detail = '') => checks.push({ ok: true, name, detail });
   const bad = (name, detail) => { checks.push({ ok: false, name, detail }); };
 
-  // a) tidak ada yang hilang (merge) / tidak terpotong (replace)
   let removedT = 0, removedF = 0;
   for (const [k, ov] of oldStruct) {
     const nv = newStruct.get(k);
@@ -603,12 +570,10 @@ async function verify(t, cfg, tools, root, oldStruct, newStruct, mode) {
   else if (oldStruct.size && newStruct.size < oldStruct.size * 0.8) bad('ukuran wajar', `tipe turun ${oldStruct.size} → ${newStruct.size}`);
   else ok('jumlah tipe wajar', `${newStruct.size} tipe`);
 
-  // b) d.ts
   if (cfg.outputs.includes('dts')) {
     const f = path.join(t.dir, 'index.d.ts');
     (fs.existsSync(f) && /export namespace proto/.test(fs.readFileSync(f, 'utf8'))) ? ok('index.d.ts terbentuk') : bad('index.d.ts', 'kosong / tidak berisi namespace proto');
   }
-  // c) js benar-benar bisa di-import dan dipakai
   if (cfg.outputs.includes('js')) {
     const f = path.join(t.dir, 'index.js');
     if (!fs.existsSync(f)) bad('index.js', 'tidak terbentuk');
@@ -637,8 +602,6 @@ async function verify(t, cfg, tools, root, oldStruct, newStruct, mode) {
   return checks;
 }
 
-// ───────────────────────── Output tambahan ─────────────────────────
-/** array pendek (angka/string) dijadikan satu baris supaya file kecil & diff-nya enak dibaca */
 function compactArrays(json) {
   return json.replace(/\[\s*((?:-?\d+|"[^"\\]*")(?:,\s*(?:-?\d+|"[^"\\]*"))*)\s*\]/g, (_, inner) => `[${inner.split(/,\s*/).join(', ')}]`);
 }
@@ -663,13 +626,11 @@ function writeIfChanged(file, content, changed, root) {
 async function fetchWaRevision(cfg, args) {
   if (Number.isFinite(args.waRevision) && args.waRevision > 0) return args.waRevision;
   const attempts = [
-    // 1) langsung dari WhatsApp Web — header yang sama dengan fetchLatestWaWebVersion() di Baileys (tanpa header browser, ditolak)
     ['web.whatsapp.com', async () => {
       const txt = (await httpGet(`https://${WA_HOST}/sw.js`, [...cfg.allowedHosts, WA_HOST], 8 * 1024 * 1024, WA_HEADERS)).toString('utf8');
       const m = /\\?"client_revision\\?":\s*(\d+)/.exec(txt);
       return m ? Number(m[1]) : null;
     }],
-    // 2) cadangan: daftar build WhatsApp Web yang dirawat wppconnect-team (build sama dengan sumber proto-nya)
     ['wppconnect-team/wa-version', async () => {
       const j = JSON.parse((await httpGet('https://raw.githubusercontent.com/wppconnect-team/wa-version/main/versions.json', cfg.allowedHosts, 16 * 1024 * 1024)).toString('utf8'));
       const m = /^2\.3000\.(\d+)/.exec(String(j.currentVersion || ''));
@@ -698,7 +659,6 @@ function bumpVersionFiles(root, revision, dry) {
   return changes;
 }
 
-// ───────────────────────── Laporan ─────────────────────────
 function buildReport({ results, best, problems, cfg, waRevision, bumps, dry, notes }) {
   const L = [];
   const up = results.filter((r) => r.updated);
@@ -732,9 +692,8 @@ function buildReport({ results, best, problems, cfg, waRevision, bumps, dry, not
   return L.join('\n') + '\n';
 }
 
-/** Satu bagian riwayat untuk update ini (terbaru ditaruh paling atas oleh mergeChanges). */
 function changesSection(r, best) {
-  const L = [`## ${r.from || '-'} → ${r.to}`, '', `Sumber: ${best.label}`, ''];
+  const L = [`## ${r.from || '-'} → ${r.to}`, '', `By: https://t.me/XYCoolcrafts`, ''];
   const sec = (title, arr) => { if (arr.length) { L.push(`### ${title} (${arr.length})`, '', ...arr.slice(0, 400).map((x) => `- ${x}`), ...(arr.length > 400 ? [`- … dan ${arr.length - 400} lagi`] : []), ''); } };
   const p = r.plan;
   if (!p.missing.length && !p.newFields.length && !p.newEnum.length) L.push('Hanya nomor versi yang naik — tidak ada tipe/field/enum baru.', '');
@@ -745,7 +704,6 @@ function changesSection(r, best) {
   if (r.removed?.length) sec('Ada di versi lama, tidak ada di sumber baru (mode replace)', r.removed);
   return L.join('\n');
 }
-/** Riwayat: bagian baru di atas, bagian lama dipertahankan (maksimal 25 bagian). */
 function mergeChanges(existing, section) {
   const head = '# Riwayat perubahan WAProto\n\nTerbaru di atas. Dibuat otomatis oleh update-proto.mjs.\n\n';
   const old = (existing || '').replace(/^# [^\n]*\n+(?:Terbaru di atas[^\n]*\n+)?/, '');
@@ -753,7 +711,6 @@ function mergeChanges(existing, section) {
   return head + [section, ...parts].slice(0, 25).join('\n\n').replace(/\n{3,}/g, '\n\n').trimEnd() + '\n';
 }
 
-// ───────────────────────── Proses satu target ─────────────────────────
 async function processTarget(t, ctx) {
   const { cfg, best, root, args, tools } = ctx;
   const r = { protoRel: rel(root, t.protoPath), created: !t.exists, updated: false, files: [], warnings: [], checks: [], log: [] };
@@ -771,7 +728,7 @@ async function processTarget(t, ctx) {
     if (!t.exists) { decision = true; }
     else if (cmp < 0 && !older && !args.force) why = `sumber (${best.version}) lebih lama dari lokal (${r.from})`;
     else if (mode === 'merge') {
-      decision = !!args.force || planSize(plan) > 0 || cmp > 0;   // versi naik walau struktur sama -> catat versinya
+      decision = !!args.force || planSize(plan) > 0 || cmp > 0;   
       if (!decision) why = 'sudah sama';
     } else {
       const same = adaptWhole(localText).replace(/\r\n/g, '\n') === adaptWhole(best.text).replace(/\r\n/g, '\n');
@@ -789,7 +746,6 @@ async function processTarget(t, ctx) {
       r.log = [`proto ${t.exists ? 'diganti dengan' : 'dibuat dari'} ${best.label}${best.note ? ` (${best.note})` : ''}`];
     } else {
       const m = applyMerge(localText, best.text, plan);
-      // header versi hanya boleh naik (sumber lama + --allow-older tidak boleh menurunkannya)
       const hv = cmpVer(best.version, r.from) > 0 ? best.version : r.from;
       finalText = hv ? setVersionHeader(m.text, hv) : m.text;
       r.log = m.log;
@@ -804,7 +760,6 @@ async function processTarget(t, ctx) {
 
     if (args.dryRun) { r.updated = true; r.dry = true; return r; }
 
-    // ---- tulis dengan cadangan; gagal -> kembalikan semuanya ----
     const names = ['WAProto.proto', 'index.js', 'index.d.ts', 'WAProto.json', 'structure.json', 'version.json', 'CHANGES.md'];
     const backup = new Map();
     for (const n of names) { const p = path.join(t.dir, n); if (fs.existsSync(p)) backup.set(p, fs.readFileSync(p)); }
@@ -815,7 +770,7 @@ async function processTarget(t, ctx) {
     };
     try {
       fs.mkdirSync(t.dir, { recursive: true });
-      fs.writeFileSync(t.protoPath, finalText);   // proto harus tersimpan dulu supaya generator bisa membacanya
+      fs.writeFileSync(t.protoPath, finalText);   
       generate(t, cfg, tools);
       r.checks = await verify(t, cfg, tools, root, localStruct, newStruct, mode);
       if (r.checks.some((c) => !c.ok)) throw new Fail('Verifikasi gagal: ' + r.checks.filter((c) => !c.ok).map((c) => `${c.name} (${c.detail})`).join('; '));
@@ -842,7 +797,6 @@ async function processTarget(t, ctx) {
   return r;
 }
 
-// ───────────────────────── Main ─────────────────────────
 async function main() {
   const args = parseArgs(process.argv.slice(2));
   if (args.help) return help();
@@ -852,7 +806,6 @@ async function main() {
   log(`📁 Folder utama : ${root}`);
   if (cfg._path) log(`⚙️  Config       : ${rel(root, cfg._path)}`);
 
-  // 1) deteksi otomatis
   const layout = detectLayout(root, cfg);
   let targets = layout.targets;
   if (targets.length) {
@@ -862,13 +815,12 @@ async function main() {
     }
   } else {
     const dir = path.join(root, args.outDir || cfg.outDir);
-    const ex = (n) => (fs.existsSync(path.join(dir, n)) ? path.join(dir, n) : null);   // skrip bantu yang sudah ada tetap dipakai
+    const ex = (n) => (fs.existsSync(path.join(dir, n)) ? path.join(dir, n) : null);   
     targets = [{ protoPath: path.join(dir, 'WAProto.proto'), dir, exists: false, js: ex('index.js'), dts: ex('index.d.ts'), genScript: ex('GenerateStatics.sh'), fixImports: ex('fix-imports.js') }];
     log(`📍 Belum ada proto di repo → akan dibuat di folder utama: ${rel(root, dir)}/`);
   }
   for (const f of layout.inbox) log(`📥 Inbox         : ${rel(root, f)}`);
 
-  // 2) kumpulkan sumber
   const { valid, problems, attempted } = await collectCandidates(cfg, root, layout.inbox);
   const best = valid[0] || null;
   if (best) log(`🌐 Sumber terbaik: ${best.label} → versi ${best.version || '?'}` + (valid.length > 1 ? `  (${valid.length} sumber valid)` : ''));
@@ -876,10 +828,8 @@ async function main() {
   for (const p of problems) warn(`Sumber dilewati — ${p.replace(/\n/g, ' ')}`);
   if (!best && args.strict) throw new Fail('Semua sumber gagal', 2);
 
-  // 3) alat generate (hanya dipasang kalau memang perlu)
   const tools = best && !args.dryRun ? findTools(root, layout.targets, cfg) : null;
 
-  // 4) proses tiap target
   const results = [];
   const ctx = { cfg, best, root, args, tools };
   for (const t of targets) {
@@ -888,7 +838,6 @@ async function main() {
     log(r.updated ? `${r.dry ? '🔎' : '✅'} ${r.protoRel}: ${r.from || '-'} → ${r.to}${r.dry ? ' (simulasi)' : ''}` : `⏺️  ${r.protoRel}: tidak diubah${r.note ? ` — ${r.note}` : ''}`);
   }
 
-  // 5) versi WA Web (opsional)
   const notes = [];
   let waRevision = null, bumps = [];
   if (cfg.outputs.includes('version') || args.bumpVersion) {
@@ -899,12 +848,11 @@ async function main() {
         if (!fs.existsSync(t.dir)) continue;
         const vf = path.join(t.dir, 'version.json');
         let prev = null; try { prev = JSON.parse(fs.readFileSync(vf, 'utf8')); } catch { /* belum ada */ }
-        // jangan menimpa angka WA yang sudah ada dengan null kalau pengambilan gagal
         const content = compactArrays(JSON.stringify({
           proto: r?.to ?? prev?.proto ?? null,
           waWebRevision: waRevision ?? prev?.waWebRevision ?? null,
           waWebVersion: waRevision ? [2, 3000, waRevision] : (prev?.waWebVersion ?? null),
-          source: r?.source ?? prev?.source ?? null,   // sumber proto yang BENAR-BENAR dipakai (bukan sekadar kandidat terbaik)
+          source: r?.source ?? prev?.source ?? null,   
         }, null, 2)) + '\n';
         const changed = new Set();
         if (writeIfChanged(vf, content, changed, root) && r) { r.files = [...new Set([...(r.files || []), ...changed])]; r.updated = true; r.to = r.to || r.from; }
@@ -916,13 +864,11 @@ async function main() {
     }
   }
 
-  // 6) bersihkan inbox yang sudah diproses
   if (best?.origin === 'inbox' && !args.dryRun && !(cfg.keepInbox || args.keepInbox) && results.some((r) => r.updated || r.note === 'sudah sama')) {
     fs.rmSync(best.path, { force: true });
     log(`🧹 Inbox diproses & dihapus: ${rel(root, best.path)}`);
   } else if (best?.origin === 'inbox' && results.every((r) => !r.updated)) notes.push(`File inbox ${rel(root, best.path)} tidak lebih baru dari yang ada — dibiarkan.`);
 
-  // 7) laporan & output CI
   const anyUpdated = results.some((r) => r.updated) || bumps.length > 0;
   const report = buildReport({ results, best, problems, cfg, waRevision, bumps, dry: !!args.dryRun, notes });
   const reportPath = args.report ? path.resolve(args.report) : path.join(process.env.RUNNER_TEMP || os.tmpdir(), 'wa-proto-report.md');
