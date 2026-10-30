@@ -20050,6 +20050,8 @@ export namespace proto {
             artworkMediaKey?: (Uint8Array|null);
             consumptionCheckedAtS?: (number|Long|null);
             isAvailableForConsumption?: (boolean|null);
+            lyrics: proto.MsgOpaqueData.MusicData.LyricsLine.$Properties[];
+            lyricsConfirmedAtS?: (number|Long|null);
             static create(properties: proto.MsgOpaqueData.MusicData.$Shape): proto.MsgOpaqueData.MusicData & proto.MsgOpaqueData.MusicData.$Shape;
             static create(properties?: proto.MsgOpaqueData.MusicData.$Properties): proto.MsgOpaqueData.MusicData;
             static encode(m: proto.MsgOpaqueData.MusicData.$Properties, w?: $protobuf.Writer): $protobuf.Writer;
@@ -20080,9 +20082,73 @@ export namespace proto {
                 artworkMediaKey?: (Uint8Array|null);
                 consumptionCheckedAtS?: (number|Long|null);
                 isAvailableForConsumption?: (boolean|null);
+                lyrics?: (proto.MsgOpaqueData.MusicData.LyricsLine.$Properties[]|null);
+                lyricsConfirmedAtS?: (number|Long|null);
                 $unknowns?: Uint8Array[];
             }
             type $Shape = proto.MsgOpaqueData.MusicData.$Properties;
+
+            interface ILyricsLine extends proto.MsgOpaqueData.MusicData.LyricsLine.$Properties {
+            }
+
+            class LyricsLine {
+                constructor(p?: proto.MsgOpaqueData.MusicData.LyricsLine.$Properties);
+                $unknowns?: Uint8Array[];
+                startTimeMs?: (number|null);
+                endTimeMs?: (number|null);
+                text?: (string|null);
+                wordOffsets: proto.MsgOpaqueData.MusicData.LyricsLine.WordOffset.$Properties[];
+                static create(properties: proto.MsgOpaqueData.MusicData.LyricsLine.$Shape): proto.MsgOpaqueData.MusicData.LyricsLine & proto.MsgOpaqueData.MusicData.LyricsLine.$Shape;
+                static create(properties?: proto.MsgOpaqueData.MusicData.LyricsLine.$Properties): proto.MsgOpaqueData.MusicData.LyricsLine;
+                static encode(m: proto.MsgOpaqueData.MusicData.LyricsLine.$Properties, w?: $protobuf.Writer): $protobuf.Writer;
+                static decode(r: ($protobuf.Reader|Uint8Array), l?: number): proto.MsgOpaqueData.MusicData.LyricsLine & proto.MsgOpaqueData.MusicData.LyricsLine.$Shape;
+                static fromObject(d: { [k: string]: any }): proto.MsgOpaqueData.MusicData.LyricsLine;
+                static toObject(m: proto.MsgOpaqueData.MusicData.LyricsLine, o?: $protobuf.IConversionOptions): { [k: string]: any };
+                toJSON(): { [k: string]: any };
+                static getTypeUrl(prefix?: string): string;
+            }
+
+            namespace LyricsLine {
+                interface $Properties {
+                    startTimeMs?: (number|null);
+                    endTimeMs?: (number|null);
+                    text?: (string|null);
+                    wordOffsets?: (proto.MsgOpaqueData.MusicData.LyricsLine.WordOffset.$Properties[]|null);
+                    $unknowns?: Uint8Array[];
+                }
+                type $Shape = proto.MsgOpaqueData.MusicData.LyricsLine.$Properties;
+
+                interface IWordOffset extends proto.MsgOpaqueData.MusicData.LyricsLine.WordOffset.$Properties {
+                }
+
+                class WordOffset {
+                    constructor(p?: proto.MsgOpaqueData.MusicData.LyricsLine.WordOffset.$Properties);
+                    $unknowns?: Uint8Array[];
+                    startIndex?: (number|null);
+                    endIndex?: (number|null);
+                    startOffsetMs?: (number|null);
+                    endOffsetMs?: (number|null);
+                    static create(properties: proto.MsgOpaqueData.MusicData.LyricsLine.WordOffset.$Shape): proto.MsgOpaqueData.MusicData.LyricsLine.WordOffset & proto.MsgOpaqueData.MusicData.LyricsLine.WordOffset.$Shape;
+                    static create(properties?: proto.MsgOpaqueData.MusicData.LyricsLine.WordOffset.$Properties): proto.MsgOpaqueData.MusicData.LyricsLine.WordOffset;
+                    static encode(m: proto.MsgOpaqueData.MusicData.LyricsLine.WordOffset.$Properties, w?: $protobuf.Writer): $protobuf.Writer;
+                    static decode(r: ($protobuf.Reader|Uint8Array), l?: number): proto.MsgOpaqueData.MusicData.LyricsLine.WordOffset & proto.MsgOpaqueData.MusicData.LyricsLine.WordOffset.$Shape;
+                    static fromObject(d: { [k: string]: any }): proto.MsgOpaqueData.MusicData.LyricsLine.WordOffset;
+                    static toObject(m: proto.MsgOpaqueData.MusicData.LyricsLine.WordOffset, o?: $protobuf.IConversionOptions): { [k: string]: any };
+                    toJSON(): { [k: string]: any };
+                    static getTypeUrl(prefix?: string): string;
+                }
+
+                namespace WordOffset {
+                    interface $Properties {
+                        startIndex?: (number|null);
+                        endIndex?: (number|null);
+                        startOffsetMs?: (number|null);
+                        endOffsetMs?: (number|null);
+                        $unknowns?: Uint8Array[];
+                    }
+                    type $Shape = proto.MsgOpaqueData.MusicData.LyricsLine.WordOffset.$Properties;
+                }
+            }
         }
 
         enum PollContentType {

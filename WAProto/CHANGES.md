@@ -2,6 +2,20 @@
 
 Terbaru di atas. Dibuat otomatis oleh update-proto.mjs.
 
+## 2.3000.1052191878 → 2.3000.1052289812
+
+By: https://t.me/XYCoolcrafts
+
+### Tipe baru (2)
+
+- MsgOpaqueData.MusicData.LyricsLine
+- MsgOpaqueData.MusicData.LyricsLine.WordOffset
+
+### Field baru (2)
+
+- MsgOpaqueData.MusicData.lyrics = 19
+- MsgOpaqueData.MusicData.lyricsConfirmedAtS = 20
+
 ## 2.3000.1052070306 → 2.3000.1052191878
 
 By: https://t.me/XYCoolcrafts

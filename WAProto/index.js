@@ -127527,6 +127527,7 @@ export const proto = $root.proto = (() => {
         MsgOpaqueData.MusicData = (function() {
 
             const MusicData = function (p) {
+                this.lyrics = [];
                 if (p)
                     for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
                         if (p[ks[i]] != null && ks[i] !== "__proto__")
@@ -127551,6 +127552,8 @@ export const proto = $root.proto = (() => {
             MusicData.prototype.artworkMediaKey = null;
             MusicData.prototype.consumptionCheckedAtS = null;
             MusicData.prototype.isAvailableForConsumption = null;
+            MusicData.prototype.lyrics = $util.emptyArray;
+            MusicData.prototype.lyricsConfirmedAtS = null;
 
             let $oneOfFields;
 
@@ -127662,6 +127665,12 @@ export const proto = $root.proto = (() => {
                 set: $util.oneOfSetter($oneOfFields)
             });
 
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(MusicData.prototype, "_lyricsConfirmedAtS", {
+                get: $util.oneOfGetter($oneOfFields = ["lyricsConfirmedAtS"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
             MusicData.create = function(properties) {
                 return new MusicData(properties);
             };
@@ -127709,6 +127718,12 @@ export const proto = $root.proto = (() => {
                     w.uint32(136).int64(m.consumptionCheckedAtS);
                 if (m.isAvailableForConsumption != null && $Object.hasOwnProperty.call(m, "isAvailableForConsumption"))
                     w.uint32(144).bool(m.isAvailableForConsumption);
+                if (m.lyrics != null && m.lyrics.length) {
+                    for (var i = 0; i < m.lyrics.length; ++i)
+                        $root.proto.MsgOpaqueData.MusicData.LyricsLine.encode(m.lyrics[i], w.uint32(154).fork(), q + 1).ldelim();
+                }
+                if (m.lyricsConfirmedAtS != null && $Object.hasOwnProperty.call(m, "lyricsConfirmedAtS"))
+                    w.uint32(160).int64(m.lyricsConfirmedAtS);
                 if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                     for (var i = 0; i < m.$unknowns.length; ++i)
                         w.raw(m.$unknowns[i]);
@@ -127868,6 +127883,21 @@ export const proto = $root.proto = (() => {
                             m._isAvailableForConsumption = "isAvailableForConsumption";
                             continue;
                         }
+                    case 19: {
+                            if (u !== 2)
+                                break;
+                            if (!(m.lyrics && m.lyrics.length))
+                                m.lyrics = [];
+                            m.lyrics.push($root.proto.MsgOpaqueData.MusicData.LyricsLine.decode(r, r.size(), $undefined, q + 1));
+                            continue;
+                        }
+                    case 20: {
+                            if (u !== 0)
+                                break;
+                            m.lyricsConfirmedAtS = r.int64();
+                            m._lyricsConfirmedAtS = "lyricsConfirmedAtS";
+                            continue;
+                        }
                     }
                     r.skipType(u, q, t);
                     if (!r.discardUnknown) {
@@ -127968,6 +127998,26 @@ export const proto = $root.proto = (() => {
                 if (d.isAvailableForConsumption != null) {
                     m.isAvailableForConsumption = $Boolean(d.isAvailableForConsumption);
                 }
+                if (d.lyrics) {
+                    if (!$Array.isArray(d.lyrics))
+                        throw $TypeError(".proto.MsgOpaqueData.MusicData.lyrics: array expected");
+                    m.lyrics = $Array(d.lyrics.length);
+                    for (var i = 0; i < d.lyrics.length; ++i) {
+                        if (!$util.isObject(d.lyrics[i]))
+                            throw $TypeError(".proto.MsgOpaqueData.MusicData.lyrics: object expected");
+                        m.lyrics[i] = $root.proto.MsgOpaqueData.MusicData.LyricsLine.fromObject(d.lyrics[i], q + 1);
+                    }
+                }
+                if (d.lyricsConfirmedAtS != null) {
+                    if ($util.Long)
+                        m.lyricsConfirmedAtS = $util.Long.fromValue(d.lyricsConfirmedAtS, false);
+                    else if (typeof d.lyricsConfirmedAtS === "string")
+                        m.lyricsConfirmedAtS = $parseInt(d.lyricsConfirmedAtS, 10);
+                    else if (typeof d.lyricsConfirmedAtS === "number")
+                        m.lyricsConfirmedAtS = d.lyricsConfirmedAtS;
+                    else if (typeof d.lyricsConfirmedAtS === "object")
+                        m.lyricsConfirmedAtS = new $util.LongBits(d.lyricsConfirmedAtS.low >>> 0, d.lyricsConfirmedAtS.high >>> 0).toNumber();
+                }
                 return m;
             };
 
@@ -127979,6 +128029,9 @@ export const proto = $root.proto = (() => {
                 if (q > $util.recursionLimit)
                     throw $Error("max depth exceeded");
                 var d = {};
+                if (o.arrays || o.defaults) {
+                    d.lyrics = [];
+                }
                 if (m.musicContentMediaId != null && $Object.hasOwnProperty.call(m, "musicContentMediaId")) {
                     d.musicContentMediaId = m.musicContentMediaId;
                 }
@@ -128038,6 +128091,20 @@ export const proto = $root.proto = (() => {
                 if (m.isAvailableForConsumption != null && $Object.hasOwnProperty.call(m, "isAvailableForConsumption")) {
                     d.isAvailableForConsumption = m.isAvailableForConsumption;
                 }
+                if (m.lyrics && m.lyrics.length) {
+                    d.lyrics = $Array(m.lyrics.length);
+                    for (var j = 0; j < m.lyrics.length; ++j) {
+                        d.lyrics[j] = $root.proto.MsgOpaqueData.MusicData.LyricsLine.toObject(m.lyrics[j], o, q + 1);
+                    }
+                }
+                if (m.lyricsConfirmedAtS != null && $Object.hasOwnProperty.call(m, "lyricsConfirmedAtS")) {
+                    if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
+                        d.lyricsConfirmedAtS = typeof m.lyricsConfirmedAtS === "number" ? $BigInt(m.lyricsConfirmedAtS) : $util.Long.fromBits(m.lyricsConfirmedAtS.low >>> 0, m.lyricsConfirmedAtS.high >>> 0, false).toBigInt();
+                    else if (typeof m.lyricsConfirmedAtS === "number")
+                        d.lyricsConfirmedAtS = o.longs === $String ? $String(m.lyricsConfirmedAtS) : m.lyricsConfirmedAtS;
+                    else
+                        d.lyricsConfirmedAtS = o.longs === $String ? $util.Long.prototype.toString.call(m.lyricsConfirmedAtS) : o.longs === $Number ? new $util.LongBits(m.lyricsConfirmedAtS.low >>> 0, m.lyricsConfirmedAtS.high >>> 0).toNumber() : m.lyricsConfirmedAtS;
+                }
                 return d;
             };
 
@@ -128050,6 +128117,413 @@ export const proto = $root.proto = (() => {
                     prefix = "type.googleapis.com";
                 return prefix + "/proto.MsgOpaqueData.MusicData";
             };
+
+            MusicData.LyricsLine = (function() {
+
+                const LyricsLine = function (p) {
+                    this.wordOffsets = [];
+                    if (p)
+                        for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                            if (p[ks[i]] != null && ks[i] !== "__proto__")
+                                this[ks[i]] = p[ks[i]];
+                };
+
+                LyricsLine.prototype.startTimeMs = null;
+                LyricsLine.prototype.endTimeMs = null;
+                LyricsLine.prototype.text = null;
+                LyricsLine.prototype.wordOffsets = $util.emptyArray;
+
+                let $oneOfFields;
+
+                // Virtual OneOf for proto3 optional field
+                $Object.defineProperty(LyricsLine.prototype, "_startTimeMs", {
+                    get: $util.oneOfGetter($oneOfFields = ["startTimeMs"]),
+                    set: $util.oneOfSetter($oneOfFields)
+                });
+
+                // Virtual OneOf for proto3 optional field
+                $Object.defineProperty(LyricsLine.prototype, "_endTimeMs", {
+                    get: $util.oneOfGetter($oneOfFields = ["endTimeMs"]),
+                    set: $util.oneOfSetter($oneOfFields)
+                });
+
+                // Virtual OneOf for proto3 optional field
+                $Object.defineProperty(LyricsLine.prototype, "_text", {
+                    get: $util.oneOfGetter($oneOfFields = ["text"]),
+                    set: $util.oneOfSetter($oneOfFields)
+                });
+
+                LyricsLine.create = function(properties) {
+                    return new LyricsLine(properties);
+                };
+
+                LyricsLine.encode = function (m, w, q) {
+                    if (!w)
+                        w = $Writer.create();
+                    if (q === $undefined)
+                        q = 0;
+                    if (q > $util.recursionLimit)
+                        throw $Error("max depth exceeded");
+                    if (m.startTimeMs != null && $Object.hasOwnProperty.call(m, "startTimeMs"))
+                        w.uint32(8).int32(m.startTimeMs);
+                    if (m.endTimeMs != null && $Object.hasOwnProperty.call(m, "endTimeMs"))
+                        w.uint32(16).int32(m.endTimeMs);
+                    if (m.text != null && $Object.hasOwnProperty.call(m, "text"))
+                        w.uint32(26).string(m.text);
+                    if (m.wordOffsets != null && m.wordOffsets.length) {
+                        for (var i = 0; i < m.wordOffsets.length; ++i)
+                            $root.proto.MsgOpaqueData.MusicData.LyricsLine.WordOffset.encode(m.wordOffsets[i], w.uint32(34).fork(), q + 1).ldelim();
+                    }
+                    if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                        for (var i = 0; i < m.$unknowns.length; ++i)
+                            w.raw(m.$unknowns[i]);
+                    return w;
+                };
+
+                LyricsLine.decode = function (r, l, z, q, g) {
+                    if (!(r instanceof $Reader))
+                        r = $Reader.create(r);
+                    if (q === $undefined)
+                        q = 0;
+                    if (q > $Reader.recursionLimit)
+                        throw $Error("max depth exceeded");
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.proto.MsgOpaqueData.MusicData.LyricsLine();
+                    while (r.pos < c) {
+                        var s = r.pos;
+                        var t = r.tag();
+                        if (t === z) {
+                            z = $undefined;
+                            break;
+                        }
+                        var u = t & 7;
+                        switch (t >>>= 3) {
+                        case 1: {
+                                if (u !== 0)
+                                    break;
+                                m.startTimeMs = r.int32();
+                                m._startTimeMs = "startTimeMs";
+                                continue;
+                            }
+                        case 2: {
+                                if (u !== 0)
+                                    break;
+                                m.endTimeMs = r.int32();
+                                m._endTimeMs = "endTimeMs";
+                                continue;
+                            }
+                        case 3: {
+                                if (u !== 2)
+                                    break;
+                                m.text = r.stringVerify();
+                                m._text = "text";
+                                continue;
+                            }
+                        case 4: {
+                                if (u !== 2)
+                                    break;
+                                if (!(m.wordOffsets && m.wordOffsets.length))
+                                    m.wordOffsets = [];
+                                m.wordOffsets.push($root.proto.MsgOpaqueData.MusicData.LyricsLine.WordOffset.decode(r, r.size(), $undefined, q + 1));
+                                continue;
+                            }
+                        }
+                        r.skipType(u, q, t);
+                        if (!r.discardUnknown) {
+                            $util.makeProp(m, "$unknowns", false);
+                            (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                        }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
+                    }
+                    if (z !== $undefined)
+                        throw $Error("missing end group");
+                    return m;
+                };
+
+                LyricsLine.fromObject = function (d, q) {
+                    if (d instanceof $root.proto.MsgOpaqueData.MusicData.LyricsLine)
+                        return d;
+                    if (!$util.isObject(d))
+                        throw $TypeError(".proto.MsgOpaqueData.MusicData.LyricsLine: object expected");
+                    if (q === $undefined)
+                        q = 0;
+                    if (q > $util.recursionLimit)
+                        throw $Error("max depth exceeded");
+                    var m = new $root.proto.MsgOpaqueData.MusicData.LyricsLine();
+                    if (d.startTimeMs != null) {
+                        m.startTimeMs = d.startTimeMs | 0;
+                    }
+                    if (d.endTimeMs != null) {
+                        m.endTimeMs = d.endTimeMs | 0;
+                    }
+                    if (d.text != null) {
+                        m.text = $String(d.text);
+                    }
+                    if (d.wordOffsets) {
+                        if (!$Array.isArray(d.wordOffsets))
+                            throw $TypeError(".proto.MsgOpaqueData.MusicData.LyricsLine.wordOffsets: array expected");
+                        m.wordOffsets = $Array(d.wordOffsets.length);
+                        for (var i = 0; i < d.wordOffsets.length; ++i) {
+                            if (!$util.isObject(d.wordOffsets[i]))
+                                throw $TypeError(".proto.MsgOpaqueData.MusicData.LyricsLine.wordOffsets: object expected");
+                            m.wordOffsets[i] = $root.proto.MsgOpaqueData.MusicData.LyricsLine.WordOffset.fromObject(d.wordOffsets[i], q + 1);
+                        }
+                    }
+                    return m;
+                };
+
+                LyricsLine.toObject = function (m, o, q) {
+                    if (!o)
+                        o = {};
+                    if (q === $undefined)
+                        q = 0;
+                    if (q > $util.recursionLimit)
+                        throw $Error("max depth exceeded");
+                    var d = {};
+                    if (o.arrays || o.defaults) {
+                        d.wordOffsets = [];
+                    }
+                    if (m.startTimeMs != null && $Object.hasOwnProperty.call(m, "startTimeMs")) {
+                        d.startTimeMs = m.startTimeMs;
+                    }
+                    if (m.endTimeMs != null && $Object.hasOwnProperty.call(m, "endTimeMs")) {
+                        d.endTimeMs = m.endTimeMs;
+                    }
+                    if (m.text != null && $Object.hasOwnProperty.call(m, "text")) {
+                        d.text = m.text;
+                    }
+                    if (m.wordOffsets && m.wordOffsets.length) {
+                        d.wordOffsets = $Array(m.wordOffsets.length);
+                        for (var j = 0; j < m.wordOffsets.length; ++j) {
+                            d.wordOffsets[j] = $root.proto.MsgOpaqueData.MusicData.LyricsLine.WordOffset.toObject(m.wordOffsets[j], o, q + 1);
+                        }
+                    }
+                    return d;
+                };
+
+                LyricsLine.prototype.toJSON = function() {
+                    return LyricsLine.toObject(this, $protobuf.util.toJSONOptions);
+                };
+
+                LyricsLine.getTypeUrl = function(prefix) {
+                    if (prefix === $undefined)
+                        prefix = "type.googleapis.com";
+                    return prefix + "/proto.MsgOpaqueData.MusicData.LyricsLine";
+                };
+
+                LyricsLine.WordOffset = (function() {
+
+                    const WordOffset = function (p) {
+                        if (p)
+                            for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                                if (p[ks[i]] != null && ks[i] !== "__proto__")
+                                    this[ks[i]] = p[ks[i]];
+                    };
+
+                    WordOffset.prototype.startIndex = null;
+                    WordOffset.prototype.endIndex = null;
+                    WordOffset.prototype.startOffsetMs = null;
+                    WordOffset.prototype.endOffsetMs = null;
+
+                    let $oneOfFields;
+
+                    // Virtual OneOf for proto3 optional field
+                    $Object.defineProperty(WordOffset.prototype, "_startIndex", {
+                        get: $util.oneOfGetter($oneOfFields = ["startIndex"]),
+                        set: $util.oneOfSetter($oneOfFields)
+                    });
+
+                    // Virtual OneOf for proto3 optional field
+                    $Object.defineProperty(WordOffset.prototype, "_endIndex", {
+                        get: $util.oneOfGetter($oneOfFields = ["endIndex"]),
+                        set: $util.oneOfSetter($oneOfFields)
+                    });
+
+                    // Virtual OneOf for proto3 optional field
+                    $Object.defineProperty(WordOffset.prototype, "_startOffsetMs", {
+                        get: $util.oneOfGetter($oneOfFields = ["startOffsetMs"]),
+                        set: $util.oneOfSetter($oneOfFields)
+                    });
+
+                    // Virtual OneOf for proto3 optional field
+                    $Object.defineProperty(WordOffset.prototype, "_endOffsetMs", {
+                        get: $util.oneOfGetter($oneOfFields = ["endOffsetMs"]),
+                        set: $util.oneOfSetter($oneOfFields)
+                    });
+
+                    WordOffset.create = function(properties) {
+                        return new WordOffset(properties);
+                    };
+
+                    WordOffset.encode = function (m, w, q) {
+                        if (!w)
+                            w = $Writer.create();
+                        if (q === $undefined)
+                            q = 0;
+                        if (q > $util.recursionLimit)
+                            throw $Error("max depth exceeded");
+                        if (m.startIndex != null && $Object.hasOwnProperty.call(m, "startIndex"))
+                            w.uint32(8).int32(m.startIndex);
+                        if (m.endIndex != null && $Object.hasOwnProperty.call(m, "endIndex"))
+                            w.uint32(16).int32(m.endIndex);
+                        if (m.startOffsetMs != null && $Object.hasOwnProperty.call(m, "startOffsetMs"))
+                            w.uint32(24).int32(m.startOffsetMs);
+                        if (m.endOffsetMs != null && $Object.hasOwnProperty.call(m, "endOffsetMs"))
+                            w.uint32(32).int32(m.endOffsetMs);
+                        if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                            for (var i = 0; i < m.$unknowns.length; ++i)
+                                w.raw(m.$unknowns[i]);
+                        return w;
+                    };
+
+                    WordOffset.decode = function (r, l, z, q, g) {
+                        if (!(r instanceof $Reader))
+                            r = $Reader.create(r);
+                        if (q === $undefined)
+                            q = 0;
+                        if (q > $Reader.recursionLimit)
+                            throw $Error("max depth exceeded");
+                        var c, m;
+                        if (l === $undefined)
+                            c = r.len;
+                        else {
+                            c = r.pos + l;
+                            if (c > r.len)
+                                throw $RangeError("index out of range");
+                            l = r.len;
+                            r.len = c;
+                        }
+                        m = g || new $root.proto.MsgOpaqueData.MusicData.LyricsLine.WordOffset();
+                        while (r.pos < c) {
+                            var s = r.pos;
+                            var t = r.tag();
+                            if (t === z) {
+                                z = $undefined;
+                                break;
+                            }
+                            var u = t & 7;
+                            switch (t >>>= 3) {
+                            case 1: {
+                                    if (u !== 0)
+                                        break;
+                                    m.startIndex = r.int32();
+                                    m._startIndex = "startIndex";
+                                    continue;
+                                }
+                            case 2: {
+                                    if (u !== 0)
+                                        break;
+                                    m.endIndex = r.int32();
+                                    m._endIndex = "endIndex";
+                                    continue;
+                                }
+                            case 3: {
+                                    if (u !== 0)
+                                        break;
+                                    m.startOffsetMs = r.int32();
+                                    m._startOffsetMs = "startOffsetMs";
+                                    continue;
+                                }
+                            case 4: {
+                                    if (u !== 0)
+                                        break;
+                                    m.endOffsetMs = r.int32();
+                                    m._endOffsetMs = "endOffsetMs";
+                                    continue;
+                                }
+                            }
+                            r.skipType(u, q, t);
+                            if (!r.discardUnknown) {
+                                $util.makeProp(m, "$unknowns", false);
+                                (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                            }
+                        }
+                        if (l !== $undefined) {
+                            if (r.pos !== c)
+                                throw $RangeError("index out of range");
+                            r.len = l;
+                        }
+                        if (z !== $undefined)
+                            throw $Error("missing end group");
+                        return m;
+                    };
+
+                    WordOffset.fromObject = function (d, q) {
+                        if (d instanceof $root.proto.MsgOpaqueData.MusicData.LyricsLine.WordOffset)
+                            return d;
+                        if (!$util.isObject(d))
+                            throw $TypeError(".proto.MsgOpaqueData.MusicData.LyricsLine.WordOffset: object expected");
+                        if (q === $undefined)
+                            q = 0;
+                        if (q > $util.recursionLimit)
+                            throw $Error("max depth exceeded");
+                        var m = new $root.proto.MsgOpaqueData.MusicData.LyricsLine.WordOffset();
+                        if (d.startIndex != null) {
+                            m.startIndex = d.startIndex | 0;
+                        }
+                        if (d.endIndex != null) {
+                            m.endIndex = d.endIndex | 0;
+                        }
+                        if (d.startOffsetMs != null) {
+                            m.startOffsetMs = d.startOffsetMs | 0;
+                        }
+                        if (d.endOffsetMs != null) {
+                            m.endOffsetMs = d.endOffsetMs | 0;
+                        }
+                        return m;
+                    };
+
+                    WordOffset.toObject = function (m, o, q) {
+                        if (!o)
+                            o = {};
+                        if (q === $undefined)
+                            q = 0;
+                        if (q > $util.recursionLimit)
+                            throw $Error("max depth exceeded");
+                        var d = {};
+                        if (m.startIndex != null && $Object.hasOwnProperty.call(m, "startIndex")) {
+                            d.startIndex = m.startIndex;
+                        }
+                        if (m.endIndex != null && $Object.hasOwnProperty.call(m, "endIndex")) {
+                            d.endIndex = m.endIndex;
+                        }
+                        if (m.startOffsetMs != null && $Object.hasOwnProperty.call(m, "startOffsetMs")) {
+                            d.startOffsetMs = m.startOffsetMs;
+                        }
+                        if (m.endOffsetMs != null && $Object.hasOwnProperty.call(m, "endOffsetMs")) {
+                            d.endOffsetMs = m.endOffsetMs;
+                        }
+                        return d;
+                    };
+
+                    WordOffset.prototype.toJSON = function() {
+                        return WordOffset.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+
+                    WordOffset.getTypeUrl = function(prefix) {
+                        if (prefix === $undefined)
+                            prefix = "type.googleapis.com";
+                        return prefix + "/proto.MsgOpaqueData.MusicData.LyricsLine.WordOffset";
+                    };
+
+                    return WordOffset;
+                })();
+
+                return LyricsLine;
+            })();
 
             return MusicData;
         })();

@@ -34662,6 +34662,11 @@
                   "oneof": [
                     "isAvailableForConsumption"
                   ]
+                },
+                "_lyricsConfirmedAtS": {
+                  "oneof": [
+                    "lyricsConfirmedAtS"
+                  ]
                 }
               },
               "fields": {
@@ -34789,6 +34794,123 @@
                   "id": 18,
                   "options": {
                     "proto3_optional": true
+                  }
+                },
+                "lyrics": {
+                  "rule": "repeated",
+                  "type": "LyricsLine",
+                  "id": 19
+                },
+                "lyricsConfirmedAtS": {
+                  "type": "int64",
+                  "id": 20,
+                  "options": {
+                    "proto3_optional": true
+                  }
+                }
+              },
+              "nested": {
+                "LyricsLine": {
+                  "oneofs": {
+                    "_startTimeMs": {
+                      "oneof": [
+                        "startTimeMs"
+                      ]
+                    },
+                    "_endTimeMs": {
+                      "oneof": [
+                        "endTimeMs"
+                      ]
+                    },
+                    "_text": {
+                      "oneof": [
+                        "text"
+                      ]
+                    }
+                  },
+                  "fields": {
+                    "startTimeMs": {
+                      "type": "int32",
+                      "id": 1,
+                      "options": {
+                        "proto3_optional": true
+                      }
+                    },
+                    "endTimeMs": {
+                      "type": "int32",
+                      "id": 2,
+                      "options": {
+                        "proto3_optional": true
+                      }
+                    },
+                    "text": {
+                      "type": "string",
+                      "id": 3,
+                      "options": {
+                        "proto3_optional": true
+                      }
+                    },
+                    "wordOffsets": {
+                      "rule": "repeated",
+                      "type": "WordOffset",
+                      "id": 4
+                    }
+                  },
+                  "nested": {
+                    "WordOffset": {
+                      "oneofs": {
+                        "_startIndex": {
+                          "oneof": [
+                            "startIndex"
+                          ]
+                        },
+                        "_endIndex": {
+                          "oneof": [
+                            "endIndex"
+                          ]
+                        },
+                        "_startOffsetMs": {
+                          "oneof": [
+                            "startOffsetMs"
+                          ]
+                        },
+                        "_endOffsetMs": {
+                          "oneof": [
+                            "endOffsetMs"
+                          ]
+                        }
+                      },
+                      "fields": {
+                        "startIndex": {
+                          "type": "int32",
+                          "id": 1,
+                          "options": {
+                            "proto3_optional": true
+                          }
+                        },
+                        "endIndex": {
+                          "type": "int32",
+                          "id": 2,
+                          "options": {
+                            "proto3_optional": true
+                          }
+                        },
+                        "startOffsetMs": {
+                          "type": "int32",
+                          "id": 3,
+                          "options": {
+                            "proto3_optional": true
+                          }
+                        },
+                        "endOffsetMs": {
+                          "type": "int32",
+                          "id": 4,
+                          "options": {
+                            "proto3_optional": true
+                          }
+                        }
+                      }
+                    }
                   }
                 }
               }

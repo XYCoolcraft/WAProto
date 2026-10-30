@@ -1,7 +1,7 @@
 {
- "protoVersion": "2.3000.1052191878",
+ "protoVersion": "2.3000.1052289812",
  "counts": {
-  "messages": 735,
+  "messages": 737,
   "enums": 224
  },
  "fields": "[nomor, tipe, label]",
@@ -3671,7 +3671,21 @@
    "artworkEncSha256": [15, "bytes", "optional"],
    "artworkMediaKey": [16, "bytes", "optional"],
    "consumptionCheckedAtS": [17, "int64", "optional"],
-   "isAvailableForConsumption": [18, "bool", "optional"]
+   "isAvailableForConsumption": [18, "bool", "optional"],
+   "lyrics": [19, "LyricsLine", "repeated"],
+   "lyricsConfirmedAtS": [20, "int64", "optional"]
+  },
+  "MsgOpaqueData.MusicData.LyricsLine": {
+   "startTimeMs": [1, "int32", "optional"],
+   "endTimeMs": [2, "int32", "optional"],
+   "text": [3, "string", "optional"],
+   "wordOffsets": [4, "WordOffset", "repeated"]
+  },
+  "MsgOpaqueData.MusicData.LyricsLine.WordOffset": {
+   "startIndex": [1, "int32", "optional"],
+   "endIndex": [2, "int32", "optional"],
+   "startOffsetMs": [3, "int32", "optional"],
+   "endOffsetMs": [4, "int32", "optional"]
   },
   "MsgOpaqueData.PollOption": {
    "name": [1, "string", "optional"],
