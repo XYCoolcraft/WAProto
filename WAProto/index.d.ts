@@ -19916,6 +19916,10 @@ export namespace proto {
         qrUrl?: (string|null);
         musicData?: (proto.MsgOpaqueData.MusicData.$Properties|null);
         pollAddedOptionName?: (string|null);
+        sharableEventInviteStatus?: (string|null);
+        sharableEventInviteLocationName?: (string|null);
+        sharableEventInviteCoverImageHandle?: (string|null);
+        sharableEventInviteLastUpdatedTsUsec?: (number|Long|null);
         static create(properties: proto.MsgOpaqueData.$Shape): proto.MsgOpaqueData & proto.MsgOpaqueData.$Shape;
         static create(properties?: proto.MsgOpaqueData.$Properties): proto.MsgOpaqueData;
         static encode(m: proto.MsgOpaqueData.$Properties, w?: $protobuf.Writer): $protobuf.Writer;
@@ -19987,6 +19991,10 @@ export namespace proto {
             qrUrl?: (string|null);
             musicData?: (proto.MsgOpaqueData.MusicData.$Properties|null);
             pollAddedOptionName?: (string|null);
+            sharableEventInviteStatus?: (string|null);
+            sharableEventInviteLocationName?: (string|null);
+            sharableEventInviteCoverImageHandle?: (string|null);
+            sharableEventInviteLastUpdatedTsUsec?: (number|Long|null);
             $unknowns?: Uint8Array[];
         }
         type $Shape = proto.MsgOpaqueData.$Properties;

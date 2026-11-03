@@ -1,5 +1,5 @@
 {
- "protoVersion": "2.3000.1052682108",
+ "protoVersion": "2.3000.1052769028",
  "counts": {
   "messages": 737,
   "enums": 224
@@ -3643,7 +3643,11 @@
    "mediaPngThumbnail": [61, "string", "optional"],
    "qrUrl": [62, "string", "optional"],
    "musicData": [63, "MusicData", "optional"],
-   "pollAddedOptionName": [64, "string", "optional"]
+   "pollAddedOptionName": [64, "string", "optional"],
+   "sharableEventInviteStatus": [65, "string", "optional"],
+   "sharableEventInviteLocationName": [66, "string", "optional"],
+   "sharableEventInviteCoverImageHandle": [67, "string", "optional"],
+   "sharableEventInviteLastUpdatedTsUsec": [68, "int64", "optional"]
   },
   "MsgOpaqueData.EventLocation": {
    "degreesLatitude": [1, "double", "optional"],

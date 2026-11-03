@@ -125801,6 +125801,10 @@ export const proto = $root.proto = (() => {
         MsgOpaqueData.prototype.qrUrl = null;
         MsgOpaqueData.prototype.musicData = null;
         MsgOpaqueData.prototype.pollAddedOptionName = null;
+        MsgOpaqueData.prototype.sharableEventInviteStatus = null;
+        MsgOpaqueData.prototype.sharableEventInviteLocationName = null;
+        MsgOpaqueData.prototype.sharableEventInviteCoverImageHandle = null;
+        MsgOpaqueData.prototype.sharableEventInviteLastUpdatedTsUsec = null;
 
         let $oneOfFields;
 
@@ -126152,6 +126156,30 @@ export const proto = $root.proto = (() => {
             set: $util.oneOfSetter($oneOfFields)
         });
 
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(MsgOpaqueData.prototype, "_sharableEventInviteStatus", {
+            get: $util.oneOfGetter($oneOfFields = ["sharableEventInviteStatus"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(MsgOpaqueData.prototype, "_sharableEventInviteLocationName", {
+            get: $util.oneOfGetter($oneOfFields = ["sharableEventInviteLocationName"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(MsgOpaqueData.prototype, "_sharableEventInviteCoverImageHandle", {
+            get: $util.oneOfGetter($oneOfFields = ["sharableEventInviteCoverImageHandle"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(MsgOpaqueData.prototype, "_sharableEventInviteLastUpdatedTsUsec", {
+            get: $util.oneOfGetter($oneOfFields = ["sharableEventInviteLastUpdatedTsUsec"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
         MsgOpaqueData.create = function(properties) {
             return new MsgOpaqueData(properties);
         };
@@ -126283,6 +126311,14 @@ export const proto = $root.proto = (() => {
                 $root.proto.MsgOpaqueData.MusicData.encode(m.musicData, w.uint32(506).fork(), q + 1).ldelim();
             if (m.pollAddedOptionName != null && $Object.hasOwnProperty.call(m, "pollAddedOptionName"))
                 w.uint32(514).string(m.pollAddedOptionName);
+            if (m.sharableEventInviteStatus != null && $Object.hasOwnProperty.call(m, "sharableEventInviteStatus"))
+                w.uint32(522).string(m.sharableEventInviteStatus);
+            if (m.sharableEventInviteLocationName != null && $Object.hasOwnProperty.call(m, "sharableEventInviteLocationName"))
+                w.uint32(530).string(m.sharableEventInviteLocationName);
+            if (m.sharableEventInviteCoverImageHandle != null && $Object.hasOwnProperty.call(m, "sharableEventInviteCoverImageHandle"))
+                w.uint32(538).string(m.sharableEventInviteCoverImageHandle);
+            if (m.sharableEventInviteLastUpdatedTsUsec != null && $Object.hasOwnProperty.call(m, "sharableEventInviteLastUpdatedTsUsec"))
+                w.uint32(544).int64(m.sharableEventInviteLastUpdatedTsUsec);
             if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                 for (var i = 0; i < m.$unknowns.length; ++i)
                     w.raw(m.$unknowns[i]);
@@ -126730,6 +126766,34 @@ export const proto = $root.proto = (() => {
                         m._pollAddedOptionName = "pollAddedOptionName";
                         continue;
                     }
+                case 65: {
+                        if (u !== 2)
+                            break;
+                        m.sharableEventInviteStatus = r.stringVerify();
+                        m._sharableEventInviteStatus = "sharableEventInviteStatus";
+                        continue;
+                    }
+                case 66: {
+                        if (u !== 2)
+                            break;
+                        m.sharableEventInviteLocationName = r.stringVerify();
+                        m._sharableEventInviteLocationName = "sharableEventInviteLocationName";
+                        continue;
+                    }
+                case 67: {
+                        if (u !== 2)
+                            break;
+                        m.sharableEventInviteCoverImageHandle = r.stringVerify();
+                        m._sharableEventInviteCoverImageHandle = "sharableEventInviteCoverImageHandle";
+                        continue;
+                    }
+                case 68: {
+                        if (u !== 0)
+                            break;
+                        m.sharableEventInviteLastUpdatedTsUsec = r.int64();
+                        m._sharableEventInviteLastUpdatedTsUsec = "sharableEventInviteLastUpdatedTsUsec";
+                        continue;
+                    }
                 }
                 r.skipType(u, q, t);
                 if (!r.discardUnknown) {
@@ -127042,6 +127106,25 @@ export const proto = $root.proto = (() => {
             if (d.pollAddedOptionName != null) {
                 m.pollAddedOptionName = $String(d.pollAddedOptionName);
             }
+            if (d.sharableEventInviteStatus != null) {
+                m.sharableEventInviteStatus = $String(d.sharableEventInviteStatus);
+            }
+            if (d.sharableEventInviteLocationName != null) {
+                m.sharableEventInviteLocationName = $String(d.sharableEventInviteLocationName);
+            }
+            if (d.sharableEventInviteCoverImageHandle != null) {
+                m.sharableEventInviteCoverImageHandle = $String(d.sharableEventInviteCoverImageHandle);
+            }
+            if (d.sharableEventInviteLastUpdatedTsUsec != null) {
+                if ($util.Long)
+                    m.sharableEventInviteLastUpdatedTsUsec = $util.Long.fromValue(d.sharableEventInviteLastUpdatedTsUsec, false);
+                else if (typeof d.sharableEventInviteLastUpdatedTsUsec === "string")
+                    m.sharableEventInviteLastUpdatedTsUsec = $parseInt(d.sharableEventInviteLastUpdatedTsUsec, 10);
+                else if (typeof d.sharableEventInviteLastUpdatedTsUsec === "number")
+                    m.sharableEventInviteLastUpdatedTsUsec = d.sharableEventInviteLastUpdatedTsUsec;
+                else if (typeof d.sharableEventInviteLastUpdatedTsUsec === "object")
+                    m.sharableEventInviteLastUpdatedTsUsec = new $util.LongBits(d.sharableEventInviteLastUpdatedTsUsec.low >>> 0, d.sharableEventInviteLastUpdatedTsUsec.high >>> 0).toNumber();
+            }
             return m;
         };
 
@@ -127265,6 +127348,23 @@ export const proto = $root.proto = (() => {
             }
             if (m.pollAddedOptionName != null && $Object.hasOwnProperty.call(m, "pollAddedOptionName")) {
                 d.pollAddedOptionName = m.pollAddedOptionName;
+            }
+            if (m.sharableEventInviteStatus != null && $Object.hasOwnProperty.call(m, "sharableEventInviteStatus")) {
+                d.sharableEventInviteStatus = m.sharableEventInviteStatus;
+            }
+            if (m.sharableEventInviteLocationName != null && $Object.hasOwnProperty.call(m, "sharableEventInviteLocationName")) {
+                d.sharableEventInviteLocationName = m.sharableEventInviteLocationName;
+            }
+            if (m.sharableEventInviteCoverImageHandle != null && $Object.hasOwnProperty.call(m, "sharableEventInviteCoverImageHandle")) {
+                d.sharableEventInviteCoverImageHandle = m.sharableEventInviteCoverImageHandle;
+            }
+            if (m.sharableEventInviteLastUpdatedTsUsec != null && $Object.hasOwnProperty.call(m, "sharableEventInviteLastUpdatedTsUsec")) {
+                if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
+                    d.sharableEventInviteLastUpdatedTsUsec = typeof m.sharableEventInviteLastUpdatedTsUsec === "number" ? $BigInt(m.sharableEventInviteLastUpdatedTsUsec) : $util.Long.fromBits(m.sharableEventInviteLastUpdatedTsUsec.low >>> 0, m.sharableEventInviteLastUpdatedTsUsec.high >>> 0, false).toBigInt();
+                else if (typeof m.sharableEventInviteLastUpdatedTsUsec === "number")
+                    d.sharableEventInviteLastUpdatedTsUsec = o.longs === $String ? $String(m.sharableEventInviteLastUpdatedTsUsec) : m.sharableEventInviteLastUpdatedTsUsec;
+                else
+                    d.sharableEventInviteLastUpdatedTsUsec = o.longs === $String ? $util.Long.prototype.toString.call(m.sharableEventInviteLastUpdatedTsUsec) : o.longs === $Number ? new $util.LongBits(m.sharableEventInviteLastUpdatedTsUsec.low >>> 0, m.sharableEventInviteLastUpdatedTsUsec.high >>> 0).toNumber() : m.sharableEventInviteLastUpdatedTsUsec;
             }
             return d;
         };

@@ -2,6 +2,17 @@
 
 Terbaru di atas. Dibuat otomatis oleh update-proto.mjs.
 
+## 2.3000.1052682108 → 2.3000.1052769028
+
+By: https://t.me/XYCoolcrafts
+
+### Field baru (4)
+
+- MsgOpaqueData.sharableEventInviteStatus = 65
+- MsgOpaqueData.sharableEventInviteLocationName = 66
+- MsgOpaqueData.sharableEventInviteCoverImageHandle = 67
+- MsgOpaqueData.sharableEventInviteLastUpdatedTsUsec = 68
+
 ## 2.3000.1052645975 → 2.3000.1052682108
 
 By: https://t.me/XYCoolcrafts

@@ -34077,6 +34077,26 @@
               "oneof": [
                 "pollAddedOptionName"
               ]
+            },
+            "_sharableEventInviteStatus": {
+              "oneof": [
+                "sharableEventInviteStatus"
+              ]
+            },
+            "_sharableEventInviteLocationName": {
+              "oneof": [
+                "sharableEventInviteLocationName"
+              ]
+            },
+            "_sharableEventInviteCoverImageHandle": {
+              "oneof": [
+                "sharableEventInviteCoverImageHandle"
+              ]
+            },
+            "_sharableEventInviteLastUpdatedTsUsec": {
+              "oneof": [
+                "sharableEventInviteLastUpdatedTsUsec"
+              ]
             }
           },
           "fields": {
@@ -34487,6 +34507,34 @@
             "pollAddedOptionName": {
               "type": "string",
               "id": 64,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "sharableEventInviteStatus": {
+              "type": "string",
+              "id": 65,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "sharableEventInviteLocationName": {
+              "type": "string",
+              "id": 66,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "sharableEventInviteCoverImageHandle": {
+              "type": "string",
+              "id": 67,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "sharableEventInviteLastUpdatedTsUsec": {
+              "type": "int64",
+              "id": 68,
               "options": {
                 "proto3_optional": true
               }
