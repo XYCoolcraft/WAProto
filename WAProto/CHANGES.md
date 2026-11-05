@@ -2,6 +2,12 @@
 
 Terbaru di atas. Dibuat otomatis oleh update-proto.mjs.
 
+## 2.3000.1053260417 → 2.3000.1053300637
+
+By: https://t.me/XYCoolcrafts
+
+Hanya nomor versi yang naik — tidak ada tipe/field/enum baru.
+
 ## 2.3000.1053139159 → 2.3000.1053260417
 
 By: https://t.me/XYCoolcrafts
@@ -173,7 +179,3 @@ By: https://t.me/XYCoolcrafts
 
 - MutationProps.HATCH_CVM_SECRET_ACTION = 101
 - SyncActionValue.SettingsSyncAction.SettingKey.MEDIA_AUTO_DOWNLOAD_QUALITY = 35
-
-## 2.3000.1051955322 → 2.3000.1052015443
-
-Hanya nomor versi yang naik — tidak ada tipe/field/enum baru.
