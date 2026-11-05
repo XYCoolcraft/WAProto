@@ -2,6 +2,12 @@
 
 Terbaru di atas. Dibuat otomatis oleh update-proto.mjs.
 
+## 2.3000.1053085257 → 2.3000.1053139159
+
+By: https://t.me/XYCoolcrafts
+
+Hanya nomor versi yang naik — tidak ada tipe/field/enum baru.
+
 ## 2.3000.1053049953 → 2.3000.1053085257
 
 By: https://t.me/XYCoolcrafts
@@ -210,7 +216,3 @@ Hanya nomor versi yang naik — tidak ada tipe/field/enum baru.
 - Message.PeerDataOperationRequestType.RECENT_CONVERSATIONS_ON_DEMAND_REQUEST = 15
 - WebMessageInfo.StubType.POLL_OPTIONS_REMOVED = 290
 - WebMessageInfo.StubType.POLL_ADDED_OPTION_REMOVED = 291
-
-## 2.3000.1050735291 → 2.3000.1050756511
-
-Hanya nomor versi yang naik — tidak ada tipe/field/enum baru.
