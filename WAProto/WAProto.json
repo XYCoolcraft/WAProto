@@ -1752,6 +1752,11 @@
               "oneof": [
                 "isUsernameDeleted"
               ]
+            },
+            "_pnLearnState": {
+              "oneof": [
+                "pnLearnState"
+              ]
             }
           },
           "fields": {
@@ -1781,6 +1786,22 @@
               "id": 4,
               "options": {
                 "proto3_optional": true
+              }
+            },
+            "pnLearnState": {
+              "type": "PnLearnState",
+              "id": 6,
+              "options": {
+                "proto3_optional": true
+              }
+            }
+          },
+          "nested": {
+            "PnLearnState": {
+              "values": {
+                "UNSET": 0,
+                "SHARED": 1,
+                "HIDDEN": 2
               }
             }
           }
@@ -2453,7 +2474,10 @@
                 "AI_MUSE_JARVIS_SCHEMA_ENABLED": 81,
                 "AI_STUDY_QUIZ_ENABLED": 82,
                 "HATCH_CVM_ENABLED": 83,
-                "RICH_RESPONSE_SOCIAL_ENTITY_PREFETCH_SCHEDULER_ENABLED": 84
+                "RICH_RESPONSE_SOCIAL_ENTITY_PREFETCH_SCHEDULER_ENABLED": 84,
+                "AI_MUSE_JARVIS_EXTENDED_CARDS_ENABLED": 85,
+                "AI_INTERJECTIONS_ENABLED": 86,
+                "AI_RICH_RESPONSE_READ_ALOUD_ENABLED": 87
               }
             }
           }
@@ -6195,6 +6219,11 @@
               "oneof": [
                 "companionAddPeerPayload"
               ]
+            },
+            "_isCompanionRegistrationFgsEnabled": {
+              "oneof": [
+                "isCompanionRegistrationFgsEnabled"
+              ]
             }
           },
           "fields": {
@@ -6243,6 +6272,13 @@
             "companionAddPeerPayload": {
               "type": "bytes",
               "id": 7,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "isCompanionRegistrationFgsEnabled": {
+              "type": "bool",
+              "id": 8,
               "options": {
                 "proto3_optional": true
               }
@@ -6424,6 +6460,11 @@
             "_messageSts": {
               "oneof": [
                 "messageSts"
+              ]
+            },
+            "_integrationAttestation": {
+              "oneof": [
+                "integrationAttestation"
               ]
             }
           },
@@ -6679,6 +6720,13 @@
             "messageSts": {
               "type": "int64",
               "id": 49,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "integrationAttestation": {
+              "type": "IntegrationAttestation",
+              "id": 50,
               "options": {
                 "proto3_optional": true
               }
@@ -7215,7 +7263,8 @@
                     "WEARABLE": 3,
                     "VR": 4,
                     "SMART_DISPLAY": 5,
-                    "SMART_SPEAKER": 6
+                    "SMART_SPEAKER": 6,
+                    "AGENT": 7
                   }
                 },
                 "DistributionChannel": {
@@ -7506,6 +7555,36 @@
                         "proto3_optional": true
                       }
                     }
+                  }
+                }
+              }
+            },
+            "IntegrationAttestation": {
+              "oneofs": {
+                "_staticUnbound": {
+                  "oneof": [
+                    "staticUnbound"
+                  ]
+                },
+                "_onlineSigned": {
+                  "oneof": [
+                    "onlineSigned"
+                  ]
+                }
+              },
+              "fields": {
+                "staticUnbound": {
+                  "type": "string",
+                  "id": 1,
+                  "options": {
+                    "proto3_optional": true
+                  }
+                },
+                "onlineSigned": {
+                  "type": "string",
+                  "id": 3,
+                  "options": {
+                    "proto3_optional": true
                   }
                 }
               }
@@ -9736,7 +9815,9 @@
                 "AV1_VIDEO_PARENT": 9,
                 "AV1_VIDEO_CHILD": 10,
                 "STREAMED_VIDEO_PARENT": 11,
-                "STREAMED_VIDEO_CHILD": 12
+                "STREAMED_VIDEO_CHILD": 12,
+                "ORIGINAL_VIDEO_CHILD": 13,
+                "ORIGINAL_IMAGE_CHILD": 14
               }
             },
             "PartiallySelectedContent": {
@@ -10689,6 +10770,11 @@
               "options": {
                 "proto3_optional": true
               }
+            },
+            "groupRootKeys": {
+              "rule": "repeated",
+              "type": "GroupRootKey",
+              "id": 66
             }
           },
           "nested": {
@@ -11634,6 +11720,11 @@
               "oneof": [
                 "bizAiWebOnboarding"
               ]
+            },
+            "_phoneNumberSharing": {
+              "oneof": [
+                "phoneNumberSharing"
+              ]
             }
           },
           "fields": {
@@ -11724,6 +11815,13 @@
             "bizAiWebOnboarding": {
               "type": "BizAiWebOnboarding",
               "id": 13,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "phoneNumberSharing": {
+              "type": "PhoneNumberSharing",
+              "id": 14,
               "options": {
                 "proto3_optional": true
               }
@@ -12030,6 +12128,24 @@
               "fields": {
                 "version": {
                   "type": "uint32",
+                  "id": 1,
+                  "options": {
+                    "proto3_optional": true
+                  }
+                }
+              }
+            },
+            "PhoneNumberSharing": {
+              "oneofs": {
+                "_phoneSharingSupported": {
+                  "oneof": [
+                    "phoneSharingSupported"
+                  ]
+                }
+              },
+              "fields": {
+                "phoneSharingSupported": {
+                  "type": "bool",
                   "id": 1,
                   "options": {
                     "proto3_optional": true
@@ -18310,6 +18426,11 @@
               "oneof": [
                 "labelTimestamp"
               ]
+            },
+            "_showAdminBadge": {
+              "oneof": [
+                "showAdminBadge"
+              ]
             }
           },
           "fields": {
@@ -18323,6 +18444,13 @@
             "labelTimestamp": {
               "type": "int64",
               "id": 2,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "showAdminBadge": {
+              "type": "bool",
+              "id": 3,
               "options": {
                 "proto3_optional": true
               }
@@ -19022,6 +19150,11 @@
             "_requestLocationUpdateMessage": {
               "oneof": [
                 "requestLocationUpdateMessage"
+              ]
+            },
+            "_vpcRequestMessage": {
+              "oneof": [
+                "vpcRequestMessage"
               ]
             }
           },
@@ -19841,6 +19974,13 @@
             "requestLocationUpdateMessage": {
               "type": "RequestLocationUpdateMessage",
               "id": 138,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "vpcRequestMessage": {
+              "type": "VpcRequestMessage",
+              "id": 139,
               "options": {
                 "proto3_optional": true
               }
@@ -29286,6 +29426,21 @@
                   "oneof": [
                     "sharedDeviceContactHashKeyRequest"
                   ]
+                },
+                "_groupRootKeyRequest": {
+                  "oneof": [
+                    "groupRootKeyRequest"
+                  ]
+                },
+                "_membershipFormKeyFingerprintVerification": {
+                  "oneof": [
+                    "membershipFormKeyFingerprintVerification"
+                  ]
+                },
+                "_groupRootKeyShare": {
+                  "oneof": [
+                    "groupRootKeyShare"
+                  ]
                 }
               },
               "fields": {
@@ -29524,6 +29679,27 @@
                   "rule": "repeated",
                   "type": "string",
                   "id": 38
+                },
+                "groupRootKeyRequest": {
+                  "type": "GroupRootKeyRequest",
+                  "id": 39,
+                  "options": {
+                    "proto3_optional": true
+                  }
+                },
+                "membershipFormKeyFingerprintVerification": {
+                  "type": "MembershipFormKeyFingerprintVerification",
+                  "id": 40,
+                  "options": {
+                    "proto3_optional": true
+                  }
+                },
+                "groupRootKeyShare": {
+                  "type": "GroupRootKeyShare",
+                  "id": 41,
+                  "options": {
+                    "proto3_optional": true
+                  }
                 }
               },
               "nested": {
@@ -29563,7 +29739,10 @@
                     "COEX_STATE_SYNC": 37,
                     "ACP2_SETTING": 39,
                     "SHARED_DEVICE_CONTACT_HASH_KEY_SHARE": 40,
-                    "SHARED_DEVICE_CONTACT_HASH_KEY_REQUEST": 41
+                    "SHARED_DEVICE_CONTACT_HASH_KEY_REQUEST": 41,
+                    "GROUP_ROOT_KEY_REQUEST": 42,
+                    "MEMBERSHIP_FORM_KEY_FINGERPRINT_VERIFICATION": 43,
+                    "GROUP_ROOT_KEY_SHARE": 44
                   }
                 }
               }
@@ -32022,6 +32201,84 @@
                   }
                 }
               }
+            },
+            "VpcRequestMessage": {
+              "oneofs": {
+                "_payloadSchemaVersion": {
+                  "oneof": [
+                    "payloadSchemaVersion"
+                  ]
+                },
+                "_requestId": {
+                  "oneof": [
+                    "requestId"
+                  ]
+                },
+                "_launchRef": {
+                  "oneof": [
+                    "launchRef"
+                  ]
+                },
+                "_invitationExpiresAtMs": {
+                  "oneof": [
+                    "invitationExpiresAtMs"
+                  ]
+                },
+                "_scopeHint": {
+                  "oneof": [
+                    "scopeHint"
+                  ]
+                }
+              },
+              "fields": {
+                "payloadSchemaVersion": {
+                  "type": "uint32",
+                  "id": 1,
+                  "options": {
+                    "proto3_optional": true
+                  }
+                },
+                "requestId": {
+                  "type": "string",
+                  "id": 2,
+                  "options": {
+                    "proto3_optional": true
+                  }
+                },
+                "launchRef": {
+                  "type": "string",
+                  "id": 3,
+                  "options": {
+                    "proto3_optional": true
+                  }
+                },
+                "invitationExpiresAtMs": {
+                  "type": "int64",
+                  "id": 4,
+                  "options": {
+                    "proto3_optional": true
+                  }
+                },
+                "scopeHint": {
+                  "type": "ScopeHint",
+                  "id": 5,
+                  "options": {
+                    "proto3_optional": true
+                  }
+                }
+              },
+              "nested": {
+                "ScopeHint": {
+                  "values": {
+                    "UNKNOWN": 0,
+                    "WA_ONLY": 1,
+                    "WAFFLE": 2,
+                    "WA_META_AI": 3,
+                    "META_AI_ONLY": 4,
+                    "FOA_ONLY": 5
+                  }
+                }
+              }
             }
           }
         },
@@ -32235,7 +32492,9 @@
                 "HEVC_VIDEO_DUAL_UPLOAD": 19,
                 "POLL_ADD_OPTION": 20,
                 "AV1_VIDEO_DUAL_UPLOAD": 21,
-                "STREAMED_HD_VIDEO_DUAL_UPLOAD": 22
+                "STREAMED_HD_VIDEO_DUAL_UPLOAD": 22,
+                "ORIGINAL_VIDEO_DUAL_UPLOAD": 23,
+                "ORIGINAL_IMAGE_DUAL_UPLOAD": 24
               }
             }
           }
@@ -38334,7 +38593,8 @@
                 "music",
                 "groupStatus",
                 "rlAttribution",
-                "aiCreatedAttribution"
+                "aiCreatedAttribution",
+                "statusTemplate"
               ]
             }
           },
@@ -38376,6 +38636,10 @@
             "aiCreatedAttribution": {
               "type": "StatusAttribution.AiCreatedAttribution",
               "id": 8
+            },
+            "statusTemplate": {
+              "type": "StatusAttribution.StatusTemplate",
+              "id": 9
             }
           },
           "nested": {
@@ -38712,7 +38976,50 @@
                 "NEWSLETTER_STATUS": 9,
                 "STATUS_CLOSE_SHARING": 10,
                 "PAID_PARTNERSHIP": 11,
-                "USERNAME_STATUS": 12
+                "USERNAME_STATUS": 12,
+                "STATUS_TEMPLATES": 13
+              }
+            },
+            "StatusTemplate": {
+              "oneofs": {
+                "_templateId": {
+                  "oneof": [
+                    "templateId"
+                  ]
+                },
+                "_templateName": {
+                  "oneof": [
+                    "templateName"
+                  ]
+                },
+                "_thumbnailUrl": {
+                  "oneof": [
+                    "thumbnailUrl"
+                  ]
+                }
+              },
+              "fields": {
+                "templateId": {
+                  "type": "string",
+                  "id": 1,
+                  "options": {
+                    "proto3_optional": true
+                  }
+                },
+                "templateName": {
+                  "type": "string",
+                  "id": 2,
+                  "options": {
+                    "proto3_optional": true
+                  }
+                },
+                "thumbnailUrl": {
+                  "type": "string",
+                  "id": 3,
+                  "options": {
+                    "proto3_optional": true
+                  }
+                }
               }
             }
           }
@@ -45901,6 +46208,11 @@
               "oneof": [
                 "eventInviteAdditionalMetadata"
               ]
+            },
+            "_groupHistoryLastCountedMessageTimestamp": {
+              "oneof": [
+                "groupHistoryLastCountedMessageTimestamp"
+              ]
             }
           },
           "fields": {
@@ -46389,6 +46701,13 @@
             "eventInviteAdditionalMetadata": {
               "type": "EventInviteAdditionalMetadata",
               "id": 84,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "groupHistoryLastCountedMessageTimestamp": {
+              "type": "uint64",
+              "id": 85,
               "options": {
                 "proto3_optional": true
               }
@@ -46926,6 +47245,108 @@
               "rule": "repeated",
               "type": "Conversation",
               "id": 6
+            }
+          }
+        },
+        "GroupRootKey": {
+          "oneofs": {
+            "_keyId": {
+              "oneof": [
+                "keyId"
+              ]
+            },
+            "_rootKey": {
+              "oneof": [
+                "rootKey"
+              ]
+            },
+            "_isCurrent": {
+              "oneof": [
+                "isCurrent"
+              ]
+            }
+          },
+          "fields": {
+            "keyId": {
+              "type": "string",
+              "id": 1,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "rootKey": {
+              "type": "bytes",
+              "id": 2,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "isCurrent": {
+              "type": "bool",
+              "id": 3,
+              "options": {
+                "proto3_optional": true
+              }
+            }
+          }
+        },
+        "GroupRootKeyRequest": {
+          "oneofs": {
+            "_keyId": {
+              "oneof": [
+                "keyId"
+              ]
+            }
+          },
+          "fields": {
+            "keyId": {
+              "type": "string",
+              "id": 1,
+              "options": {
+                "proto3_optional": true
+              }
+            }
+          }
+        },
+        "MembershipFormKeyFingerprintVerification": {
+          "oneofs": {
+            "_requestId": {
+              "oneof": [
+                "requestId"
+              ]
+            },
+            "_keyId": {
+              "oneof": [
+                "keyId"
+              ]
+            },
+            "_keyFingerprint": {
+              "oneof": [
+                "keyFingerprint"
+              ]
+            }
+          },
+          "fields": {
+            "requestId": {
+              "type": "string",
+              "id": 1,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "keyId": {
+              "type": "string",
+              "id": 2,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "keyFingerprint": {
+              "type": "bytes",
+              "id": 3,
+              "options": {
+                "proto3_optional": true
+              }
             }
           }
         }

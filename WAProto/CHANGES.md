@@ -2,6 +2,52 @@
 
 Terbaru di atas. Dibuat otomatis oleh update-proto.mjs.
 
+## 2.3000.1053411851 → 2.3000.1053450417
+
+By: https://t.me/XYCoolcrafts
+
+### Tipe baru (9)
+
+- Account.PnLearnState
+- ClientPayload.IntegrationAttestation
+- DeviceCapabilities.PhoneNumberSharing
+- GroupRootKey
+- GroupRootKeyRequest
+- MembershipFormKeyFingerprintVerification
+- Message.VpcRequestMessage
+- Message.VpcRequestMessage.ScopeHint
+- StatusAttribution.StatusTemplate
+
+### Field baru (12)
+
+- Account.pnLearnState = 6
+- ClientPairingProps.isCompanionRegistrationFgsEnabled = 8
+- ClientPayload.integrationAttestation = 50
+- Conversation.groupRootKeys = 66
+- DeviceCapabilities.phoneNumberSharing = 14
+- MemberLabel.showAdminBadge = 3
+- Message.vpcRequestMessage = 139
+- Message.ProtocolMessage.groupRootKeyRequest = 39
+- Message.ProtocolMessage.membershipFormKeyFingerprintVerification = 40
+- Message.ProtocolMessage.groupRootKeyShare = 41
+- StatusAttribution.statusTemplate = 9
+- WebMessageInfo.groupHistoryLastCountedMessageTimestamp = 85
+
+### Nilai enum baru (12)
+
+- BotCapabilityMetadata.BotCapabilityType.AI_MUSE_JARVIS_EXTENDED_CARDS_ENABLED = 85
+- BotCapabilityMetadata.BotCapabilityType.AI_INTERJECTIONS_ENABLED = 86
+- BotCapabilityMetadata.BotCapabilityType.AI_RICH_RESPONSE_READ_ALOUD_ENABLED = 87
+- ClientPayload.UserAgent.DeviceType.AGENT = 7
+- ContextInfo.PairedMediaType.ORIGINAL_VIDEO_CHILD = 13
+- ContextInfo.PairedMediaType.ORIGINAL_IMAGE_CHILD = 14
+- Message.ProtocolMessage.Type.GROUP_ROOT_KEY_REQUEST = 42
+- Message.ProtocolMessage.Type.MEMBERSHIP_FORM_KEY_FINGERPRINT_VERIFICATION = 43
+- Message.ProtocolMessage.Type.GROUP_ROOT_KEY_SHARE = 44
+- MessageAssociation.AssociationType.ORIGINAL_VIDEO_DUAL_UPLOAD = 23
+- MessageAssociation.AssociationType.ORIGINAL_IMAGE_DUAL_UPLOAD = 24
+- StatusAttribution.Type.STATUS_TEMPLATES = 13
+
 ## 2.3000.1053362161 → 2.3000.1053411851
 
 By: https://t.me/XYCoolcrafts
@@ -150,17 +196,3 @@ Hanya nomor versi yang naik — tidak ada tipe/field/enum baru.
 By: https://t.me/XYCoolcrafts
 
 Hanya nomor versi yang naik — tidak ada tipe/field/enum baru.
-
-## 2.3000.1052191878 → 2.3000.1052289812
-
-By: https://t.me/XYCoolcrafts
-
-### Tipe baru (2)
-
-- MsgOpaqueData.MusicData.LyricsLine
-- MsgOpaqueData.MusicData.LyricsLine.WordOffset
-
-### Field baru (2)
-
-- MsgOpaqueData.MusicData.lyrics = 19
-- MsgOpaqueData.MusicData.lyricsConfirmedAtS = 20

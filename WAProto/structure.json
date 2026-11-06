@@ -1,8 +1,8 @@
 {
- "protoVersion": "2.3000.1053411851",
+ "protoVersion": "2.3000.1053450417",
  "counts": {
-  "messages": 737,
-  "enums": 224
+  "messages": 744,
+  "enums": 226
  },
  "fields": "[nomor, tipe, label]",
  "messages": {
@@ -207,7 +207,8 @@
    "lid": [1, "string", "optional"],
    "username": [2, "string", "optional"],
    "countryCode": [3, "string", "optional"],
-   "isUsernameDeleted": [4, "bool", "optional"]
+   "isUsernameDeleted": [4, "bool", "optional"],
+   "pnLearnState": [6, "PnLearnState", "optional"]
   },
   "AccountLinkingOpaqueData": {
    "accesstoken": [1, "string", "optional"],
@@ -682,7 +683,8 @@
    "isHsThumbnailSyncEnabled": [4, "bool", "optional"],
    "subscriptionSyncPayload": [5, "bytes", "optional"],
    "isBotJidDbMigrated": [6, "bool", "optional"],
-   "companionAddPeerPayload": [7, "bytes", "optional"]
+   "companionAddPeerPayload": [7, "bytes", "optional"],
+   "isCompanionRegistrationFgsEnabled": [8, "bool", "optional"]
   },
   "ClientPayload": {
    "username": [1, "uint64", "optional"],
@@ -721,7 +723,8 @@
    "processingQueueSize": [46, "int32", "optional"],
    "pairedPeripherals": [47, "string", "repeated"],
    "testIsolationId": [48, "bytes", "optional"],
-   "messageSts": [49, "int64", "optional"]
+   "messageSts": [49, "int64", "optional"],
+   "integrationAttestation": [50, "IntegrationAttestation", "optional"]
   },
   "ClientPayload.DNSSource": {
    "dnsMethod": [15, "DNSResolutionMethod", "optional"],
@@ -736,6 +739,10 @@
    "eSkeySig": [6, "bytes", "optional"],
    "buildHash": [7, "bytes", "optional"],
    "deviceProps": [8, "bytes", "optional"]
+  },
+  "ClientPayload.IntegrationAttestation": {
+   "staticUnbound": [1, "string", "optional"],
+   "onlineSigned": [3, "string", "optional"]
   },
   "ClientPayload.InteropData": {
    "accountId": [1, "uint64", "optional"],
@@ -1087,7 +1094,8 @@
    "authAgentObaPhoneNumber": [62, "string", "optional"],
    "identityVerification": [63, "IdentityVerificationState", "optional"],
    "acp2Setting": [64, "ACP2Setting", "optional"],
-   "acp2HistoryWithheld": [65, "bool", "optional"]
+   "acp2HistoryWithheld": [65, "bool", "optional"],
+   "groupRootKeys": [66, "GroupRootKey", "repeated"]
   },
   "DecryptMekForDistributionFromTransportSenderInput": {
    "mekDistribution": [1, "TransportSenderMEKDistributionSingleRecipient", "optional"],
@@ -1215,7 +1223,8 @@
    "reverseHistorySync": [10, "ReverseHistorySync", "optional"],
    "newsletterChatsMigration": [11, "NewsletterChatsMigration", "optional"],
    "hostWriteMutationSupport": [12, "HostWriteMutationSupport", "optional"],
-   "bizAiWebOnboarding": [13, "BizAiWebOnboarding", "optional"]
+   "bizAiWebOnboarding": [13, "BizAiWebOnboarding", "optional"],
+   "phoneNumberSharing": [14, "PhoneNumberSharing", "optional"]
   },
   "DeviceCapabilities.AiFbidMigration": {
    "chatDbMigrationTimestamp": [1, "uint64", "optional"],
@@ -1251,6 +1260,9 @@
    "effectiveMigrated": [1, "bool", "optional"],
    "countdownEndsAt": [2, "int64", "optional"],
    "rolledBack": [3, "bool", "optional"]
+  },
+  "DeviceCapabilities.PhoneNumberSharing": {
+   "phoneSharingSupported": [1, "bool", "optional"]
   },
   "DeviceCapabilities.ReverseHistorySync": {
    "enabledProducts": [1, "Product", "repeated"]
@@ -1547,6 +1559,14 @@
    "userJid": [1, "string", "optional"],
    "rank": [2, "Rank", "optional"],
    "memberLabel": [3, "MemberLabel", "optional"]
+  },
+  "GroupRootKey": {
+   "keyId": [1, "string", "optional"],
+   "rootKey": [2, "bytes", "optional"],
+   "isCurrent": [3, "bool", "optional"]
+  },
+  "GroupRootKeyRequest": {
+   "keyId": [1, "string", "optional"]
   },
   "GroupRootKeyShare": {
    "keys": [1, "GroupRootKeyShareEntry", "repeated"]
@@ -1950,7 +1970,13 @@
   },
   "MemberLabel": {
    "label": [1, "string", "optional"],
-   "labelTimestamp": [2, "int64", "optional"]
+   "labelTimestamp": [2, "int64", "optional"],
+   "showAdminBadge": [3, "bool", "optional"]
+  },
+  "MembershipFormKeyFingerprintVerification": {
+   "requestId": [1, "string", "optional"],
+   "keyId": [2, "string", "optional"],
+   "keyFingerprint": [3, "bytes", "optional"]
   },
   "Mention": {
    "mentionType": [1, "MENTION_MENTION_TYPE", "optional"],
@@ -2081,7 +2107,8 @@
    "instantImageMessage": [135, "ImageMessage", "optional"],
    "requestLocationMessage": [136, "RequestLocationMessage", "optional"],
    "botGroupParticipantMessage": [137, "FutureProofMessage", "optional"],
-   "requestLocationUpdateMessage": [138, "RequestLocationUpdateMessage", "optional"]
+   "requestLocationUpdateMessage": [138, "RequestLocationUpdateMessage", "optional"],
+   "vpcRequestMessage": [139, "VpcRequestMessage", "optional"]
   },
   "Message.AlbumMessage": {
    "expectedImageCount": [2, "uint32", "optional"],
@@ -3107,7 +3134,10 @@
    "acp2Setting": [35, "ACP2Setting", "optional"],
    "sharedDeviceContactHashKeyShare": [36, "Message.SharedDeviceContactHashKeyShare", "optional"],
    "sharedDeviceContactHashKeyRequest": [37, "Message.SharedDeviceContactHashKeyRequest", "optional"],
-   "additionalPromptIds": [38, "string", "repeated"]
+   "additionalPromptIds": [38, "string", "repeated"],
+   "groupRootKeyRequest": [39, "GroupRootKeyRequest", "optional"],
+   "membershipFormKeyFingerprintVerification": [40, "MembershipFormKeyFingerprintVerification", "optional"],
+   "groupRootKeyShare": [41, "GroupRootKeyShare", "optional"]
   },
   "Message.QuestionResponseMessage": {
    "key": [1, "MessageKey", "optional"],
@@ -3367,6 +3397,13 @@
    "videoSourceType": [31, "VideoSourceType", "optional"],
    "dashManifestUrl": [33, "string", "optional"],
    "smartThumbnailTs": [34, "int64", "optional"]
+  },
+  "Message.VpcRequestMessage": {
+   "payloadSchemaVersion": [1, "uint32", "optional"],
+   "requestId": [2, "string", "optional"],
+   "launchRef": [3, "string", "optional"],
+   "invitationExpiresAtMs": [4, "int64", "optional"],
+   "scopeHint": [5, "ScopeHint", "optional"]
   },
   "MessageAddOn": {
    "messageAddOnType": [1, "MessageAddOnType", "optional"],
@@ -4064,7 +4101,8 @@
    "music": [5, "StatusAttribution.Music", ""],
    "groupStatus": [6, "StatusAttribution.GroupStatus", ""],
    "rlAttribution": [7, "StatusAttribution.RLAttribution", ""],
-   "aiCreatedAttribution": [8, "StatusAttribution.AiCreatedAttribution", ""]
+   "aiCreatedAttribution": [8, "StatusAttribution.AiCreatedAttribution", ""],
+   "statusTemplate": [9, "StatusAttribution.StatusTemplate", ""]
   },
   "StatusAttribution.AiCreatedAttribution": {
    "source": [1, "Source", "optional"]
@@ -4098,6 +4136,11 @@
    "channelJid": [2, "string", "optional"],
    "channelMessageId": [3, "int32", "optional"],
    "hasMultipleReshares": [4, "bool", "optional"]
+  },
+  "StatusAttribution.StatusTemplate": {
+   "templateId": [1, "string", "optional"],
+   "templateName": [2, "string", "optional"],
+   "thumbnailUrl": [3, "string", "optional"]
   },
   "StatusMentionMessage": {
    "quotedStatus": [1, "Message", "optional"]
@@ -4938,7 +4981,8 @@
    "scheduledMessageMetadata": [81, "ScheduledMessageMetadata", "optional"],
    "decisionId": [82, "string", "optional"],
    "decisionSources": [83, "string", "repeated"],
-   "eventInviteAdditionalMetadata": [84, "EventInviteAdditionalMetadata", "optional"]
+   "eventInviteAdditionalMetadata": [84, "EventInviteAdditionalMetadata", "optional"],
+   "groupHistoryLastCountedMessageTimestamp": [85, "uint64", "optional"]
   },
   "WebMessageInfoWithMessageBytes": {
    "key": [1, "MessageKey", "optional"],
@@ -5027,6 +5071,11 @@
    "INCOGNITO": 2,
    "SIDE_CHAT": 3,
    "PRIVATE_SEARCH_CHAT": 4
+  },
+  "Account.PnLearnState": {
+   "UNSET": 0,
+   "SHARED": 1,
+   "HIDDEN": 2
   },
   "BizAIMetadataSync.ServerEvent.ProtocolEvent": {
    "UNSPECIFIED": 0,
@@ -5141,7 +5190,10 @@
    "AI_MUSE_JARVIS_SCHEMA_ENABLED": 81,
    "AI_STUDY_QUIZ_ENABLED": 82,
    "HATCH_CVM_ENABLED": 83,
-   "RICH_RESPONSE_SOCIAL_ENTITY_PREFETCH_SCHEDULER_ENABLED": 84
+   "RICH_RESPONSE_SOCIAL_ENTITY_PREFETCH_SCHEDULER_ENABLED": 84,
+   "AI_MUSE_JARVIS_EXTENDED_CARDS_ENABLED": 85,
+   "AI_INTERJECTIONS_ENABLED": 86,
+   "AI_RICH_RESPONSE_READ_ALOUD_ENABLED": 87
   },
   "BotDocumentMessageMetadata.DocumentPluginType": {
    "TEXT_EXTRACTION": 0,
@@ -5453,7 +5505,8 @@
    "WEARABLE": 3,
    "VR": 4,
    "SMART_DISPLAY": 5,
-   "SMART_SPEAKER": 6
+   "SMART_SPEAKER": 6,
+   "AGENT": 7
   },
   "ClientPayload.UserAgent.DistributionChannel": {
    "APPSTORE": 0,
@@ -5599,7 +5652,9 @@
    "AV1_VIDEO_PARENT": 9,
    "AV1_VIDEO_CHILD": 10,
    "STREAMED_VIDEO_PARENT": 11,
-   "STREAMED_VIDEO_CHILD": 12
+   "STREAMED_VIDEO_CHILD": 12,
+   "ORIGINAL_VIDEO_CHILD": 13,
+   "ORIGINAL_IMAGE_CHILD": 14
   },
   "ContextInfo.QuotedType": {
    "EXPLICIT": 0,
@@ -6218,7 +6273,10 @@
    "COEX_STATE_SYNC": 37,
    "ACP2_SETTING": 39,
    "SHARED_DEVICE_CONTACT_HASH_KEY_SHARE": 40,
-   "SHARED_DEVICE_CONTACT_HASH_KEY_REQUEST": 41
+   "SHARED_DEVICE_CONTACT_HASH_KEY_REQUEST": 41,
+   "GROUP_ROOT_KEY_REQUEST": 42,
+   "MEMBERSHIP_FORM_KEY_FINGERPRINT_VERIFICATION": 43,
+   "GROUP_ROOT_KEY_SHARE": 44
   },
   "Message.RequestLocationUpdateMessage.UpdateType": {
    "UNKNOWN": 0,
@@ -6293,6 +6351,14 @@
    "USER_VIDEO": 0,
    "AI_GENERATED": 1
   },
+  "Message.VpcRequestMessage.ScopeHint": {
+   "UNKNOWN": 0,
+   "WA_ONLY": 1,
+   "WAFFLE": 2,
+   "WA_META_AI": 3,
+   "META_AI_ONLY": 4,
+   "FOA_ONLY": 5
+  },
   "MessageAddOn.MessageAddOnType": {
    "UNDEFINED": 0,
    "REACTION": 1,
@@ -6324,7 +6390,9 @@
    "HEVC_VIDEO_DUAL_UPLOAD": 19,
    "POLL_ADD_OPTION": 20,
    "AV1_VIDEO_DUAL_UPLOAD": 21,
-   "STREAMED_HD_VIDEO_DUAL_UPLOAD": 22
+   "STREAMED_HD_VIDEO_DUAL_UPLOAD": 22,
+   "ORIGINAL_VIDEO_DUAL_UPLOAD": 23,
+   "ORIGINAL_IMAGE_DUAL_UPLOAD": 24
   },
   "MessageContextInfo.MessageAddonExpiryType": {
    "STATIC": 1,
@@ -6598,7 +6666,8 @@
    "NEWSLETTER_STATUS": 9,
    "STATUS_CLOSE_SHARING": 10,
    "PAID_PARTNERSHIP": 11,
-   "USERNAME_STATUS": 12
+   "USERNAME_STATUS": 12,
+   "STATUS_TEMPLATES": 13
   },
   "SyncActionValue.AvatarUpdatedAction.AvatarEventType": {
    "UPDATED": 0,
