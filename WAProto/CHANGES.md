@@ -2,6 +2,12 @@
 
 Terbaru di atas. Dibuat otomatis oleh update-proto.mjs.
 
+## 2.3000.1053300637 → 2.3000.1053362161
+
+By: https://t.me/XYCoolcrafts
+
+Hanya nomor versi yang naik — tidak ada tipe/field/enum baru.
+
 ## 2.3000.1053260417 → 2.3000.1053300637
 
 By: https://t.me/XYCoolcrafts
@@ -162,20 +168,3 @@ By: https://t.me/XYCoolcrafts
 - BotCapabilityMetadata.BotCapabilityType.RICH_RESPONSE_SOCIAL_ENTITY_PREFETCH_SCHEDULER_ENABLED = 84
 - ClientPayload.UserAgent.DeviceType.SMART_DISPLAY = 5
 - ClientPayload.UserAgent.DeviceType.SMART_SPEAKER = 6
-
-## 2.3000.1052015443 → 2.3000.1052070306
-
-### Tipe baru (2)
-
-- SyncActionValue.HatchCVMSecretAction
-- SyncActionValue.SettingsSyncAction.MediaAutoDownloadQualitySetting
-
-### Field baru (2)
-
-- SyncActionValue.hatchCvmSecretAction = 101
-- SyncActionValue.SettingsSyncAction.mediaAutoDownloadQuality = 35
-
-### Nilai enum baru (2)
-
-- MutationProps.HATCH_CVM_SECRET_ACTION = 101
-- SyncActionValue.SettingsSyncAction.SettingKey.MEDIA_AUTO_DOWNLOAD_QUALITY = 35
