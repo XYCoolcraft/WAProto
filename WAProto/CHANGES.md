@@ -2,6 +2,12 @@
 
 Terbaru di atas. Dibuat otomatis oleh update-proto.mjs.
 
+## 2.3000.1053362161 → 2.3000.1053411851
+
+By: https://t.me/XYCoolcrafts
+
+Hanya nomor versi yang naik — tidak ada tipe/field/enum baru.
+
 ## 2.3000.1053300637 → 2.3000.1053362161
 
 By: https://t.me/XYCoolcrafts
@@ -158,13 +164,3 @@ By: https://t.me/XYCoolcrafts
 
 - MsgOpaqueData.MusicData.lyrics = 19
 - MsgOpaqueData.MusicData.lyricsConfirmedAtS = 20
-
-## 2.3000.1052070306 → 2.3000.1052191878
-
-By: https://t.me/XYCoolcrafts
-
-### Nilai enum baru (3)
-
-- BotCapabilityMetadata.BotCapabilityType.RICH_RESPONSE_SOCIAL_ENTITY_PREFETCH_SCHEDULER_ENABLED = 84
-- ClientPayload.UserAgent.DeviceType.SMART_DISPLAY = 5
-- ClientPayload.UserAgent.DeviceType.SMART_SPEAKER = 6
