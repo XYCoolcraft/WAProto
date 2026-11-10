@@ -1,5 +1,5 @@
 {
- "protoVersion": "2.3000.1053699790",
+ "protoVersion": "2.3000.1053820627",
  "counts": {
   "messages": 744,
   "enums": 226
@@ -904,7 +904,8 @@
    "experienceIds": [82, "uint32", "repeated"],
    "partnerDeepLinkToken": [83, "string", "optional"],
    "sourceExperienceId": [84, "uint32", "optional"],
-   "sourceExperienceIds": [85, "uint32", "repeated"]
+   "sourceExperienceIds": [85, "uint32", "repeated"],
+   "foaMutualsSignature": [86, "bytes", "optional"]
   },
   "ContextInfo.AdReplyInfo": {
    "advertiserName": [1, "string", "optional"],

@@ -31709,6 +31709,7 @@ export const proto = $root.proto = (() => {
         ContextInfo.prototype.partnerDeepLinkToken = null;
         ContextInfo.prototype.sourceExperienceId = null;
         ContextInfo.prototype.sourceExperienceIds = $util.emptyArray;
+        ContextInfo.prototype.foaMutualsSignature = null;
 
         let $oneOfFields;
 
@@ -32090,6 +32091,12 @@ export const proto = $root.proto = (() => {
             set: $util.oneOfSetter($oneOfFields)
         });
 
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(ContextInfo.prototype, "_foaMutualsSignature", {
+            get: $util.oneOfGetter($oneOfFields = ["foaMutualsSignature"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
         ContextInfo.create = function(properties) {
             return new ContextInfo(properties);
         };
@@ -32245,6 +32252,8 @@ export const proto = $root.proto = (() => {
             if (m.sourceExperienceIds != null && m.sourceExperienceIds.length) {
                 w.uint32(682).uint32s(m.sourceExperienceIds);
             }
+            if (m.foaMutualsSignature != null && $Object.hasOwnProperty.call(m, "foaMutualsSignature"))
+                w.uint32(690).bytes(m.foaMutualsSignature);
             if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                 for (var i = 0; i < m.$unknowns.length; ++i)
                     w.raw(m.$unknowns[i]);
@@ -32771,6 +32780,13 @@ export const proto = $root.proto = (() => {
                         m.sourceExperienceIds.push(r.uint32());
                         continue;
                     }
+                case 86: {
+                        if (u !== 2)
+                            break;
+                        m.foaMutualsSignature = r.bytes();
+                        m._foaMutualsSignature = "foaMutualsSignature";
+                        continue;
+                    }
                 }
                 r.skipType(u, q, t);
                 if (!r.discardUnknown) {
@@ -33251,6 +33267,12 @@ export const proto = $root.proto = (() => {
                     m.sourceExperienceIds[i] = d.sourceExperienceIds[i] >>> 0;
                 }
             }
+            if (d.foaMutualsSignature != null) {
+                if (typeof d.foaMutualsSignature === "string")
+                    $util.base64.decode(d.foaMutualsSignature, m.foaMutualsSignature = $util.newBuffer($util.base64.length(d.foaMutualsSignature)), 0);
+                else if (d.foaMutualsSignature.length >= 0)
+                    m.foaMutualsSignature = d.foaMutualsSignature;
+            }
             return m;
         };
 
@@ -33492,6 +33514,9 @@ export const proto = $root.proto = (() => {
                 for (var j = 0; j < m.sourceExperienceIds.length; ++j) {
                     d.sourceExperienceIds[j] = m.sourceExperienceIds[j];
                 }
+            }
+            if (m.foaMutualsSignature != null && $Object.hasOwnProperty.call(m, "foaMutualsSignature")) {
+                d.foaMutualsSignature = o.bytes === $String ? $util.base64.encode(m.foaMutualsSignature, 0, m.foaMutualsSignature.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.foaMutualsSignature) : m.foaMutualsSignature;
             }
             return d;
         };

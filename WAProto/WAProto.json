@@ -8214,6 +8214,11 @@
               "oneof": [
                 "sourceExperienceId"
               ]
+            },
+            "_foaMutualsSignature": {
+              "oneof": [
+                "foaMutualsSignature"
+              ]
             }
           },
           "fields": {
@@ -8687,6 +8692,13 @@
               "id": 85,
               "options": {
                 "packed": true
+              }
+            },
+            "foaMutualsSignature": {
+              "type": "bytes",
+              "id": 86,
+              "options": {
+                "proto3_optional": true
               }
             }
           },

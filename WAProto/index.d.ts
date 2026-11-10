@@ -5066,6 +5066,7 @@ export namespace proto {
         partnerDeepLinkToken?: (string|null);
         sourceExperienceId?: (number|null);
         sourceExperienceIds: number[];
+        foaMutualsSignature?: (Uint8Array|null);
         static create(properties: proto.ContextInfo.$Shape): proto.ContextInfo & proto.ContextInfo.$Shape;
         static create(properties?: proto.ContextInfo.$Properties): proto.ContextInfo;
         static encode(m: proto.ContextInfo.$Properties, w?: $protobuf.Writer): $protobuf.Writer;
@@ -5146,6 +5147,7 @@ export namespace proto {
             partnerDeepLinkToken?: (string|null);
             sourceExperienceId?: (number|null);
             sourceExperienceIds?: (number[]|null);
+            foaMutualsSignature?: (Uint8Array|null);
             $unknowns?: Uint8Array[];
         }
         type $Shape = {
@@ -5217,6 +5219,7 @@ export namespace proto {
           partnerDeepLinkToken?: string|null;
           sourceExperienceId?: number|null;
           sourceExperienceIds?: number[]|null;
+          foaMutualsSignature?: Uint8Array|null;
           $unknowns?: Uint8Array[];
         };
 

@@ -2,6 +2,14 @@
 
 Terbaru di atas. Dibuat otomatis oleh update-proto.mjs.
 
+## 2.3000.1053699790 → 2.3000.1053820627
+
+By: https://t.me/XYCoolcrafts
+
+### Field baru (1)
+
+- ContextInfo.foaMutualsSignature = 86
+
 ## 2.3000.1053677024 → 2.3000.1053699790
 
 By: https://t.me/XYCoolcrafts
@@ -186,12 +194,6 @@ By: https://t.me/XYCoolcrafts
 Hanya nomor versi yang naik — tidak ada tipe/field/enum baru.
 
 ## 2.3000.1052607171 → 2.3000.1052616369
-
-By: https://t.me/XYCoolcrafts
-
-Hanya nomor versi yang naik — tidak ada tipe/field/enum baru.
-
-## 2.3000.1052579624 → 2.3000.1052607171
 
 By: https://t.me/XYCoolcrafts
 
