@@ -2,6 +2,12 @@
 
 Terbaru di atas. Dibuat otomatis oleh update-proto.mjs.
 
+## 2.3000.1053895232 → 2.3000.1053925913
+
+By: https://t.me/XYCoolcrafts
+
+Hanya nomor versi yang naik — tidak ada tipe/field/enum baru.
+
 ## 2.3000.1053820627 → 2.3000.1053895232
 
 By: https://t.me/XYCoolcrafts
@@ -188,12 +194,6 @@ By: https://t.me/XYCoolcrafts
 - MsgOpaqueData.sharableEventInviteLastUpdatedTsUsec = 68
 
 ## 2.3000.1052645975 → 2.3000.1052682108
-
-By: https://t.me/XYCoolcrafts
-
-Hanya nomor versi yang naik — tidak ada tipe/field/enum baru.
-
-## 2.3000.1052616369 → 2.3000.1052645975
 
 By: https://t.me/XYCoolcrafts
 
