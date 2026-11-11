@@ -2,6 +2,66 @@
 
 Terbaru di atas. Dibuat otomatis oleh update-proto.mjs.
 
+## 2.3000.1054053575 → 2.3000.1054085650
+
+By: https://t.me/XYCoolcrafts
+
+### Tipe baru (53)
+
+- AddDeviceKeysOutput
+- AddDeviceSyncEpochInput
+- BackwardEdge
+- ComputeClientSealTokenInput
+- ComputeClientSealTokenOutput
+- ComputeClientSealTokenSuccess
+- CreateBackupInput
+- CreateBackupOutput
+- CreateBackupSuccess
+- DecryptMessageInput
+- DecryptMessageOutput
+- DecryptMessageSuccess
+- DeriveEpochsInput
+- DeriveEpochsOutput
+- DeriveEpochsSuccess
+- DeriveMessageKeyInput
+- DeriveMessageKeyOutput
+- DeriveMessageKeySuccess
+- DeriveVirtualDeviceIdInput
+- DeriveVirtualDeviceIdOutput
+- DeriveVirtualDeviceIdSuccess
+- DeviceOutput
+- EncryptMessageInput
+- EncryptMessageOutput
+- EncryptMessageSuccess
+- EncryptedSecretValuesOutput
+- Epoch0Output
+- EpochDerivationEdge
+- EpochIds
+- EpochKey
+- ForwardEdgeInput
+- LabyrinthWaCommand
+- OpenSealedThreadIdInput
+- OpenSealedThreadIdOutput
+- OpenSealedThreadIdSuccess
+- OrfThreadIdInput
+- OrfThreadIdOutput
+- OrfThreadIdSuccess
+- PrepareAddDeviceInput
+- PrepareAddDeviceOutput
+- PrepareAddDeviceSuccess
+- PrepareAddPeerDeviceInput
+- PrepareAddPeerDeviceOutput
+- PrepareAddPeerDeviceSuccess
+- RotateEpochInput
+- RotateEpochMemberEdge
+- RotateEpochMemberInput
+- RotateEpochOutput
+- RotateEpochSuccess
+- SealThreadIdInput
+- SealThreadIdOutput
+- SealThreadIdSuccess
+- VirtualDeviceOutput
+
 ## 2.3000.1053984976 → 2.3000.1054053575
 
 By: https://t.me/XYCoolcrafts
@@ -193,12 +253,6 @@ By: https://t.me/XYCoolcrafts
 Hanya nomor versi yang naik — tidak ada tipe/field/enum baru.
 
 ## 2.3000.1052846864 → 2.3000.1052889962
-
-By: https://t.me/XYCoolcrafts
-
-Hanya nomor versi yang naik — tidak ada tipe/field/enum baru.
-
-## 2.3000.1052769028 → 2.3000.1052846864
 
 By: https://t.me/XYCoolcrafts
 

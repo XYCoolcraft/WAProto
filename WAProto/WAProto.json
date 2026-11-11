@@ -47513,6 +47513,2334 @@
               }
             }
           }
+        },
+        "AddDeviceKeysOutput": {
+          "oneofs": {
+            "_devicePublicKey": {
+              "oneof": [
+                "devicePublicKey"
+              ]
+            },
+            "_epochAuthPublicKey": {
+              "oneof": [
+                "epochAuthPublicKey"
+              ]
+            },
+            "_epochAuthPublicKeySig": {
+              "oneof": [
+                "epochAuthPublicKeySig"
+              ]
+            },
+            "_epochStoragePublicKey": {
+              "oneof": [
+                "epochStoragePublicKey"
+              ]
+            },
+            "_epochStoragePublicKeySig": {
+              "oneof": [
+                "epochStoragePublicKeySig"
+              ]
+            },
+            "_epochStoragePrivateKey": {
+              "oneof": [
+                "epochStoragePrivateKey"
+              ]
+            },
+            "_orfClientState": {
+              "oneof": [
+                "orfClientState"
+              ]
+            }
+          },
+          "fields": {
+            "devicePublicKey": {
+              "type": "bytes",
+              "id": 1,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "epochAuthPublicKey": {
+              "type": "bytes",
+              "id": 2,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "epochAuthPublicKeySig": {
+              "type": "bytes",
+              "id": 3,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "epochStoragePublicKey": {
+              "type": "bytes",
+              "id": 4,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "epochStoragePublicKeySig": {
+              "type": "bytes",
+              "id": 5,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "epochStoragePrivateKey": {
+              "type": "bytes",
+              "id": 6,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "orfClientState": {
+              "type": "bytes",
+              "id": 7,
+              "options": {
+                "proto3_optional": true
+              }
+            }
+          }
+        },
+        "AddDeviceSyncEpochInput": {
+          "oneofs": {
+            "_epochId": {
+              "oneof": [
+                "epochId"
+              ]
+            },
+            "_epochAnonId": {
+              "oneof": [
+                "epochAnonId"
+              ]
+            },
+            "_encryptedEpochKey": {
+              "oneof": [
+                "encryptedEpochKey"
+              ]
+            },
+            "_senderAuthPubKey": {
+              "oneof": [
+                "senderAuthPubKey"
+              ]
+            },
+            "_nextEpochId": {
+              "oneof": [
+                "nextEpochId"
+              ]
+            }
+          },
+          "fields": {
+            "epochId": {
+              "type": "uint64",
+              "id": 1,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "epochAnonId": {
+              "type": "int32",
+              "id": 2,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "encryptedEpochKey": {
+              "type": "bytes",
+              "id": 3,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "senderAuthPubKey": {
+              "type": "bytes",
+              "id": 4,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "nextEpochId": {
+              "type": "uint64",
+              "id": 5,
+              "options": {
+                "proto3_optional": true
+              }
+            }
+          }
+        },
+        "BackwardEdge": {
+          "oneofs": {
+            "_encryptedPrevEpochAnonId": {
+              "oneof": [
+                "encryptedPrevEpochAnonId"
+              ]
+            },
+            "_encryptedPrevEpochRootKey": {
+              "oneof": [
+                "encryptedPrevEpochRootKey"
+              ]
+            },
+            "_prevEpochRootKeyFingerprint": {
+              "oneof": [
+                "prevEpochRootKeyFingerprint"
+              ]
+            }
+          },
+          "fields": {
+            "encryptedPrevEpochAnonId": {
+              "type": "bytes",
+              "id": 1,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "encryptedPrevEpochRootKey": {
+              "type": "bytes",
+              "id": 2,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "prevEpochRootKeyFingerprint": {
+              "type": "bytes",
+              "id": 3,
+              "options": {
+                "proto3_optional": true
+              }
+            }
+          }
+        },
+        "ComputeClientSealTokenInput": {
+          "oneofs": {
+            "_orfClientState": {
+              "oneof": [
+                "orfClientState"
+              ]
+            },
+            "_backupId": {
+              "oneof": [
+                "backupId"
+              ]
+            }
+          },
+          "fields": {
+            "orfClientState": {
+              "type": "bytes",
+              "id": 1,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "backupId": {
+              "type": "uint64",
+              "id": 2,
+              "options": {
+                "proto3_optional": true
+              }
+            }
+          }
+        },
+        "ComputeClientSealTokenOutput": {
+          "oneofs": {
+            "result": {
+              "oneof": [
+                "success",
+                "error"
+              ]
+            }
+          },
+          "fields": {
+            "success": {
+              "type": "ComputeClientSealTokenSuccess",
+              "id": 1
+            },
+            "error": {
+              "type": "string",
+              "id": 2
+            }
+          }
+        },
+        "ComputeClientSealTokenSuccess": {
+          "oneofs": {
+            "_clientSealToken": {
+              "oneof": [
+                "clientSealToken"
+              ]
+            }
+          },
+          "fields": {
+            "clientSealToken": {
+              "type": "bytes",
+              "id": 1,
+              "options": {
+                "proto3_optional": true
+              }
+            }
+          }
+        },
+        "CreateBackupInput": {
+          "oneofs": {
+            "_recoveryCode": {
+              "oneof": [
+                "recoveryCode"
+              ]
+            },
+            "_userId": {
+              "oneof": [
+                "userId"
+              ]
+            }
+          },
+          "fields": {
+            "recoveryCode": {
+              "type": "string",
+              "id": 1,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "userId": {
+              "type": "uint64",
+              "id": 2,
+              "options": {
+                "proto3_optional": true
+              }
+            }
+          }
+        },
+        "CreateBackupOutput": {
+          "oneofs": {
+            "result": {
+              "oneof": [
+                "success",
+                "error"
+              ]
+            }
+          },
+          "fields": {
+            "success": {
+              "type": "CreateBackupSuccess",
+              "id": 1
+            },
+            "error": {
+              "type": "string",
+              "id": 2
+            }
+          }
+        },
+        "CreateBackupSuccess": {
+          "oneofs": {
+            "_device": {
+              "oneof": [
+                "device"
+              ]
+            },
+            "_virtualDevice": {
+              "oneof": [
+                "virtualDevice"
+              ]
+            },
+            "_epoch0": {
+              "oneof": [
+                "epoch0"
+              ]
+            },
+            "_mailboxRootKey": {
+              "oneof": [
+                "mailboxRootKey"
+              ]
+            }
+          },
+          "fields": {
+            "device": {
+              "type": "DeviceOutput",
+              "id": 1,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "virtualDevice": {
+              "type": "VirtualDeviceOutput",
+              "id": 2,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "epoch0": {
+              "type": "Epoch0Output",
+              "id": 3,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "mailboxRootKey": {
+              "type": "bytes",
+              "id": 4,
+              "options": {
+                "proto3_optional": true
+              }
+            }
+          }
+        },
+        "DecryptMessageInput": {
+          "oneofs": {
+            "_epochRootKey": {
+              "oneof": [
+                "epochRootKey"
+              ]
+            },
+            "_epochAnonId": {
+              "oneof": [
+                "epochAnonId"
+              ]
+            },
+            "_threadId": {
+              "oneof": [
+                "threadId"
+              ]
+            },
+            "_encryptionVersion": {
+              "oneof": [
+                "encryptionVersion"
+              ]
+            },
+            "_ciphertext": {
+              "oneof": [
+                "ciphertext"
+              ]
+            }
+          },
+          "fields": {
+            "epochRootKey": {
+              "type": "bytes",
+              "id": 1,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "epochAnonId": {
+              "type": "int32",
+              "id": 2,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "threadId": {
+              "type": "string",
+              "id": 3,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "encryptionVersion": {
+              "type": "int32",
+              "id": 4,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "ciphertext": {
+              "type": "bytes",
+              "id": 5,
+              "options": {
+                "proto3_optional": true
+              }
+            }
+          }
+        },
+        "DecryptMessageOutput": {
+          "oneofs": {
+            "result": {
+              "oneof": [
+                "success",
+                "error"
+              ]
+            }
+          },
+          "fields": {
+            "success": {
+              "type": "DecryptMessageSuccess",
+              "id": 1
+            },
+            "error": {
+              "type": "string",
+              "id": 2
+            }
+          }
+        },
+        "DecryptMessageSuccess": {
+          "oneofs": {
+            "_plaintextPayload": {
+              "oneof": [
+                "plaintextPayload"
+              ]
+            }
+          },
+          "fields": {
+            "plaintextPayload": {
+              "type": "bytes",
+              "id": 1,
+              "options": {
+                "proto3_optional": true
+              }
+            }
+          }
+        },
+        "DeriveEpochsInput": {
+          "oneofs": {
+            "_epochStoragePrivateKey": {
+              "oneof": [
+                "epochStoragePrivateKey"
+              ]
+            }
+          },
+          "fields": {
+            "epochStoragePrivateKey": {
+              "type": "bytes",
+              "id": 1,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "epochs": {
+              "rule": "repeated",
+              "type": "EpochKey",
+              "id": 2
+            },
+            "edges": {
+              "rule": "repeated",
+              "type": "EpochDerivationEdge",
+              "id": 3
+            }
+          }
+        },
+        "DeriveEpochsOutput": {
+          "oneofs": {
+            "result": {
+              "oneof": [
+                "success",
+                "error"
+              ]
+            }
+          },
+          "fields": {
+            "success": {
+              "type": "DeriveEpochsSuccess",
+              "id": 1
+            },
+            "error": {
+              "type": "string",
+              "id": 2
+            }
+          }
+        },
+        "DeriveEpochsSuccess": {
+          "fields": {
+            "epochs": {
+              "rule": "repeated",
+              "type": "EpochKey",
+              "id": 1
+            }
+          }
+        },
+        "DeriveMessageKeyInput": {
+          "oneofs": {
+            "_epochRootKey": {
+              "oneof": [
+                "epochRootKey"
+              ]
+            },
+            "_epochAnonId": {
+              "oneof": [
+                "epochAnonId"
+              ]
+            },
+            "_threadId": {
+              "oneof": [
+                "threadId"
+              ]
+            }
+          },
+          "fields": {
+            "epochRootKey": {
+              "type": "bytes",
+              "id": 1,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "epochAnonId": {
+              "type": "int32",
+              "id": 2,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "threadId": {
+              "type": "string",
+              "id": 3,
+              "options": {
+                "proto3_optional": true
+              }
+            }
+          }
+        },
+        "DeriveMessageKeyOutput": {
+          "oneofs": {
+            "result": {
+              "oneof": [
+                "success",
+                "error"
+              ]
+            }
+          },
+          "fields": {
+            "success": {
+              "type": "DeriveMessageKeySuccess",
+              "id": 1
+            },
+            "error": {
+              "type": "string",
+              "id": 2
+            }
+          }
+        },
+        "DeriveMessageKeySuccess": {
+          "oneofs": {
+            "_messageKey": {
+              "oneof": [
+                "messageKey"
+              ]
+            }
+          },
+          "fields": {
+            "messageKey": {
+              "type": "bytes",
+              "id": 1,
+              "options": {
+                "proto3_optional": true
+              }
+            }
+          }
+        },
+        "DeriveVirtualDeviceIdInput": {
+          "oneofs": {
+            "_recoveryCode": {
+              "oneof": [
+                "recoveryCode"
+              ]
+            },
+            "_userId": {
+              "oneof": [
+                "userId"
+              ]
+            }
+          },
+          "fields": {
+            "recoveryCode": {
+              "type": "string",
+              "id": 1,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "userId": {
+              "type": "uint64",
+              "id": 2,
+              "options": {
+                "proto3_optional": true
+              }
+            }
+          }
+        },
+        "DeriveVirtualDeviceIdOutput": {
+          "oneofs": {
+            "result": {
+              "oneof": [
+                "success",
+                "error"
+              ]
+            }
+          },
+          "fields": {
+            "success": {
+              "type": "DeriveVirtualDeviceIdSuccess",
+              "id": 1
+            },
+            "error": {
+              "type": "string",
+              "id": 2
+            }
+          }
+        },
+        "DeriveVirtualDeviceIdSuccess": {
+          "oneofs": {
+            "_virtualDeviceId": {
+              "oneof": [
+                "virtualDeviceId"
+              ]
+            }
+          },
+          "fields": {
+            "virtualDeviceId": {
+              "type": "bytes",
+              "id": 1,
+              "options": {
+                "proto3_optional": true
+              }
+            }
+          }
+        },
+        "DeviceOutput": {
+          "oneofs": {
+            "_publicKey": {
+              "oneof": [
+                "publicKey"
+              ]
+            },
+            "_epochAuthPublicKey": {
+              "oneof": [
+                "epochAuthPublicKey"
+              ]
+            },
+            "_epochAuthPublicKeySig": {
+              "oneof": [
+                "epochAuthPublicKeySig"
+              ]
+            },
+            "_epochStoragePublicKey": {
+              "oneof": [
+                "epochStoragePublicKey"
+              ]
+            },
+            "_epochStoragePublicKeySig": {
+              "oneof": [
+                "epochStoragePublicKeySig"
+              ]
+            },
+            "_encryptionVersionSignature": {
+              "oneof": [
+                "encryptionVersionSignature"
+              ]
+            },
+            "_clientVersion": {
+              "oneof": [
+                "clientVersion"
+              ]
+            },
+            "_ocmfClientState": {
+              "oneof": [
+                "ocmfClientState"
+              ]
+            },
+            "_epochStoragePrivateKey": {
+              "oneof": [
+                "epochStoragePrivateKey"
+              ]
+            },
+            "_epochAuthPrivateKey": {
+              "oneof": [
+                "epochAuthPrivateKey"
+              ]
+            },
+            "_deviceEpochHmac": {
+              "oneof": [
+                "deviceEpochHmac"
+              ]
+            }
+          },
+          "fields": {
+            "publicKey": {
+              "type": "bytes",
+              "id": 1,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "epochAuthPublicKey": {
+              "type": "bytes",
+              "id": 2,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "epochAuthPublicKeySig": {
+              "type": "bytes",
+              "id": 3,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "epochStoragePublicKey": {
+              "type": "bytes",
+              "id": 4,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "epochStoragePublicKeySig": {
+              "type": "bytes",
+              "id": 5,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "supportedEncryptionVersions": {
+              "rule": "repeated",
+              "type": "int32",
+              "id": 6
+            },
+            "encryptionVersionSignature": {
+              "type": "bytes",
+              "id": 7,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "clientVersion": {
+              "type": "int32",
+              "id": 8,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "ocmfClientState": {
+              "type": "bytes",
+              "id": 9,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "epochStoragePrivateKey": {
+              "type": "bytes",
+              "id": 10,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "epochAuthPrivateKey": {
+              "type": "bytes",
+              "id": 11,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "deviceEpochHmac": {
+              "type": "bytes",
+              "id": 12,
+              "options": {
+                "proto3_optional": true
+              }
+            }
+          }
+        },
+        "EncryptMessageInput": {
+          "oneofs": {
+            "_epochRootKey": {
+              "oneof": [
+                "epochRootKey"
+              ]
+            },
+            "_mailboxRootKey": {
+              "oneof": [
+                "mailboxRootKey"
+              ]
+            },
+            "_orfClientState": {
+              "oneof": [
+                "orfClientState"
+              ]
+            },
+            "_epochAnonId": {
+              "oneof": [
+                "epochAnonId"
+              ]
+            },
+            "_epochId": {
+              "oneof": [
+                "epochId"
+              ]
+            },
+            "_threadId": {
+              "oneof": [
+                "threadId"
+              ]
+            },
+            "_waCanonicalUserFbid": {
+              "oneof": [
+                "waCanonicalUserFbid"
+              ]
+            },
+            "_timestampMs": {
+              "oneof": [
+                "timestampMs"
+              ]
+            },
+            "_backupId": {
+              "oneof": [
+                "backupId"
+              ]
+            },
+            "_plaintextPayload": {
+              "oneof": [
+                "plaintextPayload"
+              ]
+            },
+            "_stanzaId": {
+              "oneof": [
+                "stanzaId"
+              ]
+            }
+          },
+          "fields": {
+            "epochRootKey": {
+              "type": "bytes",
+              "id": 1,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "mailboxRootKey": {
+              "type": "bytes",
+              "id": 2,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "orfClientState": {
+              "type": "bytes",
+              "id": 3,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "epochAnonId": {
+              "type": "int32",
+              "id": 4,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "epochId": {
+              "type": "uint64",
+              "id": 5,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "threadId": {
+              "type": "string",
+              "id": 6,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "waCanonicalUserFbid": {
+              "type": "uint64",
+              "id": 7,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "timestampMs": {
+              "type": "uint64",
+              "id": 8,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "backupId": {
+              "type": "uint64",
+              "id": 9,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "plaintextPayload": {
+              "type": "bytes",
+              "id": 10,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "stanzaId": {
+              "type": "string",
+              "id": 11,
+              "options": {
+                "proto3_optional": true
+              }
+            }
+          }
+        },
+        "EncryptMessageOutput": {
+          "oneofs": {
+            "result": {
+              "oneof": [
+                "success",
+                "error"
+              ]
+            }
+          },
+          "fields": {
+            "success": {
+              "type": "EncryptMessageSuccess",
+              "id": 1
+            },
+            "error": {
+              "type": "string",
+              "id": 2
+            }
+          }
+        },
+        "EncryptMessageSuccess": {
+          "oneofs": {
+            "_encryptedProtobuf": {
+              "oneof": [
+                "encryptedProtobuf"
+              ]
+            },
+            "_orfThreadId": {
+              "oneof": [
+                "orfThreadId"
+              ]
+            },
+            "_valueSecretRef": {
+              "oneof": [
+                "valueSecretRef"
+              ]
+            },
+            "_offlineThreadingId": {
+              "oneof": [
+                "offlineThreadingId"
+              ]
+            },
+            "_timestampMs": {
+              "oneof": [
+                "timestampMs"
+              ]
+            }
+          },
+          "fields": {
+            "encryptedProtobuf": {
+              "type": "bytes",
+              "id": 1,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "orfThreadId": {
+              "type": "bytes",
+              "id": 2,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "valueSecretRef": {
+              "type": "string",
+              "id": 3,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "offlineThreadingId": {
+              "type": "uint64",
+              "id": 4,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "timestampMs": {
+              "type": "uint64",
+              "id": 5,
+              "options": {
+                "proto3_optional": true
+              }
+            }
+          }
+        },
+        "EncryptedSecretValuesOutput": {
+          "oneofs": {
+            "_encryptedDevicePrivateKey": {
+              "oneof": [
+                "encryptedDevicePrivateKey"
+              ]
+            },
+            "_encryptedObliviousValidationTokenBlob": {
+              "oneof": [
+                "encryptedObliviousValidationTokenBlob"
+              ]
+            },
+            "_encryptedEpochStoragePrivateKey": {
+              "oneof": [
+                "encryptedEpochStoragePrivateKey"
+              ]
+            },
+            "_encryptedOcmfClientState": {
+              "oneof": [
+                "encryptedOcmfClientState"
+              ]
+            },
+            "_encryptedMailboxRootKeyBlob": {
+              "oneof": [
+                "encryptedMailboxRootKeyBlob"
+              ]
+            },
+            "_encryptedEpochAnonId": {
+              "oneof": [
+                "encryptedEpochAnonId"
+              ]
+            },
+            "_encryptedEpochRootKey": {
+              "oneof": [
+                "encryptedEpochRootKey"
+              ]
+            }
+          },
+          "fields": {
+            "encryptedDevicePrivateKey": {
+              "type": "bytes",
+              "id": 1,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "encryptedObliviousValidationTokenBlob": {
+              "type": "bytes",
+              "id": 2,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "encryptedEpochStoragePrivateKey": {
+              "type": "bytes",
+              "id": 3,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "encryptedOcmfClientState": {
+              "type": "bytes",
+              "id": 4,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "encryptedMailboxRootKeyBlob": {
+              "type": "bytes",
+              "id": 6,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "encryptedEpochAnonId": {
+              "type": "bytes",
+              "id": 7,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "encryptedEpochRootKey": {
+              "type": "bytes",
+              "id": 8,
+              "options": {
+                "proto3_optional": true
+              }
+            }
+          }
+        },
+        "Epoch0Output": {
+          "oneofs": {
+            "_epochAnonId": {
+              "oneof": [
+                "epochAnonId"
+              ]
+            },
+            "_epochRootKeyFingerprint": {
+              "oneof": [
+                "epochRootKeyFingerprint"
+              ]
+            },
+            "_epochRootKey": {
+              "oneof": [
+                "epochRootKey"
+              ]
+            }
+          },
+          "fields": {
+            "epochAnonId": {
+              "type": "int32",
+              "id": 2,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "epochRootKeyFingerprint": {
+              "type": "bytes",
+              "id": 6,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "epochRootKey": {
+              "type": "bytes",
+              "id": 7,
+              "options": {
+                "proto3_optional": true
+              }
+            }
+          }
+        },
+        "EpochDerivationEdge": {
+          "oneofs": {
+            "_fromEpoch": {
+              "oneof": [
+                "fromEpoch"
+              ]
+            },
+            "_toEpoch": {
+              "oneof": [
+                "toEpoch"
+              ]
+            },
+            "_forwardEdge": {
+              "oneof": [
+                "forwardEdge"
+              ]
+            },
+            "_backwardEdge": {
+              "oneof": [
+                "backwardEdge"
+              ]
+            }
+          },
+          "fields": {
+            "fromEpoch": {
+              "type": "EpochIds",
+              "id": 1,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "toEpoch": {
+              "type": "EpochIds",
+              "id": 2,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "forwardEdge": {
+              "type": "ForwardEdgeInput",
+              "id": 3,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "backwardEdge": {
+              "type": "bytes",
+              "id": 4,
+              "options": {
+                "proto3_optional": true
+              }
+            }
+          }
+        },
+        "EpochIds": {
+          "oneofs": {
+            "_serverEpochId": {
+              "oneof": [
+                "serverEpochId"
+              ]
+            },
+            "_epochAnonId": {
+              "oneof": [
+                "epochAnonId"
+              ]
+            }
+          },
+          "fields": {
+            "serverEpochId": {
+              "type": "uint64",
+              "id": 1,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "epochAnonId": {
+              "type": "int32",
+              "id": 2,
+              "options": {
+                "proto3_optional": true
+              }
+            }
+          }
+        },
+        "EpochKey": {
+          "oneofs": {
+            "_serverEpochId": {
+              "oneof": [
+                "serverEpochId"
+              ]
+            },
+            "_epochAnonId": {
+              "oneof": [
+                "epochAnonId"
+              ]
+            },
+            "_epochRootKey": {
+              "oneof": [
+                "epochRootKey"
+              ]
+            }
+          },
+          "fields": {
+            "serverEpochId": {
+              "type": "uint64",
+              "id": 1,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "epochAnonId": {
+              "type": "int32",
+              "id": 2,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "epochRootKey": {
+              "type": "bytes",
+              "id": 3,
+              "options": {
+                "proto3_optional": true
+              }
+            }
+          }
+        },
+        "ForwardEdgeInput": {
+          "oneofs": {
+            "_encryptedEntropy": {
+              "oneof": [
+                "encryptedEntropy"
+              ]
+            },
+            "_authPublicKey": {
+              "oneof": [
+                "authPublicKey"
+              ]
+            }
+          },
+          "fields": {
+            "encryptedEntropy": {
+              "type": "bytes",
+              "id": 1,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "authPublicKey": {
+              "type": "bytes",
+              "id": 2,
+              "options": {
+                "proto3_optional": true
+              }
+            }
+          }
+        },
+        "LabyrinthWaCommand": {
+          "oneofs": {
+            "commandInput": {
+              "oneof": [
+                "createBackupInput",
+                "encryptMessageInput",
+                "decryptMessageInput",
+                "orfThreadIdInput",
+                "deriveMessageKeyInput",
+                "rotateEpochInput",
+                "deriveVirtualDeviceIdInput",
+                "prepareAddDeviceInput",
+                "computeClientSealTokenInput",
+                "openSealedThreadIdInput",
+                "deriveEpochsInput",
+                "sealThreadIdInput",
+                "prepareAddPeerDeviceInput"
+              ]
+            }
+          },
+          "fields": {
+            "createBackupInput": {
+              "type": "CreateBackupInput",
+              "id": 1
+            },
+            "encryptMessageInput": {
+              "type": "EncryptMessageInput",
+              "id": 2
+            },
+            "decryptMessageInput": {
+              "type": "DecryptMessageInput",
+              "id": 3
+            },
+            "orfThreadIdInput": {
+              "type": "OrfThreadIdInput",
+              "id": 4
+            },
+            "deriveMessageKeyInput": {
+              "type": "DeriveMessageKeyInput",
+              "id": 5
+            },
+            "rotateEpochInput": {
+              "type": "RotateEpochInput",
+              "id": 6
+            },
+            "deriveVirtualDeviceIdInput": {
+              "type": "DeriveVirtualDeviceIdInput",
+              "id": 7
+            },
+            "prepareAddDeviceInput": {
+              "type": "PrepareAddDeviceInput",
+              "id": 8
+            },
+            "computeClientSealTokenInput": {
+              "type": "ComputeClientSealTokenInput",
+              "id": 9
+            },
+            "openSealedThreadIdInput": {
+              "type": "OpenSealedThreadIdInput",
+              "id": 10
+            },
+            "deriveEpochsInput": {
+              "type": "DeriveEpochsInput",
+              "id": 11
+            },
+            "sealThreadIdInput": {
+              "type": "SealThreadIdInput",
+              "id": 12
+            },
+            "prepareAddPeerDeviceInput": {
+              "type": "PrepareAddPeerDeviceInput",
+              "id": 13
+            }
+          }
+        },
+        "OpenSealedThreadIdInput": {
+          "oneofs": {
+            "_backupId": {
+              "oneof": [
+                "backupId"
+              ]
+            },
+            "_sealedThreadId": {
+              "oneof": [
+                "sealedThreadId"
+              ]
+            }
+          },
+          "fields": {
+            "backupId": {
+              "type": "uint64",
+              "id": 1,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "sealedThreadId": {
+              "type": "bytes",
+              "id": 2,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "epochs": {
+              "rule": "repeated",
+              "type": "EpochKey",
+              "id": 3
+            }
+          }
+        },
+        "OpenSealedThreadIdOutput": {
+          "oneofs": {
+            "result": {
+              "oneof": [
+                "success",
+                "error"
+              ]
+            }
+          },
+          "fields": {
+            "success": {
+              "type": "OpenSealedThreadIdSuccess",
+              "id": 1
+            },
+            "error": {
+              "type": "string",
+              "id": 2
+            }
+          }
+        },
+        "OpenSealedThreadIdSuccess": {
+          "oneofs": {
+            "_threadId": {
+              "oneof": [
+                "threadId"
+              ]
+            },
+            "_sealEpochAnonId": {
+              "oneof": [
+                "sealEpochAnonId"
+              ]
+            }
+          },
+          "fields": {
+            "threadId": {
+              "type": "string",
+              "id": 1,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "sealEpochAnonId": {
+              "type": "int32",
+              "id": 2,
+              "options": {
+                "proto3_optional": true
+              }
+            }
+          }
+        },
+        "OrfThreadIdInput": {
+          "oneofs": {
+            "_orfClientState": {
+              "oneof": [
+                "orfClientState"
+              ]
+            },
+            "_threadId": {
+              "oneof": [
+                "threadId"
+              ]
+            }
+          },
+          "fields": {
+            "orfClientState": {
+              "type": "bytes",
+              "id": 1,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "threadId": {
+              "type": "string",
+              "id": 2,
+              "options": {
+                "proto3_optional": true
+              }
+            }
+          }
+        },
+        "OrfThreadIdOutput": {
+          "oneofs": {
+            "result": {
+              "oneof": [
+                "success",
+                "error"
+              ]
+            }
+          },
+          "fields": {
+            "success": {
+              "type": "OrfThreadIdSuccess",
+              "id": 1
+            },
+            "error": {
+              "type": "string",
+              "id": 2
+            }
+          }
+        },
+        "OrfThreadIdSuccess": {
+          "oneofs": {
+            "_orfThreadId": {
+              "oneof": [
+                "orfThreadId"
+              ]
+            }
+          },
+          "fields": {
+            "orfThreadId": {
+              "type": "bytes",
+              "id": 1,
+              "options": {
+                "proto3_optional": true
+              }
+            }
+          }
+        },
+        "PrepareAddDeviceInput": {
+          "oneofs": {
+            "_recoveryCode": {
+              "oneof": [
+                "recoveryCode"
+              ]
+            },
+            "_userId": {
+              "oneof": [
+                "userId"
+              ]
+            },
+            "_encryptedSecretValuesJson": {
+              "oneof": [
+                "encryptedSecretValuesJson"
+              ]
+            },
+            "_virtualDeviceBaseEpochId": {
+              "oneof": [
+                "virtualDeviceBaseEpochId"
+              ]
+            },
+            "_activeEpochId": {
+              "oneof": [
+                "activeEpochId"
+              ]
+            }
+          },
+          "fields": {
+            "recoveryCode": {
+              "type": "string",
+              "id": 1,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "userId": {
+              "type": "uint64",
+              "id": 2,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "encryptedSecretValuesJson": {
+              "type": "string",
+              "id": 3,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "virtualDeviceBaseEpochId": {
+              "type": "uint64",
+              "id": 4,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "activeEpochId": {
+              "type": "uint64",
+              "id": 5,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "syncEpochs": {
+              "rule": "repeated",
+              "type": "AddDeviceSyncEpochInput",
+              "id": 6
+            }
+          }
+        },
+        "PrepareAddDeviceOutput": {
+          "oneofs": {
+            "result": {
+              "oneof": [
+                "success",
+                "error"
+              ]
+            }
+          },
+          "fields": {
+            "success": {
+              "type": "PrepareAddDeviceSuccess",
+              "id": 1
+            },
+            "error": {
+              "type": "string",
+              "id": 2
+            }
+          }
+        },
+        "PrepareAddDeviceSuccess": {
+          "oneofs": {
+            "_deviceKeys": {
+              "oneof": [
+                "deviceKeys"
+              ]
+            },
+            "_currentEpoch": {
+              "oneof": [
+                "currentEpoch"
+              ]
+            },
+            "_mailboxRootSalt": {
+              "oneof": [
+                "mailboxRootSalt"
+              ]
+            },
+            "_orfRotationToken": {
+              "oneof": [
+                "orfRotationToken"
+              ]
+            },
+            "_deviceEpochHmac": {
+              "oneof": [
+                "deviceEpochHmac"
+              ]
+            },
+            "_epochRootKeyFingerprint": {
+              "oneof": [
+                "epochRootKeyFingerprint"
+              ]
+            },
+            "_encryptionVersionSignature": {
+              "oneof": [
+                "encryptionVersionSignature"
+              ]
+            },
+            "_clientVersion": {
+              "oneof": [
+                "clientVersion"
+              ]
+            }
+          },
+          "fields": {
+            "deviceKeys": {
+              "type": "AddDeviceKeysOutput",
+              "id": 1,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "currentEpoch": {
+              "type": "EpochKey",
+              "id": 2,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "mailboxRootSalt": {
+              "type": "bytes",
+              "id": 3,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "orfRotationToken": {
+              "type": "bytes",
+              "id": 4,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "deviceEpochHmac": {
+              "type": "bytes",
+              "id": 5,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "epochRootKeyFingerprint": {
+              "type": "bytes",
+              "id": 6,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "supportedEncryptionVersions": {
+              "rule": "repeated",
+              "type": "int32",
+              "id": 7
+            },
+            "encryptionVersionSignature": {
+              "type": "bytes",
+              "id": 8,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "clientVersion": {
+              "type": "int32",
+              "id": 9,
+              "options": {
+                "proto3_optional": true
+              }
+            }
+          }
+        },
+        "PrepareAddPeerDeviceInput": {
+          "oneofs": {
+            "_advSecret": {
+              "oneof": [
+                "advSecret"
+              ]
+            },
+            "_sealedPayload": {
+              "oneof": [
+                "sealedPayload"
+              ]
+            },
+            "_backupId": {
+              "oneof": [
+                "backupId"
+              ]
+            },
+            "_userId": {
+              "oneof": [
+                "userId"
+              ]
+            },
+            "_companionIdentityPub": {
+              "oneof": [
+                "companionIdentityPub"
+              ]
+            },
+            "_activeEpochId": {
+              "oneof": [
+                "activeEpochId"
+              ]
+            }
+          },
+          "fields": {
+            "advSecret": {
+              "type": "bytes",
+              "id": 1,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "sealedPayload": {
+              "type": "bytes",
+              "id": 2,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "backupId": {
+              "type": "uint64",
+              "id": 3,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "userId": {
+              "type": "uint64",
+              "id": 4,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "companionIdentityPub": {
+              "type": "bytes",
+              "id": 5,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "activeEpochId": {
+              "type": "uint64",
+              "id": 6,
+              "options": {
+                "proto3_optional": true
+              }
+            }
+          }
+        },
+        "PrepareAddPeerDeviceOutput": {
+          "oneofs": {
+            "result": {
+              "oneof": [
+                "success",
+                "error"
+              ]
+            }
+          },
+          "fields": {
+            "success": {
+              "type": "PrepareAddPeerDeviceSuccess",
+              "id": 1
+            },
+            "error": {
+              "type": "string",
+              "id": 2
+            }
+          }
+        },
+        "PrepareAddPeerDeviceSuccess": {
+          "oneofs": {
+            "_enrolment": {
+              "oneof": [
+                "enrolment"
+              ]
+            },
+            "_serverDataId": {
+              "oneof": [
+                "serverDataId"
+              ]
+            },
+            "_companionDeviceBinding": {
+              "oneof": [
+                "companionDeviceBinding"
+              ]
+            }
+          },
+          "fields": {
+            "enrolment": {
+              "type": "PrepareAddDeviceSuccess",
+              "id": 1,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "serverDataId": {
+              "type": "uint64",
+              "id": 2,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "companionDeviceBinding": {
+              "type": "bytes",
+              "id": 3,
+              "options": {
+                "proto3_optional": true
+              }
+            }
+          }
+        },
+        "RotateEpochInput": {
+          "oneofs": {
+            "_currentEpochRootKey": {
+              "oneof": [
+                "currentEpochRootKey"
+              ]
+            },
+            "_currentEpochAnonId": {
+              "oneof": [
+                "currentEpochAnonId"
+              ]
+            },
+            "_currentEpochFbid": {
+              "oneof": [
+                "currentEpochFbid"
+              ]
+            },
+            "_epochStorageAuthPrivateKey": {
+              "oneof": [
+                "epochStorageAuthPrivateKey"
+              ]
+            }
+          },
+          "fields": {
+            "currentEpochRootKey": {
+              "type": "bytes",
+              "id": 1,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "currentEpochAnonId": {
+              "type": "int32",
+              "id": 2,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "currentEpochFbid": {
+              "type": "uint64",
+              "id": 3,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "epochStorageAuthPrivateKey": {
+              "type": "bytes",
+              "id": 4,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "members": {
+              "rule": "repeated",
+              "type": "RotateEpochMemberInput",
+              "id": 5
+            }
+          }
+        },
+        "RotateEpochMemberEdge": {
+          "oneofs": {
+            "_deviceId": {
+              "oneof": [
+                "deviceId"
+              ]
+            },
+            "_encryptedEpochKey": {
+              "oneof": [
+                "encryptedEpochKey"
+              ]
+            },
+            "_deviceEpochHmac": {
+              "oneof": [
+                "deviceEpochHmac"
+              ]
+            }
+          },
+          "fields": {
+            "deviceId": {
+              "type": "uint64",
+              "id": 1,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "encryptedEpochKey": {
+              "type": "bytes",
+              "id": 2,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "deviceEpochHmac": {
+              "type": "bytes",
+              "id": 3,
+              "options": {
+                "proto3_optional": true
+              }
+            }
+          }
+        },
+        "RotateEpochMemberInput": {
+          "oneofs": {
+            "_deviceId": {
+              "oneof": [
+                "deviceId"
+              ]
+            },
+            "_epochStoragePublicKey": {
+              "oneof": [
+                "epochStoragePublicKey"
+              ]
+            },
+            "_devicePublicKey": {
+              "oneof": [
+                "devicePublicKey"
+              ]
+            },
+            "_prevDeviceEpochHmac": {
+              "oneof": [
+                "prevDeviceEpochHmac"
+              ]
+            },
+            "_epochStoragePublicKeySig": {
+              "oneof": [
+                "epochStoragePublicKeySig"
+              ]
+            }
+          },
+          "fields": {
+            "deviceId": {
+              "type": "uint64",
+              "id": 1,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "epochStoragePublicKey": {
+              "type": "bytes",
+              "id": 2,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "devicePublicKey": {
+              "type": "bytes",
+              "id": 3,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "prevDeviceEpochHmac": {
+              "type": "bytes",
+              "id": 4,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "epochStoragePublicKeySig": {
+              "type": "bytes",
+              "id": 5,
+              "options": {
+                "proto3_optional": true
+              }
+            }
+          }
+        },
+        "RotateEpochOutput": {
+          "oneofs": {
+            "result": {
+              "oneof": [
+                "success",
+                "error"
+              ]
+            }
+          },
+          "fields": {
+            "success": {
+              "type": "RotateEpochSuccess",
+              "id": 1
+            },
+            "error": {
+              "type": "string",
+              "id": 2
+            }
+          }
+        },
+        "RotateEpochSuccess": {
+          "oneofs": {
+            "_newEpochRootKey": {
+              "oneof": [
+                "newEpochRootKey"
+              ]
+            },
+            "_newEpochAnonId": {
+              "oneof": [
+                "newEpochAnonId"
+              ]
+            },
+            "_backwardEdge": {
+              "oneof": [
+                "backwardEdge"
+              ]
+            },
+            "_epochRootKeyFingerprint": {
+              "oneof": [
+                "epochRootKeyFingerprint"
+              ]
+            }
+          },
+          "fields": {
+            "newEpochRootKey": {
+              "type": "bytes",
+              "id": 1,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "newEpochAnonId": {
+              "type": "int32",
+              "id": 2,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "backwardEdge": {
+              "type": "BackwardEdge",
+              "id": 4,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "memberEdges": {
+              "rule": "repeated",
+              "type": "RotateEpochMemberEdge",
+              "id": 5
+            },
+            "epochRootKeyFingerprint": {
+              "type": "bytes",
+              "id": 6,
+              "options": {
+                "proto3_optional": true
+              }
+            }
+          }
+        },
+        "SealThreadIdInput": {
+          "oneofs": {
+            "_epochRootKey": {
+              "oneof": [
+                "epochRootKey"
+              ]
+            },
+            "_epochAnonId": {
+              "oneof": [
+                "epochAnonId"
+              ]
+            },
+            "_backupId": {
+              "oneof": [
+                "backupId"
+              ]
+            },
+            "_threadId": {
+              "oneof": [
+                "threadId"
+              ]
+            }
+          },
+          "fields": {
+            "epochRootKey": {
+              "type": "bytes",
+              "id": 1,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "epochAnonId": {
+              "type": "int32",
+              "id": 2,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "backupId": {
+              "type": "uint64",
+              "id": 3,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "threadId": {
+              "type": "string",
+              "id": 4,
+              "options": {
+                "proto3_optional": true
+              }
+            }
+          }
+        },
+        "SealThreadIdOutput": {
+          "oneofs": {
+            "result": {
+              "oneof": [
+                "success",
+                "error"
+              ]
+            }
+          },
+          "fields": {
+            "success": {
+              "type": "SealThreadIdSuccess",
+              "id": 1
+            },
+            "error": {
+              "type": "string",
+              "id": 2
+            }
+          }
+        },
+        "SealThreadIdSuccess": {
+          "oneofs": {
+            "_sealedThreadId": {
+              "oneof": [
+                "sealedThreadId"
+              ]
+            }
+          },
+          "fields": {
+            "sealedThreadId": {
+              "type": "bytes",
+              "id": 1,
+              "options": {
+                "proto3_optional": true
+              }
+            }
+          }
+        },
+        "VirtualDeviceOutput": {
+          "oneofs": {
+            "_vdId": {
+              "oneof": [
+                "vdId"
+              ]
+            },
+            "_vdPublicKey": {
+              "oneof": [
+                "vdPublicKey"
+              ]
+            },
+            "_vdEpochStoragePublicKey": {
+              "oneof": [
+                "vdEpochStoragePublicKey"
+              ]
+            },
+            "_vdEpochStoragePublicKeySig": {
+              "oneof": [
+                "vdEpochStoragePublicKeySig"
+              ]
+            },
+            "_ocmfRotationToken": {
+              "oneof": [
+                "ocmfRotationToken"
+              ]
+            },
+            "_deviceEpochHmac": {
+              "oneof": [
+                "deviceEpochHmac"
+              ]
+            },
+            "_encryptedSecretValues": {
+              "oneof": [
+                "encryptedSecretValues"
+              ]
+            }
+          },
+          "fields": {
+            "vdId": {
+              "type": "bytes",
+              "id": 1,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "vdPublicKey": {
+              "type": "bytes",
+              "id": 2,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "vdEpochStoragePublicKey": {
+              "type": "bytes",
+              "id": 3,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "vdEpochStoragePublicKeySig": {
+              "type": "bytes",
+              "id": 4,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "ocmfRotationToken": {
+              "type": "bytes",
+              "id": 5,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "deviceEpochHmac": {
+              "type": "bytes",
+              "id": 6,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "encryptedSecretValues": {
+              "type": "EncryptedSecretValuesOutput",
+              "id": 7,
+              "options": {
+                "proto3_optional": true
+              }
+            }
+          }
         }
       }
     }

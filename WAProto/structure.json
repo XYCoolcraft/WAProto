@@ -1,7 +1,7 @@
 {
- "protoVersion": "2.3000.1054053575",
+ "protoVersion": "2.3000.1054085650",
  "counts": {
-  "messages": 745,
+  "messages": 798,
   "enums": 228
  },
  "fields": "[nomor, tipe, label]",
@@ -220,6 +220,22 @@
    "url": [1, "string", "optional"],
    "buttonTitle": [2, "string", "optional"]
   },
+  "AddDeviceKeysOutput": {
+   "devicePublicKey": [1, "bytes", "optional"],
+   "epochAuthPublicKey": [2, "bytes", "optional"],
+   "epochAuthPublicKeySig": [3, "bytes", "optional"],
+   "epochStoragePublicKey": [4, "bytes", "optional"],
+   "epochStoragePublicKeySig": [5, "bytes", "optional"],
+   "epochStoragePrivateKey": [6, "bytes", "optional"],
+   "orfClientState": [7, "bytes", "optional"]
+  },
+  "AddDeviceSyncEpochInput": {
+   "epochId": [1, "uint64", "optional"],
+   "epochAnonId": [2, "int32", "optional"],
+   "encryptedEpochKey": [3, "bytes", "optional"],
+   "senderAuthPubKey": [4, "bytes", "optional"],
+   "nextEpochId": [5, "uint64", "optional"]
+  },
   "AutoDownloadSettings": {
    "downloadImages": [1, "bool", "optional"],
    "downloadAudio": [2, "bool", "optional"],
@@ -229,6 +245,11 @@
   "AvatarUserSettings": {
    "fbid": [1, "string", "optional"],
    "password": [2, "string", "optional"]
+  },
+  "BackwardEdge": {
+   "encryptedPrevEpochAnonId": [1, "bytes", "optional"],
+   "encryptedPrevEpochRootKey": [2, "bytes", "optional"],
+   "prevEpochRootKeyFingerprint": [3, "bytes", "optional"]
   },
   "BizAIMetadataSync": {
    "serverEvent": [1, "BizAIMetadataSync.ServerEvent", ""]
@@ -832,6 +853,17 @@
    "deviceType": [2, "DeviceProps.PlatformType", "optional"],
    "ref": [3, "string", "optional"]
   },
+  "ComputeClientSealTokenInput": {
+   "orfClientState": [1, "bytes", "optional"],
+   "backupId": [2, "uint64", "optional"]
+  },
+  "ComputeClientSealTokenOutput": {
+   "success": [1, "ComputeClientSealTokenSuccess", ""],
+   "error": [2, "string", ""]
+  },
+  "ComputeClientSealTokenSuccess": {
+   "clientSealToken": [1, "bytes", "optional"]
+  },
   "Config": {
    "field": [1, "map<uint32, Field>", ""],
    "version": [2, "uint32", "optional"]
@@ -1099,6 +1131,20 @@
    "acp2HistoryWithheld": [65, "bool", "optional"],
    "groupRootKeys": [66, "GroupRootKey", "repeated"]
   },
+  "CreateBackupInput": {
+   "recoveryCode": [1, "string", "optional"],
+   "userId": [2, "uint64", "optional"]
+  },
+  "CreateBackupOutput": {
+   "success": [1, "CreateBackupSuccess", ""],
+   "error": [2, "string", ""]
+  },
+  "CreateBackupSuccess": {
+   "device": [1, "DeviceOutput", "optional"],
+   "virtualDevice": [2, "VirtualDeviceOutput", "optional"],
+   "epoch0": [3, "Epoch0Output", "optional"],
+   "mailboxRootKey": [4, "bytes", "optional"]
+  },
   "DecryptMekForDistributionFromTransportSenderInput": {
    "mekDistribution": [1, "TransportSenderMEKDistributionSingleRecipient", "optional"],
    "mekId": [2, "bytes", "optional"],
@@ -1139,6 +1185,20 @@
   "DecryptMekForDistributionSuccess": {
    "mek": [1, "bytes", "optional"]
   },
+  "DecryptMessageInput": {
+   "epochRootKey": [1, "bytes", "optional"],
+   "epochAnonId": [2, "int32", "optional"],
+   "threadId": [3, "string", "optional"],
+   "encryptionVersion": [4, "int32", "optional"],
+   "ciphertext": [5, "bytes", "optional"]
+  },
+  "DecryptMessageOutput": {
+   "success": [1, "DecryptMessageSuccess", ""],
+   "error": [2, "string", ""]
+  },
+  "DecryptMessageSuccess": {
+   "plaintextPayload": [1, "bytes", "optional"]
+  },
   "DecryptSelfMmkDistributionInput": {
    "encryptedMmk": [1, "bytes", "optional"],
    "exportRootKey": [2, "bytes", "optional"],
@@ -1162,6 +1222,18 @@
   },
   "DeriveAttachmentPrimaryKeySecretResult": {
    "attachmentPrimaryKeySecret": [1, "bytes", "optional"]
+  },
+  "DeriveEpochsInput": {
+   "epochStoragePrivateKey": [1, "bytes", "optional"],
+   "epochs": [2, "EpochKey", "repeated"],
+   "edges": [3, "EpochDerivationEdge", "repeated"]
+  },
+  "DeriveEpochsOutput": {
+   "success": [1, "DeriveEpochsSuccess", ""],
+   "error": [2, "string", ""]
+  },
+  "DeriveEpochsSuccess": {
+   "epochs": [1, "EpochKey", "repeated"]
   },
   "DeriveMailboxAuthKeypairInput": {
    "exportRootKey": [1, "bytes", "optional"],
@@ -1191,6 +1263,18 @@
    "mailboxSigningPublicKey": [1, "bytes", "optional"],
    "mailboxSigningPrivateKey": [2, "bytes", "optional"]
   },
+  "DeriveMessageKeyInput": {
+   "epochRootKey": [1, "bytes", "optional"],
+   "epochAnonId": [2, "int32", "optional"],
+   "threadId": [3, "string", "optional"]
+  },
+  "DeriveMessageKeyOutput": {
+   "success": [1, "DeriveMessageKeySuccess", ""],
+   "error": [2, "string", ""]
+  },
+  "DeriveMessageKeySuccess": {
+   "messageKey": [1, "bytes", "optional"]
+  },
   "DeriveMessagingMailboxKeypairsInput": {
    "mmkSeed": [1, "bytes", "optional"]
   },
@@ -1203,6 +1287,17 @@
    "encPk": [2, "bytes", "optional"],
    "authSk": [3, "bytes", "optional"],
    "authPk": [4, "bytes", "optional"]
+  },
+  "DeriveVirtualDeviceIdInput": {
+   "recoveryCode": [1, "string", "optional"],
+   "userId": [2, "uint64", "optional"]
+  },
+  "DeriveVirtualDeviceIdOutput": {
+   "success": [1, "DeriveVirtualDeviceIdSuccess", ""],
+   "error": [2, "string", ""]
+  },
+  "DeriveVirtualDeviceIdSuccess": {
+   "virtualDeviceId": [1, "bytes", "optional"]
   },
   "DetachedDevicePublicData": {
    "deviceId": [1, "uint64", "optional"],
@@ -1285,6 +1380,20 @@
    "recipientKeyHash": [8, "bytes", "optional"],
    "recipientTimestamp": [9, "uint64", "optional"],
    "recipientKeyIndexes": [10, "uint32", "repeated"]
+  },
+  "DeviceOutput": {
+   "publicKey": [1, "bytes", "optional"],
+   "epochAuthPublicKey": [2, "bytes", "optional"],
+   "epochAuthPublicKeySig": [3, "bytes", "optional"],
+   "epochStoragePublicKey": [4, "bytes", "optional"],
+   "epochStoragePublicKeySig": [5, "bytes", "optional"],
+   "supportedEncryptionVersions": [6, "int32", "repeated"],
+   "encryptionVersionSignature": [7, "bytes", "optional"],
+   "clientVersion": [8, "int32", "optional"],
+   "ocmfClientState": [9, "bytes", "optional"],
+   "epochStoragePrivateKey": [10, "bytes", "optional"],
+   "epochAuthPrivateKey": [11, "bytes", "optional"],
+   "deviceEpochHmac": [12, "bytes", "optional"]
   },
   "DeviceProps": {
    "os": [1, "string", "optional"],
@@ -1394,13 +1503,66 @@
    "signature": [4, "bytes", "optional"],
    "version": [5, "uint64", "optional"]
   },
+  "EncryptMessageInput": {
+   "epochRootKey": [1, "bytes", "optional"],
+   "mailboxRootKey": [2, "bytes", "optional"],
+   "orfClientState": [3, "bytes", "optional"],
+   "epochAnonId": [4, "int32", "optional"],
+   "epochId": [5, "uint64", "optional"],
+   "threadId": [6, "string", "optional"],
+   "waCanonicalUserFbid": [7, "uint64", "optional"],
+   "timestampMs": [8, "uint64", "optional"],
+   "backupId": [9, "uint64", "optional"],
+   "plaintextPayload": [10, "bytes", "optional"],
+   "stanzaId": [11, "string", "optional"]
+  },
+  "EncryptMessageOutput": {
+   "success": [1, "EncryptMessageSuccess", ""],
+   "error": [2, "string", ""]
+  },
+  "EncryptMessageSuccess": {
+   "encryptedProtobuf": [1, "bytes", "optional"],
+   "orfThreadId": [2, "bytes", "optional"],
+   "valueSecretRef": [3, "string", "optional"],
+   "offlineThreadingId": [4, "uint64", "optional"],
+   "timestampMs": [5, "uint64", "optional"]
+  },
   "EncryptedPairingRequest": {
    "encryptedPayload": [1, "bytes", "optional"],
    "iv": [2, "bytes", "optional"]
   },
+  "EncryptedSecretValuesOutput": {
+   "encryptedDevicePrivateKey": [1, "bytes", "optional"],
+   "encryptedObliviousValidationTokenBlob": [2, "bytes", "optional"],
+   "encryptedEpochStoragePrivateKey": [3, "bytes", "optional"],
+   "encryptedOcmfClientState": [4, "bytes", "optional"],
+   "encryptedMailboxRootKeyBlob": [6, "bytes", "optional"],
+   "encryptedEpochAnonId": [7, "bytes", "optional"],
+   "encryptedEpochRootKey": [8, "bytes", "optional"]
+  },
   "EphemeralSetting": {
    "duration": [1, "sfixed32", "optional"],
    "timestamp": [2, "sfixed64", "optional"]
+  },
+  "Epoch0Output": {
+   "epochAnonId": [2, "int32", "optional"],
+   "epochRootKeyFingerprint": [6, "bytes", "optional"],
+   "epochRootKey": [7, "bytes", "optional"]
+  },
+  "EpochDerivationEdge": {
+   "fromEpoch": [1, "EpochIds", "optional"],
+   "toEpoch": [2, "EpochIds", "optional"],
+   "forwardEdge": [3, "ForwardEdgeInput", "optional"],
+   "backwardEdge": [4, "bytes", "optional"]
+  },
+  "EpochIds": {
+   "serverEpochId": [1, "uint64", "optional"],
+   "epochAnonId": [2, "int32", "optional"]
+  },
+  "EpochKey": {
+   "serverEpochId": [1, "uint64", "optional"],
+   "epochAnonId": [2, "int32", "optional"],
+   "epochRootKey": [3, "bytes", "optional"]
   },
   "EpochPublicData": {
    "epochNumber": [1, "uint64", "optional"],
@@ -1491,6 +1653,10 @@
    "usernameIdentifier": [4, "bytes", "optional"],
    "hostedState": [5, "HostedState", "optional"],
    "hashedPublicKey": [6, "bytes", "optional"]
+  },
+  "ForwardEdgeInput": {
+   "encryptedEntropy": [1, "bytes", "optional"],
+   "authPublicKey": [2, "bytes", "optional"]
   },
   "ForwardedAIBotMessageInfo": {
    "botName": [1, "string", "optional"],
@@ -1749,6 +1915,21 @@
   },
   "LIDMigrationMappingSyncMessage": {
    "encodedMappingPayload": [1, "bytes", "optional"]
+  },
+  "LabyrinthWaCommand": {
+   "createBackupInput": [1, "CreateBackupInput", ""],
+   "encryptMessageInput": [2, "EncryptMessageInput", ""],
+   "decryptMessageInput": [3, "DecryptMessageInput", ""],
+   "orfThreadIdInput": [4, "OrfThreadIdInput", ""],
+   "deriveMessageKeyInput": [5, "DeriveMessageKeyInput", ""],
+   "rotateEpochInput": [6, "RotateEpochInput", ""],
+   "deriveVirtualDeviceIdInput": [7, "DeriveVirtualDeviceIdInput", ""],
+   "prepareAddDeviceInput": [8, "PrepareAddDeviceInput", ""],
+   "computeClientSealTokenInput": [9, "ComputeClientSealTokenInput", ""],
+   "openSealedThreadIdInput": [10, "OpenSealedThreadIdInput", ""],
+   "deriveEpochsInput": [11, "DeriveEpochsInput", ""],
+   "sealThreadIdInput": [12, "SealThreadIdInput", ""],
+   "prepareAddPeerDeviceInput": [13, "PrepareAddPeerDeviceInput", ""]
   },
   "LegacyMessage": {
    "eventResponseMessage": [1, "Message.EventResponseMessage", "optional"],
@@ -3796,6 +3977,30 @@
    "complete": [5, "bool", "optional"],
    "conversations": [6, "Conversation", "repeated"]
   },
+  "OpenSealedThreadIdInput": {
+   "backupId": [1, "uint64", "optional"],
+   "sealedThreadId": [2, "bytes", "optional"],
+   "epochs": [3, "EpochKey", "repeated"]
+  },
+  "OpenSealedThreadIdOutput": {
+   "success": [1, "OpenSealedThreadIdSuccess", ""],
+   "error": [2, "string", ""]
+  },
+  "OpenSealedThreadIdSuccess": {
+   "threadId": [1, "string", "optional"],
+   "sealEpochAnonId": [2, "int32", "optional"]
+  },
+  "OrfThreadIdInput": {
+   "orfClientState": [1, "bytes", "optional"],
+   "threadId": [2, "string", "optional"]
+  },
+  "OrfThreadIdOutput": {
+   "success": [1, "OrfThreadIdSuccess", ""],
+   "error": [2, "string", ""]
+  },
+  "OrfThreadIdSuccess": {
+   "orfThreadId": [1, "bytes", "optional"]
+  },
   "PairingRequest": {
    "companionPublicKey": [1, "bytes", "optional"],
    "companionIdentityKey": [2, "bytes", "optional"],
@@ -3918,6 +4123,46 @@
   "PremiumMessageInfo": {
    "serverCampaignId": [1, "string", "optional"]
   },
+  "PrepareAddDeviceInput": {
+   "recoveryCode": [1, "string", "optional"],
+   "userId": [2, "uint64", "optional"],
+   "encryptedSecretValuesJson": [3, "string", "optional"],
+   "virtualDeviceBaseEpochId": [4, "uint64", "optional"],
+   "activeEpochId": [5, "uint64", "optional"],
+   "syncEpochs": [6, "AddDeviceSyncEpochInput", "repeated"]
+  },
+  "PrepareAddDeviceOutput": {
+   "success": [1, "PrepareAddDeviceSuccess", ""],
+   "error": [2, "string", ""]
+  },
+  "PrepareAddDeviceSuccess": {
+   "deviceKeys": [1, "AddDeviceKeysOutput", "optional"],
+   "currentEpoch": [2, "EpochKey", "optional"],
+   "mailboxRootSalt": [3, "bytes", "optional"],
+   "orfRotationToken": [4, "bytes", "optional"],
+   "deviceEpochHmac": [5, "bytes", "optional"],
+   "epochRootKeyFingerprint": [6, "bytes", "optional"],
+   "supportedEncryptionVersions": [7, "int32", "repeated"],
+   "encryptionVersionSignature": [8, "bytes", "optional"],
+   "clientVersion": [9, "int32", "optional"]
+  },
+  "PrepareAddPeerDeviceInput": {
+   "advSecret": [1, "bytes", "optional"],
+   "sealedPayload": [2, "bytes", "optional"],
+   "backupId": [3, "uint64", "optional"],
+   "userId": [4, "uint64", "optional"],
+   "companionIdentityPub": [5, "bytes", "optional"],
+   "activeEpochId": [6, "uint64", "optional"]
+  },
+  "PrepareAddPeerDeviceOutput": {
+   "success": [1, "PrepareAddPeerDeviceSuccess", ""],
+   "error": [2, "string", ""]
+  },
+  "PrepareAddPeerDeviceSuccess": {
+   "enrolment": [1, "PrepareAddDeviceSuccess", "optional"],
+   "serverDataId": [2, "uint64", "optional"],
+   "companionDeviceBinding": [3, "bytes", "optional"]
+  },
   "PrimaryEphemeralIdentity": {
    "publicKey": [1, "bytes", "optional"],
    "nonce": [2, "bytes", "optional"]
@@ -3989,6 +4234,36 @@
    "reportingTag": [1, "bytes", "optional"],
    "reportingTagTimestamp": [2, "uint64", "optional"]
   },
+  "RotateEpochInput": {
+   "currentEpochRootKey": [1, "bytes", "optional"],
+   "currentEpochAnonId": [2, "int32", "optional"],
+   "currentEpochFbid": [3, "uint64", "optional"],
+   "epochStorageAuthPrivateKey": [4, "bytes", "optional"],
+   "members": [5, "RotateEpochMemberInput", "repeated"]
+  },
+  "RotateEpochMemberEdge": {
+   "deviceId": [1, "uint64", "optional"],
+   "encryptedEpochKey": [2, "bytes", "optional"],
+   "deviceEpochHmac": [3, "bytes", "optional"]
+  },
+  "RotateEpochMemberInput": {
+   "deviceId": [1, "uint64", "optional"],
+   "epochStoragePublicKey": [2, "bytes", "optional"],
+   "devicePublicKey": [3, "bytes", "optional"],
+   "prevDeviceEpochHmac": [4, "bytes", "optional"],
+   "epochStoragePublicKeySig": [5, "bytes", "optional"]
+  },
+  "RotateEpochOutput": {
+   "success": [1, "RotateEpochSuccess", ""],
+   "error": [2, "string", ""]
+  },
+  "RotateEpochSuccess": {
+   "newEpochRootKey": [1, "bytes", "optional"],
+   "newEpochAnonId": [2, "int32", "optional"],
+   "backwardEdge": [4, "BackwardEdge", "optional"],
+   "memberEdges": [5, "RotateEpochMemberEdge", "repeated"],
+   "epochRootKeyFingerprint": [6, "bytes", "optional"]
+  },
   "RoutingInfo": {
    "regionId": [1, "int32", "repeated"],
    "clusterId": [2, "int32", "repeated"],
@@ -4001,6 +4276,19 @@
    "revealKeyId": [1, "string", "optional"],
    "revealKey": [2, "bytes", "optional"],
    "scheduledTime": [3, "uint64", "optional"]
+  },
+  "SealThreadIdInput": {
+   "epochRootKey": [1, "bytes", "optional"],
+   "epochAnonId": [2, "int32", "optional"],
+   "backupId": [3, "uint64", "optional"],
+   "threadId": [4, "string", "optional"]
+  },
+  "SealThreadIdOutput": {
+   "success": [1, "SealThreadIdSuccess", ""],
+   "error": [2, "string", ""]
+  },
+  "SealThreadIdSuccess": {
+   "sealedThreadId": [1, "bytes", "optional"]
   },
   "SenderKeyDistributionMessage": {
    "id": [1, "uint32", "optional"],
@@ -4869,6 +5157,15 @@
    "verifiedName": [4, "string", "optional"],
    "localizedNames": [8, "LocalizedName", "repeated"],
    "issueTime": [10, "uint64", "optional"]
+  },
+  "VirtualDeviceOutput": {
+   "vdId": [1, "bytes", "optional"],
+   "vdPublicKey": [2, "bytes", "optional"],
+   "vdEpochStoragePublicKey": [3, "bytes", "optional"],
+   "vdEpochStoragePublicKeySig": [4, "bytes", "optional"],
+   "ocmfRotationToken": [5, "bytes", "optional"],
+   "deviceEpochHmac": [6, "bytes", "optional"],
+   "encryptedSecretValues": [7, "EncryptedSecretValuesOutput", "optional"]
   },
   "WallpaperSettings": {
    "filename": [1, "string", "optional"],

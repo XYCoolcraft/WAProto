@@ -1,7 +1,7 @@
 syntax = "proto3";
 package proto;
 
-/// WhatsApp Version: 2.3000.1054053575
+/// WhatsApp Version: 2.3000.1054085650
 
 message ACP2Setting {
     optional bool enabled = 1;
@@ -8010,4 +8010,382 @@ message MembershipFormKeyFingerprintVerification {
     optional string requestId = 1;
     optional string keyId = 2;
     optional bytes keyFingerprint = 3;
+}
+
+message AddDeviceKeysOutput {
+    optional bytes devicePublicKey = 1;
+    optional bytes epochAuthPublicKey = 2;
+    optional bytes epochAuthPublicKeySig = 3;
+    optional bytes epochStoragePublicKey = 4;
+    optional bytes epochStoragePublicKeySig = 5;
+    optional bytes epochStoragePrivateKey = 6;
+    optional bytes orfClientState = 7;
+}
+
+message AddDeviceSyncEpochInput {
+    optional uint64 epochId = 1;
+    optional int32 epochAnonId = 2;
+    optional bytes encryptedEpochKey = 3;
+    optional bytes senderAuthPubKey = 4;
+    optional uint64 nextEpochId = 5;
+}
+
+message BackwardEdge {
+    optional bytes encryptedPrevEpochAnonId = 1;
+    optional bytes encryptedPrevEpochRootKey = 2;
+    optional bytes prevEpochRootKeyFingerprint = 3;
+}
+
+message ComputeClientSealTokenInput {
+    optional bytes orfClientState = 1;
+    optional uint64 backupId = 2;
+}
+
+message ComputeClientSealTokenOutput {
+    oneof result {
+        ComputeClientSealTokenSuccess success = 1;
+        string error = 2;
+    }
+}
+
+message ComputeClientSealTokenSuccess {
+    optional bytes clientSealToken = 1;
+}
+
+message CreateBackupInput {
+    optional string recoveryCode = 1;
+    optional uint64 userId = 2;
+}
+
+message CreateBackupOutput {
+    oneof result {
+        CreateBackupSuccess success = 1;
+        string error = 2;
+    }
+}
+
+message CreateBackupSuccess {
+    optional DeviceOutput device = 1;
+    optional VirtualDeviceOutput virtualDevice = 2;
+    optional Epoch0Output epoch0 = 3;
+    optional bytes mailboxRootKey = 4;
+}
+
+message DecryptMessageInput {
+    optional bytes epochRootKey = 1;
+    optional int32 epochAnonId = 2;
+    optional string threadId = 3;
+    optional int32 encryptionVersion = 4;
+    optional bytes ciphertext = 5;
+}
+
+message DecryptMessageOutput {
+    oneof result {
+        DecryptMessageSuccess success = 1;
+        string error = 2;
+    }
+}
+
+message DecryptMessageSuccess {
+    optional bytes plaintextPayload = 1;
+}
+
+message DeriveEpochsInput {
+    optional bytes epochStoragePrivateKey = 1;
+    repeated EpochKey epochs = 2;
+    repeated EpochDerivationEdge edges = 3;
+}
+
+message DeriveEpochsOutput {
+    oneof result {
+        DeriveEpochsSuccess success = 1;
+        string error = 2;
+    }
+}
+
+message DeriveEpochsSuccess {
+    repeated EpochKey epochs = 1;
+}
+
+message DeriveMessageKeyInput {
+    optional bytes epochRootKey = 1;
+    optional int32 epochAnonId = 2;
+    optional string threadId = 3;
+}
+
+message DeriveMessageKeyOutput {
+    oneof result {
+        DeriveMessageKeySuccess success = 1;
+        string error = 2;
+    }
+}
+
+message DeriveMessageKeySuccess {
+    optional bytes messageKey = 1;
+}
+
+message DeriveVirtualDeviceIdInput {
+    optional string recoveryCode = 1;
+    optional uint64 userId = 2;
+}
+
+message DeriveVirtualDeviceIdOutput {
+    oneof result {
+        DeriveVirtualDeviceIdSuccess success = 1;
+        string error = 2;
+    }
+}
+
+message DeriveVirtualDeviceIdSuccess {
+    optional bytes virtualDeviceId = 1;
+}
+
+message DeviceOutput {
+    optional bytes publicKey = 1;
+    optional bytes epochAuthPublicKey = 2;
+    optional bytes epochAuthPublicKeySig = 3;
+    optional bytes epochStoragePublicKey = 4;
+    optional bytes epochStoragePublicKeySig = 5;
+    repeated int32 supportedEncryptionVersions = 6;
+    optional bytes encryptionVersionSignature = 7;
+    optional int32 clientVersion = 8;
+    optional bytes ocmfClientState = 9;
+    optional bytes epochStoragePrivateKey = 10;
+    optional bytes epochAuthPrivateKey = 11;
+    optional bytes deviceEpochHmac = 12;
+}
+
+message EncryptMessageInput {
+    optional bytes epochRootKey = 1;
+    optional bytes mailboxRootKey = 2;
+    optional bytes orfClientState = 3;
+    optional int32 epochAnonId = 4;
+    optional uint64 epochId = 5;
+    optional string threadId = 6;
+    optional uint64 waCanonicalUserFbid = 7;
+    optional uint64 timestampMs = 8;
+    optional uint64 backupId = 9;
+    optional bytes plaintextPayload = 10;
+    optional string stanzaId = 11;
+}
+
+message EncryptMessageOutput {
+    oneof result {
+        EncryptMessageSuccess success = 1;
+        string error = 2;
+    }
+}
+
+message EncryptMessageSuccess {
+    optional bytes encryptedProtobuf = 1;
+    optional bytes orfThreadId = 2;
+    optional string valueSecretRef = 3;
+    optional uint64 offlineThreadingId = 4;
+    optional uint64 timestampMs = 5;
+}
+
+message EncryptedSecretValuesOutput {
+    optional bytes encryptedDevicePrivateKey = 1;
+    optional bytes encryptedObliviousValidationTokenBlob = 2;
+    optional bytes encryptedEpochStoragePrivateKey = 3;
+    optional bytes encryptedOcmfClientState = 4;
+    optional bytes encryptedMailboxRootKeyBlob = 6;
+    optional bytes encryptedEpochAnonId = 7;
+    optional bytes encryptedEpochRootKey = 8;
+}
+
+message Epoch0Output {
+    optional int32 epochAnonId = 2;
+    optional bytes epochRootKeyFingerprint = 6;
+    optional bytes epochRootKey = 7;
+}
+
+message EpochDerivationEdge {
+    optional EpochIds fromEpoch = 1;
+    optional EpochIds toEpoch = 2;
+    optional ForwardEdgeInput forwardEdge = 3;
+    optional bytes backwardEdge = 4;
+}
+
+message EpochIds {
+    optional uint64 serverEpochId = 1;
+    optional int32 epochAnonId = 2;
+}
+
+message EpochKey {
+    optional uint64 serverEpochId = 1;
+    optional int32 epochAnonId = 2;
+    optional bytes epochRootKey = 3;
+}
+
+message ForwardEdgeInput {
+    optional bytes encryptedEntropy = 1;
+    optional bytes authPublicKey = 2;
+}
+
+message LabyrinthWaCommand {
+    oneof commandInput {
+        CreateBackupInput createBackupInput = 1;
+        EncryptMessageInput encryptMessageInput = 2;
+        DecryptMessageInput decryptMessageInput = 3;
+        OrfThreadIdInput orfThreadIdInput = 4;
+        DeriveMessageKeyInput deriveMessageKeyInput = 5;
+        RotateEpochInput rotateEpochInput = 6;
+        DeriveVirtualDeviceIdInput deriveVirtualDeviceIdInput = 7;
+        PrepareAddDeviceInput prepareAddDeviceInput = 8;
+        ComputeClientSealTokenInput computeClientSealTokenInput = 9;
+        OpenSealedThreadIdInput openSealedThreadIdInput = 10;
+        DeriveEpochsInput deriveEpochsInput = 11;
+        SealThreadIdInput sealThreadIdInput = 12;
+        PrepareAddPeerDeviceInput prepareAddPeerDeviceInput = 13;
+    }
+}
+
+message OpenSealedThreadIdInput {
+    optional uint64 backupId = 1;
+    optional bytes sealedThreadId = 2;
+    repeated EpochKey epochs = 3;
+}
+
+message OpenSealedThreadIdOutput {
+    oneof result {
+        OpenSealedThreadIdSuccess success = 1;
+        string error = 2;
+    }
+}
+
+message OpenSealedThreadIdSuccess {
+    optional string threadId = 1;
+    optional int32 sealEpochAnonId = 2;
+}
+
+message OrfThreadIdInput {
+    optional bytes orfClientState = 1;
+    optional string threadId = 2;
+}
+
+message OrfThreadIdOutput {
+    oneof result {
+        OrfThreadIdSuccess success = 1;
+        string error = 2;
+    }
+}
+
+message OrfThreadIdSuccess {
+    optional bytes orfThreadId = 1;
+}
+
+message PrepareAddDeviceInput {
+    optional string recoveryCode = 1;
+    optional uint64 userId = 2;
+    optional string encryptedSecretValuesJson = 3;
+    optional uint64 virtualDeviceBaseEpochId = 4;
+    optional uint64 activeEpochId = 5;
+    repeated AddDeviceSyncEpochInput syncEpochs = 6;
+}
+
+message PrepareAddDeviceOutput {
+    oneof result {
+        PrepareAddDeviceSuccess success = 1;
+        string error = 2;
+    }
+}
+
+message PrepareAddDeviceSuccess {
+    optional AddDeviceKeysOutput deviceKeys = 1;
+    optional EpochKey currentEpoch = 2;
+    optional bytes mailboxRootSalt = 3;
+    optional bytes orfRotationToken = 4;
+    optional bytes deviceEpochHmac = 5;
+    optional bytes epochRootKeyFingerprint = 6;
+    repeated int32 supportedEncryptionVersions = 7;
+    optional bytes encryptionVersionSignature = 8;
+    optional int32 clientVersion = 9;
+}
+
+message PrepareAddPeerDeviceInput {
+    optional bytes advSecret = 1;
+    optional bytes sealedPayload = 2;
+    optional uint64 backupId = 3;
+    optional uint64 userId = 4;
+    optional bytes companionIdentityPub = 5;
+    optional uint64 activeEpochId = 6;
+}
+
+message PrepareAddPeerDeviceOutput {
+    oneof result {
+        PrepareAddPeerDeviceSuccess success = 1;
+        string error = 2;
+    }
+}
+
+message PrepareAddPeerDeviceSuccess {
+    optional PrepareAddDeviceSuccess enrolment = 1;
+    optional uint64 serverDataId = 2;
+    optional bytes companionDeviceBinding = 3;
+}
+
+message RotateEpochInput {
+    optional bytes currentEpochRootKey = 1;
+    optional int32 currentEpochAnonId = 2;
+    optional uint64 currentEpochFbid = 3;
+    optional bytes epochStorageAuthPrivateKey = 4;
+    repeated RotateEpochMemberInput members = 5;
+}
+
+message RotateEpochMemberEdge {
+    optional uint64 deviceId = 1;
+    optional bytes encryptedEpochKey = 2;
+    optional bytes deviceEpochHmac = 3;
+}
+
+message RotateEpochMemberInput {
+    optional uint64 deviceId = 1;
+    optional bytes epochStoragePublicKey = 2;
+    optional bytes devicePublicKey = 3;
+    optional bytes prevDeviceEpochHmac = 4;
+    optional bytes epochStoragePublicKeySig = 5;
+}
+
+message RotateEpochOutput {
+    oneof result {
+        RotateEpochSuccess success = 1;
+        string error = 2;
+    }
+}
+
+message RotateEpochSuccess {
+    optional bytes newEpochRootKey = 1;
+    optional int32 newEpochAnonId = 2;
+    optional BackwardEdge backwardEdge = 4;
+    repeated RotateEpochMemberEdge memberEdges = 5;
+    optional bytes epochRootKeyFingerprint = 6;
+}
+
+message SealThreadIdInput {
+    optional bytes epochRootKey = 1;
+    optional int32 epochAnonId = 2;
+    optional uint64 backupId = 3;
+    optional string threadId = 4;
+}
+
+message SealThreadIdOutput {
+    oneof result {
+        SealThreadIdSuccess success = 1;
+        string error = 2;
+    }
+}
+
+message SealThreadIdSuccess {
+    optional bytes sealedThreadId = 1;
+}
+
+message VirtualDeviceOutput {
+    optional bytes vdId = 1;
+    optional bytes vdPublicKey = 2;
+    optional bytes vdEpochStoragePublicKey = 3;
+    optional bytes vdEpochStoragePublicKeySig = 4;
+    optional bytes ocmfRotationToken = 5;
+    optional bytes deviceEpochHmac = 6;
+    optional EncryptedSecretValuesOutput encryptedSecretValues = 7;
 }

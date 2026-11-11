@@ -178725,6 +178725,10670 @@ export const proto = $root.proto = (() => {
         return MembershipFormKeyFingerprintVerification;
     })();
 
+    proto.AddDeviceKeysOutput = (function() {
+
+        const AddDeviceKeysOutput = function (p) {
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        AddDeviceKeysOutput.prototype.devicePublicKey = null;
+        AddDeviceKeysOutput.prototype.epochAuthPublicKey = null;
+        AddDeviceKeysOutput.prototype.epochAuthPublicKeySig = null;
+        AddDeviceKeysOutput.prototype.epochStoragePublicKey = null;
+        AddDeviceKeysOutput.prototype.epochStoragePublicKeySig = null;
+        AddDeviceKeysOutput.prototype.epochStoragePrivateKey = null;
+        AddDeviceKeysOutput.prototype.orfClientState = null;
+
+        let $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(AddDeviceKeysOutput.prototype, "_devicePublicKey", {
+            get: $util.oneOfGetter($oneOfFields = ["devicePublicKey"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(AddDeviceKeysOutput.prototype, "_epochAuthPublicKey", {
+            get: $util.oneOfGetter($oneOfFields = ["epochAuthPublicKey"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(AddDeviceKeysOutput.prototype, "_epochAuthPublicKeySig", {
+            get: $util.oneOfGetter($oneOfFields = ["epochAuthPublicKeySig"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(AddDeviceKeysOutput.prototype, "_epochStoragePublicKey", {
+            get: $util.oneOfGetter($oneOfFields = ["epochStoragePublicKey"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(AddDeviceKeysOutput.prototype, "_epochStoragePublicKeySig", {
+            get: $util.oneOfGetter($oneOfFields = ["epochStoragePublicKeySig"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(AddDeviceKeysOutput.prototype, "_epochStoragePrivateKey", {
+            get: $util.oneOfGetter($oneOfFields = ["epochStoragePrivateKey"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(AddDeviceKeysOutput.prototype, "_orfClientState", {
+            get: $util.oneOfGetter($oneOfFields = ["orfClientState"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        AddDeviceKeysOutput.create = function(properties) {
+            return new AddDeviceKeysOutput(properties);
+        };
+
+        AddDeviceKeysOutput.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.devicePublicKey != null && $Object.hasOwnProperty.call(m, "devicePublicKey"))
+                w.uint32(10).bytes(m.devicePublicKey);
+            if (m.epochAuthPublicKey != null && $Object.hasOwnProperty.call(m, "epochAuthPublicKey"))
+                w.uint32(18).bytes(m.epochAuthPublicKey);
+            if (m.epochAuthPublicKeySig != null && $Object.hasOwnProperty.call(m, "epochAuthPublicKeySig"))
+                w.uint32(26).bytes(m.epochAuthPublicKeySig);
+            if (m.epochStoragePublicKey != null && $Object.hasOwnProperty.call(m, "epochStoragePublicKey"))
+                w.uint32(34).bytes(m.epochStoragePublicKey);
+            if (m.epochStoragePublicKeySig != null && $Object.hasOwnProperty.call(m, "epochStoragePublicKeySig"))
+                w.uint32(42).bytes(m.epochStoragePublicKeySig);
+            if (m.epochStoragePrivateKey != null && $Object.hasOwnProperty.call(m, "epochStoragePrivateKey"))
+                w.uint32(50).bytes(m.epochStoragePrivateKey);
+            if (m.orfClientState != null && $Object.hasOwnProperty.call(m, "orfClientState"))
+                w.uint32(58).bytes(m.orfClientState);
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        AddDeviceKeysOutput.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.AddDeviceKeysOutput();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 2)
+                            break;
+                        m.devicePublicKey = r.bytes();
+                        m._devicePublicKey = "devicePublicKey";
+                        continue;
+                    }
+                case 2: {
+                        if (u !== 2)
+                            break;
+                        m.epochAuthPublicKey = r.bytes();
+                        m._epochAuthPublicKey = "epochAuthPublicKey";
+                        continue;
+                    }
+                case 3: {
+                        if (u !== 2)
+                            break;
+                        m.epochAuthPublicKeySig = r.bytes();
+                        m._epochAuthPublicKeySig = "epochAuthPublicKeySig";
+                        continue;
+                    }
+                case 4: {
+                        if (u !== 2)
+                            break;
+                        m.epochStoragePublicKey = r.bytes();
+                        m._epochStoragePublicKey = "epochStoragePublicKey";
+                        continue;
+                    }
+                case 5: {
+                        if (u !== 2)
+                            break;
+                        m.epochStoragePublicKeySig = r.bytes();
+                        m._epochStoragePublicKeySig = "epochStoragePublicKeySig";
+                        continue;
+                    }
+                case 6: {
+                        if (u !== 2)
+                            break;
+                        m.epochStoragePrivateKey = r.bytes();
+                        m._epochStoragePrivateKey = "epochStoragePrivateKey";
+                        continue;
+                    }
+                case 7: {
+                        if (u !== 2)
+                            break;
+                        m.orfClientState = r.bytes();
+                        m._orfClientState = "orfClientState";
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        AddDeviceKeysOutput.fromObject = function (d, q) {
+            if (d instanceof $root.proto.AddDeviceKeysOutput)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.AddDeviceKeysOutput: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.AddDeviceKeysOutput();
+            if (d.devicePublicKey != null) {
+                if (typeof d.devicePublicKey === "string")
+                    $util.base64.decode(d.devicePublicKey, m.devicePublicKey = $util.newBuffer($util.base64.length(d.devicePublicKey)), 0);
+                else if (d.devicePublicKey.length >= 0)
+                    m.devicePublicKey = d.devicePublicKey;
+            }
+            if (d.epochAuthPublicKey != null) {
+                if (typeof d.epochAuthPublicKey === "string")
+                    $util.base64.decode(d.epochAuthPublicKey, m.epochAuthPublicKey = $util.newBuffer($util.base64.length(d.epochAuthPublicKey)), 0);
+                else if (d.epochAuthPublicKey.length >= 0)
+                    m.epochAuthPublicKey = d.epochAuthPublicKey;
+            }
+            if (d.epochAuthPublicKeySig != null) {
+                if (typeof d.epochAuthPublicKeySig === "string")
+                    $util.base64.decode(d.epochAuthPublicKeySig, m.epochAuthPublicKeySig = $util.newBuffer($util.base64.length(d.epochAuthPublicKeySig)), 0);
+                else if (d.epochAuthPublicKeySig.length >= 0)
+                    m.epochAuthPublicKeySig = d.epochAuthPublicKeySig;
+            }
+            if (d.epochStoragePublicKey != null) {
+                if (typeof d.epochStoragePublicKey === "string")
+                    $util.base64.decode(d.epochStoragePublicKey, m.epochStoragePublicKey = $util.newBuffer($util.base64.length(d.epochStoragePublicKey)), 0);
+                else if (d.epochStoragePublicKey.length >= 0)
+                    m.epochStoragePublicKey = d.epochStoragePublicKey;
+            }
+            if (d.epochStoragePublicKeySig != null) {
+                if (typeof d.epochStoragePublicKeySig === "string")
+                    $util.base64.decode(d.epochStoragePublicKeySig, m.epochStoragePublicKeySig = $util.newBuffer($util.base64.length(d.epochStoragePublicKeySig)), 0);
+                else if (d.epochStoragePublicKeySig.length >= 0)
+                    m.epochStoragePublicKeySig = d.epochStoragePublicKeySig;
+            }
+            if (d.epochStoragePrivateKey != null) {
+                if (typeof d.epochStoragePrivateKey === "string")
+                    $util.base64.decode(d.epochStoragePrivateKey, m.epochStoragePrivateKey = $util.newBuffer($util.base64.length(d.epochStoragePrivateKey)), 0);
+                else if (d.epochStoragePrivateKey.length >= 0)
+                    m.epochStoragePrivateKey = d.epochStoragePrivateKey;
+            }
+            if (d.orfClientState != null) {
+                if (typeof d.orfClientState === "string")
+                    $util.base64.decode(d.orfClientState, m.orfClientState = $util.newBuffer($util.base64.length(d.orfClientState)), 0);
+                else if (d.orfClientState.length >= 0)
+                    m.orfClientState = d.orfClientState;
+            }
+            return m;
+        };
+
+        AddDeviceKeysOutput.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (m.devicePublicKey != null && $Object.hasOwnProperty.call(m, "devicePublicKey")) {
+                d.devicePublicKey = o.bytes === $String ? $util.base64.encode(m.devicePublicKey, 0, m.devicePublicKey.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.devicePublicKey) : m.devicePublicKey;
+            }
+            if (m.epochAuthPublicKey != null && $Object.hasOwnProperty.call(m, "epochAuthPublicKey")) {
+                d.epochAuthPublicKey = o.bytes === $String ? $util.base64.encode(m.epochAuthPublicKey, 0, m.epochAuthPublicKey.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.epochAuthPublicKey) : m.epochAuthPublicKey;
+            }
+            if (m.epochAuthPublicKeySig != null && $Object.hasOwnProperty.call(m, "epochAuthPublicKeySig")) {
+                d.epochAuthPublicKeySig = o.bytes === $String ? $util.base64.encode(m.epochAuthPublicKeySig, 0, m.epochAuthPublicKeySig.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.epochAuthPublicKeySig) : m.epochAuthPublicKeySig;
+            }
+            if (m.epochStoragePublicKey != null && $Object.hasOwnProperty.call(m, "epochStoragePublicKey")) {
+                d.epochStoragePublicKey = o.bytes === $String ? $util.base64.encode(m.epochStoragePublicKey, 0, m.epochStoragePublicKey.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.epochStoragePublicKey) : m.epochStoragePublicKey;
+            }
+            if (m.epochStoragePublicKeySig != null && $Object.hasOwnProperty.call(m, "epochStoragePublicKeySig")) {
+                d.epochStoragePublicKeySig = o.bytes === $String ? $util.base64.encode(m.epochStoragePublicKeySig, 0, m.epochStoragePublicKeySig.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.epochStoragePublicKeySig) : m.epochStoragePublicKeySig;
+            }
+            if (m.epochStoragePrivateKey != null && $Object.hasOwnProperty.call(m, "epochStoragePrivateKey")) {
+                d.epochStoragePrivateKey = o.bytes === $String ? $util.base64.encode(m.epochStoragePrivateKey, 0, m.epochStoragePrivateKey.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.epochStoragePrivateKey) : m.epochStoragePrivateKey;
+            }
+            if (m.orfClientState != null && $Object.hasOwnProperty.call(m, "orfClientState")) {
+                d.orfClientState = o.bytes === $String ? $util.base64.encode(m.orfClientState, 0, m.orfClientState.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.orfClientState) : m.orfClientState;
+            }
+            return d;
+        };
+
+        AddDeviceKeysOutput.prototype.toJSON = function() {
+            return AddDeviceKeysOutput.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        AddDeviceKeysOutput.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.AddDeviceKeysOutput";
+        };
+
+        return AddDeviceKeysOutput;
+    })();
+
+    proto.AddDeviceSyncEpochInput = (function() {
+
+        const AddDeviceSyncEpochInput = function (p) {
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        AddDeviceSyncEpochInput.prototype.epochId = null;
+        AddDeviceSyncEpochInput.prototype.epochAnonId = null;
+        AddDeviceSyncEpochInput.prototype.encryptedEpochKey = null;
+        AddDeviceSyncEpochInput.prototype.senderAuthPubKey = null;
+        AddDeviceSyncEpochInput.prototype.nextEpochId = null;
+
+        let $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(AddDeviceSyncEpochInput.prototype, "_epochId", {
+            get: $util.oneOfGetter($oneOfFields = ["epochId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(AddDeviceSyncEpochInput.prototype, "_epochAnonId", {
+            get: $util.oneOfGetter($oneOfFields = ["epochAnonId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(AddDeviceSyncEpochInput.prototype, "_encryptedEpochKey", {
+            get: $util.oneOfGetter($oneOfFields = ["encryptedEpochKey"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(AddDeviceSyncEpochInput.prototype, "_senderAuthPubKey", {
+            get: $util.oneOfGetter($oneOfFields = ["senderAuthPubKey"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(AddDeviceSyncEpochInput.prototype, "_nextEpochId", {
+            get: $util.oneOfGetter($oneOfFields = ["nextEpochId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        AddDeviceSyncEpochInput.create = function(properties) {
+            return new AddDeviceSyncEpochInput(properties);
+        };
+
+        AddDeviceSyncEpochInput.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.epochId != null && $Object.hasOwnProperty.call(m, "epochId"))
+                w.uint32(8).uint64(m.epochId);
+            if (m.epochAnonId != null && $Object.hasOwnProperty.call(m, "epochAnonId"))
+                w.uint32(16).int32(m.epochAnonId);
+            if (m.encryptedEpochKey != null && $Object.hasOwnProperty.call(m, "encryptedEpochKey"))
+                w.uint32(26).bytes(m.encryptedEpochKey);
+            if (m.senderAuthPubKey != null && $Object.hasOwnProperty.call(m, "senderAuthPubKey"))
+                w.uint32(34).bytes(m.senderAuthPubKey);
+            if (m.nextEpochId != null && $Object.hasOwnProperty.call(m, "nextEpochId"))
+                w.uint32(40).uint64(m.nextEpochId);
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        AddDeviceSyncEpochInput.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.AddDeviceSyncEpochInput();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 0)
+                            break;
+                        m.epochId = r.uint64();
+                        m._epochId = "epochId";
+                        continue;
+                    }
+                case 2: {
+                        if (u !== 0)
+                            break;
+                        m.epochAnonId = r.int32();
+                        m._epochAnonId = "epochAnonId";
+                        continue;
+                    }
+                case 3: {
+                        if (u !== 2)
+                            break;
+                        m.encryptedEpochKey = r.bytes();
+                        m._encryptedEpochKey = "encryptedEpochKey";
+                        continue;
+                    }
+                case 4: {
+                        if (u !== 2)
+                            break;
+                        m.senderAuthPubKey = r.bytes();
+                        m._senderAuthPubKey = "senderAuthPubKey";
+                        continue;
+                    }
+                case 5: {
+                        if (u !== 0)
+                            break;
+                        m.nextEpochId = r.uint64();
+                        m._nextEpochId = "nextEpochId";
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        AddDeviceSyncEpochInput.fromObject = function (d, q) {
+            if (d instanceof $root.proto.AddDeviceSyncEpochInput)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.AddDeviceSyncEpochInput: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.AddDeviceSyncEpochInput();
+            if (d.epochId != null) {
+                if ($util.Long)
+                    m.epochId = $util.Long.fromValue(d.epochId, true);
+                else if (typeof d.epochId === "string")
+                    m.epochId = $parseInt(d.epochId, 10);
+                else if (typeof d.epochId === "number")
+                    m.epochId = d.epochId;
+                else if (typeof d.epochId === "object")
+                    m.epochId = new $util.LongBits(d.epochId.low >>> 0, d.epochId.high >>> 0).toNumber(true);
+            }
+            if (d.epochAnonId != null) {
+                m.epochAnonId = d.epochAnonId | 0;
+            }
+            if (d.encryptedEpochKey != null) {
+                if (typeof d.encryptedEpochKey === "string")
+                    $util.base64.decode(d.encryptedEpochKey, m.encryptedEpochKey = $util.newBuffer($util.base64.length(d.encryptedEpochKey)), 0);
+                else if (d.encryptedEpochKey.length >= 0)
+                    m.encryptedEpochKey = d.encryptedEpochKey;
+            }
+            if (d.senderAuthPubKey != null) {
+                if (typeof d.senderAuthPubKey === "string")
+                    $util.base64.decode(d.senderAuthPubKey, m.senderAuthPubKey = $util.newBuffer($util.base64.length(d.senderAuthPubKey)), 0);
+                else if (d.senderAuthPubKey.length >= 0)
+                    m.senderAuthPubKey = d.senderAuthPubKey;
+            }
+            if (d.nextEpochId != null) {
+                if ($util.Long)
+                    m.nextEpochId = $util.Long.fromValue(d.nextEpochId, true);
+                else if (typeof d.nextEpochId === "string")
+                    m.nextEpochId = $parseInt(d.nextEpochId, 10);
+                else if (typeof d.nextEpochId === "number")
+                    m.nextEpochId = d.nextEpochId;
+                else if (typeof d.nextEpochId === "object")
+                    m.nextEpochId = new $util.LongBits(d.nextEpochId.low >>> 0, d.nextEpochId.high >>> 0).toNumber(true);
+            }
+            return m;
+        };
+
+        AddDeviceSyncEpochInput.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (m.epochId != null && $Object.hasOwnProperty.call(m, "epochId")) {
+                if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
+                    d.epochId = typeof m.epochId === "number" ? $BigInt(m.epochId) : $util.Long.fromBits(m.epochId.low >>> 0, m.epochId.high >>> 0, true).toBigInt();
+                else if (typeof m.epochId === "number")
+                    d.epochId = o.longs === $String ? $String(m.epochId) : m.epochId;
+                else
+                    d.epochId = o.longs === $String ? $util.Long.prototype.toString.call(m.epochId) : o.longs === $Number ? new $util.LongBits(m.epochId.low >>> 0, m.epochId.high >>> 0).toNumber(true) : m.epochId;
+            }
+            if (m.epochAnonId != null && $Object.hasOwnProperty.call(m, "epochAnonId")) {
+                d.epochAnonId = m.epochAnonId;
+            }
+            if (m.encryptedEpochKey != null && $Object.hasOwnProperty.call(m, "encryptedEpochKey")) {
+                d.encryptedEpochKey = o.bytes === $String ? $util.base64.encode(m.encryptedEpochKey, 0, m.encryptedEpochKey.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.encryptedEpochKey) : m.encryptedEpochKey;
+            }
+            if (m.senderAuthPubKey != null && $Object.hasOwnProperty.call(m, "senderAuthPubKey")) {
+                d.senderAuthPubKey = o.bytes === $String ? $util.base64.encode(m.senderAuthPubKey, 0, m.senderAuthPubKey.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.senderAuthPubKey) : m.senderAuthPubKey;
+            }
+            if (m.nextEpochId != null && $Object.hasOwnProperty.call(m, "nextEpochId")) {
+                if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
+                    d.nextEpochId = typeof m.nextEpochId === "number" ? $BigInt(m.nextEpochId) : $util.Long.fromBits(m.nextEpochId.low >>> 0, m.nextEpochId.high >>> 0, true).toBigInt();
+                else if (typeof m.nextEpochId === "number")
+                    d.nextEpochId = o.longs === $String ? $String(m.nextEpochId) : m.nextEpochId;
+                else
+                    d.nextEpochId = o.longs === $String ? $util.Long.prototype.toString.call(m.nextEpochId) : o.longs === $Number ? new $util.LongBits(m.nextEpochId.low >>> 0, m.nextEpochId.high >>> 0).toNumber(true) : m.nextEpochId;
+            }
+            return d;
+        };
+
+        AddDeviceSyncEpochInput.prototype.toJSON = function() {
+            return AddDeviceSyncEpochInput.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        AddDeviceSyncEpochInput.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.AddDeviceSyncEpochInput";
+        };
+
+        return AddDeviceSyncEpochInput;
+    })();
+
+    proto.BackwardEdge = (function() {
+
+        const BackwardEdge = function (p) {
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        BackwardEdge.prototype.encryptedPrevEpochAnonId = null;
+        BackwardEdge.prototype.encryptedPrevEpochRootKey = null;
+        BackwardEdge.prototype.prevEpochRootKeyFingerprint = null;
+
+        let $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(BackwardEdge.prototype, "_encryptedPrevEpochAnonId", {
+            get: $util.oneOfGetter($oneOfFields = ["encryptedPrevEpochAnonId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(BackwardEdge.prototype, "_encryptedPrevEpochRootKey", {
+            get: $util.oneOfGetter($oneOfFields = ["encryptedPrevEpochRootKey"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(BackwardEdge.prototype, "_prevEpochRootKeyFingerprint", {
+            get: $util.oneOfGetter($oneOfFields = ["prevEpochRootKeyFingerprint"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        BackwardEdge.create = function(properties) {
+            return new BackwardEdge(properties);
+        };
+
+        BackwardEdge.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.encryptedPrevEpochAnonId != null && $Object.hasOwnProperty.call(m, "encryptedPrevEpochAnonId"))
+                w.uint32(10).bytes(m.encryptedPrevEpochAnonId);
+            if (m.encryptedPrevEpochRootKey != null && $Object.hasOwnProperty.call(m, "encryptedPrevEpochRootKey"))
+                w.uint32(18).bytes(m.encryptedPrevEpochRootKey);
+            if (m.prevEpochRootKeyFingerprint != null && $Object.hasOwnProperty.call(m, "prevEpochRootKeyFingerprint"))
+                w.uint32(26).bytes(m.prevEpochRootKeyFingerprint);
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        BackwardEdge.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.BackwardEdge();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 2)
+                            break;
+                        m.encryptedPrevEpochAnonId = r.bytes();
+                        m._encryptedPrevEpochAnonId = "encryptedPrevEpochAnonId";
+                        continue;
+                    }
+                case 2: {
+                        if (u !== 2)
+                            break;
+                        m.encryptedPrevEpochRootKey = r.bytes();
+                        m._encryptedPrevEpochRootKey = "encryptedPrevEpochRootKey";
+                        continue;
+                    }
+                case 3: {
+                        if (u !== 2)
+                            break;
+                        m.prevEpochRootKeyFingerprint = r.bytes();
+                        m._prevEpochRootKeyFingerprint = "prevEpochRootKeyFingerprint";
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        BackwardEdge.fromObject = function (d, q) {
+            if (d instanceof $root.proto.BackwardEdge)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.BackwardEdge: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.BackwardEdge();
+            if (d.encryptedPrevEpochAnonId != null) {
+                if (typeof d.encryptedPrevEpochAnonId === "string")
+                    $util.base64.decode(d.encryptedPrevEpochAnonId, m.encryptedPrevEpochAnonId = $util.newBuffer($util.base64.length(d.encryptedPrevEpochAnonId)), 0);
+                else if (d.encryptedPrevEpochAnonId.length >= 0)
+                    m.encryptedPrevEpochAnonId = d.encryptedPrevEpochAnonId;
+            }
+            if (d.encryptedPrevEpochRootKey != null) {
+                if (typeof d.encryptedPrevEpochRootKey === "string")
+                    $util.base64.decode(d.encryptedPrevEpochRootKey, m.encryptedPrevEpochRootKey = $util.newBuffer($util.base64.length(d.encryptedPrevEpochRootKey)), 0);
+                else if (d.encryptedPrevEpochRootKey.length >= 0)
+                    m.encryptedPrevEpochRootKey = d.encryptedPrevEpochRootKey;
+            }
+            if (d.prevEpochRootKeyFingerprint != null) {
+                if (typeof d.prevEpochRootKeyFingerprint === "string")
+                    $util.base64.decode(d.prevEpochRootKeyFingerprint, m.prevEpochRootKeyFingerprint = $util.newBuffer($util.base64.length(d.prevEpochRootKeyFingerprint)), 0);
+                else if (d.prevEpochRootKeyFingerprint.length >= 0)
+                    m.prevEpochRootKeyFingerprint = d.prevEpochRootKeyFingerprint;
+            }
+            return m;
+        };
+
+        BackwardEdge.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (m.encryptedPrevEpochAnonId != null && $Object.hasOwnProperty.call(m, "encryptedPrevEpochAnonId")) {
+                d.encryptedPrevEpochAnonId = o.bytes === $String ? $util.base64.encode(m.encryptedPrevEpochAnonId, 0, m.encryptedPrevEpochAnonId.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.encryptedPrevEpochAnonId) : m.encryptedPrevEpochAnonId;
+            }
+            if (m.encryptedPrevEpochRootKey != null && $Object.hasOwnProperty.call(m, "encryptedPrevEpochRootKey")) {
+                d.encryptedPrevEpochRootKey = o.bytes === $String ? $util.base64.encode(m.encryptedPrevEpochRootKey, 0, m.encryptedPrevEpochRootKey.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.encryptedPrevEpochRootKey) : m.encryptedPrevEpochRootKey;
+            }
+            if (m.prevEpochRootKeyFingerprint != null && $Object.hasOwnProperty.call(m, "prevEpochRootKeyFingerprint")) {
+                d.prevEpochRootKeyFingerprint = o.bytes === $String ? $util.base64.encode(m.prevEpochRootKeyFingerprint, 0, m.prevEpochRootKeyFingerprint.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.prevEpochRootKeyFingerprint) : m.prevEpochRootKeyFingerprint;
+            }
+            return d;
+        };
+
+        BackwardEdge.prototype.toJSON = function() {
+            return BackwardEdge.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        BackwardEdge.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.BackwardEdge";
+        };
+
+        return BackwardEdge;
+    })();
+
+    proto.ComputeClientSealTokenInput = (function() {
+
+        const ComputeClientSealTokenInput = function (p) {
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        ComputeClientSealTokenInput.prototype.orfClientState = null;
+        ComputeClientSealTokenInput.prototype.backupId = null;
+
+        let $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(ComputeClientSealTokenInput.prototype, "_orfClientState", {
+            get: $util.oneOfGetter($oneOfFields = ["orfClientState"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(ComputeClientSealTokenInput.prototype, "_backupId", {
+            get: $util.oneOfGetter($oneOfFields = ["backupId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        ComputeClientSealTokenInput.create = function(properties) {
+            return new ComputeClientSealTokenInput(properties);
+        };
+
+        ComputeClientSealTokenInput.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.orfClientState != null && $Object.hasOwnProperty.call(m, "orfClientState"))
+                w.uint32(10).bytes(m.orfClientState);
+            if (m.backupId != null && $Object.hasOwnProperty.call(m, "backupId"))
+                w.uint32(16).uint64(m.backupId);
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        ComputeClientSealTokenInput.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.ComputeClientSealTokenInput();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 2)
+                            break;
+                        m.orfClientState = r.bytes();
+                        m._orfClientState = "orfClientState";
+                        continue;
+                    }
+                case 2: {
+                        if (u !== 0)
+                            break;
+                        m.backupId = r.uint64();
+                        m._backupId = "backupId";
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        ComputeClientSealTokenInput.fromObject = function (d, q) {
+            if (d instanceof $root.proto.ComputeClientSealTokenInput)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.ComputeClientSealTokenInput: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.ComputeClientSealTokenInput();
+            if (d.orfClientState != null) {
+                if (typeof d.orfClientState === "string")
+                    $util.base64.decode(d.orfClientState, m.orfClientState = $util.newBuffer($util.base64.length(d.orfClientState)), 0);
+                else if (d.orfClientState.length >= 0)
+                    m.orfClientState = d.orfClientState;
+            }
+            if (d.backupId != null) {
+                if ($util.Long)
+                    m.backupId = $util.Long.fromValue(d.backupId, true);
+                else if (typeof d.backupId === "string")
+                    m.backupId = $parseInt(d.backupId, 10);
+                else if (typeof d.backupId === "number")
+                    m.backupId = d.backupId;
+                else if (typeof d.backupId === "object")
+                    m.backupId = new $util.LongBits(d.backupId.low >>> 0, d.backupId.high >>> 0).toNumber(true);
+            }
+            return m;
+        };
+
+        ComputeClientSealTokenInput.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (m.orfClientState != null && $Object.hasOwnProperty.call(m, "orfClientState")) {
+                d.orfClientState = o.bytes === $String ? $util.base64.encode(m.orfClientState, 0, m.orfClientState.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.orfClientState) : m.orfClientState;
+            }
+            if (m.backupId != null && $Object.hasOwnProperty.call(m, "backupId")) {
+                if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
+                    d.backupId = typeof m.backupId === "number" ? $BigInt(m.backupId) : $util.Long.fromBits(m.backupId.low >>> 0, m.backupId.high >>> 0, true).toBigInt();
+                else if (typeof m.backupId === "number")
+                    d.backupId = o.longs === $String ? $String(m.backupId) : m.backupId;
+                else
+                    d.backupId = o.longs === $String ? $util.Long.prototype.toString.call(m.backupId) : o.longs === $Number ? new $util.LongBits(m.backupId.low >>> 0, m.backupId.high >>> 0).toNumber(true) : m.backupId;
+            }
+            return d;
+        };
+
+        ComputeClientSealTokenInput.prototype.toJSON = function() {
+            return ComputeClientSealTokenInput.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        ComputeClientSealTokenInput.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.ComputeClientSealTokenInput";
+        };
+
+        return ComputeClientSealTokenInput;
+    })();
+
+    proto.ComputeClientSealTokenOutput = (function() {
+
+        const ComputeClientSealTokenOutput = function (p) {
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        ComputeClientSealTokenOutput.prototype.success = null;
+        ComputeClientSealTokenOutput.prototype.error = null;
+
+        let $oneOfFields;
+
+        $Object.defineProperty(ComputeClientSealTokenOutput.prototype, "result", {
+            get: $util.oneOfGetter($oneOfFields = ["success", "error"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        ComputeClientSealTokenOutput.create = function(properties) {
+            return new ComputeClientSealTokenOutput(properties);
+        };
+
+        ComputeClientSealTokenOutput.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.success != null && $Object.hasOwnProperty.call(m, "success"))
+                $root.proto.ComputeClientSealTokenSuccess.encode(m.success, w.uint32(10).fork(), q + 1).ldelim();
+            if (m.error != null && $Object.hasOwnProperty.call(m, "error"))
+                w.uint32(18).string(m.error);
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        ComputeClientSealTokenOutput.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.ComputeClientSealTokenOutput();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 2)
+                            break;
+                        m.success = $root.proto.ComputeClientSealTokenSuccess.decode(r, r.size(), $undefined, q + 1, m.success);
+                        m.result = "success";
+                        continue;
+                    }
+                case 2: {
+                        if (u !== 2)
+                            break;
+                        m.error = r.stringVerify();
+                        m.result = "error";
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        ComputeClientSealTokenOutput.fromObject = function (d, q) {
+            if (d instanceof $root.proto.ComputeClientSealTokenOutput)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.ComputeClientSealTokenOutput: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.ComputeClientSealTokenOutput();
+            if (d.success != null) {
+                if (!$util.isObject(d.success))
+                    throw $TypeError(".proto.ComputeClientSealTokenOutput.success: object expected");
+                m.success = $root.proto.ComputeClientSealTokenSuccess.fromObject(d.success, q + 1);
+            }
+            if (d.error != null) {
+                m.error = $String(d.error);
+            }
+            return m;
+        };
+
+        ComputeClientSealTokenOutput.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (m.success != null && $Object.hasOwnProperty.call(m, "success")) {
+                d.success = $root.proto.ComputeClientSealTokenSuccess.toObject(m.success, o, q + 1);
+                if (o.oneofs)
+                    d.result = "success";
+            }
+            if (m.error != null && $Object.hasOwnProperty.call(m, "error")) {
+                d.error = m.error;
+                if (o.oneofs)
+                    d.result = "error";
+            }
+            return d;
+        };
+
+        ComputeClientSealTokenOutput.prototype.toJSON = function() {
+            return ComputeClientSealTokenOutput.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        ComputeClientSealTokenOutput.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.ComputeClientSealTokenOutput";
+        };
+
+        return ComputeClientSealTokenOutput;
+    })();
+
+    proto.ComputeClientSealTokenSuccess = (function() {
+
+        const ComputeClientSealTokenSuccess = function (p) {
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        ComputeClientSealTokenSuccess.prototype.clientSealToken = null;
+
+        let $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(ComputeClientSealTokenSuccess.prototype, "_clientSealToken", {
+            get: $util.oneOfGetter($oneOfFields = ["clientSealToken"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        ComputeClientSealTokenSuccess.create = function(properties) {
+            return new ComputeClientSealTokenSuccess(properties);
+        };
+
+        ComputeClientSealTokenSuccess.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.clientSealToken != null && $Object.hasOwnProperty.call(m, "clientSealToken"))
+                w.uint32(10).bytes(m.clientSealToken);
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        ComputeClientSealTokenSuccess.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.ComputeClientSealTokenSuccess();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 2)
+                            break;
+                        m.clientSealToken = r.bytes();
+                        m._clientSealToken = "clientSealToken";
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        ComputeClientSealTokenSuccess.fromObject = function (d, q) {
+            if (d instanceof $root.proto.ComputeClientSealTokenSuccess)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.ComputeClientSealTokenSuccess: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.ComputeClientSealTokenSuccess();
+            if (d.clientSealToken != null) {
+                if (typeof d.clientSealToken === "string")
+                    $util.base64.decode(d.clientSealToken, m.clientSealToken = $util.newBuffer($util.base64.length(d.clientSealToken)), 0);
+                else if (d.clientSealToken.length >= 0)
+                    m.clientSealToken = d.clientSealToken;
+            }
+            return m;
+        };
+
+        ComputeClientSealTokenSuccess.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (m.clientSealToken != null && $Object.hasOwnProperty.call(m, "clientSealToken")) {
+                d.clientSealToken = o.bytes === $String ? $util.base64.encode(m.clientSealToken, 0, m.clientSealToken.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.clientSealToken) : m.clientSealToken;
+            }
+            return d;
+        };
+
+        ComputeClientSealTokenSuccess.prototype.toJSON = function() {
+            return ComputeClientSealTokenSuccess.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        ComputeClientSealTokenSuccess.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.ComputeClientSealTokenSuccess";
+        };
+
+        return ComputeClientSealTokenSuccess;
+    })();
+
+    proto.CreateBackupInput = (function() {
+
+        const CreateBackupInput = function (p) {
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        CreateBackupInput.prototype.recoveryCode = null;
+        CreateBackupInput.prototype.userId = null;
+
+        let $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(CreateBackupInput.prototype, "_recoveryCode", {
+            get: $util.oneOfGetter($oneOfFields = ["recoveryCode"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(CreateBackupInput.prototype, "_userId", {
+            get: $util.oneOfGetter($oneOfFields = ["userId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        CreateBackupInput.create = function(properties) {
+            return new CreateBackupInput(properties);
+        };
+
+        CreateBackupInput.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.recoveryCode != null && $Object.hasOwnProperty.call(m, "recoveryCode"))
+                w.uint32(10).string(m.recoveryCode);
+            if (m.userId != null && $Object.hasOwnProperty.call(m, "userId"))
+                w.uint32(16).uint64(m.userId);
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        CreateBackupInput.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.CreateBackupInput();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 2)
+                            break;
+                        m.recoveryCode = r.stringVerify();
+                        m._recoveryCode = "recoveryCode";
+                        continue;
+                    }
+                case 2: {
+                        if (u !== 0)
+                            break;
+                        m.userId = r.uint64();
+                        m._userId = "userId";
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        CreateBackupInput.fromObject = function (d, q) {
+            if (d instanceof $root.proto.CreateBackupInput)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.CreateBackupInput: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.CreateBackupInput();
+            if (d.recoveryCode != null) {
+                m.recoveryCode = $String(d.recoveryCode);
+            }
+            if (d.userId != null) {
+                if ($util.Long)
+                    m.userId = $util.Long.fromValue(d.userId, true);
+                else if (typeof d.userId === "string")
+                    m.userId = $parseInt(d.userId, 10);
+                else if (typeof d.userId === "number")
+                    m.userId = d.userId;
+                else if (typeof d.userId === "object")
+                    m.userId = new $util.LongBits(d.userId.low >>> 0, d.userId.high >>> 0).toNumber(true);
+            }
+            return m;
+        };
+
+        CreateBackupInput.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (m.recoveryCode != null && $Object.hasOwnProperty.call(m, "recoveryCode")) {
+                d.recoveryCode = m.recoveryCode;
+            }
+            if (m.userId != null && $Object.hasOwnProperty.call(m, "userId")) {
+                if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
+                    d.userId = typeof m.userId === "number" ? $BigInt(m.userId) : $util.Long.fromBits(m.userId.low >>> 0, m.userId.high >>> 0, true).toBigInt();
+                else if (typeof m.userId === "number")
+                    d.userId = o.longs === $String ? $String(m.userId) : m.userId;
+                else
+                    d.userId = o.longs === $String ? $util.Long.prototype.toString.call(m.userId) : o.longs === $Number ? new $util.LongBits(m.userId.low >>> 0, m.userId.high >>> 0).toNumber(true) : m.userId;
+            }
+            return d;
+        };
+
+        CreateBackupInput.prototype.toJSON = function() {
+            return CreateBackupInput.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        CreateBackupInput.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.CreateBackupInput";
+        };
+
+        return CreateBackupInput;
+    })();
+
+    proto.CreateBackupOutput = (function() {
+
+        const CreateBackupOutput = function (p) {
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        CreateBackupOutput.prototype.success = null;
+        CreateBackupOutput.prototype.error = null;
+
+        let $oneOfFields;
+
+        $Object.defineProperty(CreateBackupOutput.prototype, "result", {
+            get: $util.oneOfGetter($oneOfFields = ["success", "error"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        CreateBackupOutput.create = function(properties) {
+            return new CreateBackupOutput(properties);
+        };
+
+        CreateBackupOutput.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.success != null && $Object.hasOwnProperty.call(m, "success"))
+                $root.proto.CreateBackupSuccess.encode(m.success, w.uint32(10).fork(), q + 1).ldelim();
+            if (m.error != null && $Object.hasOwnProperty.call(m, "error"))
+                w.uint32(18).string(m.error);
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        CreateBackupOutput.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.CreateBackupOutput();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 2)
+                            break;
+                        m.success = $root.proto.CreateBackupSuccess.decode(r, r.size(), $undefined, q + 1, m.success);
+                        m.result = "success";
+                        continue;
+                    }
+                case 2: {
+                        if (u !== 2)
+                            break;
+                        m.error = r.stringVerify();
+                        m.result = "error";
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        CreateBackupOutput.fromObject = function (d, q) {
+            if (d instanceof $root.proto.CreateBackupOutput)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.CreateBackupOutput: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.CreateBackupOutput();
+            if (d.success != null) {
+                if (!$util.isObject(d.success))
+                    throw $TypeError(".proto.CreateBackupOutput.success: object expected");
+                m.success = $root.proto.CreateBackupSuccess.fromObject(d.success, q + 1);
+            }
+            if (d.error != null) {
+                m.error = $String(d.error);
+            }
+            return m;
+        };
+
+        CreateBackupOutput.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (m.success != null && $Object.hasOwnProperty.call(m, "success")) {
+                d.success = $root.proto.CreateBackupSuccess.toObject(m.success, o, q + 1);
+                if (o.oneofs)
+                    d.result = "success";
+            }
+            if (m.error != null && $Object.hasOwnProperty.call(m, "error")) {
+                d.error = m.error;
+                if (o.oneofs)
+                    d.result = "error";
+            }
+            return d;
+        };
+
+        CreateBackupOutput.prototype.toJSON = function() {
+            return CreateBackupOutput.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        CreateBackupOutput.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.CreateBackupOutput";
+        };
+
+        return CreateBackupOutput;
+    })();
+
+    proto.CreateBackupSuccess = (function() {
+
+        const CreateBackupSuccess = function (p) {
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        CreateBackupSuccess.prototype.device = null;
+        CreateBackupSuccess.prototype.virtualDevice = null;
+        CreateBackupSuccess.prototype.epoch0 = null;
+        CreateBackupSuccess.prototype.mailboxRootKey = null;
+
+        let $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(CreateBackupSuccess.prototype, "_device", {
+            get: $util.oneOfGetter($oneOfFields = ["device"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(CreateBackupSuccess.prototype, "_virtualDevice", {
+            get: $util.oneOfGetter($oneOfFields = ["virtualDevice"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(CreateBackupSuccess.prototype, "_epoch0", {
+            get: $util.oneOfGetter($oneOfFields = ["epoch0"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(CreateBackupSuccess.prototype, "_mailboxRootKey", {
+            get: $util.oneOfGetter($oneOfFields = ["mailboxRootKey"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        CreateBackupSuccess.create = function(properties) {
+            return new CreateBackupSuccess(properties);
+        };
+
+        CreateBackupSuccess.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.device != null && $Object.hasOwnProperty.call(m, "device"))
+                $root.proto.DeviceOutput.encode(m.device, w.uint32(10).fork(), q + 1).ldelim();
+            if (m.virtualDevice != null && $Object.hasOwnProperty.call(m, "virtualDevice"))
+                $root.proto.VirtualDeviceOutput.encode(m.virtualDevice, w.uint32(18).fork(), q + 1).ldelim();
+            if (m.epoch0 != null && $Object.hasOwnProperty.call(m, "epoch0"))
+                $root.proto.Epoch0Output.encode(m.epoch0, w.uint32(26).fork(), q + 1).ldelim();
+            if (m.mailboxRootKey != null && $Object.hasOwnProperty.call(m, "mailboxRootKey"))
+                w.uint32(34).bytes(m.mailboxRootKey);
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        CreateBackupSuccess.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.CreateBackupSuccess();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 2)
+                            break;
+                        m.device = $root.proto.DeviceOutput.decode(r, r.size(), $undefined, q + 1, m.device);
+                        m._device = "device";
+                        continue;
+                    }
+                case 2: {
+                        if (u !== 2)
+                            break;
+                        m.virtualDevice = $root.proto.VirtualDeviceOutput.decode(r, r.size(), $undefined, q + 1, m.virtualDevice);
+                        m._virtualDevice = "virtualDevice";
+                        continue;
+                    }
+                case 3: {
+                        if (u !== 2)
+                            break;
+                        m.epoch0 = $root.proto.Epoch0Output.decode(r, r.size(), $undefined, q + 1, m.epoch0);
+                        m._epoch0 = "epoch0";
+                        continue;
+                    }
+                case 4: {
+                        if (u !== 2)
+                            break;
+                        m.mailboxRootKey = r.bytes();
+                        m._mailboxRootKey = "mailboxRootKey";
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        CreateBackupSuccess.fromObject = function (d, q) {
+            if (d instanceof $root.proto.CreateBackupSuccess)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.CreateBackupSuccess: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.CreateBackupSuccess();
+            if (d.device != null) {
+                if (!$util.isObject(d.device))
+                    throw $TypeError(".proto.CreateBackupSuccess.device: object expected");
+                m.device = $root.proto.DeviceOutput.fromObject(d.device, q + 1);
+            }
+            if (d.virtualDevice != null) {
+                if (!$util.isObject(d.virtualDevice))
+                    throw $TypeError(".proto.CreateBackupSuccess.virtualDevice: object expected");
+                m.virtualDevice = $root.proto.VirtualDeviceOutput.fromObject(d.virtualDevice, q + 1);
+            }
+            if (d.epoch0 != null) {
+                if (!$util.isObject(d.epoch0))
+                    throw $TypeError(".proto.CreateBackupSuccess.epoch0: object expected");
+                m.epoch0 = $root.proto.Epoch0Output.fromObject(d.epoch0, q + 1);
+            }
+            if (d.mailboxRootKey != null) {
+                if (typeof d.mailboxRootKey === "string")
+                    $util.base64.decode(d.mailboxRootKey, m.mailboxRootKey = $util.newBuffer($util.base64.length(d.mailboxRootKey)), 0);
+                else if (d.mailboxRootKey.length >= 0)
+                    m.mailboxRootKey = d.mailboxRootKey;
+            }
+            return m;
+        };
+
+        CreateBackupSuccess.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (m.device != null && $Object.hasOwnProperty.call(m, "device")) {
+                d.device = $root.proto.DeviceOutput.toObject(m.device, o, q + 1);
+            }
+            if (m.virtualDevice != null && $Object.hasOwnProperty.call(m, "virtualDevice")) {
+                d.virtualDevice = $root.proto.VirtualDeviceOutput.toObject(m.virtualDevice, o, q + 1);
+            }
+            if (m.epoch0 != null && $Object.hasOwnProperty.call(m, "epoch0")) {
+                d.epoch0 = $root.proto.Epoch0Output.toObject(m.epoch0, o, q + 1);
+            }
+            if (m.mailboxRootKey != null && $Object.hasOwnProperty.call(m, "mailboxRootKey")) {
+                d.mailboxRootKey = o.bytes === $String ? $util.base64.encode(m.mailboxRootKey, 0, m.mailboxRootKey.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.mailboxRootKey) : m.mailboxRootKey;
+            }
+            return d;
+        };
+
+        CreateBackupSuccess.prototype.toJSON = function() {
+            return CreateBackupSuccess.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        CreateBackupSuccess.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.CreateBackupSuccess";
+        };
+
+        return CreateBackupSuccess;
+    })();
+
+    proto.DecryptMessageInput = (function() {
+
+        const DecryptMessageInput = function (p) {
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        DecryptMessageInput.prototype.epochRootKey = null;
+        DecryptMessageInput.prototype.epochAnonId = null;
+        DecryptMessageInput.prototype.threadId = null;
+        DecryptMessageInput.prototype.encryptionVersion = null;
+        DecryptMessageInput.prototype.ciphertext = null;
+
+        let $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(DecryptMessageInput.prototype, "_epochRootKey", {
+            get: $util.oneOfGetter($oneOfFields = ["epochRootKey"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(DecryptMessageInput.prototype, "_epochAnonId", {
+            get: $util.oneOfGetter($oneOfFields = ["epochAnonId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(DecryptMessageInput.prototype, "_threadId", {
+            get: $util.oneOfGetter($oneOfFields = ["threadId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(DecryptMessageInput.prototype, "_encryptionVersion", {
+            get: $util.oneOfGetter($oneOfFields = ["encryptionVersion"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(DecryptMessageInput.prototype, "_ciphertext", {
+            get: $util.oneOfGetter($oneOfFields = ["ciphertext"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        DecryptMessageInput.create = function(properties) {
+            return new DecryptMessageInput(properties);
+        };
+
+        DecryptMessageInput.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.epochRootKey != null && $Object.hasOwnProperty.call(m, "epochRootKey"))
+                w.uint32(10).bytes(m.epochRootKey);
+            if (m.epochAnonId != null && $Object.hasOwnProperty.call(m, "epochAnonId"))
+                w.uint32(16).int32(m.epochAnonId);
+            if (m.threadId != null && $Object.hasOwnProperty.call(m, "threadId"))
+                w.uint32(26).string(m.threadId);
+            if (m.encryptionVersion != null && $Object.hasOwnProperty.call(m, "encryptionVersion"))
+                w.uint32(32).int32(m.encryptionVersion);
+            if (m.ciphertext != null && $Object.hasOwnProperty.call(m, "ciphertext"))
+                w.uint32(42).bytes(m.ciphertext);
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        DecryptMessageInput.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.DecryptMessageInput();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 2)
+                            break;
+                        m.epochRootKey = r.bytes();
+                        m._epochRootKey = "epochRootKey";
+                        continue;
+                    }
+                case 2: {
+                        if (u !== 0)
+                            break;
+                        m.epochAnonId = r.int32();
+                        m._epochAnonId = "epochAnonId";
+                        continue;
+                    }
+                case 3: {
+                        if (u !== 2)
+                            break;
+                        m.threadId = r.stringVerify();
+                        m._threadId = "threadId";
+                        continue;
+                    }
+                case 4: {
+                        if (u !== 0)
+                            break;
+                        m.encryptionVersion = r.int32();
+                        m._encryptionVersion = "encryptionVersion";
+                        continue;
+                    }
+                case 5: {
+                        if (u !== 2)
+                            break;
+                        m.ciphertext = r.bytes();
+                        m._ciphertext = "ciphertext";
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        DecryptMessageInput.fromObject = function (d, q) {
+            if (d instanceof $root.proto.DecryptMessageInput)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.DecryptMessageInput: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.DecryptMessageInput();
+            if (d.epochRootKey != null) {
+                if (typeof d.epochRootKey === "string")
+                    $util.base64.decode(d.epochRootKey, m.epochRootKey = $util.newBuffer($util.base64.length(d.epochRootKey)), 0);
+                else if (d.epochRootKey.length >= 0)
+                    m.epochRootKey = d.epochRootKey;
+            }
+            if (d.epochAnonId != null) {
+                m.epochAnonId = d.epochAnonId | 0;
+            }
+            if (d.threadId != null) {
+                m.threadId = $String(d.threadId);
+            }
+            if (d.encryptionVersion != null) {
+                m.encryptionVersion = d.encryptionVersion | 0;
+            }
+            if (d.ciphertext != null) {
+                if (typeof d.ciphertext === "string")
+                    $util.base64.decode(d.ciphertext, m.ciphertext = $util.newBuffer($util.base64.length(d.ciphertext)), 0);
+                else if (d.ciphertext.length >= 0)
+                    m.ciphertext = d.ciphertext;
+            }
+            return m;
+        };
+
+        DecryptMessageInput.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (m.epochRootKey != null && $Object.hasOwnProperty.call(m, "epochRootKey")) {
+                d.epochRootKey = o.bytes === $String ? $util.base64.encode(m.epochRootKey, 0, m.epochRootKey.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.epochRootKey) : m.epochRootKey;
+            }
+            if (m.epochAnonId != null && $Object.hasOwnProperty.call(m, "epochAnonId")) {
+                d.epochAnonId = m.epochAnonId;
+            }
+            if (m.threadId != null && $Object.hasOwnProperty.call(m, "threadId")) {
+                d.threadId = m.threadId;
+            }
+            if (m.encryptionVersion != null && $Object.hasOwnProperty.call(m, "encryptionVersion")) {
+                d.encryptionVersion = m.encryptionVersion;
+            }
+            if (m.ciphertext != null && $Object.hasOwnProperty.call(m, "ciphertext")) {
+                d.ciphertext = o.bytes === $String ? $util.base64.encode(m.ciphertext, 0, m.ciphertext.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.ciphertext) : m.ciphertext;
+            }
+            return d;
+        };
+
+        DecryptMessageInput.prototype.toJSON = function() {
+            return DecryptMessageInput.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        DecryptMessageInput.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.DecryptMessageInput";
+        };
+
+        return DecryptMessageInput;
+    })();
+
+    proto.DecryptMessageOutput = (function() {
+
+        const DecryptMessageOutput = function (p) {
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        DecryptMessageOutput.prototype.success = null;
+        DecryptMessageOutput.prototype.error = null;
+
+        let $oneOfFields;
+
+        $Object.defineProperty(DecryptMessageOutput.prototype, "result", {
+            get: $util.oneOfGetter($oneOfFields = ["success", "error"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        DecryptMessageOutput.create = function(properties) {
+            return new DecryptMessageOutput(properties);
+        };
+
+        DecryptMessageOutput.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.success != null && $Object.hasOwnProperty.call(m, "success"))
+                $root.proto.DecryptMessageSuccess.encode(m.success, w.uint32(10).fork(), q + 1).ldelim();
+            if (m.error != null && $Object.hasOwnProperty.call(m, "error"))
+                w.uint32(18).string(m.error);
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        DecryptMessageOutput.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.DecryptMessageOutput();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 2)
+                            break;
+                        m.success = $root.proto.DecryptMessageSuccess.decode(r, r.size(), $undefined, q + 1, m.success);
+                        m.result = "success";
+                        continue;
+                    }
+                case 2: {
+                        if (u !== 2)
+                            break;
+                        m.error = r.stringVerify();
+                        m.result = "error";
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        DecryptMessageOutput.fromObject = function (d, q) {
+            if (d instanceof $root.proto.DecryptMessageOutput)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.DecryptMessageOutput: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.DecryptMessageOutput();
+            if (d.success != null) {
+                if (!$util.isObject(d.success))
+                    throw $TypeError(".proto.DecryptMessageOutput.success: object expected");
+                m.success = $root.proto.DecryptMessageSuccess.fromObject(d.success, q + 1);
+            }
+            if (d.error != null) {
+                m.error = $String(d.error);
+            }
+            return m;
+        };
+
+        DecryptMessageOutput.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (m.success != null && $Object.hasOwnProperty.call(m, "success")) {
+                d.success = $root.proto.DecryptMessageSuccess.toObject(m.success, o, q + 1);
+                if (o.oneofs)
+                    d.result = "success";
+            }
+            if (m.error != null && $Object.hasOwnProperty.call(m, "error")) {
+                d.error = m.error;
+                if (o.oneofs)
+                    d.result = "error";
+            }
+            return d;
+        };
+
+        DecryptMessageOutput.prototype.toJSON = function() {
+            return DecryptMessageOutput.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        DecryptMessageOutput.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.DecryptMessageOutput";
+        };
+
+        return DecryptMessageOutput;
+    })();
+
+    proto.DecryptMessageSuccess = (function() {
+
+        const DecryptMessageSuccess = function (p) {
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        DecryptMessageSuccess.prototype.plaintextPayload = null;
+
+        let $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(DecryptMessageSuccess.prototype, "_plaintextPayload", {
+            get: $util.oneOfGetter($oneOfFields = ["plaintextPayload"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        DecryptMessageSuccess.create = function(properties) {
+            return new DecryptMessageSuccess(properties);
+        };
+
+        DecryptMessageSuccess.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.plaintextPayload != null && $Object.hasOwnProperty.call(m, "plaintextPayload"))
+                w.uint32(10).bytes(m.plaintextPayload);
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        DecryptMessageSuccess.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.DecryptMessageSuccess();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 2)
+                            break;
+                        m.plaintextPayload = r.bytes();
+                        m._plaintextPayload = "plaintextPayload";
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        DecryptMessageSuccess.fromObject = function (d, q) {
+            if (d instanceof $root.proto.DecryptMessageSuccess)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.DecryptMessageSuccess: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.DecryptMessageSuccess();
+            if (d.plaintextPayload != null) {
+                if (typeof d.plaintextPayload === "string")
+                    $util.base64.decode(d.plaintextPayload, m.plaintextPayload = $util.newBuffer($util.base64.length(d.plaintextPayload)), 0);
+                else if (d.plaintextPayload.length >= 0)
+                    m.plaintextPayload = d.plaintextPayload;
+            }
+            return m;
+        };
+
+        DecryptMessageSuccess.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (m.plaintextPayload != null && $Object.hasOwnProperty.call(m, "plaintextPayload")) {
+                d.plaintextPayload = o.bytes === $String ? $util.base64.encode(m.plaintextPayload, 0, m.plaintextPayload.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.plaintextPayload) : m.plaintextPayload;
+            }
+            return d;
+        };
+
+        DecryptMessageSuccess.prototype.toJSON = function() {
+            return DecryptMessageSuccess.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        DecryptMessageSuccess.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.DecryptMessageSuccess";
+        };
+
+        return DecryptMessageSuccess;
+    })();
+
+    proto.DeriveEpochsInput = (function() {
+
+        const DeriveEpochsInput = function (p) {
+            this.epochs = [];
+            this.edges = [];
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        DeriveEpochsInput.prototype.epochStoragePrivateKey = null;
+        DeriveEpochsInput.prototype.epochs = $util.emptyArray;
+        DeriveEpochsInput.prototype.edges = $util.emptyArray;
+
+        let $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(DeriveEpochsInput.prototype, "_epochStoragePrivateKey", {
+            get: $util.oneOfGetter($oneOfFields = ["epochStoragePrivateKey"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        DeriveEpochsInput.create = function(properties) {
+            return new DeriveEpochsInput(properties);
+        };
+
+        DeriveEpochsInput.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.epochStoragePrivateKey != null && $Object.hasOwnProperty.call(m, "epochStoragePrivateKey"))
+                w.uint32(10).bytes(m.epochStoragePrivateKey);
+            if (m.epochs != null && m.epochs.length) {
+                for (var i = 0; i < m.epochs.length; ++i)
+                    $root.proto.EpochKey.encode(m.epochs[i], w.uint32(18).fork(), q + 1).ldelim();
+            }
+            if (m.edges != null && m.edges.length) {
+                for (var i = 0; i < m.edges.length; ++i)
+                    $root.proto.EpochDerivationEdge.encode(m.edges[i], w.uint32(26).fork(), q + 1).ldelim();
+            }
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        DeriveEpochsInput.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.DeriveEpochsInput();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 2)
+                            break;
+                        m.epochStoragePrivateKey = r.bytes();
+                        m._epochStoragePrivateKey = "epochStoragePrivateKey";
+                        continue;
+                    }
+                case 2: {
+                        if (u !== 2)
+                            break;
+                        if (!(m.epochs && m.epochs.length))
+                            m.epochs = [];
+                        m.epochs.push($root.proto.EpochKey.decode(r, r.size(), $undefined, q + 1));
+                        continue;
+                    }
+                case 3: {
+                        if (u !== 2)
+                            break;
+                        if (!(m.edges && m.edges.length))
+                            m.edges = [];
+                        m.edges.push($root.proto.EpochDerivationEdge.decode(r, r.size(), $undefined, q + 1));
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        DeriveEpochsInput.fromObject = function (d, q) {
+            if (d instanceof $root.proto.DeriveEpochsInput)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.DeriveEpochsInput: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.DeriveEpochsInput();
+            if (d.epochStoragePrivateKey != null) {
+                if (typeof d.epochStoragePrivateKey === "string")
+                    $util.base64.decode(d.epochStoragePrivateKey, m.epochStoragePrivateKey = $util.newBuffer($util.base64.length(d.epochStoragePrivateKey)), 0);
+                else if (d.epochStoragePrivateKey.length >= 0)
+                    m.epochStoragePrivateKey = d.epochStoragePrivateKey;
+            }
+            if (d.epochs) {
+                if (!$Array.isArray(d.epochs))
+                    throw $TypeError(".proto.DeriveEpochsInput.epochs: array expected");
+                m.epochs = $Array(d.epochs.length);
+                for (var i = 0; i < d.epochs.length; ++i) {
+                    if (!$util.isObject(d.epochs[i]))
+                        throw $TypeError(".proto.DeriveEpochsInput.epochs: object expected");
+                    m.epochs[i] = $root.proto.EpochKey.fromObject(d.epochs[i], q + 1);
+                }
+            }
+            if (d.edges) {
+                if (!$Array.isArray(d.edges))
+                    throw $TypeError(".proto.DeriveEpochsInput.edges: array expected");
+                m.edges = $Array(d.edges.length);
+                for (var i = 0; i < d.edges.length; ++i) {
+                    if (!$util.isObject(d.edges[i]))
+                        throw $TypeError(".proto.DeriveEpochsInput.edges: object expected");
+                    m.edges[i] = $root.proto.EpochDerivationEdge.fromObject(d.edges[i], q + 1);
+                }
+            }
+            return m;
+        };
+
+        DeriveEpochsInput.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (o.arrays || o.defaults) {
+                d.epochs = [];
+                d.edges = [];
+            }
+            if (m.epochStoragePrivateKey != null && $Object.hasOwnProperty.call(m, "epochStoragePrivateKey")) {
+                d.epochStoragePrivateKey = o.bytes === $String ? $util.base64.encode(m.epochStoragePrivateKey, 0, m.epochStoragePrivateKey.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.epochStoragePrivateKey) : m.epochStoragePrivateKey;
+            }
+            if (m.epochs && m.epochs.length) {
+                d.epochs = $Array(m.epochs.length);
+                for (var j = 0; j < m.epochs.length; ++j) {
+                    d.epochs[j] = $root.proto.EpochKey.toObject(m.epochs[j], o, q + 1);
+                }
+            }
+            if (m.edges && m.edges.length) {
+                d.edges = $Array(m.edges.length);
+                for (var j = 0; j < m.edges.length; ++j) {
+                    d.edges[j] = $root.proto.EpochDerivationEdge.toObject(m.edges[j], o, q + 1);
+                }
+            }
+            return d;
+        };
+
+        DeriveEpochsInput.prototype.toJSON = function() {
+            return DeriveEpochsInput.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        DeriveEpochsInput.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.DeriveEpochsInput";
+        };
+
+        return DeriveEpochsInput;
+    })();
+
+    proto.DeriveEpochsOutput = (function() {
+
+        const DeriveEpochsOutput = function (p) {
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        DeriveEpochsOutput.prototype.success = null;
+        DeriveEpochsOutput.prototype.error = null;
+
+        let $oneOfFields;
+
+        $Object.defineProperty(DeriveEpochsOutput.prototype, "result", {
+            get: $util.oneOfGetter($oneOfFields = ["success", "error"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        DeriveEpochsOutput.create = function(properties) {
+            return new DeriveEpochsOutput(properties);
+        };
+
+        DeriveEpochsOutput.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.success != null && $Object.hasOwnProperty.call(m, "success"))
+                $root.proto.DeriveEpochsSuccess.encode(m.success, w.uint32(10).fork(), q + 1).ldelim();
+            if (m.error != null && $Object.hasOwnProperty.call(m, "error"))
+                w.uint32(18).string(m.error);
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        DeriveEpochsOutput.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.DeriveEpochsOutput();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 2)
+                            break;
+                        m.success = $root.proto.DeriveEpochsSuccess.decode(r, r.size(), $undefined, q + 1, m.success);
+                        m.result = "success";
+                        continue;
+                    }
+                case 2: {
+                        if (u !== 2)
+                            break;
+                        m.error = r.stringVerify();
+                        m.result = "error";
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        DeriveEpochsOutput.fromObject = function (d, q) {
+            if (d instanceof $root.proto.DeriveEpochsOutput)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.DeriveEpochsOutput: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.DeriveEpochsOutput();
+            if (d.success != null) {
+                if (!$util.isObject(d.success))
+                    throw $TypeError(".proto.DeriveEpochsOutput.success: object expected");
+                m.success = $root.proto.DeriveEpochsSuccess.fromObject(d.success, q + 1);
+            }
+            if (d.error != null) {
+                m.error = $String(d.error);
+            }
+            return m;
+        };
+
+        DeriveEpochsOutput.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (m.success != null && $Object.hasOwnProperty.call(m, "success")) {
+                d.success = $root.proto.DeriveEpochsSuccess.toObject(m.success, o, q + 1);
+                if (o.oneofs)
+                    d.result = "success";
+            }
+            if (m.error != null && $Object.hasOwnProperty.call(m, "error")) {
+                d.error = m.error;
+                if (o.oneofs)
+                    d.result = "error";
+            }
+            return d;
+        };
+
+        DeriveEpochsOutput.prototype.toJSON = function() {
+            return DeriveEpochsOutput.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        DeriveEpochsOutput.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.DeriveEpochsOutput";
+        };
+
+        return DeriveEpochsOutput;
+    })();
+
+    proto.DeriveEpochsSuccess = (function() {
+
+        const DeriveEpochsSuccess = function (p) {
+            this.epochs = [];
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        DeriveEpochsSuccess.prototype.epochs = $util.emptyArray;
+
+        DeriveEpochsSuccess.create = function(properties) {
+            return new DeriveEpochsSuccess(properties);
+        };
+
+        DeriveEpochsSuccess.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.epochs != null && m.epochs.length) {
+                for (var i = 0; i < m.epochs.length; ++i)
+                    $root.proto.EpochKey.encode(m.epochs[i], w.uint32(10).fork(), q + 1).ldelim();
+            }
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        DeriveEpochsSuccess.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.DeriveEpochsSuccess();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 2)
+                            break;
+                        if (!(m.epochs && m.epochs.length))
+                            m.epochs = [];
+                        m.epochs.push($root.proto.EpochKey.decode(r, r.size(), $undefined, q + 1));
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        DeriveEpochsSuccess.fromObject = function (d, q) {
+            if (d instanceof $root.proto.DeriveEpochsSuccess)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.DeriveEpochsSuccess: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.DeriveEpochsSuccess();
+            if (d.epochs) {
+                if (!$Array.isArray(d.epochs))
+                    throw $TypeError(".proto.DeriveEpochsSuccess.epochs: array expected");
+                m.epochs = $Array(d.epochs.length);
+                for (var i = 0; i < d.epochs.length; ++i) {
+                    if (!$util.isObject(d.epochs[i]))
+                        throw $TypeError(".proto.DeriveEpochsSuccess.epochs: object expected");
+                    m.epochs[i] = $root.proto.EpochKey.fromObject(d.epochs[i], q + 1);
+                }
+            }
+            return m;
+        };
+
+        DeriveEpochsSuccess.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (o.arrays || o.defaults) {
+                d.epochs = [];
+            }
+            if (m.epochs && m.epochs.length) {
+                d.epochs = $Array(m.epochs.length);
+                for (var j = 0; j < m.epochs.length; ++j) {
+                    d.epochs[j] = $root.proto.EpochKey.toObject(m.epochs[j], o, q + 1);
+                }
+            }
+            return d;
+        };
+
+        DeriveEpochsSuccess.prototype.toJSON = function() {
+            return DeriveEpochsSuccess.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        DeriveEpochsSuccess.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.DeriveEpochsSuccess";
+        };
+
+        return DeriveEpochsSuccess;
+    })();
+
+    proto.DeriveMessageKeyInput = (function() {
+
+        const DeriveMessageKeyInput = function (p) {
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        DeriveMessageKeyInput.prototype.epochRootKey = null;
+        DeriveMessageKeyInput.prototype.epochAnonId = null;
+        DeriveMessageKeyInput.prototype.threadId = null;
+
+        let $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(DeriveMessageKeyInput.prototype, "_epochRootKey", {
+            get: $util.oneOfGetter($oneOfFields = ["epochRootKey"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(DeriveMessageKeyInput.prototype, "_epochAnonId", {
+            get: $util.oneOfGetter($oneOfFields = ["epochAnonId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(DeriveMessageKeyInput.prototype, "_threadId", {
+            get: $util.oneOfGetter($oneOfFields = ["threadId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        DeriveMessageKeyInput.create = function(properties) {
+            return new DeriveMessageKeyInput(properties);
+        };
+
+        DeriveMessageKeyInput.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.epochRootKey != null && $Object.hasOwnProperty.call(m, "epochRootKey"))
+                w.uint32(10).bytes(m.epochRootKey);
+            if (m.epochAnonId != null && $Object.hasOwnProperty.call(m, "epochAnonId"))
+                w.uint32(16).int32(m.epochAnonId);
+            if (m.threadId != null && $Object.hasOwnProperty.call(m, "threadId"))
+                w.uint32(26).string(m.threadId);
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        DeriveMessageKeyInput.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.DeriveMessageKeyInput();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 2)
+                            break;
+                        m.epochRootKey = r.bytes();
+                        m._epochRootKey = "epochRootKey";
+                        continue;
+                    }
+                case 2: {
+                        if (u !== 0)
+                            break;
+                        m.epochAnonId = r.int32();
+                        m._epochAnonId = "epochAnonId";
+                        continue;
+                    }
+                case 3: {
+                        if (u !== 2)
+                            break;
+                        m.threadId = r.stringVerify();
+                        m._threadId = "threadId";
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        DeriveMessageKeyInput.fromObject = function (d, q) {
+            if (d instanceof $root.proto.DeriveMessageKeyInput)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.DeriveMessageKeyInput: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.DeriveMessageKeyInput();
+            if (d.epochRootKey != null) {
+                if (typeof d.epochRootKey === "string")
+                    $util.base64.decode(d.epochRootKey, m.epochRootKey = $util.newBuffer($util.base64.length(d.epochRootKey)), 0);
+                else if (d.epochRootKey.length >= 0)
+                    m.epochRootKey = d.epochRootKey;
+            }
+            if (d.epochAnonId != null) {
+                m.epochAnonId = d.epochAnonId | 0;
+            }
+            if (d.threadId != null) {
+                m.threadId = $String(d.threadId);
+            }
+            return m;
+        };
+
+        DeriveMessageKeyInput.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (m.epochRootKey != null && $Object.hasOwnProperty.call(m, "epochRootKey")) {
+                d.epochRootKey = o.bytes === $String ? $util.base64.encode(m.epochRootKey, 0, m.epochRootKey.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.epochRootKey) : m.epochRootKey;
+            }
+            if (m.epochAnonId != null && $Object.hasOwnProperty.call(m, "epochAnonId")) {
+                d.epochAnonId = m.epochAnonId;
+            }
+            if (m.threadId != null && $Object.hasOwnProperty.call(m, "threadId")) {
+                d.threadId = m.threadId;
+            }
+            return d;
+        };
+
+        DeriveMessageKeyInput.prototype.toJSON = function() {
+            return DeriveMessageKeyInput.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        DeriveMessageKeyInput.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.DeriveMessageKeyInput";
+        };
+
+        return DeriveMessageKeyInput;
+    })();
+
+    proto.DeriveMessageKeyOutput = (function() {
+
+        const DeriveMessageKeyOutput = function (p) {
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        DeriveMessageKeyOutput.prototype.success = null;
+        DeriveMessageKeyOutput.prototype.error = null;
+
+        let $oneOfFields;
+
+        $Object.defineProperty(DeriveMessageKeyOutput.prototype, "result", {
+            get: $util.oneOfGetter($oneOfFields = ["success", "error"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        DeriveMessageKeyOutput.create = function(properties) {
+            return new DeriveMessageKeyOutput(properties);
+        };
+
+        DeriveMessageKeyOutput.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.success != null && $Object.hasOwnProperty.call(m, "success"))
+                $root.proto.DeriveMessageKeySuccess.encode(m.success, w.uint32(10).fork(), q + 1).ldelim();
+            if (m.error != null && $Object.hasOwnProperty.call(m, "error"))
+                w.uint32(18).string(m.error);
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        DeriveMessageKeyOutput.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.DeriveMessageKeyOutput();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 2)
+                            break;
+                        m.success = $root.proto.DeriveMessageKeySuccess.decode(r, r.size(), $undefined, q + 1, m.success);
+                        m.result = "success";
+                        continue;
+                    }
+                case 2: {
+                        if (u !== 2)
+                            break;
+                        m.error = r.stringVerify();
+                        m.result = "error";
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        DeriveMessageKeyOutput.fromObject = function (d, q) {
+            if (d instanceof $root.proto.DeriveMessageKeyOutput)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.DeriveMessageKeyOutput: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.DeriveMessageKeyOutput();
+            if (d.success != null) {
+                if (!$util.isObject(d.success))
+                    throw $TypeError(".proto.DeriveMessageKeyOutput.success: object expected");
+                m.success = $root.proto.DeriveMessageKeySuccess.fromObject(d.success, q + 1);
+            }
+            if (d.error != null) {
+                m.error = $String(d.error);
+            }
+            return m;
+        };
+
+        DeriveMessageKeyOutput.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (m.success != null && $Object.hasOwnProperty.call(m, "success")) {
+                d.success = $root.proto.DeriveMessageKeySuccess.toObject(m.success, o, q + 1);
+                if (o.oneofs)
+                    d.result = "success";
+            }
+            if (m.error != null && $Object.hasOwnProperty.call(m, "error")) {
+                d.error = m.error;
+                if (o.oneofs)
+                    d.result = "error";
+            }
+            return d;
+        };
+
+        DeriveMessageKeyOutput.prototype.toJSON = function() {
+            return DeriveMessageKeyOutput.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        DeriveMessageKeyOutput.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.DeriveMessageKeyOutput";
+        };
+
+        return DeriveMessageKeyOutput;
+    })();
+
+    proto.DeriveMessageKeySuccess = (function() {
+
+        const DeriveMessageKeySuccess = function (p) {
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        DeriveMessageKeySuccess.prototype.messageKey = null;
+
+        let $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(DeriveMessageKeySuccess.prototype, "_messageKey", {
+            get: $util.oneOfGetter($oneOfFields = ["messageKey"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        DeriveMessageKeySuccess.create = function(properties) {
+            return new DeriveMessageKeySuccess(properties);
+        };
+
+        DeriveMessageKeySuccess.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.messageKey != null && $Object.hasOwnProperty.call(m, "messageKey"))
+                w.uint32(10).bytes(m.messageKey);
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        DeriveMessageKeySuccess.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.DeriveMessageKeySuccess();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 2)
+                            break;
+                        m.messageKey = r.bytes();
+                        m._messageKey = "messageKey";
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        DeriveMessageKeySuccess.fromObject = function (d, q) {
+            if (d instanceof $root.proto.DeriveMessageKeySuccess)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.DeriveMessageKeySuccess: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.DeriveMessageKeySuccess();
+            if (d.messageKey != null) {
+                if (typeof d.messageKey === "string")
+                    $util.base64.decode(d.messageKey, m.messageKey = $util.newBuffer($util.base64.length(d.messageKey)), 0);
+                else if (d.messageKey.length >= 0)
+                    m.messageKey = d.messageKey;
+            }
+            return m;
+        };
+
+        DeriveMessageKeySuccess.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (m.messageKey != null && $Object.hasOwnProperty.call(m, "messageKey")) {
+                d.messageKey = o.bytes === $String ? $util.base64.encode(m.messageKey, 0, m.messageKey.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.messageKey) : m.messageKey;
+            }
+            return d;
+        };
+
+        DeriveMessageKeySuccess.prototype.toJSON = function() {
+            return DeriveMessageKeySuccess.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        DeriveMessageKeySuccess.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.DeriveMessageKeySuccess";
+        };
+
+        return DeriveMessageKeySuccess;
+    })();
+
+    proto.DeriveVirtualDeviceIdInput = (function() {
+
+        const DeriveVirtualDeviceIdInput = function (p) {
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        DeriveVirtualDeviceIdInput.prototype.recoveryCode = null;
+        DeriveVirtualDeviceIdInput.prototype.userId = null;
+
+        let $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(DeriveVirtualDeviceIdInput.prototype, "_recoveryCode", {
+            get: $util.oneOfGetter($oneOfFields = ["recoveryCode"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(DeriveVirtualDeviceIdInput.prototype, "_userId", {
+            get: $util.oneOfGetter($oneOfFields = ["userId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        DeriveVirtualDeviceIdInput.create = function(properties) {
+            return new DeriveVirtualDeviceIdInput(properties);
+        };
+
+        DeriveVirtualDeviceIdInput.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.recoveryCode != null && $Object.hasOwnProperty.call(m, "recoveryCode"))
+                w.uint32(10).string(m.recoveryCode);
+            if (m.userId != null && $Object.hasOwnProperty.call(m, "userId"))
+                w.uint32(16).uint64(m.userId);
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        DeriveVirtualDeviceIdInput.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.DeriveVirtualDeviceIdInput();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 2)
+                            break;
+                        m.recoveryCode = r.stringVerify();
+                        m._recoveryCode = "recoveryCode";
+                        continue;
+                    }
+                case 2: {
+                        if (u !== 0)
+                            break;
+                        m.userId = r.uint64();
+                        m._userId = "userId";
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        DeriveVirtualDeviceIdInput.fromObject = function (d, q) {
+            if (d instanceof $root.proto.DeriveVirtualDeviceIdInput)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.DeriveVirtualDeviceIdInput: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.DeriveVirtualDeviceIdInput();
+            if (d.recoveryCode != null) {
+                m.recoveryCode = $String(d.recoveryCode);
+            }
+            if (d.userId != null) {
+                if ($util.Long)
+                    m.userId = $util.Long.fromValue(d.userId, true);
+                else if (typeof d.userId === "string")
+                    m.userId = $parseInt(d.userId, 10);
+                else if (typeof d.userId === "number")
+                    m.userId = d.userId;
+                else if (typeof d.userId === "object")
+                    m.userId = new $util.LongBits(d.userId.low >>> 0, d.userId.high >>> 0).toNumber(true);
+            }
+            return m;
+        };
+
+        DeriveVirtualDeviceIdInput.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (m.recoveryCode != null && $Object.hasOwnProperty.call(m, "recoveryCode")) {
+                d.recoveryCode = m.recoveryCode;
+            }
+            if (m.userId != null && $Object.hasOwnProperty.call(m, "userId")) {
+                if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
+                    d.userId = typeof m.userId === "number" ? $BigInt(m.userId) : $util.Long.fromBits(m.userId.low >>> 0, m.userId.high >>> 0, true).toBigInt();
+                else if (typeof m.userId === "number")
+                    d.userId = o.longs === $String ? $String(m.userId) : m.userId;
+                else
+                    d.userId = o.longs === $String ? $util.Long.prototype.toString.call(m.userId) : o.longs === $Number ? new $util.LongBits(m.userId.low >>> 0, m.userId.high >>> 0).toNumber(true) : m.userId;
+            }
+            return d;
+        };
+
+        DeriveVirtualDeviceIdInput.prototype.toJSON = function() {
+            return DeriveVirtualDeviceIdInput.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        DeriveVirtualDeviceIdInput.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.DeriveVirtualDeviceIdInput";
+        };
+
+        return DeriveVirtualDeviceIdInput;
+    })();
+
+    proto.DeriveVirtualDeviceIdOutput = (function() {
+
+        const DeriveVirtualDeviceIdOutput = function (p) {
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        DeriveVirtualDeviceIdOutput.prototype.success = null;
+        DeriveVirtualDeviceIdOutput.prototype.error = null;
+
+        let $oneOfFields;
+
+        $Object.defineProperty(DeriveVirtualDeviceIdOutput.prototype, "result", {
+            get: $util.oneOfGetter($oneOfFields = ["success", "error"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        DeriveVirtualDeviceIdOutput.create = function(properties) {
+            return new DeriveVirtualDeviceIdOutput(properties);
+        };
+
+        DeriveVirtualDeviceIdOutput.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.success != null && $Object.hasOwnProperty.call(m, "success"))
+                $root.proto.DeriveVirtualDeviceIdSuccess.encode(m.success, w.uint32(10).fork(), q + 1).ldelim();
+            if (m.error != null && $Object.hasOwnProperty.call(m, "error"))
+                w.uint32(18).string(m.error);
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        DeriveVirtualDeviceIdOutput.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.DeriveVirtualDeviceIdOutput();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 2)
+                            break;
+                        m.success = $root.proto.DeriveVirtualDeviceIdSuccess.decode(r, r.size(), $undefined, q + 1, m.success);
+                        m.result = "success";
+                        continue;
+                    }
+                case 2: {
+                        if (u !== 2)
+                            break;
+                        m.error = r.stringVerify();
+                        m.result = "error";
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        DeriveVirtualDeviceIdOutput.fromObject = function (d, q) {
+            if (d instanceof $root.proto.DeriveVirtualDeviceIdOutput)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.DeriveVirtualDeviceIdOutput: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.DeriveVirtualDeviceIdOutput();
+            if (d.success != null) {
+                if (!$util.isObject(d.success))
+                    throw $TypeError(".proto.DeriveVirtualDeviceIdOutput.success: object expected");
+                m.success = $root.proto.DeriveVirtualDeviceIdSuccess.fromObject(d.success, q + 1);
+            }
+            if (d.error != null) {
+                m.error = $String(d.error);
+            }
+            return m;
+        };
+
+        DeriveVirtualDeviceIdOutput.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (m.success != null && $Object.hasOwnProperty.call(m, "success")) {
+                d.success = $root.proto.DeriveVirtualDeviceIdSuccess.toObject(m.success, o, q + 1);
+                if (o.oneofs)
+                    d.result = "success";
+            }
+            if (m.error != null && $Object.hasOwnProperty.call(m, "error")) {
+                d.error = m.error;
+                if (o.oneofs)
+                    d.result = "error";
+            }
+            return d;
+        };
+
+        DeriveVirtualDeviceIdOutput.prototype.toJSON = function() {
+            return DeriveVirtualDeviceIdOutput.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        DeriveVirtualDeviceIdOutput.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.DeriveVirtualDeviceIdOutput";
+        };
+
+        return DeriveVirtualDeviceIdOutput;
+    })();
+
+    proto.DeriveVirtualDeviceIdSuccess = (function() {
+
+        const DeriveVirtualDeviceIdSuccess = function (p) {
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        DeriveVirtualDeviceIdSuccess.prototype.virtualDeviceId = null;
+
+        let $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(DeriveVirtualDeviceIdSuccess.prototype, "_virtualDeviceId", {
+            get: $util.oneOfGetter($oneOfFields = ["virtualDeviceId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        DeriveVirtualDeviceIdSuccess.create = function(properties) {
+            return new DeriveVirtualDeviceIdSuccess(properties);
+        };
+
+        DeriveVirtualDeviceIdSuccess.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.virtualDeviceId != null && $Object.hasOwnProperty.call(m, "virtualDeviceId"))
+                w.uint32(10).bytes(m.virtualDeviceId);
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        DeriveVirtualDeviceIdSuccess.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.DeriveVirtualDeviceIdSuccess();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 2)
+                            break;
+                        m.virtualDeviceId = r.bytes();
+                        m._virtualDeviceId = "virtualDeviceId";
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        DeriveVirtualDeviceIdSuccess.fromObject = function (d, q) {
+            if (d instanceof $root.proto.DeriveVirtualDeviceIdSuccess)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.DeriveVirtualDeviceIdSuccess: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.DeriveVirtualDeviceIdSuccess();
+            if (d.virtualDeviceId != null) {
+                if (typeof d.virtualDeviceId === "string")
+                    $util.base64.decode(d.virtualDeviceId, m.virtualDeviceId = $util.newBuffer($util.base64.length(d.virtualDeviceId)), 0);
+                else if (d.virtualDeviceId.length >= 0)
+                    m.virtualDeviceId = d.virtualDeviceId;
+            }
+            return m;
+        };
+
+        DeriveVirtualDeviceIdSuccess.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (m.virtualDeviceId != null && $Object.hasOwnProperty.call(m, "virtualDeviceId")) {
+                d.virtualDeviceId = o.bytes === $String ? $util.base64.encode(m.virtualDeviceId, 0, m.virtualDeviceId.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.virtualDeviceId) : m.virtualDeviceId;
+            }
+            return d;
+        };
+
+        DeriveVirtualDeviceIdSuccess.prototype.toJSON = function() {
+            return DeriveVirtualDeviceIdSuccess.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        DeriveVirtualDeviceIdSuccess.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.DeriveVirtualDeviceIdSuccess";
+        };
+
+        return DeriveVirtualDeviceIdSuccess;
+    })();
+
+    proto.DeviceOutput = (function() {
+
+        const DeviceOutput = function (p) {
+            this.supportedEncryptionVersions = [];
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        DeviceOutput.prototype.publicKey = null;
+        DeviceOutput.prototype.epochAuthPublicKey = null;
+        DeviceOutput.prototype.epochAuthPublicKeySig = null;
+        DeviceOutput.prototype.epochStoragePublicKey = null;
+        DeviceOutput.prototype.epochStoragePublicKeySig = null;
+        DeviceOutput.prototype.supportedEncryptionVersions = $util.emptyArray;
+        DeviceOutput.prototype.encryptionVersionSignature = null;
+        DeviceOutput.prototype.clientVersion = null;
+        DeviceOutput.prototype.ocmfClientState = null;
+        DeviceOutput.prototype.epochStoragePrivateKey = null;
+        DeviceOutput.prototype.epochAuthPrivateKey = null;
+        DeviceOutput.prototype.deviceEpochHmac = null;
+
+        let $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(DeviceOutput.prototype, "_publicKey", {
+            get: $util.oneOfGetter($oneOfFields = ["publicKey"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(DeviceOutput.prototype, "_epochAuthPublicKey", {
+            get: $util.oneOfGetter($oneOfFields = ["epochAuthPublicKey"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(DeviceOutput.prototype, "_epochAuthPublicKeySig", {
+            get: $util.oneOfGetter($oneOfFields = ["epochAuthPublicKeySig"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(DeviceOutput.prototype, "_epochStoragePublicKey", {
+            get: $util.oneOfGetter($oneOfFields = ["epochStoragePublicKey"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(DeviceOutput.prototype, "_epochStoragePublicKeySig", {
+            get: $util.oneOfGetter($oneOfFields = ["epochStoragePublicKeySig"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(DeviceOutput.prototype, "_encryptionVersionSignature", {
+            get: $util.oneOfGetter($oneOfFields = ["encryptionVersionSignature"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(DeviceOutput.prototype, "_clientVersion", {
+            get: $util.oneOfGetter($oneOfFields = ["clientVersion"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(DeviceOutput.prototype, "_ocmfClientState", {
+            get: $util.oneOfGetter($oneOfFields = ["ocmfClientState"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(DeviceOutput.prototype, "_epochStoragePrivateKey", {
+            get: $util.oneOfGetter($oneOfFields = ["epochStoragePrivateKey"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(DeviceOutput.prototype, "_epochAuthPrivateKey", {
+            get: $util.oneOfGetter($oneOfFields = ["epochAuthPrivateKey"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(DeviceOutput.prototype, "_deviceEpochHmac", {
+            get: $util.oneOfGetter($oneOfFields = ["deviceEpochHmac"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        DeviceOutput.create = function(properties) {
+            return new DeviceOutput(properties);
+        };
+
+        DeviceOutput.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.publicKey != null && $Object.hasOwnProperty.call(m, "publicKey"))
+                w.uint32(10).bytes(m.publicKey);
+            if (m.epochAuthPublicKey != null && $Object.hasOwnProperty.call(m, "epochAuthPublicKey"))
+                w.uint32(18).bytes(m.epochAuthPublicKey);
+            if (m.epochAuthPublicKeySig != null && $Object.hasOwnProperty.call(m, "epochAuthPublicKeySig"))
+                w.uint32(26).bytes(m.epochAuthPublicKeySig);
+            if (m.epochStoragePublicKey != null && $Object.hasOwnProperty.call(m, "epochStoragePublicKey"))
+                w.uint32(34).bytes(m.epochStoragePublicKey);
+            if (m.epochStoragePublicKeySig != null && $Object.hasOwnProperty.call(m, "epochStoragePublicKeySig"))
+                w.uint32(42).bytes(m.epochStoragePublicKeySig);
+            if (m.supportedEncryptionVersions != null && m.supportedEncryptionVersions.length) {
+                w.uint32(50).int32s(m.supportedEncryptionVersions);
+            }
+            if (m.encryptionVersionSignature != null && $Object.hasOwnProperty.call(m, "encryptionVersionSignature"))
+                w.uint32(58).bytes(m.encryptionVersionSignature);
+            if (m.clientVersion != null && $Object.hasOwnProperty.call(m, "clientVersion"))
+                w.uint32(64).int32(m.clientVersion);
+            if (m.ocmfClientState != null && $Object.hasOwnProperty.call(m, "ocmfClientState"))
+                w.uint32(74).bytes(m.ocmfClientState);
+            if (m.epochStoragePrivateKey != null && $Object.hasOwnProperty.call(m, "epochStoragePrivateKey"))
+                w.uint32(82).bytes(m.epochStoragePrivateKey);
+            if (m.epochAuthPrivateKey != null && $Object.hasOwnProperty.call(m, "epochAuthPrivateKey"))
+                w.uint32(90).bytes(m.epochAuthPrivateKey);
+            if (m.deviceEpochHmac != null && $Object.hasOwnProperty.call(m, "deviceEpochHmac"))
+                w.uint32(98).bytes(m.deviceEpochHmac);
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        DeviceOutput.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.DeviceOutput();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 2)
+                            break;
+                        m.publicKey = r.bytes();
+                        m._publicKey = "publicKey";
+                        continue;
+                    }
+                case 2: {
+                        if (u !== 2)
+                            break;
+                        m.epochAuthPublicKey = r.bytes();
+                        m._epochAuthPublicKey = "epochAuthPublicKey";
+                        continue;
+                    }
+                case 3: {
+                        if (u !== 2)
+                            break;
+                        m.epochAuthPublicKeySig = r.bytes();
+                        m._epochAuthPublicKeySig = "epochAuthPublicKeySig";
+                        continue;
+                    }
+                case 4: {
+                        if (u !== 2)
+                            break;
+                        m.epochStoragePublicKey = r.bytes();
+                        m._epochStoragePublicKey = "epochStoragePublicKey";
+                        continue;
+                    }
+                case 5: {
+                        if (u !== 2)
+                            break;
+                        m.epochStoragePublicKeySig = r.bytes();
+                        m._epochStoragePublicKeySig = "epochStoragePublicKeySig";
+                        continue;
+                    }
+                case 6: {
+                        if (u === 2) {
+                            if (!(m.supportedEncryptionVersions && m.supportedEncryptionVersions.length))
+                                m.supportedEncryptionVersions = [];
+                            r.int32s(m.supportedEncryptionVersions);
+                            continue;
+                        }
+                        if (u !== 0)
+                            break;
+                        if (!(m.supportedEncryptionVersions && m.supportedEncryptionVersions.length))
+                            m.supportedEncryptionVersions = [];
+                        m.supportedEncryptionVersions.push(r.int32());
+                        continue;
+                    }
+                case 7: {
+                        if (u !== 2)
+                            break;
+                        m.encryptionVersionSignature = r.bytes();
+                        m._encryptionVersionSignature = "encryptionVersionSignature";
+                        continue;
+                    }
+                case 8: {
+                        if (u !== 0)
+                            break;
+                        m.clientVersion = r.int32();
+                        m._clientVersion = "clientVersion";
+                        continue;
+                    }
+                case 9: {
+                        if (u !== 2)
+                            break;
+                        m.ocmfClientState = r.bytes();
+                        m._ocmfClientState = "ocmfClientState";
+                        continue;
+                    }
+                case 10: {
+                        if (u !== 2)
+                            break;
+                        m.epochStoragePrivateKey = r.bytes();
+                        m._epochStoragePrivateKey = "epochStoragePrivateKey";
+                        continue;
+                    }
+                case 11: {
+                        if (u !== 2)
+                            break;
+                        m.epochAuthPrivateKey = r.bytes();
+                        m._epochAuthPrivateKey = "epochAuthPrivateKey";
+                        continue;
+                    }
+                case 12: {
+                        if (u !== 2)
+                            break;
+                        m.deviceEpochHmac = r.bytes();
+                        m._deviceEpochHmac = "deviceEpochHmac";
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        DeviceOutput.fromObject = function (d, q) {
+            if (d instanceof $root.proto.DeviceOutput)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.DeviceOutput: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.DeviceOutput();
+            if (d.publicKey != null) {
+                if (typeof d.publicKey === "string")
+                    $util.base64.decode(d.publicKey, m.publicKey = $util.newBuffer($util.base64.length(d.publicKey)), 0);
+                else if (d.publicKey.length >= 0)
+                    m.publicKey = d.publicKey;
+            }
+            if (d.epochAuthPublicKey != null) {
+                if (typeof d.epochAuthPublicKey === "string")
+                    $util.base64.decode(d.epochAuthPublicKey, m.epochAuthPublicKey = $util.newBuffer($util.base64.length(d.epochAuthPublicKey)), 0);
+                else if (d.epochAuthPublicKey.length >= 0)
+                    m.epochAuthPublicKey = d.epochAuthPublicKey;
+            }
+            if (d.epochAuthPublicKeySig != null) {
+                if (typeof d.epochAuthPublicKeySig === "string")
+                    $util.base64.decode(d.epochAuthPublicKeySig, m.epochAuthPublicKeySig = $util.newBuffer($util.base64.length(d.epochAuthPublicKeySig)), 0);
+                else if (d.epochAuthPublicKeySig.length >= 0)
+                    m.epochAuthPublicKeySig = d.epochAuthPublicKeySig;
+            }
+            if (d.epochStoragePublicKey != null) {
+                if (typeof d.epochStoragePublicKey === "string")
+                    $util.base64.decode(d.epochStoragePublicKey, m.epochStoragePublicKey = $util.newBuffer($util.base64.length(d.epochStoragePublicKey)), 0);
+                else if (d.epochStoragePublicKey.length >= 0)
+                    m.epochStoragePublicKey = d.epochStoragePublicKey;
+            }
+            if (d.epochStoragePublicKeySig != null) {
+                if (typeof d.epochStoragePublicKeySig === "string")
+                    $util.base64.decode(d.epochStoragePublicKeySig, m.epochStoragePublicKeySig = $util.newBuffer($util.base64.length(d.epochStoragePublicKeySig)), 0);
+                else if (d.epochStoragePublicKeySig.length >= 0)
+                    m.epochStoragePublicKeySig = d.epochStoragePublicKeySig;
+            }
+            if (d.supportedEncryptionVersions) {
+                if (!$Array.isArray(d.supportedEncryptionVersions))
+                    throw $TypeError(".proto.DeviceOutput.supportedEncryptionVersions: array expected");
+                m.supportedEncryptionVersions = $Array(d.supportedEncryptionVersions.length);
+                for (var i = 0; i < d.supportedEncryptionVersions.length; ++i) {
+                    m.supportedEncryptionVersions[i] = d.supportedEncryptionVersions[i] | 0;
+                }
+            }
+            if (d.encryptionVersionSignature != null) {
+                if (typeof d.encryptionVersionSignature === "string")
+                    $util.base64.decode(d.encryptionVersionSignature, m.encryptionVersionSignature = $util.newBuffer($util.base64.length(d.encryptionVersionSignature)), 0);
+                else if (d.encryptionVersionSignature.length >= 0)
+                    m.encryptionVersionSignature = d.encryptionVersionSignature;
+            }
+            if (d.clientVersion != null) {
+                m.clientVersion = d.clientVersion | 0;
+            }
+            if (d.ocmfClientState != null) {
+                if (typeof d.ocmfClientState === "string")
+                    $util.base64.decode(d.ocmfClientState, m.ocmfClientState = $util.newBuffer($util.base64.length(d.ocmfClientState)), 0);
+                else if (d.ocmfClientState.length >= 0)
+                    m.ocmfClientState = d.ocmfClientState;
+            }
+            if (d.epochStoragePrivateKey != null) {
+                if (typeof d.epochStoragePrivateKey === "string")
+                    $util.base64.decode(d.epochStoragePrivateKey, m.epochStoragePrivateKey = $util.newBuffer($util.base64.length(d.epochStoragePrivateKey)), 0);
+                else if (d.epochStoragePrivateKey.length >= 0)
+                    m.epochStoragePrivateKey = d.epochStoragePrivateKey;
+            }
+            if (d.epochAuthPrivateKey != null) {
+                if (typeof d.epochAuthPrivateKey === "string")
+                    $util.base64.decode(d.epochAuthPrivateKey, m.epochAuthPrivateKey = $util.newBuffer($util.base64.length(d.epochAuthPrivateKey)), 0);
+                else if (d.epochAuthPrivateKey.length >= 0)
+                    m.epochAuthPrivateKey = d.epochAuthPrivateKey;
+            }
+            if (d.deviceEpochHmac != null) {
+                if (typeof d.deviceEpochHmac === "string")
+                    $util.base64.decode(d.deviceEpochHmac, m.deviceEpochHmac = $util.newBuffer($util.base64.length(d.deviceEpochHmac)), 0);
+                else if (d.deviceEpochHmac.length >= 0)
+                    m.deviceEpochHmac = d.deviceEpochHmac;
+            }
+            return m;
+        };
+
+        DeviceOutput.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (o.arrays || o.defaults) {
+                d.supportedEncryptionVersions = [];
+            }
+            if (m.publicKey != null && $Object.hasOwnProperty.call(m, "publicKey")) {
+                d.publicKey = o.bytes === $String ? $util.base64.encode(m.publicKey, 0, m.publicKey.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.publicKey) : m.publicKey;
+            }
+            if (m.epochAuthPublicKey != null && $Object.hasOwnProperty.call(m, "epochAuthPublicKey")) {
+                d.epochAuthPublicKey = o.bytes === $String ? $util.base64.encode(m.epochAuthPublicKey, 0, m.epochAuthPublicKey.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.epochAuthPublicKey) : m.epochAuthPublicKey;
+            }
+            if (m.epochAuthPublicKeySig != null && $Object.hasOwnProperty.call(m, "epochAuthPublicKeySig")) {
+                d.epochAuthPublicKeySig = o.bytes === $String ? $util.base64.encode(m.epochAuthPublicKeySig, 0, m.epochAuthPublicKeySig.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.epochAuthPublicKeySig) : m.epochAuthPublicKeySig;
+            }
+            if (m.epochStoragePublicKey != null && $Object.hasOwnProperty.call(m, "epochStoragePublicKey")) {
+                d.epochStoragePublicKey = o.bytes === $String ? $util.base64.encode(m.epochStoragePublicKey, 0, m.epochStoragePublicKey.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.epochStoragePublicKey) : m.epochStoragePublicKey;
+            }
+            if (m.epochStoragePublicKeySig != null && $Object.hasOwnProperty.call(m, "epochStoragePublicKeySig")) {
+                d.epochStoragePublicKeySig = o.bytes === $String ? $util.base64.encode(m.epochStoragePublicKeySig, 0, m.epochStoragePublicKeySig.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.epochStoragePublicKeySig) : m.epochStoragePublicKeySig;
+            }
+            if (m.supportedEncryptionVersions && m.supportedEncryptionVersions.length) {
+                d.supportedEncryptionVersions = $Array(m.supportedEncryptionVersions.length);
+                for (var j = 0; j < m.supportedEncryptionVersions.length; ++j) {
+                    d.supportedEncryptionVersions[j] = m.supportedEncryptionVersions[j];
+                }
+            }
+            if (m.encryptionVersionSignature != null && $Object.hasOwnProperty.call(m, "encryptionVersionSignature")) {
+                d.encryptionVersionSignature = o.bytes === $String ? $util.base64.encode(m.encryptionVersionSignature, 0, m.encryptionVersionSignature.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.encryptionVersionSignature) : m.encryptionVersionSignature;
+            }
+            if (m.clientVersion != null && $Object.hasOwnProperty.call(m, "clientVersion")) {
+                d.clientVersion = m.clientVersion;
+            }
+            if (m.ocmfClientState != null && $Object.hasOwnProperty.call(m, "ocmfClientState")) {
+                d.ocmfClientState = o.bytes === $String ? $util.base64.encode(m.ocmfClientState, 0, m.ocmfClientState.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.ocmfClientState) : m.ocmfClientState;
+            }
+            if (m.epochStoragePrivateKey != null && $Object.hasOwnProperty.call(m, "epochStoragePrivateKey")) {
+                d.epochStoragePrivateKey = o.bytes === $String ? $util.base64.encode(m.epochStoragePrivateKey, 0, m.epochStoragePrivateKey.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.epochStoragePrivateKey) : m.epochStoragePrivateKey;
+            }
+            if (m.epochAuthPrivateKey != null && $Object.hasOwnProperty.call(m, "epochAuthPrivateKey")) {
+                d.epochAuthPrivateKey = o.bytes === $String ? $util.base64.encode(m.epochAuthPrivateKey, 0, m.epochAuthPrivateKey.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.epochAuthPrivateKey) : m.epochAuthPrivateKey;
+            }
+            if (m.deviceEpochHmac != null && $Object.hasOwnProperty.call(m, "deviceEpochHmac")) {
+                d.deviceEpochHmac = o.bytes === $String ? $util.base64.encode(m.deviceEpochHmac, 0, m.deviceEpochHmac.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.deviceEpochHmac) : m.deviceEpochHmac;
+            }
+            return d;
+        };
+
+        DeviceOutput.prototype.toJSON = function() {
+            return DeviceOutput.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        DeviceOutput.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.DeviceOutput";
+        };
+
+        return DeviceOutput;
+    })();
+
+    proto.EncryptMessageInput = (function() {
+
+        const EncryptMessageInput = function (p) {
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        EncryptMessageInput.prototype.epochRootKey = null;
+        EncryptMessageInput.prototype.mailboxRootKey = null;
+        EncryptMessageInput.prototype.orfClientState = null;
+        EncryptMessageInput.prototype.epochAnonId = null;
+        EncryptMessageInput.prototype.epochId = null;
+        EncryptMessageInput.prototype.threadId = null;
+        EncryptMessageInput.prototype.waCanonicalUserFbid = null;
+        EncryptMessageInput.prototype.timestampMs = null;
+        EncryptMessageInput.prototype.backupId = null;
+        EncryptMessageInput.prototype.plaintextPayload = null;
+        EncryptMessageInput.prototype.stanzaId = null;
+
+        let $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(EncryptMessageInput.prototype, "_epochRootKey", {
+            get: $util.oneOfGetter($oneOfFields = ["epochRootKey"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(EncryptMessageInput.prototype, "_mailboxRootKey", {
+            get: $util.oneOfGetter($oneOfFields = ["mailboxRootKey"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(EncryptMessageInput.prototype, "_orfClientState", {
+            get: $util.oneOfGetter($oneOfFields = ["orfClientState"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(EncryptMessageInput.prototype, "_epochAnonId", {
+            get: $util.oneOfGetter($oneOfFields = ["epochAnonId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(EncryptMessageInput.prototype, "_epochId", {
+            get: $util.oneOfGetter($oneOfFields = ["epochId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(EncryptMessageInput.prototype, "_threadId", {
+            get: $util.oneOfGetter($oneOfFields = ["threadId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(EncryptMessageInput.prototype, "_waCanonicalUserFbid", {
+            get: $util.oneOfGetter($oneOfFields = ["waCanonicalUserFbid"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(EncryptMessageInput.prototype, "_timestampMs", {
+            get: $util.oneOfGetter($oneOfFields = ["timestampMs"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(EncryptMessageInput.prototype, "_backupId", {
+            get: $util.oneOfGetter($oneOfFields = ["backupId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(EncryptMessageInput.prototype, "_plaintextPayload", {
+            get: $util.oneOfGetter($oneOfFields = ["plaintextPayload"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(EncryptMessageInput.prototype, "_stanzaId", {
+            get: $util.oneOfGetter($oneOfFields = ["stanzaId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        EncryptMessageInput.create = function(properties) {
+            return new EncryptMessageInput(properties);
+        };
+
+        EncryptMessageInput.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.epochRootKey != null && $Object.hasOwnProperty.call(m, "epochRootKey"))
+                w.uint32(10).bytes(m.epochRootKey);
+            if (m.mailboxRootKey != null && $Object.hasOwnProperty.call(m, "mailboxRootKey"))
+                w.uint32(18).bytes(m.mailboxRootKey);
+            if (m.orfClientState != null && $Object.hasOwnProperty.call(m, "orfClientState"))
+                w.uint32(26).bytes(m.orfClientState);
+            if (m.epochAnonId != null && $Object.hasOwnProperty.call(m, "epochAnonId"))
+                w.uint32(32).int32(m.epochAnonId);
+            if (m.epochId != null && $Object.hasOwnProperty.call(m, "epochId"))
+                w.uint32(40).uint64(m.epochId);
+            if (m.threadId != null && $Object.hasOwnProperty.call(m, "threadId"))
+                w.uint32(50).string(m.threadId);
+            if (m.waCanonicalUserFbid != null && $Object.hasOwnProperty.call(m, "waCanonicalUserFbid"))
+                w.uint32(56).uint64(m.waCanonicalUserFbid);
+            if (m.timestampMs != null && $Object.hasOwnProperty.call(m, "timestampMs"))
+                w.uint32(64).uint64(m.timestampMs);
+            if (m.backupId != null && $Object.hasOwnProperty.call(m, "backupId"))
+                w.uint32(72).uint64(m.backupId);
+            if (m.plaintextPayload != null && $Object.hasOwnProperty.call(m, "plaintextPayload"))
+                w.uint32(82).bytes(m.plaintextPayload);
+            if (m.stanzaId != null && $Object.hasOwnProperty.call(m, "stanzaId"))
+                w.uint32(90).string(m.stanzaId);
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        EncryptMessageInput.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.EncryptMessageInput();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 2)
+                            break;
+                        m.epochRootKey = r.bytes();
+                        m._epochRootKey = "epochRootKey";
+                        continue;
+                    }
+                case 2: {
+                        if (u !== 2)
+                            break;
+                        m.mailboxRootKey = r.bytes();
+                        m._mailboxRootKey = "mailboxRootKey";
+                        continue;
+                    }
+                case 3: {
+                        if (u !== 2)
+                            break;
+                        m.orfClientState = r.bytes();
+                        m._orfClientState = "orfClientState";
+                        continue;
+                    }
+                case 4: {
+                        if (u !== 0)
+                            break;
+                        m.epochAnonId = r.int32();
+                        m._epochAnonId = "epochAnonId";
+                        continue;
+                    }
+                case 5: {
+                        if (u !== 0)
+                            break;
+                        m.epochId = r.uint64();
+                        m._epochId = "epochId";
+                        continue;
+                    }
+                case 6: {
+                        if (u !== 2)
+                            break;
+                        m.threadId = r.stringVerify();
+                        m._threadId = "threadId";
+                        continue;
+                    }
+                case 7: {
+                        if (u !== 0)
+                            break;
+                        m.waCanonicalUserFbid = r.uint64();
+                        m._waCanonicalUserFbid = "waCanonicalUserFbid";
+                        continue;
+                    }
+                case 8: {
+                        if (u !== 0)
+                            break;
+                        m.timestampMs = r.uint64();
+                        m._timestampMs = "timestampMs";
+                        continue;
+                    }
+                case 9: {
+                        if (u !== 0)
+                            break;
+                        m.backupId = r.uint64();
+                        m._backupId = "backupId";
+                        continue;
+                    }
+                case 10: {
+                        if (u !== 2)
+                            break;
+                        m.plaintextPayload = r.bytes();
+                        m._plaintextPayload = "plaintextPayload";
+                        continue;
+                    }
+                case 11: {
+                        if (u !== 2)
+                            break;
+                        m.stanzaId = r.stringVerify();
+                        m._stanzaId = "stanzaId";
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        EncryptMessageInput.fromObject = function (d, q) {
+            if (d instanceof $root.proto.EncryptMessageInput)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.EncryptMessageInput: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.EncryptMessageInput();
+            if (d.epochRootKey != null) {
+                if (typeof d.epochRootKey === "string")
+                    $util.base64.decode(d.epochRootKey, m.epochRootKey = $util.newBuffer($util.base64.length(d.epochRootKey)), 0);
+                else if (d.epochRootKey.length >= 0)
+                    m.epochRootKey = d.epochRootKey;
+            }
+            if (d.mailboxRootKey != null) {
+                if (typeof d.mailboxRootKey === "string")
+                    $util.base64.decode(d.mailboxRootKey, m.mailboxRootKey = $util.newBuffer($util.base64.length(d.mailboxRootKey)), 0);
+                else if (d.mailboxRootKey.length >= 0)
+                    m.mailboxRootKey = d.mailboxRootKey;
+            }
+            if (d.orfClientState != null) {
+                if (typeof d.orfClientState === "string")
+                    $util.base64.decode(d.orfClientState, m.orfClientState = $util.newBuffer($util.base64.length(d.orfClientState)), 0);
+                else if (d.orfClientState.length >= 0)
+                    m.orfClientState = d.orfClientState;
+            }
+            if (d.epochAnonId != null) {
+                m.epochAnonId = d.epochAnonId | 0;
+            }
+            if (d.epochId != null) {
+                if ($util.Long)
+                    m.epochId = $util.Long.fromValue(d.epochId, true);
+                else if (typeof d.epochId === "string")
+                    m.epochId = $parseInt(d.epochId, 10);
+                else if (typeof d.epochId === "number")
+                    m.epochId = d.epochId;
+                else if (typeof d.epochId === "object")
+                    m.epochId = new $util.LongBits(d.epochId.low >>> 0, d.epochId.high >>> 0).toNumber(true);
+            }
+            if (d.threadId != null) {
+                m.threadId = $String(d.threadId);
+            }
+            if (d.waCanonicalUserFbid != null) {
+                if ($util.Long)
+                    m.waCanonicalUserFbid = $util.Long.fromValue(d.waCanonicalUserFbid, true);
+                else if (typeof d.waCanonicalUserFbid === "string")
+                    m.waCanonicalUserFbid = $parseInt(d.waCanonicalUserFbid, 10);
+                else if (typeof d.waCanonicalUserFbid === "number")
+                    m.waCanonicalUserFbid = d.waCanonicalUserFbid;
+                else if (typeof d.waCanonicalUserFbid === "object")
+                    m.waCanonicalUserFbid = new $util.LongBits(d.waCanonicalUserFbid.low >>> 0, d.waCanonicalUserFbid.high >>> 0).toNumber(true);
+            }
+            if (d.timestampMs != null) {
+                if ($util.Long)
+                    m.timestampMs = $util.Long.fromValue(d.timestampMs, true);
+                else if (typeof d.timestampMs === "string")
+                    m.timestampMs = $parseInt(d.timestampMs, 10);
+                else if (typeof d.timestampMs === "number")
+                    m.timestampMs = d.timestampMs;
+                else if (typeof d.timestampMs === "object")
+                    m.timestampMs = new $util.LongBits(d.timestampMs.low >>> 0, d.timestampMs.high >>> 0).toNumber(true);
+            }
+            if (d.backupId != null) {
+                if ($util.Long)
+                    m.backupId = $util.Long.fromValue(d.backupId, true);
+                else if (typeof d.backupId === "string")
+                    m.backupId = $parseInt(d.backupId, 10);
+                else if (typeof d.backupId === "number")
+                    m.backupId = d.backupId;
+                else if (typeof d.backupId === "object")
+                    m.backupId = new $util.LongBits(d.backupId.low >>> 0, d.backupId.high >>> 0).toNumber(true);
+            }
+            if (d.plaintextPayload != null) {
+                if (typeof d.plaintextPayload === "string")
+                    $util.base64.decode(d.plaintextPayload, m.plaintextPayload = $util.newBuffer($util.base64.length(d.plaintextPayload)), 0);
+                else if (d.plaintextPayload.length >= 0)
+                    m.plaintextPayload = d.plaintextPayload;
+            }
+            if (d.stanzaId != null) {
+                m.stanzaId = $String(d.stanzaId);
+            }
+            return m;
+        };
+
+        EncryptMessageInput.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (m.epochRootKey != null && $Object.hasOwnProperty.call(m, "epochRootKey")) {
+                d.epochRootKey = o.bytes === $String ? $util.base64.encode(m.epochRootKey, 0, m.epochRootKey.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.epochRootKey) : m.epochRootKey;
+            }
+            if (m.mailboxRootKey != null && $Object.hasOwnProperty.call(m, "mailboxRootKey")) {
+                d.mailboxRootKey = o.bytes === $String ? $util.base64.encode(m.mailboxRootKey, 0, m.mailboxRootKey.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.mailboxRootKey) : m.mailboxRootKey;
+            }
+            if (m.orfClientState != null && $Object.hasOwnProperty.call(m, "orfClientState")) {
+                d.orfClientState = o.bytes === $String ? $util.base64.encode(m.orfClientState, 0, m.orfClientState.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.orfClientState) : m.orfClientState;
+            }
+            if (m.epochAnonId != null && $Object.hasOwnProperty.call(m, "epochAnonId")) {
+                d.epochAnonId = m.epochAnonId;
+            }
+            if (m.epochId != null && $Object.hasOwnProperty.call(m, "epochId")) {
+                if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
+                    d.epochId = typeof m.epochId === "number" ? $BigInt(m.epochId) : $util.Long.fromBits(m.epochId.low >>> 0, m.epochId.high >>> 0, true).toBigInt();
+                else if (typeof m.epochId === "number")
+                    d.epochId = o.longs === $String ? $String(m.epochId) : m.epochId;
+                else
+                    d.epochId = o.longs === $String ? $util.Long.prototype.toString.call(m.epochId) : o.longs === $Number ? new $util.LongBits(m.epochId.low >>> 0, m.epochId.high >>> 0).toNumber(true) : m.epochId;
+            }
+            if (m.threadId != null && $Object.hasOwnProperty.call(m, "threadId")) {
+                d.threadId = m.threadId;
+            }
+            if (m.waCanonicalUserFbid != null && $Object.hasOwnProperty.call(m, "waCanonicalUserFbid")) {
+                if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
+                    d.waCanonicalUserFbid = typeof m.waCanonicalUserFbid === "number" ? $BigInt(m.waCanonicalUserFbid) : $util.Long.fromBits(m.waCanonicalUserFbid.low >>> 0, m.waCanonicalUserFbid.high >>> 0, true).toBigInt();
+                else if (typeof m.waCanonicalUserFbid === "number")
+                    d.waCanonicalUserFbid = o.longs === $String ? $String(m.waCanonicalUserFbid) : m.waCanonicalUserFbid;
+                else
+                    d.waCanonicalUserFbid = o.longs === $String ? $util.Long.prototype.toString.call(m.waCanonicalUserFbid) : o.longs === $Number ? new $util.LongBits(m.waCanonicalUserFbid.low >>> 0, m.waCanonicalUserFbid.high >>> 0).toNumber(true) : m.waCanonicalUserFbid;
+            }
+            if (m.timestampMs != null && $Object.hasOwnProperty.call(m, "timestampMs")) {
+                if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
+                    d.timestampMs = typeof m.timestampMs === "number" ? $BigInt(m.timestampMs) : $util.Long.fromBits(m.timestampMs.low >>> 0, m.timestampMs.high >>> 0, true).toBigInt();
+                else if (typeof m.timestampMs === "number")
+                    d.timestampMs = o.longs === $String ? $String(m.timestampMs) : m.timestampMs;
+                else
+                    d.timestampMs = o.longs === $String ? $util.Long.prototype.toString.call(m.timestampMs) : o.longs === $Number ? new $util.LongBits(m.timestampMs.low >>> 0, m.timestampMs.high >>> 0).toNumber(true) : m.timestampMs;
+            }
+            if (m.backupId != null && $Object.hasOwnProperty.call(m, "backupId")) {
+                if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
+                    d.backupId = typeof m.backupId === "number" ? $BigInt(m.backupId) : $util.Long.fromBits(m.backupId.low >>> 0, m.backupId.high >>> 0, true).toBigInt();
+                else if (typeof m.backupId === "number")
+                    d.backupId = o.longs === $String ? $String(m.backupId) : m.backupId;
+                else
+                    d.backupId = o.longs === $String ? $util.Long.prototype.toString.call(m.backupId) : o.longs === $Number ? new $util.LongBits(m.backupId.low >>> 0, m.backupId.high >>> 0).toNumber(true) : m.backupId;
+            }
+            if (m.plaintextPayload != null && $Object.hasOwnProperty.call(m, "plaintextPayload")) {
+                d.plaintextPayload = o.bytes === $String ? $util.base64.encode(m.plaintextPayload, 0, m.plaintextPayload.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.plaintextPayload) : m.plaintextPayload;
+            }
+            if (m.stanzaId != null && $Object.hasOwnProperty.call(m, "stanzaId")) {
+                d.stanzaId = m.stanzaId;
+            }
+            return d;
+        };
+
+        EncryptMessageInput.prototype.toJSON = function() {
+            return EncryptMessageInput.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        EncryptMessageInput.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.EncryptMessageInput";
+        };
+
+        return EncryptMessageInput;
+    })();
+
+    proto.EncryptMessageOutput = (function() {
+
+        const EncryptMessageOutput = function (p) {
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        EncryptMessageOutput.prototype.success = null;
+        EncryptMessageOutput.prototype.error = null;
+
+        let $oneOfFields;
+
+        $Object.defineProperty(EncryptMessageOutput.prototype, "result", {
+            get: $util.oneOfGetter($oneOfFields = ["success", "error"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        EncryptMessageOutput.create = function(properties) {
+            return new EncryptMessageOutput(properties);
+        };
+
+        EncryptMessageOutput.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.success != null && $Object.hasOwnProperty.call(m, "success"))
+                $root.proto.EncryptMessageSuccess.encode(m.success, w.uint32(10).fork(), q + 1).ldelim();
+            if (m.error != null && $Object.hasOwnProperty.call(m, "error"))
+                w.uint32(18).string(m.error);
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        EncryptMessageOutput.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.EncryptMessageOutput();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 2)
+                            break;
+                        m.success = $root.proto.EncryptMessageSuccess.decode(r, r.size(), $undefined, q + 1, m.success);
+                        m.result = "success";
+                        continue;
+                    }
+                case 2: {
+                        if (u !== 2)
+                            break;
+                        m.error = r.stringVerify();
+                        m.result = "error";
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        EncryptMessageOutput.fromObject = function (d, q) {
+            if (d instanceof $root.proto.EncryptMessageOutput)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.EncryptMessageOutput: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.EncryptMessageOutput();
+            if (d.success != null) {
+                if (!$util.isObject(d.success))
+                    throw $TypeError(".proto.EncryptMessageOutput.success: object expected");
+                m.success = $root.proto.EncryptMessageSuccess.fromObject(d.success, q + 1);
+            }
+            if (d.error != null) {
+                m.error = $String(d.error);
+            }
+            return m;
+        };
+
+        EncryptMessageOutput.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (m.success != null && $Object.hasOwnProperty.call(m, "success")) {
+                d.success = $root.proto.EncryptMessageSuccess.toObject(m.success, o, q + 1);
+                if (o.oneofs)
+                    d.result = "success";
+            }
+            if (m.error != null && $Object.hasOwnProperty.call(m, "error")) {
+                d.error = m.error;
+                if (o.oneofs)
+                    d.result = "error";
+            }
+            return d;
+        };
+
+        EncryptMessageOutput.prototype.toJSON = function() {
+            return EncryptMessageOutput.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        EncryptMessageOutput.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.EncryptMessageOutput";
+        };
+
+        return EncryptMessageOutput;
+    })();
+
+    proto.EncryptMessageSuccess = (function() {
+
+        const EncryptMessageSuccess = function (p) {
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        EncryptMessageSuccess.prototype.encryptedProtobuf = null;
+        EncryptMessageSuccess.prototype.orfThreadId = null;
+        EncryptMessageSuccess.prototype.valueSecretRef = null;
+        EncryptMessageSuccess.prototype.offlineThreadingId = null;
+        EncryptMessageSuccess.prototype.timestampMs = null;
+
+        let $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(EncryptMessageSuccess.prototype, "_encryptedProtobuf", {
+            get: $util.oneOfGetter($oneOfFields = ["encryptedProtobuf"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(EncryptMessageSuccess.prototype, "_orfThreadId", {
+            get: $util.oneOfGetter($oneOfFields = ["orfThreadId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(EncryptMessageSuccess.prototype, "_valueSecretRef", {
+            get: $util.oneOfGetter($oneOfFields = ["valueSecretRef"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(EncryptMessageSuccess.prototype, "_offlineThreadingId", {
+            get: $util.oneOfGetter($oneOfFields = ["offlineThreadingId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(EncryptMessageSuccess.prototype, "_timestampMs", {
+            get: $util.oneOfGetter($oneOfFields = ["timestampMs"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        EncryptMessageSuccess.create = function(properties) {
+            return new EncryptMessageSuccess(properties);
+        };
+
+        EncryptMessageSuccess.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.encryptedProtobuf != null && $Object.hasOwnProperty.call(m, "encryptedProtobuf"))
+                w.uint32(10).bytes(m.encryptedProtobuf);
+            if (m.orfThreadId != null && $Object.hasOwnProperty.call(m, "orfThreadId"))
+                w.uint32(18).bytes(m.orfThreadId);
+            if (m.valueSecretRef != null && $Object.hasOwnProperty.call(m, "valueSecretRef"))
+                w.uint32(26).string(m.valueSecretRef);
+            if (m.offlineThreadingId != null && $Object.hasOwnProperty.call(m, "offlineThreadingId"))
+                w.uint32(32).uint64(m.offlineThreadingId);
+            if (m.timestampMs != null && $Object.hasOwnProperty.call(m, "timestampMs"))
+                w.uint32(40).uint64(m.timestampMs);
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        EncryptMessageSuccess.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.EncryptMessageSuccess();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 2)
+                            break;
+                        m.encryptedProtobuf = r.bytes();
+                        m._encryptedProtobuf = "encryptedProtobuf";
+                        continue;
+                    }
+                case 2: {
+                        if (u !== 2)
+                            break;
+                        m.orfThreadId = r.bytes();
+                        m._orfThreadId = "orfThreadId";
+                        continue;
+                    }
+                case 3: {
+                        if (u !== 2)
+                            break;
+                        m.valueSecretRef = r.stringVerify();
+                        m._valueSecretRef = "valueSecretRef";
+                        continue;
+                    }
+                case 4: {
+                        if (u !== 0)
+                            break;
+                        m.offlineThreadingId = r.uint64();
+                        m._offlineThreadingId = "offlineThreadingId";
+                        continue;
+                    }
+                case 5: {
+                        if (u !== 0)
+                            break;
+                        m.timestampMs = r.uint64();
+                        m._timestampMs = "timestampMs";
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        EncryptMessageSuccess.fromObject = function (d, q) {
+            if (d instanceof $root.proto.EncryptMessageSuccess)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.EncryptMessageSuccess: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.EncryptMessageSuccess();
+            if (d.encryptedProtobuf != null) {
+                if (typeof d.encryptedProtobuf === "string")
+                    $util.base64.decode(d.encryptedProtobuf, m.encryptedProtobuf = $util.newBuffer($util.base64.length(d.encryptedProtobuf)), 0);
+                else if (d.encryptedProtobuf.length >= 0)
+                    m.encryptedProtobuf = d.encryptedProtobuf;
+            }
+            if (d.orfThreadId != null) {
+                if (typeof d.orfThreadId === "string")
+                    $util.base64.decode(d.orfThreadId, m.orfThreadId = $util.newBuffer($util.base64.length(d.orfThreadId)), 0);
+                else if (d.orfThreadId.length >= 0)
+                    m.orfThreadId = d.orfThreadId;
+            }
+            if (d.valueSecretRef != null) {
+                m.valueSecretRef = $String(d.valueSecretRef);
+            }
+            if (d.offlineThreadingId != null) {
+                if ($util.Long)
+                    m.offlineThreadingId = $util.Long.fromValue(d.offlineThreadingId, true);
+                else if (typeof d.offlineThreadingId === "string")
+                    m.offlineThreadingId = $parseInt(d.offlineThreadingId, 10);
+                else if (typeof d.offlineThreadingId === "number")
+                    m.offlineThreadingId = d.offlineThreadingId;
+                else if (typeof d.offlineThreadingId === "object")
+                    m.offlineThreadingId = new $util.LongBits(d.offlineThreadingId.low >>> 0, d.offlineThreadingId.high >>> 0).toNumber(true);
+            }
+            if (d.timestampMs != null) {
+                if ($util.Long)
+                    m.timestampMs = $util.Long.fromValue(d.timestampMs, true);
+                else if (typeof d.timestampMs === "string")
+                    m.timestampMs = $parseInt(d.timestampMs, 10);
+                else if (typeof d.timestampMs === "number")
+                    m.timestampMs = d.timestampMs;
+                else if (typeof d.timestampMs === "object")
+                    m.timestampMs = new $util.LongBits(d.timestampMs.low >>> 0, d.timestampMs.high >>> 0).toNumber(true);
+            }
+            return m;
+        };
+
+        EncryptMessageSuccess.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (m.encryptedProtobuf != null && $Object.hasOwnProperty.call(m, "encryptedProtobuf")) {
+                d.encryptedProtobuf = o.bytes === $String ? $util.base64.encode(m.encryptedProtobuf, 0, m.encryptedProtobuf.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.encryptedProtobuf) : m.encryptedProtobuf;
+            }
+            if (m.orfThreadId != null && $Object.hasOwnProperty.call(m, "orfThreadId")) {
+                d.orfThreadId = o.bytes === $String ? $util.base64.encode(m.orfThreadId, 0, m.orfThreadId.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.orfThreadId) : m.orfThreadId;
+            }
+            if (m.valueSecretRef != null && $Object.hasOwnProperty.call(m, "valueSecretRef")) {
+                d.valueSecretRef = m.valueSecretRef;
+            }
+            if (m.offlineThreadingId != null && $Object.hasOwnProperty.call(m, "offlineThreadingId")) {
+                if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
+                    d.offlineThreadingId = typeof m.offlineThreadingId === "number" ? $BigInt(m.offlineThreadingId) : $util.Long.fromBits(m.offlineThreadingId.low >>> 0, m.offlineThreadingId.high >>> 0, true).toBigInt();
+                else if (typeof m.offlineThreadingId === "number")
+                    d.offlineThreadingId = o.longs === $String ? $String(m.offlineThreadingId) : m.offlineThreadingId;
+                else
+                    d.offlineThreadingId = o.longs === $String ? $util.Long.prototype.toString.call(m.offlineThreadingId) : o.longs === $Number ? new $util.LongBits(m.offlineThreadingId.low >>> 0, m.offlineThreadingId.high >>> 0).toNumber(true) : m.offlineThreadingId;
+            }
+            if (m.timestampMs != null && $Object.hasOwnProperty.call(m, "timestampMs")) {
+                if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
+                    d.timestampMs = typeof m.timestampMs === "number" ? $BigInt(m.timestampMs) : $util.Long.fromBits(m.timestampMs.low >>> 0, m.timestampMs.high >>> 0, true).toBigInt();
+                else if (typeof m.timestampMs === "number")
+                    d.timestampMs = o.longs === $String ? $String(m.timestampMs) : m.timestampMs;
+                else
+                    d.timestampMs = o.longs === $String ? $util.Long.prototype.toString.call(m.timestampMs) : o.longs === $Number ? new $util.LongBits(m.timestampMs.low >>> 0, m.timestampMs.high >>> 0).toNumber(true) : m.timestampMs;
+            }
+            return d;
+        };
+
+        EncryptMessageSuccess.prototype.toJSON = function() {
+            return EncryptMessageSuccess.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        EncryptMessageSuccess.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.EncryptMessageSuccess";
+        };
+
+        return EncryptMessageSuccess;
+    })();
+
+    proto.EncryptedSecretValuesOutput = (function() {
+
+        const EncryptedSecretValuesOutput = function (p) {
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        EncryptedSecretValuesOutput.prototype.encryptedDevicePrivateKey = null;
+        EncryptedSecretValuesOutput.prototype.encryptedObliviousValidationTokenBlob = null;
+        EncryptedSecretValuesOutput.prototype.encryptedEpochStoragePrivateKey = null;
+        EncryptedSecretValuesOutput.prototype.encryptedOcmfClientState = null;
+        EncryptedSecretValuesOutput.prototype.encryptedMailboxRootKeyBlob = null;
+        EncryptedSecretValuesOutput.prototype.encryptedEpochAnonId = null;
+        EncryptedSecretValuesOutput.prototype.encryptedEpochRootKey = null;
+
+        let $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(EncryptedSecretValuesOutput.prototype, "_encryptedDevicePrivateKey", {
+            get: $util.oneOfGetter($oneOfFields = ["encryptedDevicePrivateKey"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(EncryptedSecretValuesOutput.prototype, "_encryptedObliviousValidationTokenBlob", {
+            get: $util.oneOfGetter($oneOfFields = ["encryptedObliviousValidationTokenBlob"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(EncryptedSecretValuesOutput.prototype, "_encryptedEpochStoragePrivateKey", {
+            get: $util.oneOfGetter($oneOfFields = ["encryptedEpochStoragePrivateKey"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(EncryptedSecretValuesOutput.prototype, "_encryptedOcmfClientState", {
+            get: $util.oneOfGetter($oneOfFields = ["encryptedOcmfClientState"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(EncryptedSecretValuesOutput.prototype, "_encryptedMailboxRootKeyBlob", {
+            get: $util.oneOfGetter($oneOfFields = ["encryptedMailboxRootKeyBlob"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(EncryptedSecretValuesOutput.prototype, "_encryptedEpochAnonId", {
+            get: $util.oneOfGetter($oneOfFields = ["encryptedEpochAnonId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(EncryptedSecretValuesOutput.prototype, "_encryptedEpochRootKey", {
+            get: $util.oneOfGetter($oneOfFields = ["encryptedEpochRootKey"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        EncryptedSecretValuesOutput.create = function(properties) {
+            return new EncryptedSecretValuesOutput(properties);
+        };
+
+        EncryptedSecretValuesOutput.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.encryptedDevicePrivateKey != null && $Object.hasOwnProperty.call(m, "encryptedDevicePrivateKey"))
+                w.uint32(10).bytes(m.encryptedDevicePrivateKey);
+            if (m.encryptedObliviousValidationTokenBlob != null && $Object.hasOwnProperty.call(m, "encryptedObliviousValidationTokenBlob"))
+                w.uint32(18).bytes(m.encryptedObliviousValidationTokenBlob);
+            if (m.encryptedEpochStoragePrivateKey != null && $Object.hasOwnProperty.call(m, "encryptedEpochStoragePrivateKey"))
+                w.uint32(26).bytes(m.encryptedEpochStoragePrivateKey);
+            if (m.encryptedOcmfClientState != null && $Object.hasOwnProperty.call(m, "encryptedOcmfClientState"))
+                w.uint32(34).bytes(m.encryptedOcmfClientState);
+            if (m.encryptedMailboxRootKeyBlob != null && $Object.hasOwnProperty.call(m, "encryptedMailboxRootKeyBlob"))
+                w.uint32(50).bytes(m.encryptedMailboxRootKeyBlob);
+            if (m.encryptedEpochAnonId != null && $Object.hasOwnProperty.call(m, "encryptedEpochAnonId"))
+                w.uint32(58).bytes(m.encryptedEpochAnonId);
+            if (m.encryptedEpochRootKey != null && $Object.hasOwnProperty.call(m, "encryptedEpochRootKey"))
+                w.uint32(66).bytes(m.encryptedEpochRootKey);
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        EncryptedSecretValuesOutput.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.EncryptedSecretValuesOutput();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 2)
+                            break;
+                        m.encryptedDevicePrivateKey = r.bytes();
+                        m._encryptedDevicePrivateKey = "encryptedDevicePrivateKey";
+                        continue;
+                    }
+                case 2: {
+                        if (u !== 2)
+                            break;
+                        m.encryptedObliviousValidationTokenBlob = r.bytes();
+                        m._encryptedObliviousValidationTokenBlob = "encryptedObliviousValidationTokenBlob";
+                        continue;
+                    }
+                case 3: {
+                        if (u !== 2)
+                            break;
+                        m.encryptedEpochStoragePrivateKey = r.bytes();
+                        m._encryptedEpochStoragePrivateKey = "encryptedEpochStoragePrivateKey";
+                        continue;
+                    }
+                case 4: {
+                        if (u !== 2)
+                            break;
+                        m.encryptedOcmfClientState = r.bytes();
+                        m._encryptedOcmfClientState = "encryptedOcmfClientState";
+                        continue;
+                    }
+                case 6: {
+                        if (u !== 2)
+                            break;
+                        m.encryptedMailboxRootKeyBlob = r.bytes();
+                        m._encryptedMailboxRootKeyBlob = "encryptedMailboxRootKeyBlob";
+                        continue;
+                    }
+                case 7: {
+                        if (u !== 2)
+                            break;
+                        m.encryptedEpochAnonId = r.bytes();
+                        m._encryptedEpochAnonId = "encryptedEpochAnonId";
+                        continue;
+                    }
+                case 8: {
+                        if (u !== 2)
+                            break;
+                        m.encryptedEpochRootKey = r.bytes();
+                        m._encryptedEpochRootKey = "encryptedEpochRootKey";
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        EncryptedSecretValuesOutput.fromObject = function (d, q) {
+            if (d instanceof $root.proto.EncryptedSecretValuesOutput)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.EncryptedSecretValuesOutput: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.EncryptedSecretValuesOutput();
+            if (d.encryptedDevicePrivateKey != null) {
+                if (typeof d.encryptedDevicePrivateKey === "string")
+                    $util.base64.decode(d.encryptedDevicePrivateKey, m.encryptedDevicePrivateKey = $util.newBuffer($util.base64.length(d.encryptedDevicePrivateKey)), 0);
+                else if (d.encryptedDevicePrivateKey.length >= 0)
+                    m.encryptedDevicePrivateKey = d.encryptedDevicePrivateKey;
+            }
+            if (d.encryptedObliviousValidationTokenBlob != null) {
+                if (typeof d.encryptedObliviousValidationTokenBlob === "string")
+                    $util.base64.decode(d.encryptedObliviousValidationTokenBlob, m.encryptedObliviousValidationTokenBlob = $util.newBuffer($util.base64.length(d.encryptedObliviousValidationTokenBlob)), 0);
+                else if (d.encryptedObliviousValidationTokenBlob.length >= 0)
+                    m.encryptedObliviousValidationTokenBlob = d.encryptedObliviousValidationTokenBlob;
+            }
+            if (d.encryptedEpochStoragePrivateKey != null) {
+                if (typeof d.encryptedEpochStoragePrivateKey === "string")
+                    $util.base64.decode(d.encryptedEpochStoragePrivateKey, m.encryptedEpochStoragePrivateKey = $util.newBuffer($util.base64.length(d.encryptedEpochStoragePrivateKey)), 0);
+                else if (d.encryptedEpochStoragePrivateKey.length >= 0)
+                    m.encryptedEpochStoragePrivateKey = d.encryptedEpochStoragePrivateKey;
+            }
+            if (d.encryptedOcmfClientState != null) {
+                if (typeof d.encryptedOcmfClientState === "string")
+                    $util.base64.decode(d.encryptedOcmfClientState, m.encryptedOcmfClientState = $util.newBuffer($util.base64.length(d.encryptedOcmfClientState)), 0);
+                else if (d.encryptedOcmfClientState.length >= 0)
+                    m.encryptedOcmfClientState = d.encryptedOcmfClientState;
+            }
+            if (d.encryptedMailboxRootKeyBlob != null) {
+                if (typeof d.encryptedMailboxRootKeyBlob === "string")
+                    $util.base64.decode(d.encryptedMailboxRootKeyBlob, m.encryptedMailboxRootKeyBlob = $util.newBuffer($util.base64.length(d.encryptedMailboxRootKeyBlob)), 0);
+                else if (d.encryptedMailboxRootKeyBlob.length >= 0)
+                    m.encryptedMailboxRootKeyBlob = d.encryptedMailboxRootKeyBlob;
+            }
+            if (d.encryptedEpochAnonId != null) {
+                if (typeof d.encryptedEpochAnonId === "string")
+                    $util.base64.decode(d.encryptedEpochAnonId, m.encryptedEpochAnonId = $util.newBuffer($util.base64.length(d.encryptedEpochAnonId)), 0);
+                else if (d.encryptedEpochAnonId.length >= 0)
+                    m.encryptedEpochAnonId = d.encryptedEpochAnonId;
+            }
+            if (d.encryptedEpochRootKey != null) {
+                if (typeof d.encryptedEpochRootKey === "string")
+                    $util.base64.decode(d.encryptedEpochRootKey, m.encryptedEpochRootKey = $util.newBuffer($util.base64.length(d.encryptedEpochRootKey)), 0);
+                else if (d.encryptedEpochRootKey.length >= 0)
+                    m.encryptedEpochRootKey = d.encryptedEpochRootKey;
+            }
+            return m;
+        };
+
+        EncryptedSecretValuesOutput.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (m.encryptedDevicePrivateKey != null && $Object.hasOwnProperty.call(m, "encryptedDevicePrivateKey")) {
+                d.encryptedDevicePrivateKey = o.bytes === $String ? $util.base64.encode(m.encryptedDevicePrivateKey, 0, m.encryptedDevicePrivateKey.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.encryptedDevicePrivateKey) : m.encryptedDevicePrivateKey;
+            }
+            if (m.encryptedObliviousValidationTokenBlob != null && $Object.hasOwnProperty.call(m, "encryptedObliviousValidationTokenBlob")) {
+                d.encryptedObliviousValidationTokenBlob = o.bytes === $String ? $util.base64.encode(m.encryptedObliviousValidationTokenBlob, 0, m.encryptedObliviousValidationTokenBlob.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.encryptedObliviousValidationTokenBlob) : m.encryptedObliviousValidationTokenBlob;
+            }
+            if (m.encryptedEpochStoragePrivateKey != null && $Object.hasOwnProperty.call(m, "encryptedEpochStoragePrivateKey")) {
+                d.encryptedEpochStoragePrivateKey = o.bytes === $String ? $util.base64.encode(m.encryptedEpochStoragePrivateKey, 0, m.encryptedEpochStoragePrivateKey.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.encryptedEpochStoragePrivateKey) : m.encryptedEpochStoragePrivateKey;
+            }
+            if (m.encryptedOcmfClientState != null && $Object.hasOwnProperty.call(m, "encryptedOcmfClientState")) {
+                d.encryptedOcmfClientState = o.bytes === $String ? $util.base64.encode(m.encryptedOcmfClientState, 0, m.encryptedOcmfClientState.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.encryptedOcmfClientState) : m.encryptedOcmfClientState;
+            }
+            if (m.encryptedMailboxRootKeyBlob != null && $Object.hasOwnProperty.call(m, "encryptedMailboxRootKeyBlob")) {
+                d.encryptedMailboxRootKeyBlob = o.bytes === $String ? $util.base64.encode(m.encryptedMailboxRootKeyBlob, 0, m.encryptedMailboxRootKeyBlob.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.encryptedMailboxRootKeyBlob) : m.encryptedMailboxRootKeyBlob;
+            }
+            if (m.encryptedEpochAnonId != null && $Object.hasOwnProperty.call(m, "encryptedEpochAnonId")) {
+                d.encryptedEpochAnonId = o.bytes === $String ? $util.base64.encode(m.encryptedEpochAnonId, 0, m.encryptedEpochAnonId.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.encryptedEpochAnonId) : m.encryptedEpochAnonId;
+            }
+            if (m.encryptedEpochRootKey != null && $Object.hasOwnProperty.call(m, "encryptedEpochRootKey")) {
+                d.encryptedEpochRootKey = o.bytes === $String ? $util.base64.encode(m.encryptedEpochRootKey, 0, m.encryptedEpochRootKey.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.encryptedEpochRootKey) : m.encryptedEpochRootKey;
+            }
+            return d;
+        };
+
+        EncryptedSecretValuesOutput.prototype.toJSON = function() {
+            return EncryptedSecretValuesOutput.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        EncryptedSecretValuesOutput.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.EncryptedSecretValuesOutput";
+        };
+
+        return EncryptedSecretValuesOutput;
+    })();
+
+    proto.Epoch0Output = (function() {
+
+        const Epoch0Output = function (p) {
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        Epoch0Output.prototype.epochAnonId = null;
+        Epoch0Output.prototype.epochRootKeyFingerprint = null;
+        Epoch0Output.prototype.epochRootKey = null;
+
+        let $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(Epoch0Output.prototype, "_epochAnonId", {
+            get: $util.oneOfGetter($oneOfFields = ["epochAnonId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(Epoch0Output.prototype, "_epochRootKeyFingerprint", {
+            get: $util.oneOfGetter($oneOfFields = ["epochRootKeyFingerprint"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(Epoch0Output.prototype, "_epochRootKey", {
+            get: $util.oneOfGetter($oneOfFields = ["epochRootKey"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        Epoch0Output.create = function(properties) {
+            return new Epoch0Output(properties);
+        };
+
+        Epoch0Output.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.epochAnonId != null && $Object.hasOwnProperty.call(m, "epochAnonId"))
+                w.uint32(16).int32(m.epochAnonId);
+            if (m.epochRootKeyFingerprint != null && $Object.hasOwnProperty.call(m, "epochRootKeyFingerprint"))
+                w.uint32(50).bytes(m.epochRootKeyFingerprint);
+            if (m.epochRootKey != null && $Object.hasOwnProperty.call(m, "epochRootKey"))
+                w.uint32(58).bytes(m.epochRootKey);
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        Epoch0Output.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.Epoch0Output();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 2: {
+                        if (u !== 0)
+                            break;
+                        m.epochAnonId = r.int32();
+                        m._epochAnonId = "epochAnonId";
+                        continue;
+                    }
+                case 6: {
+                        if (u !== 2)
+                            break;
+                        m.epochRootKeyFingerprint = r.bytes();
+                        m._epochRootKeyFingerprint = "epochRootKeyFingerprint";
+                        continue;
+                    }
+                case 7: {
+                        if (u !== 2)
+                            break;
+                        m.epochRootKey = r.bytes();
+                        m._epochRootKey = "epochRootKey";
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        Epoch0Output.fromObject = function (d, q) {
+            if (d instanceof $root.proto.Epoch0Output)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.Epoch0Output: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.Epoch0Output();
+            if (d.epochAnonId != null) {
+                m.epochAnonId = d.epochAnonId | 0;
+            }
+            if (d.epochRootKeyFingerprint != null) {
+                if (typeof d.epochRootKeyFingerprint === "string")
+                    $util.base64.decode(d.epochRootKeyFingerprint, m.epochRootKeyFingerprint = $util.newBuffer($util.base64.length(d.epochRootKeyFingerprint)), 0);
+                else if (d.epochRootKeyFingerprint.length >= 0)
+                    m.epochRootKeyFingerprint = d.epochRootKeyFingerprint;
+            }
+            if (d.epochRootKey != null) {
+                if (typeof d.epochRootKey === "string")
+                    $util.base64.decode(d.epochRootKey, m.epochRootKey = $util.newBuffer($util.base64.length(d.epochRootKey)), 0);
+                else if (d.epochRootKey.length >= 0)
+                    m.epochRootKey = d.epochRootKey;
+            }
+            return m;
+        };
+
+        Epoch0Output.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (m.epochAnonId != null && $Object.hasOwnProperty.call(m, "epochAnonId")) {
+                d.epochAnonId = m.epochAnonId;
+            }
+            if (m.epochRootKeyFingerprint != null && $Object.hasOwnProperty.call(m, "epochRootKeyFingerprint")) {
+                d.epochRootKeyFingerprint = o.bytes === $String ? $util.base64.encode(m.epochRootKeyFingerprint, 0, m.epochRootKeyFingerprint.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.epochRootKeyFingerprint) : m.epochRootKeyFingerprint;
+            }
+            if (m.epochRootKey != null && $Object.hasOwnProperty.call(m, "epochRootKey")) {
+                d.epochRootKey = o.bytes === $String ? $util.base64.encode(m.epochRootKey, 0, m.epochRootKey.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.epochRootKey) : m.epochRootKey;
+            }
+            return d;
+        };
+
+        Epoch0Output.prototype.toJSON = function() {
+            return Epoch0Output.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        Epoch0Output.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.Epoch0Output";
+        };
+
+        return Epoch0Output;
+    })();
+
+    proto.EpochDerivationEdge = (function() {
+
+        const EpochDerivationEdge = function (p) {
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        EpochDerivationEdge.prototype.fromEpoch = null;
+        EpochDerivationEdge.prototype.toEpoch = null;
+        EpochDerivationEdge.prototype.forwardEdge = null;
+        EpochDerivationEdge.prototype.backwardEdge = null;
+
+        let $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(EpochDerivationEdge.prototype, "_fromEpoch", {
+            get: $util.oneOfGetter($oneOfFields = ["fromEpoch"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(EpochDerivationEdge.prototype, "_toEpoch", {
+            get: $util.oneOfGetter($oneOfFields = ["toEpoch"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(EpochDerivationEdge.prototype, "_forwardEdge", {
+            get: $util.oneOfGetter($oneOfFields = ["forwardEdge"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(EpochDerivationEdge.prototype, "_backwardEdge", {
+            get: $util.oneOfGetter($oneOfFields = ["backwardEdge"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        EpochDerivationEdge.create = function(properties) {
+            return new EpochDerivationEdge(properties);
+        };
+
+        EpochDerivationEdge.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.fromEpoch != null && $Object.hasOwnProperty.call(m, "fromEpoch"))
+                $root.proto.EpochIds.encode(m.fromEpoch, w.uint32(10).fork(), q + 1).ldelim();
+            if (m.toEpoch != null && $Object.hasOwnProperty.call(m, "toEpoch"))
+                $root.proto.EpochIds.encode(m.toEpoch, w.uint32(18).fork(), q + 1).ldelim();
+            if (m.forwardEdge != null && $Object.hasOwnProperty.call(m, "forwardEdge"))
+                $root.proto.ForwardEdgeInput.encode(m.forwardEdge, w.uint32(26).fork(), q + 1).ldelim();
+            if (m.backwardEdge != null && $Object.hasOwnProperty.call(m, "backwardEdge"))
+                w.uint32(34).bytes(m.backwardEdge);
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        EpochDerivationEdge.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.EpochDerivationEdge();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 2)
+                            break;
+                        m.fromEpoch = $root.proto.EpochIds.decode(r, r.size(), $undefined, q + 1, m.fromEpoch);
+                        m._fromEpoch = "fromEpoch";
+                        continue;
+                    }
+                case 2: {
+                        if (u !== 2)
+                            break;
+                        m.toEpoch = $root.proto.EpochIds.decode(r, r.size(), $undefined, q + 1, m.toEpoch);
+                        m._toEpoch = "toEpoch";
+                        continue;
+                    }
+                case 3: {
+                        if (u !== 2)
+                            break;
+                        m.forwardEdge = $root.proto.ForwardEdgeInput.decode(r, r.size(), $undefined, q + 1, m.forwardEdge);
+                        m._forwardEdge = "forwardEdge";
+                        continue;
+                    }
+                case 4: {
+                        if (u !== 2)
+                            break;
+                        m.backwardEdge = r.bytes();
+                        m._backwardEdge = "backwardEdge";
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        EpochDerivationEdge.fromObject = function (d, q) {
+            if (d instanceof $root.proto.EpochDerivationEdge)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.EpochDerivationEdge: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.EpochDerivationEdge();
+            if (d.fromEpoch != null) {
+                if (!$util.isObject(d.fromEpoch))
+                    throw $TypeError(".proto.EpochDerivationEdge.fromEpoch: object expected");
+                m.fromEpoch = $root.proto.EpochIds.fromObject(d.fromEpoch, q + 1);
+            }
+            if (d.toEpoch != null) {
+                if (!$util.isObject(d.toEpoch))
+                    throw $TypeError(".proto.EpochDerivationEdge.toEpoch: object expected");
+                m.toEpoch = $root.proto.EpochIds.fromObject(d.toEpoch, q + 1);
+            }
+            if (d.forwardEdge != null) {
+                if (!$util.isObject(d.forwardEdge))
+                    throw $TypeError(".proto.EpochDerivationEdge.forwardEdge: object expected");
+                m.forwardEdge = $root.proto.ForwardEdgeInput.fromObject(d.forwardEdge, q + 1);
+            }
+            if (d.backwardEdge != null) {
+                if (typeof d.backwardEdge === "string")
+                    $util.base64.decode(d.backwardEdge, m.backwardEdge = $util.newBuffer($util.base64.length(d.backwardEdge)), 0);
+                else if (d.backwardEdge.length >= 0)
+                    m.backwardEdge = d.backwardEdge;
+            }
+            return m;
+        };
+
+        EpochDerivationEdge.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (m.fromEpoch != null && $Object.hasOwnProperty.call(m, "fromEpoch")) {
+                d.fromEpoch = $root.proto.EpochIds.toObject(m.fromEpoch, o, q + 1);
+            }
+            if (m.toEpoch != null && $Object.hasOwnProperty.call(m, "toEpoch")) {
+                d.toEpoch = $root.proto.EpochIds.toObject(m.toEpoch, o, q + 1);
+            }
+            if (m.forwardEdge != null && $Object.hasOwnProperty.call(m, "forwardEdge")) {
+                d.forwardEdge = $root.proto.ForwardEdgeInput.toObject(m.forwardEdge, o, q + 1);
+            }
+            if (m.backwardEdge != null && $Object.hasOwnProperty.call(m, "backwardEdge")) {
+                d.backwardEdge = o.bytes === $String ? $util.base64.encode(m.backwardEdge, 0, m.backwardEdge.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.backwardEdge) : m.backwardEdge;
+            }
+            return d;
+        };
+
+        EpochDerivationEdge.prototype.toJSON = function() {
+            return EpochDerivationEdge.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        EpochDerivationEdge.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.EpochDerivationEdge";
+        };
+
+        return EpochDerivationEdge;
+    })();
+
+    proto.EpochIds = (function() {
+
+        const EpochIds = function (p) {
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        EpochIds.prototype.serverEpochId = null;
+        EpochIds.prototype.epochAnonId = null;
+
+        let $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(EpochIds.prototype, "_serverEpochId", {
+            get: $util.oneOfGetter($oneOfFields = ["serverEpochId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(EpochIds.prototype, "_epochAnonId", {
+            get: $util.oneOfGetter($oneOfFields = ["epochAnonId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        EpochIds.create = function(properties) {
+            return new EpochIds(properties);
+        };
+
+        EpochIds.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.serverEpochId != null && $Object.hasOwnProperty.call(m, "serverEpochId"))
+                w.uint32(8).uint64(m.serverEpochId);
+            if (m.epochAnonId != null && $Object.hasOwnProperty.call(m, "epochAnonId"))
+                w.uint32(16).int32(m.epochAnonId);
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        EpochIds.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.EpochIds();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 0)
+                            break;
+                        m.serverEpochId = r.uint64();
+                        m._serverEpochId = "serverEpochId";
+                        continue;
+                    }
+                case 2: {
+                        if (u !== 0)
+                            break;
+                        m.epochAnonId = r.int32();
+                        m._epochAnonId = "epochAnonId";
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        EpochIds.fromObject = function (d, q) {
+            if (d instanceof $root.proto.EpochIds)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.EpochIds: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.EpochIds();
+            if (d.serverEpochId != null) {
+                if ($util.Long)
+                    m.serverEpochId = $util.Long.fromValue(d.serverEpochId, true);
+                else if (typeof d.serverEpochId === "string")
+                    m.serverEpochId = $parseInt(d.serverEpochId, 10);
+                else if (typeof d.serverEpochId === "number")
+                    m.serverEpochId = d.serverEpochId;
+                else if (typeof d.serverEpochId === "object")
+                    m.serverEpochId = new $util.LongBits(d.serverEpochId.low >>> 0, d.serverEpochId.high >>> 0).toNumber(true);
+            }
+            if (d.epochAnonId != null) {
+                m.epochAnonId = d.epochAnonId | 0;
+            }
+            return m;
+        };
+
+        EpochIds.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (m.serverEpochId != null && $Object.hasOwnProperty.call(m, "serverEpochId")) {
+                if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
+                    d.serverEpochId = typeof m.serverEpochId === "number" ? $BigInt(m.serverEpochId) : $util.Long.fromBits(m.serverEpochId.low >>> 0, m.serverEpochId.high >>> 0, true).toBigInt();
+                else if (typeof m.serverEpochId === "number")
+                    d.serverEpochId = o.longs === $String ? $String(m.serverEpochId) : m.serverEpochId;
+                else
+                    d.serverEpochId = o.longs === $String ? $util.Long.prototype.toString.call(m.serverEpochId) : o.longs === $Number ? new $util.LongBits(m.serverEpochId.low >>> 0, m.serverEpochId.high >>> 0).toNumber(true) : m.serverEpochId;
+            }
+            if (m.epochAnonId != null && $Object.hasOwnProperty.call(m, "epochAnonId")) {
+                d.epochAnonId = m.epochAnonId;
+            }
+            return d;
+        };
+
+        EpochIds.prototype.toJSON = function() {
+            return EpochIds.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        EpochIds.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.EpochIds";
+        };
+
+        return EpochIds;
+    })();
+
+    proto.EpochKey = (function() {
+
+        const EpochKey = function (p) {
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        EpochKey.prototype.serverEpochId = null;
+        EpochKey.prototype.epochAnonId = null;
+        EpochKey.prototype.epochRootKey = null;
+
+        let $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(EpochKey.prototype, "_serverEpochId", {
+            get: $util.oneOfGetter($oneOfFields = ["serverEpochId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(EpochKey.prototype, "_epochAnonId", {
+            get: $util.oneOfGetter($oneOfFields = ["epochAnonId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(EpochKey.prototype, "_epochRootKey", {
+            get: $util.oneOfGetter($oneOfFields = ["epochRootKey"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        EpochKey.create = function(properties) {
+            return new EpochKey(properties);
+        };
+
+        EpochKey.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.serverEpochId != null && $Object.hasOwnProperty.call(m, "serverEpochId"))
+                w.uint32(8).uint64(m.serverEpochId);
+            if (m.epochAnonId != null && $Object.hasOwnProperty.call(m, "epochAnonId"))
+                w.uint32(16).int32(m.epochAnonId);
+            if (m.epochRootKey != null && $Object.hasOwnProperty.call(m, "epochRootKey"))
+                w.uint32(26).bytes(m.epochRootKey);
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        EpochKey.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.EpochKey();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 0)
+                            break;
+                        m.serverEpochId = r.uint64();
+                        m._serverEpochId = "serverEpochId";
+                        continue;
+                    }
+                case 2: {
+                        if (u !== 0)
+                            break;
+                        m.epochAnonId = r.int32();
+                        m._epochAnonId = "epochAnonId";
+                        continue;
+                    }
+                case 3: {
+                        if (u !== 2)
+                            break;
+                        m.epochRootKey = r.bytes();
+                        m._epochRootKey = "epochRootKey";
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        EpochKey.fromObject = function (d, q) {
+            if (d instanceof $root.proto.EpochKey)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.EpochKey: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.EpochKey();
+            if (d.serverEpochId != null) {
+                if ($util.Long)
+                    m.serverEpochId = $util.Long.fromValue(d.serverEpochId, true);
+                else if (typeof d.serverEpochId === "string")
+                    m.serverEpochId = $parseInt(d.serverEpochId, 10);
+                else if (typeof d.serverEpochId === "number")
+                    m.serverEpochId = d.serverEpochId;
+                else if (typeof d.serverEpochId === "object")
+                    m.serverEpochId = new $util.LongBits(d.serverEpochId.low >>> 0, d.serverEpochId.high >>> 0).toNumber(true);
+            }
+            if (d.epochAnonId != null) {
+                m.epochAnonId = d.epochAnonId | 0;
+            }
+            if (d.epochRootKey != null) {
+                if (typeof d.epochRootKey === "string")
+                    $util.base64.decode(d.epochRootKey, m.epochRootKey = $util.newBuffer($util.base64.length(d.epochRootKey)), 0);
+                else if (d.epochRootKey.length >= 0)
+                    m.epochRootKey = d.epochRootKey;
+            }
+            return m;
+        };
+
+        EpochKey.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (m.serverEpochId != null && $Object.hasOwnProperty.call(m, "serverEpochId")) {
+                if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
+                    d.serverEpochId = typeof m.serverEpochId === "number" ? $BigInt(m.serverEpochId) : $util.Long.fromBits(m.serverEpochId.low >>> 0, m.serverEpochId.high >>> 0, true).toBigInt();
+                else if (typeof m.serverEpochId === "number")
+                    d.serverEpochId = o.longs === $String ? $String(m.serverEpochId) : m.serverEpochId;
+                else
+                    d.serverEpochId = o.longs === $String ? $util.Long.prototype.toString.call(m.serverEpochId) : o.longs === $Number ? new $util.LongBits(m.serverEpochId.low >>> 0, m.serverEpochId.high >>> 0).toNumber(true) : m.serverEpochId;
+            }
+            if (m.epochAnonId != null && $Object.hasOwnProperty.call(m, "epochAnonId")) {
+                d.epochAnonId = m.epochAnonId;
+            }
+            if (m.epochRootKey != null && $Object.hasOwnProperty.call(m, "epochRootKey")) {
+                d.epochRootKey = o.bytes === $String ? $util.base64.encode(m.epochRootKey, 0, m.epochRootKey.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.epochRootKey) : m.epochRootKey;
+            }
+            return d;
+        };
+
+        EpochKey.prototype.toJSON = function() {
+            return EpochKey.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        EpochKey.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.EpochKey";
+        };
+
+        return EpochKey;
+    })();
+
+    proto.ForwardEdgeInput = (function() {
+
+        const ForwardEdgeInput = function (p) {
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        ForwardEdgeInput.prototype.encryptedEntropy = null;
+        ForwardEdgeInput.prototype.authPublicKey = null;
+
+        let $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(ForwardEdgeInput.prototype, "_encryptedEntropy", {
+            get: $util.oneOfGetter($oneOfFields = ["encryptedEntropy"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(ForwardEdgeInput.prototype, "_authPublicKey", {
+            get: $util.oneOfGetter($oneOfFields = ["authPublicKey"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        ForwardEdgeInput.create = function(properties) {
+            return new ForwardEdgeInput(properties);
+        };
+
+        ForwardEdgeInput.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.encryptedEntropy != null && $Object.hasOwnProperty.call(m, "encryptedEntropy"))
+                w.uint32(10).bytes(m.encryptedEntropy);
+            if (m.authPublicKey != null && $Object.hasOwnProperty.call(m, "authPublicKey"))
+                w.uint32(18).bytes(m.authPublicKey);
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        ForwardEdgeInput.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.ForwardEdgeInput();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 2)
+                            break;
+                        m.encryptedEntropy = r.bytes();
+                        m._encryptedEntropy = "encryptedEntropy";
+                        continue;
+                    }
+                case 2: {
+                        if (u !== 2)
+                            break;
+                        m.authPublicKey = r.bytes();
+                        m._authPublicKey = "authPublicKey";
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        ForwardEdgeInput.fromObject = function (d, q) {
+            if (d instanceof $root.proto.ForwardEdgeInput)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.ForwardEdgeInput: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.ForwardEdgeInput();
+            if (d.encryptedEntropy != null) {
+                if (typeof d.encryptedEntropy === "string")
+                    $util.base64.decode(d.encryptedEntropy, m.encryptedEntropy = $util.newBuffer($util.base64.length(d.encryptedEntropy)), 0);
+                else if (d.encryptedEntropy.length >= 0)
+                    m.encryptedEntropy = d.encryptedEntropy;
+            }
+            if (d.authPublicKey != null) {
+                if (typeof d.authPublicKey === "string")
+                    $util.base64.decode(d.authPublicKey, m.authPublicKey = $util.newBuffer($util.base64.length(d.authPublicKey)), 0);
+                else if (d.authPublicKey.length >= 0)
+                    m.authPublicKey = d.authPublicKey;
+            }
+            return m;
+        };
+
+        ForwardEdgeInput.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (m.encryptedEntropy != null && $Object.hasOwnProperty.call(m, "encryptedEntropy")) {
+                d.encryptedEntropy = o.bytes === $String ? $util.base64.encode(m.encryptedEntropy, 0, m.encryptedEntropy.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.encryptedEntropy) : m.encryptedEntropy;
+            }
+            if (m.authPublicKey != null && $Object.hasOwnProperty.call(m, "authPublicKey")) {
+                d.authPublicKey = o.bytes === $String ? $util.base64.encode(m.authPublicKey, 0, m.authPublicKey.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.authPublicKey) : m.authPublicKey;
+            }
+            return d;
+        };
+
+        ForwardEdgeInput.prototype.toJSON = function() {
+            return ForwardEdgeInput.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        ForwardEdgeInput.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.ForwardEdgeInput";
+        };
+
+        return ForwardEdgeInput;
+    })();
+
+    proto.LabyrinthWaCommand = (function() {
+
+        const LabyrinthWaCommand = function (p) {
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        LabyrinthWaCommand.prototype.createBackupInput = null;
+        LabyrinthWaCommand.prototype.encryptMessageInput = null;
+        LabyrinthWaCommand.prototype.decryptMessageInput = null;
+        LabyrinthWaCommand.prototype.orfThreadIdInput = null;
+        LabyrinthWaCommand.prototype.deriveMessageKeyInput = null;
+        LabyrinthWaCommand.prototype.rotateEpochInput = null;
+        LabyrinthWaCommand.prototype.deriveVirtualDeviceIdInput = null;
+        LabyrinthWaCommand.prototype.prepareAddDeviceInput = null;
+        LabyrinthWaCommand.prototype.computeClientSealTokenInput = null;
+        LabyrinthWaCommand.prototype.openSealedThreadIdInput = null;
+        LabyrinthWaCommand.prototype.deriveEpochsInput = null;
+        LabyrinthWaCommand.prototype.sealThreadIdInput = null;
+        LabyrinthWaCommand.prototype.prepareAddPeerDeviceInput = null;
+
+        let $oneOfFields;
+
+        $Object.defineProperty(LabyrinthWaCommand.prototype, "commandInput", {
+            get: $util.oneOfGetter($oneOfFields = ["createBackupInput", "encryptMessageInput", "decryptMessageInput", "orfThreadIdInput", "deriveMessageKeyInput", "rotateEpochInput", "deriveVirtualDeviceIdInput", "prepareAddDeviceInput", "computeClientSealTokenInput", "openSealedThreadIdInput", "deriveEpochsInput", "sealThreadIdInput", "prepareAddPeerDeviceInput"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        LabyrinthWaCommand.create = function(properties) {
+            return new LabyrinthWaCommand(properties);
+        };
+
+        LabyrinthWaCommand.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.createBackupInput != null && $Object.hasOwnProperty.call(m, "createBackupInput"))
+                $root.proto.CreateBackupInput.encode(m.createBackupInput, w.uint32(10).fork(), q + 1).ldelim();
+            if (m.encryptMessageInput != null && $Object.hasOwnProperty.call(m, "encryptMessageInput"))
+                $root.proto.EncryptMessageInput.encode(m.encryptMessageInput, w.uint32(18).fork(), q + 1).ldelim();
+            if (m.decryptMessageInput != null && $Object.hasOwnProperty.call(m, "decryptMessageInput"))
+                $root.proto.DecryptMessageInput.encode(m.decryptMessageInput, w.uint32(26).fork(), q + 1).ldelim();
+            if (m.orfThreadIdInput != null && $Object.hasOwnProperty.call(m, "orfThreadIdInput"))
+                $root.proto.OrfThreadIdInput.encode(m.orfThreadIdInput, w.uint32(34).fork(), q + 1).ldelim();
+            if (m.deriveMessageKeyInput != null && $Object.hasOwnProperty.call(m, "deriveMessageKeyInput"))
+                $root.proto.DeriveMessageKeyInput.encode(m.deriveMessageKeyInput, w.uint32(42).fork(), q + 1).ldelim();
+            if (m.rotateEpochInput != null && $Object.hasOwnProperty.call(m, "rotateEpochInput"))
+                $root.proto.RotateEpochInput.encode(m.rotateEpochInput, w.uint32(50).fork(), q + 1).ldelim();
+            if (m.deriveVirtualDeviceIdInput != null && $Object.hasOwnProperty.call(m, "deriveVirtualDeviceIdInput"))
+                $root.proto.DeriveVirtualDeviceIdInput.encode(m.deriveVirtualDeviceIdInput, w.uint32(58).fork(), q + 1).ldelim();
+            if (m.prepareAddDeviceInput != null && $Object.hasOwnProperty.call(m, "prepareAddDeviceInput"))
+                $root.proto.PrepareAddDeviceInput.encode(m.prepareAddDeviceInput, w.uint32(66).fork(), q + 1).ldelim();
+            if (m.computeClientSealTokenInput != null && $Object.hasOwnProperty.call(m, "computeClientSealTokenInput"))
+                $root.proto.ComputeClientSealTokenInput.encode(m.computeClientSealTokenInput, w.uint32(74).fork(), q + 1).ldelim();
+            if (m.openSealedThreadIdInput != null && $Object.hasOwnProperty.call(m, "openSealedThreadIdInput"))
+                $root.proto.OpenSealedThreadIdInput.encode(m.openSealedThreadIdInput, w.uint32(82).fork(), q + 1).ldelim();
+            if (m.deriveEpochsInput != null && $Object.hasOwnProperty.call(m, "deriveEpochsInput"))
+                $root.proto.DeriveEpochsInput.encode(m.deriveEpochsInput, w.uint32(90).fork(), q + 1).ldelim();
+            if (m.sealThreadIdInput != null && $Object.hasOwnProperty.call(m, "sealThreadIdInput"))
+                $root.proto.SealThreadIdInput.encode(m.sealThreadIdInput, w.uint32(98).fork(), q + 1).ldelim();
+            if (m.prepareAddPeerDeviceInput != null && $Object.hasOwnProperty.call(m, "prepareAddPeerDeviceInput"))
+                $root.proto.PrepareAddPeerDeviceInput.encode(m.prepareAddPeerDeviceInput, w.uint32(106).fork(), q + 1).ldelim();
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        LabyrinthWaCommand.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.LabyrinthWaCommand();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 2)
+                            break;
+                        m.createBackupInput = $root.proto.CreateBackupInput.decode(r, r.size(), $undefined, q + 1, m.createBackupInput);
+                        m.commandInput = "createBackupInput";
+                        continue;
+                    }
+                case 2: {
+                        if (u !== 2)
+                            break;
+                        m.encryptMessageInput = $root.proto.EncryptMessageInput.decode(r, r.size(), $undefined, q + 1, m.encryptMessageInput);
+                        m.commandInput = "encryptMessageInput";
+                        continue;
+                    }
+                case 3: {
+                        if (u !== 2)
+                            break;
+                        m.decryptMessageInput = $root.proto.DecryptMessageInput.decode(r, r.size(), $undefined, q + 1, m.decryptMessageInput);
+                        m.commandInput = "decryptMessageInput";
+                        continue;
+                    }
+                case 4: {
+                        if (u !== 2)
+                            break;
+                        m.orfThreadIdInput = $root.proto.OrfThreadIdInput.decode(r, r.size(), $undefined, q + 1, m.orfThreadIdInput);
+                        m.commandInput = "orfThreadIdInput";
+                        continue;
+                    }
+                case 5: {
+                        if (u !== 2)
+                            break;
+                        m.deriveMessageKeyInput = $root.proto.DeriveMessageKeyInput.decode(r, r.size(), $undefined, q + 1, m.deriveMessageKeyInput);
+                        m.commandInput = "deriveMessageKeyInput";
+                        continue;
+                    }
+                case 6: {
+                        if (u !== 2)
+                            break;
+                        m.rotateEpochInput = $root.proto.RotateEpochInput.decode(r, r.size(), $undefined, q + 1, m.rotateEpochInput);
+                        m.commandInput = "rotateEpochInput";
+                        continue;
+                    }
+                case 7: {
+                        if (u !== 2)
+                            break;
+                        m.deriveVirtualDeviceIdInput = $root.proto.DeriveVirtualDeviceIdInput.decode(r, r.size(), $undefined, q + 1, m.deriveVirtualDeviceIdInput);
+                        m.commandInput = "deriveVirtualDeviceIdInput";
+                        continue;
+                    }
+                case 8: {
+                        if (u !== 2)
+                            break;
+                        m.prepareAddDeviceInput = $root.proto.PrepareAddDeviceInput.decode(r, r.size(), $undefined, q + 1, m.prepareAddDeviceInput);
+                        m.commandInput = "prepareAddDeviceInput";
+                        continue;
+                    }
+                case 9: {
+                        if (u !== 2)
+                            break;
+                        m.computeClientSealTokenInput = $root.proto.ComputeClientSealTokenInput.decode(r, r.size(), $undefined, q + 1, m.computeClientSealTokenInput);
+                        m.commandInput = "computeClientSealTokenInput";
+                        continue;
+                    }
+                case 10: {
+                        if (u !== 2)
+                            break;
+                        m.openSealedThreadIdInput = $root.proto.OpenSealedThreadIdInput.decode(r, r.size(), $undefined, q + 1, m.openSealedThreadIdInput);
+                        m.commandInput = "openSealedThreadIdInput";
+                        continue;
+                    }
+                case 11: {
+                        if (u !== 2)
+                            break;
+                        m.deriveEpochsInput = $root.proto.DeriveEpochsInput.decode(r, r.size(), $undefined, q + 1, m.deriveEpochsInput);
+                        m.commandInput = "deriveEpochsInput";
+                        continue;
+                    }
+                case 12: {
+                        if (u !== 2)
+                            break;
+                        m.sealThreadIdInput = $root.proto.SealThreadIdInput.decode(r, r.size(), $undefined, q + 1, m.sealThreadIdInput);
+                        m.commandInput = "sealThreadIdInput";
+                        continue;
+                    }
+                case 13: {
+                        if (u !== 2)
+                            break;
+                        m.prepareAddPeerDeviceInput = $root.proto.PrepareAddPeerDeviceInput.decode(r, r.size(), $undefined, q + 1, m.prepareAddPeerDeviceInput);
+                        m.commandInput = "prepareAddPeerDeviceInput";
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        LabyrinthWaCommand.fromObject = function (d, q) {
+            if (d instanceof $root.proto.LabyrinthWaCommand)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.LabyrinthWaCommand: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.LabyrinthWaCommand();
+            if (d.createBackupInput != null) {
+                if (!$util.isObject(d.createBackupInput))
+                    throw $TypeError(".proto.LabyrinthWaCommand.createBackupInput: object expected");
+                m.createBackupInput = $root.proto.CreateBackupInput.fromObject(d.createBackupInput, q + 1);
+            }
+            if (d.encryptMessageInput != null) {
+                if (!$util.isObject(d.encryptMessageInput))
+                    throw $TypeError(".proto.LabyrinthWaCommand.encryptMessageInput: object expected");
+                m.encryptMessageInput = $root.proto.EncryptMessageInput.fromObject(d.encryptMessageInput, q + 1);
+            }
+            if (d.decryptMessageInput != null) {
+                if (!$util.isObject(d.decryptMessageInput))
+                    throw $TypeError(".proto.LabyrinthWaCommand.decryptMessageInput: object expected");
+                m.decryptMessageInput = $root.proto.DecryptMessageInput.fromObject(d.decryptMessageInput, q + 1);
+            }
+            if (d.orfThreadIdInput != null) {
+                if (!$util.isObject(d.orfThreadIdInput))
+                    throw $TypeError(".proto.LabyrinthWaCommand.orfThreadIdInput: object expected");
+                m.orfThreadIdInput = $root.proto.OrfThreadIdInput.fromObject(d.orfThreadIdInput, q + 1);
+            }
+            if (d.deriveMessageKeyInput != null) {
+                if (!$util.isObject(d.deriveMessageKeyInput))
+                    throw $TypeError(".proto.LabyrinthWaCommand.deriveMessageKeyInput: object expected");
+                m.deriveMessageKeyInput = $root.proto.DeriveMessageKeyInput.fromObject(d.deriveMessageKeyInput, q + 1);
+            }
+            if (d.rotateEpochInput != null) {
+                if (!$util.isObject(d.rotateEpochInput))
+                    throw $TypeError(".proto.LabyrinthWaCommand.rotateEpochInput: object expected");
+                m.rotateEpochInput = $root.proto.RotateEpochInput.fromObject(d.rotateEpochInput, q + 1);
+            }
+            if (d.deriveVirtualDeviceIdInput != null) {
+                if (!$util.isObject(d.deriveVirtualDeviceIdInput))
+                    throw $TypeError(".proto.LabyrinthWaCommand.deriveVirtualDeviceIdInput: object expected");
+                m.deriveVirtualDeviceIdInput = $root.proto.DeriveVirtualDeviceIdInput.fromObject(d.deriveVirtualDeviceIdInput, q + 1);
+            }
+            if (d.prepareAddDeviceInput != null) {
+                if (!$util.isObject(d.prepareAddDeviceInput))
+                    throw $TypeError(".proto.LabyrinthWaCommand.prepareAddDeviceInput: object expected");
+                m.prepareAddDeviceInput = $root.proto.PrepareAddDeviceInput.fromObject(d.prepareAddDeviceInput, q + 1);
+            }
+            if (d.computeClientSealTokenInput != null) {
+                if (!$util.isObject(d.computeClientSealTokenInput))
+                    throw $TypeError(".proto.LabyrinthWaCommand.computeClientSealTokenInput: object expected");
+                m.computeClientSealTokenInput = $root.proto.ComputeClientSealTokenInput.fromObject(d.computeClientSealTokenInput, q + 1);
+            }
+            if (d.openSealedThreadIdInput != null) {
+                if (!$util.isObject(d.openSealedThreadIdInput))
+                    throw $TypeError(".proto.LabyrinthWaCommand.openSealedThreadIdInput: object expected");
+                m.openSealedThreadIdInput = $root.proto.OpenSealedThreadIdInput.fromObject(d.openSealedThreadIdInput, q + 1);
+            }
+            if (d.deriveEpochsInput != null) {
+                if (!$util.isObject(d.deriveEpochsInput))
+                    throw $TypeError(".proto.LabyrinthWaCommand.deriveEpochsInput: object expected");
+                m.deriveEpochsInput = $root.proto.DeriveEpochsInput.fromObject(d.deriveEpochsInput, q + 1);
+            }
+            if (d.sealThreadIdInput != null) {
+                if (!$util.isObject(d.sealThreadIdInput))
+                    throw $TypeError(".proto.LabyrinthWaCommand.sealThreadIdInput: object expected");
+                m.sealThreadIdInput = $root.proto.SealThreadIdInput.fromObject(d.sealThreadIdInput, q + 1);
+            }
+            if (d.prepareAddPeerDeviceInput != null) {
+                if (!$util.isObject(d.prepareAddPeerDeviceInput))
+                    throw $TypeError(".proto.LabyrinthWaCommand.prepareAddPeerDeviceInput: object expected");
+                m.prepareAddPeerDeviceInput = $root.proto.PrepareAddPeerDeviceInput.fromObject(d.prepareAddPeerDeviceInput, q + 1);
+            }
+            return m;
+        };
+
+        LabyrinthWaCommand.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (m.createBackupInput != null && $Object.hasOwnProperty.call(m, "createBackupInput")) {
+                d.createBackupInput = $root.proto.CreateBackupInput.toObject(m.createBackupInput, o, q + 1);
+                if (o.oneofs)
+                    d.commandInput = "createBackupInput";
+            }
+            if (m.encryptMessageInput != null && $Object.hasOwnProperty.call(m, "encryptMessageInput")) {
+                d.encryptMessageInput = $root.proto.EncryptMessageInput.toObject(m.encryptMessageInput, o, q + 1);
+                if (o.oneofs)
+                    d.commandInput = "encryptMessageInput";
+            }
+            if (m.decryptMessageInput != null && $Object.hasOwnProperty.call(m, "decryptMessageInput")) {
+                d.decryptMessageInput = $root.proto.DecryptMessageInput.toObject(m.decryptMessageInput, o, q + 1);
+                if (o.oneofs)
+                    d.commandInput = "decryptMessageInput";
+            }
+            if (m.orfThreadIdInput != null && $Object.hasOwnProperty.call(m, "orfThreadIdInput")) {
+                d.orfThreadIdInput = $root.proto.OrfThreadIdInput.toObject(m.orfThreadIdInput, o, q + 1);
+                if (o.oneofs)
+                    d.commandInput = "orfThreadIdInput";
+            }
+            if (m.deriveMessageKeyInput != null && $Object.hasOwnProperty.call(m, "deriveMessageKeyInput")) {
+                d.deriveMessageKeyInput = $root.proto.DeriveMessageKeyInput.toObject(m.deriveMessageKeyInput, o, q + 1);
+                if (o.oneofs)
+                    d.commandInput = "deriveMessageKeyInput";
+            }
+            if (m.rotateEpochInput != null && $Object.hasOwnProperty.call(m, "rotateEpochInput")) {
+                d.rotateEpochInput = $root.proto.RotateEpochInput.toObject(m.rotateEpochInput, o, q + 1);
+                if (o.oneofs)
+                    d.commandInput = "rotateEpochInput";
+            }
+            if (m.deriveVirtualDeviceIdInput != null && $Object.hasOwnProperty.call(m, "deriveVirtualDeviceIdInput")) {
+                d.deriveVirtualDeviceIdInput = $root.proto.DeriveVirtualDeviceIdInput.toObject(m.deriveVirtualDeviceIdInput, o, q + 1);
+                if (o.oneofs)
+                    d.commandInput = "deriveVirtualDeviceIdInput";
+            }
+            if (m.prepareAddDeviceInput != null && $Object.hasOwnProperty.call(m, "prepareAddDeviceInput")) {
+                d.prepareAddDeviceInput = $root.proto.PrepareAddDeviceInput.toObject(m.prepareAddDeviceInput, o, q + 1);
+                if (o.oneofs)
+                    d.commandInput = "prepareAddDeviceInput";
+            }
+            if (m.computeClientSealTokenInput != null && $Object.hasOwnProperty.call(m, "computeClientSealTokenInput")) {
+                d.computeClientSealTokenInput = $root.proto.ComputeClientSealTokenInput.toObject(m.computeClientSealTokenInput, o, q + 1);
+                if (o.oneofs)
+                    d.commandInput = "computeClientSealTokenInput";
+            }
+            if (m.openSealedThreadIdInput != null && $Object.hasOwnProperty.call(m, "openSealedThreadIdInput")) {
+                d.openSealedThreadIdInput = $root.proto.OpenSealedThreadIdInput.toObject(m.openSealedThreadIdInput, o, q + 1);
+                if (o.oneofs)
+                    d.commandInput = "openSealedThreadIdInput";
+            }
+            if (m.deriveEpochsInput != null && $Object.hasOwnProperty.call(m, "deriveEpochsInput")) {
+                d.deriveEpochsInput = $root.proto.DeriveEpochsInput.toObject(m.deriveEpochsInput, o, q + 1);
+                if (o.oneofs)
+                    d.commandInput = "deriveEpochsInput";
+            }
+            if (m.sealThreadIdInput != null && $Object.hasOwnProperty.call(m, "sealThreadIdInput")) {
+                d.sealThreadIdInput = $root.proto.SealThreadIdInput.toObject(m.sealThreadIdInput, o, q + 1);
+                if (o.oneofs)
+                    d.commandInput = "sealThreadIdInput";
+            }
+            if (m.prepareAddPeerDeviceInput != null && $Object.hasOwnProperty.call(m, "prepareAddPeerDeviceInput")) {
+                d.prepareAddPeerDeviceInput = $root.proto.PrepareAddPeerDeviceInput.toObject(m.prepareAddPeerDeviceInput, o, q + 1);
+                if (o.oneofs)
+                    d.commandInput = "prepareAddPeerDeviceInput";
+            }
+            return d;
+        };
+
+        LabyrinthWaCommand.prototype.toJSON = function() {
+            return LabyrinthWaCommand.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        LabyrinthWaCommand.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.LabyrinthWaCommand";
+        };
+
+        return LabyrinthWaCommand;
+    })();
+
+    proto.OpenSealedThreadIdInput = (function() {
+
+        const OpenSealedThreadIdInput = function (p) {
+            this.epochs = [];
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        OpenSealedThreadIdInput.prototype.backupId = null;
+        OpenSealedThreadIdInput.prototype.sealedThreadId = null;
+        OpenSealedThreadIdInput.prototype.epochs = $util.emptyArray;
+
+        let $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(OpenSealedThreadIdInput.prototype, "_backupId", {
+            get: $util.oneOfGetter($oneOfFields = ["backupId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(OpenSealedThreadIdInput.prototype, "_sealedThreadId", {
+            get: $util.oneOfGetter($oneOfFields = ["sealedThreadId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        OpenSealedThreadIdInput.create = function(properties) {
+            return new OpenSealedThreadIdInput(properties);
+        };
+
+        OpenSealedThreadIdInput.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.backupId != null && $Object.hasOwnProperty.call(m, "backupId"))
+                w.uint32(8).uint64(m.backupId);
+            if (m.sealedThreadId != null && $Object.hasOwnProperty.call(m, "sealedThreadId"))
+                w.uint32(18).bytes(m.sealedThreadId);
+            if (m.epochs != null && m.epochs.length) {
+                for (var i = 0; i < m.epochs.length; ++i)
+                    $root.proto.EpochKey.encode(m.epochs[i], w.uint32(26).fork(), q + 1).ldelim();
+            }
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        OpenSealedThreadIdInput.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.OpenSealedThreadIdInput();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 0)
+                            break;
+                        m.backupId = r.uint64();
+                        m._backupId = "backupId";
+                        continue;
+                    }
+                case 2: {
+                        if (u !== 2)
+                            break;
+                        m.sealedThreadId = r.bytes();
+                        m._sealedThreadId = "sealedThreadId";
+                        continue;
+                    }
+                case 3: {
+                        if (u !== 2)
+                            break;
+                        if (!(m.epochs && m.epochs.length))
+                            m.epochs = [];
+                        m.epochs.push($root.proto.EpochKey.decode(r, r.size(), $undefined, q + 1));
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        OpenSealedThreadIdInput.fromObject = function (d, q) {
+            if (d instanceof $root.proto.OpenSealedThreadIdInput)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.OpenSealedThreadIdInput: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.OpenSealedThreadIdInput();
+            if (d.backupId != null) {
+                if ($util.Long)
+                    m.backupId = $util.Long.fromValue(d.backupId, true);
+                else if (typeof d.backupId === "string")
+                    m.backupId = $parseInt(d.backupId, 10);
+                else if (typeof d.backupId === "number")
+                    m.backupId = d.backupId;
+                else if (typeof d.backupId === "object")
+                    m.backupId = new $util.LongBits(d.backupId.low >>> 0, d.backupId.high >>> 0).toNumber(true);
+            }
+            if (d.sealedThreadId != null) {
+                if (typeof d.sealedThreadId === "string")
+                    $util.base64.decode(d.sealedThreadId, m.sealedThreadId = $util.newBuffer($util.base64.length(d.sealedThreadId)), 0);
+                else if (d.sealedThreadId.length >= 0)
+                    m.sealedThreadId = d.sealedThreadId;
+            }
+            if (d.epochs) {
+                if (!$Array.isArray(d.epochs))
+                    throw $TypeError(".proto.OpenSealedThreadIdInput.epochs: array expected");
+                m.epochs = $Array(d.epochs.length);
+                for (var i = 0; i < d.epochs.length; ++i) {
+                    if (!$util.isObject(d.epochs[i]))
+                        throw $TypeError(".proto.OpenSealedThreadIdInput.epochs: object expected");
+                    m.epochs[i] = $root.proto.EpochKey.fromObject(d.epochs[i], q + 1);
+                }
+            }
+            return m;
+        };
+
+        OpenSealedThreadIdInput.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (o.arrays || o.defaults) {
+                d.epochs = [];
+            }
+            if (m.backupId != null && $Object.hasOwnProperty.call(m, "backupId")) {
+                if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
+                    d.backupId = typeof m.backupId === "number" ? $BigInt(m.backupId) : $util.Long.fromBits(m.backupId.low >>> 0, m.backupId.high >>> 0, true).toBigInt();
+                else if (typeof m.backupId === "number")
+                    d.backupId = o.longs === $String ? $String(m.backupId) : m.backupId;
+                else
+                    d.backupId = o.longs === $String ? $util.Long.prototype.toString.call(m.backupId) : o.longs === $Number ? new $util.LongBits(m.backupId.low >>> 0, m.backupId.high >>> 0).toNumber(true) : m.backupId;
+            }
+            if (m.sealedThreadId != null && $Object.hasOwnProperty.call(m, "sealedThreadId")) {
+                d.sealedThreadId = o.bytes === $String ? $util.base64.encode(m.sealedThreadId, 0, m.sealedThreadId.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.sealedThreadId) : m.sealedThreadId;
+            }
+            if (m.epochs && m.epochs.length) {
+                d.epochs = $Array(m.epochs.length);
+                for (var j = 0; j < m.epochs.length; ++j) {
+                    d.epochs[j] = $root.proto.EpochKey.toObject(m.epochs[j], o, q + 1);
+                }
+            }
+            return d;
+        };
+
+        OpenSealedThreadIdInput.prototype.toJSON = function() {
+            return OpenSealedThreadIdInput.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        OpenSealedThreadIdInput.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.OpenSealedThreadIdInput";
+        };
+
+        return OpenSealedThreadIdInput;
+    })();
+
+    proto.OpenSealedThreadIdOutput = (function() {
+
+        const OpenSealedThreadIdOutput = function (p) {
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        OpenSealedThreadIdOutput.prototype.success = null;
+        OpenSealedThreadIdOutput.prototype.error = null;
+
+        let $oneOfFields;
+
+        $Object.defineProperty(OpenSealedThreadIdOutput.prototype, "result", {
+            get: $util.oneOfGetter($oneOfFields = ["success", "error"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        OpenSealedThreadIdOutput.create = function(properties) {
+            return new OpenSealedThreadIdOutput(properties);
+        };
+
+        OpenSealedThreadIdOutput.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.success != null && $Object.hasOwnProperty.call(m, "success"))
+                $root.proto.OpenSealedThreadIdSuccess.encode(m.success, w.uint32(10).fork(), q + 1).ldelim();
+            if (m.error != null && $Object.hasOwnProperty.call(m, "error"))
+                w.uint32(18).string(m.error);
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        OpenSealedThreadIdOutput.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.OpenSealedThreadIdOutput();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 2)
+                            break;
+                        m.success = $root.proto.OpenSealedThreadIdSuccess.decode(r, r.size(), $undefined, q + 1, m.success);
+                        m.result = "success";
+                        continue;
+                    }
+                case 2: {
+                        if (u !== 2)
+                            break;
+                        m.error = r.stringVerify();
+                        m.result = "error";
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        OpenSealedThreadIdOutput.fromObject = function (d, q) {
+            if (d instanceof $root.proto.OpenSealedThreadIdOutput)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.OpenSealedThreadIdOutput: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.OpenSealedThreadIdOutput();
+            if (d.success != null) {
+                if (!$util.isObject(d.success))
+                    throw $TypeError(".proto.OpenSealedThreadIdOutput.success: object expected");
+                m.success = $root.proto.OpenSealedThreadIdSuccess.fromObject(d.success, q + 1);
+            }
+            if (d.error != null) {
+                m.error = $String(d.error);
+            }
+            return m;
+        };
+
+        OpenSealedThreadIdOutput.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (m.success != null && $Object.hasOwnProperty.call(m, "success")) {
+                d.success = $root.proto.OpenSealedThreadIdSuccess.toObject(m.success, o, q + 1);
+                if (o.oneofs)
+                    d.result = "success";
+            }
+            if (m.error != null && $Object.hasOwnProperty.call(m, "error")) {
+                d.error = m.error;
+                if (o.oneofs)
+                    d.result = "error";
+            }
+            return d;
+        };
+
+        OpenSealedThreadIdOutput.prototype.toJSON = function() {
+            return OpenSealedThreadIdOutput.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        OpenSealedThreadIdOutput.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.OpenSealedThreadIdOutput";
+        };
+
+        return OpenSealedThreadIdOutput;
+    })();
+
+    proto.OpenSealedThreadIdSuccess = (function() {
+
+        const OpenSealedThreadIdSuccess = function (p) {
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        OpenSealedThreadIdSuccess.prototype.threadId = null;
+        OpenSealedThreadIdSuccess.prototype.sealEpochAnonId = null;
+
+        let $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(OpenSealedThreadIdSuccess.prototype, "_threadId", {
+            get: $util.oneOfGetter($oneOfFields = ["threadId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(OpenSealedThreadIdSuccess.prototype, "_sealEpochAnonId", {
+            get: $util.oneOfGetter($oneOfFields = ["sealEpochAnonId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        OpenSealedThreadIdSuccess.create = function(properties) {
+            return new OpenSealedThreadIdSuccess(properties);
+        };
+
+        OpenSealedThreadIdSuccess.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.threadId != null && $Object.hasOwnProperty.call(m, "threadId"))
+                w.uint32(10).string(m.threadId);
+            if (m.sealEpochAnonId != null && $Object.hasOwnProperty.call(m, "sealEpochAnonId"))
+                w.uint32(16).int32(m.sealEpochAnonId);
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        OpenSealedThreadIdSuccess.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.OpenSealedThreadIdSuccess();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 2)
+                            break;
+                        m.threadId = r.stringVerify();
+                        m._threadId = "threadId";
+                        continue;
+                    }
+                case 2: {
+                        if (u !== 0)
+                            break;
+                        m.sealEpochAnonId = r.int32();
+                        m._sealEpochAnonId = "sealEpochAnonId";
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        OpenSealedThreadIdSuccess.fromObject = function (d, q) {
+            if (d instanceof $root.proto.OpenSealedThreadIdSuccess)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.OpenSealedThreadIdSuccess: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.OpenSealedThreadIdSuccess();
+            if (d.threadId != null) {
+                m.threadId = $String(d.threadId);
+            }
+            if (d.sealEpochAnonId != null) {
+                m.sealEpochAnonId = d.sealEpochAnonId | 0;
+            }
+            return m;
+        };
+
+        OpenSealedThreadIdSuccess.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (m.threadId != null && $Object.hasOwnProperty.call(m, "threadId")) {
+                d.threadId = m.threadId;
+            }
+            if (m.sealEpochAnonId != null && $Object.hasOwnProperty.call(m, "sealEpochAnonId")) {
+                d.sealEpochAnonId = m.sealEpochAnonId;
+            }
+            return d;
+        };
+
+        OpenSealedThreadIdSuccess.prototype.toJSON = function() {
+            return OpenSealedThreadIdSuccess.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        OpenSealedThreadIdSuccess.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.OpenSealedThreadIdSuccess";
+        };
+
+        return OpenSealedThreadIdSuccess;
+    })();
+
+    proto.OrfThreadIdInput = (function() {
+
+        const OrfThreadIdInput = function (p) {
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        OrfThreadIdInput.prototype.orfClientState = null;
+        OrfThreadIdInput.prototype.threadId = null;
+
+        let $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(OrfThreadIdInput.prototype, "_orfClientState", {
+            get: $util.oneOfGetter($oneOfFields = ["orfClientState"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(OrfThreadIdInput.prototype, "_threadId", {
+            get: $util.oneOfGetter($oneOfFields = ["threadId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        OrfThreadIdInput.create = function(properties) {
+            return new OrfThreadIdInput(properties);
+        };
+
+        OrfThreadIdInput.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.orfClientState != null && $Object.hasOwnProperty.call(m, "orfClientState"))
+                w.uint32(10).bytes(m.orfClientState);
+            if (m.threadId != null && $Object.hasOwnProperty.call(m, "threadId"))
+                w.uint32(18).string(m.threadId);
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        OrfThreadIdInput.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.OrfThreadIdInput();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 2)
+                            break;
+                        m.orfClientState = r.bytes();
+                        m._orfClientState = "orfClientState";
+                        continue;
+                    }
+                case 2: {
+                        if (u !== 2)
+                            break;
+                        m.threadId = r.stringVerify();
+                        m._threadId = "threadId";
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        OrfThreadIdInput.fromObject = function (d, q) {
+            if (d instanceof $root.proto.OrfThreadIdInput)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.OrfThreadIdInput: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.OrfThreadIdInput();
+            if (d.orfClientState != null) {
+                if (typeof d.orfClientState === "string")
+                    $util.base64.decode(d.orfClientState, m.orfClientState = $util.newBuffer($util.base64.length(d.orfClientState)), 0);
+                else if (d.orfClientState.length >= 0)
+                    m.orfClientState = d.orfClientState;
+            }
+            if (d.threadId != null) {
+                m.threadId = $String(d.threadId);
+            }
+            return m;
+        };
+
+        OrfThreadIdInput.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (m.orfClientState != null && $Object.hasOwnProperty.call(m, "orfClientState")) {
+                d.orfClientState = o.bytes === $String ? $util.base64.encode(m.orfClientState, 0, m.orfClientState.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.orfClientState) : m.orfClientState;
+            }
+            if (m.threadId != null && $Object.hasOwnProperty.call(m, "threadId")) {
+                d.threadId = m.threadId;
+            }
+            return d;
+        };
+
+        OrfThreadIdInput.prototype.toJSON = function() {
+            return OrfThreadIdInput.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        OrfThreadIdInput.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.OrfThreadIdInput";
+        };
+
+        return OrfThreadIdInput;
+    })();
+
+    proto.OrfThreadIdOutput = (function() {
+
+        const OrfThreadIdOutput = function (p) {
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        OrfThreadIdOutput.prototype.success = null;
+        OrfThreadIdOutput.prototype.error = null;
+
+        let $oneOfFields;
+
+        $Object.defineProperty(OrfThreadIdOutput.prototype, "result", {
+            get: $util.oneOfGetter($oneOfFields = ["success", "error"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        OrfThreadIdOutput.create = function(properties) {
+            return new OrfThreadIdOutput(properties);
+        };
+
+        OrfThreadIdOutput.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.success != null && $Object.hasOwnProperty.call(m, "success"))
+                $root.proto.OrfThreadIdSuccess.encode(m.success, w.uint32(10).fork(), q + 1).ldelim();
+            if (m.error != null && $Object.hasOwnProperty.call(m, "error"))
+                w.uint32(18).string(m.error);
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        OrfThreadIdOutput.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.OrfThreadIdOutput();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 2)
+                            break;
+                        m.success = $root.proto.OrfThreadIdSuccess.decode(r, r.size(), $undefined, q + 1, m.success);
+                        m.result = "success";
+                        continue;
+                    }
+                case 2: {
+                        if (u !== 2)
+                            break;
+                        m.error = r.stringVerify();
+                        m.result = "error";
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        OrfThreadIdOutput.fromObject = function (d, q) {
+            if (d instanceof $root.proto.OrfThreadIdOutput)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.OrfThreadIdOutput: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.OrfThreadIdOutput();
+            if (d.success != null) {
+                if (!$util.isObject(d.success))
+                    throw $TypeError(".proto.OrfThreadIdOutput.success: object expected");
+                m.success = $root.proto.OrfThreadIdSuccess.fromObject(d.success, q + 1);
+            }
+            if (d.error != null) {
+                m.error = $String(d.error);
+            }
+            return m;
+        };
+
+        OrfThreadIdOutput.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (m.success != null && $Object.hasOwnProperty.call(m, "success")) {
+                d.success = $root.proto.OrfThreadIdSuccess.toObject(m.success, o, q + 1);
+                if (o.oneofs)
+                    d.result = "success";
+            }
+            if (m.error != null && $Object.hasOwnProperty.call(m, "error")) {
+                d.error = m.error;
+                if (o.oneofs)
+                    d.result = "error";
+            }
+            return d;
+        };
+
+        OrfThreadIdOutput.prototype.toJSON = function() {
+            return OrfThreadIdOutput.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        OrfThreadIdOutput.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.OrfThreadIdOutput";
+        };
+
+        return OrfThreadIdOutput;
+    })();
+
+    proto.OrfThreadIdSuccess = (function() {
+
+        const OrfThreadIdSuccess = function (p) {
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        OrfThreadIdSuccess.prototype.orfThreadId = null;
+
+        let $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(OrfThreadIdSuccess.prototype, "_orfThreadId", {
+            get: $util.oneOfGetter($oneOfFields = ["orfThreadId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        OrfThreadIdSuccess.create = function(properties) {
+            return new OrfThreadIdSuccess(properties);
+        };
+
+        OrfThreadIdSuccess.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.orfThreadId != null && $Object.hasOwnProperty.call(m, "orfThreadId"))
+                w.uint32(10).bytes(m.orfThreadId);
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        OrfThreadIdSuccess.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.OrfThreadIdSuccess();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 2)
+                            break;
+                        m.orfThreadId = r.bytes();
+                        m._orfThreadId = "orfThreadId";
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        OrfThreadIdSuccess.fromObject = function (d, q) {
+            if (d instanceof $root.proto.OrfThreadIdSuccess)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.OrfThreadIdSuccess: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.OrfThreadIdSuccess();
+            if (d.orfThreadId != null) {
+                if (typeof d.orfThreadId === "string")
+                    $util.base64.decode(d.orfThreadId, m.orfThreadId = $util.newBuffer($util.base64.length(d.orfThreadId)), 0);
+                else if (d.orfThreadId.length >= 0)
+                    m.orfThreadId = d.orfThreadId;
+            }
+            return m;
+        };
+
+        OrfThreadIdSuccess.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (m.orfThreadId != null && $Object.hasOwnProperty.call(m, "orfThreadId")) {
+                d.orfThreadId = o.bytes === $String ? $util.base64.encode(m.orfThreadId, 0, m.orfThreadId.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.orfThreadId) : m.orfThreadId;
+            }
+            return d;
+        };
+
+        OrfThreadIdSuccess.prototype.toJSON = function() {
+            return OrfThreadIdSuccess.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        OrfThreadIdSuccess.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.OrfThreadIdSuccess";
+        };
+
+        return OrfThreadIdSuccess;
+    })();
+
+    proto.PrepareAddDeviceInput = (function() {
+
+        const PrepareAddDeviceInput = function (p) {
+            this.syncEpochs = [];
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        PrepareAddDeviceInput.prototype.recoveryCode = null;
+        PrepareAddDeviceInput.prototype.userId = null;
+        PrepareAddDeviceInput.prototype.encryptedSecretValuesJson = null;
+        PrepareAddDeviceInput.prototype.virtualDeviceBaseEpochId = null;
+        PrepareAddDeviceInput.prototype.activeEpochId = null;
+        PrepareAddDeviceInput.prototype.syncEpochs = $util.emptyArray;
+
+        let $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(PrepareAddDeviceInput.prototype, "_recoveryCode", {
+            get: $util.oneOfGetter($oneOfFields = ["recoveryCode"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(PrepareAddDeviceInput.prototype, "_userId", {
+            get: $util.oneOfGetter($oneOfFields = ["userId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(PrepareAddDeviceInput.prototype, "_encryptedSecretValuesJson", {
+            get: $util.oneOfGetter($oneOfFields = ["encryptedSecretValuesJson"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(PrepareAddDeviceInput.prototype, "_virtualDeviceBaseEpochId", {
+            get: $util.oneOfGetter($oneOfFields = ["virtualDeviceBaseEpochId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(PrepareAddDeviceInput.prototype, "_activeEpochId", {
+            get: $util.oneOfGetter($oneOfFields = ["activeEpochId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        PrepareAddDeviceInput.create = function(properties) {
+            return new PrepareAddDeviceInput(properties);
+        };
+
+        PrepareAddDeviceInput.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.recoveryCode != null && $Object.hasOwnProperty.call(m, "recoveryCode"))
+                w.uint32(10).string(m.recoveryCode);
+            if (m.userId != null && $Object.hasOwnProperty.call(m, "userId"))
+                w.uint32(16).uint64(m.userId);
+            if (m.encryptedSecretValuesJson != null && $Object.hasOwnProperty.call(m, "encryptedSecretValuesJson"))
+                w.uint32(26).string(m.encryptedSecretValuesJson);
+            if (m.virtualDeviceBaseEpochId != null && $Object.hasOwnProperty.call(m, "virtualDeviceBaseEpochId"))
+                w.uint32(32).uint64(m.virtualDeviceBaseEpochId);
+            if (m.activeEpochId != null && $Object.hasOwnProperty.call(m, "activeEpochId"))
+                w.uint32(40).uint64(m.activeEpochId);
+            if (m.syncEpochs != null && m.syncEpochs.length) {
+                for (var i = 0; i < m.syncEpochs.length; ++i)
+                    $root.proto.AddDeviceSyncEpochInput.encode(m.syncEpochs[i], w.uint32(50).fork(), q + 1).ldelim();
+            }
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        PrepareAddDeviceInput.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.PrepareAddDeviceInput();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 2)
+                            break;
+                        m.recoveryCode = r.stringVerify();
+                        m._recoveryCode = "recoveryCode";
+                        continue;
+                    }
+                case 2: {
+                        if (u !== 0)
+                            break;
+                        m.userId = r.uint64();
+                        m._userId = "userId";
+                        continue;
+                    }
+                case 3: {
+                        if (u !== 2)
+                            break;
+                        m.encryptedSecretValuesJson = r.stringVerify();
+                        m._encryptedSecretValuesJson = "encryptedSecretValuesJson";
+                        continue;
+                    }
+                case 4: {
+                        if (u !== 0)
+                            break;
+                        m.virtualDeviceBaseEpochId = r.uint64();
+                        m._virtualDeviceBaseEpochId = "virtualDeviceBaseEpochId";
+                        continue;
+                    }
+                case 5: {
+                        if (u !== 0)
+                            break;
+                        m.activeEpochId = r.uint64();
+                        m._activeEpochId = "activeEpochId";
+                        continue;
+                    }
+                case 6: {
+                        if (u !== 2)
+                            break;
+                        if (!(m.syncEpochs && m.syncEpochs.length))
+                            m.syncEpochs = [];
+                        m.syncEpochs.push($root.proto.AddDeviceSyncEpochInput.decode(r, r.size(), $undefined, q + 1));
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        PrepareAddDeviceInput.fromObject = function (d, q) {
+            if (d instanceof $root.proto.PrepareAddDeviceInput)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.PrepareAddDeviceInput: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.PrepareAddDeviceInput();
+            if (d.recoveryCode != null) {
+                m.recoveryCode = $String(d.recoveryCode);
+            }
+            if (d.userId != null) {
+                if ($util.Long)
+                    m.userId = $util.Long.fromValue(d.userId, true);
+                else if (typeof d.userId === "string")
+                    m.userId = $parseInt(d.userId, 10);
+                else if (typeof d.userId === "number")
+                    m.userId = d.userId;
+                else if (typeof d.userId === "object")
+                    m.userId = new $util.LongBits(d.userId.low >>> 0, d.userId.high >>> 0).toNumber(true);
+            }
+            if (d.encryptedSecretValuesJson != null) {
+                m.encryptedSecretValuesJson = $String(d.encryptedSecretValuesJson);
+            }
+            if (d.virtualDeviceBaseEpochId != null) {
+                if ($util.Long)
+                    m.virtualDeviceBaseEpochId = $util.Long.fromValue(d.virtualDeviceBaseEpochId, true);
+                else if (typeof d.virtualDeviceBaseEpochId === "string")
+                    m.virtualDeviceBaseEpochId = $parseInt(d.virtualDeviceBaseEpochId, 10);
+                else if (typeof d.virtualDeviceBaseEpochId === "number")
+                    m.virtualDeviceBaseEpochId = d.virtualDeviceBaseEpochId;
+                else if (typeof d.virtualDeviceBaseEpochId === "object")
+                    m.virtualDeviceBaseEpochId = new $util.LongBits(d.virtualDeviceBaseEpochId.low >>> 0, d.virtualDeviceBaseEpochId.high >>> 0).toNumber(true);
+            }
+            if (d.activeEpochId != null) {
+                if ($util.Long)
+                    m.activeEpochId = $util.Long.fromValue(d.activeEpochId, true);
+                else if (typeof d.activeEpochId === "string")
+                    m.activeEpochId = $parseInt(d.activeEpochId, 10);
+                else if (typeof d.activeEpochId === "number")
+                    m.activeEpochId = d.activeEpochId;
+                else if (typeof d.activeEpochId === "object")
+                    m.activeEpochId = new $util.LongBits(d.activeEpochId.low >>> 0, d.activeEpochId.high >>> 0).toNumber(true);
+            }
+            if (d.syncEpochs) {
+                if (!$Array.isArray(d.syncEpochs))
+                    throw $TypeError(".proto.PrepareAddDeviceInput.syncEpochs: array expected");
+                m.syncEpochs = $Array(d.syncEpochs.length);
+                for (var i = 0; i < d.syncEpochs.length; ++i) {
+                    if (!$util.isObject(d.syncEpochs[i]))
+                        throw $TypeError(".proto.PrepareAddDeviceInput.syncEpochs: object expected");
+                    m.syncEpochs[i] = $root.proto.AddDeviceSyncEpochInput.fromObject(d.syncEpochs[i], q + 1);
+                }
+            }
+            return m;
+        };
+
+        PrepareAddDeviceInput.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (o.arrays || o.defaults) {
+                d.syncEpochs = [];
+            }
+            if (m.recoveryCode != null && $Object.hasOwnProperty.call(m, "recoveryCode")) {
+                d.recoveryCode = m.recoveryCode;
+            }
+            if (m.userId != null && $Object.hasOwnProperty.call(m, "userId")) {
+                if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
+                    d.userId = typeof m.userId === "number" ? $BigInt(m.userId) : $util.Long.fromBits(m.userId.low >>> 0, m.userId.high >>> 0, true).toBigInt();
+                else if (typeof m.userId === "number")
+                    d.userId = o.longs === $String ? $String(m.userId) : m.userId;
+                else
+                    d.userId = o.longs === $String ? $util.Long.prototype.toString.call(m.userId) : o.longs === $Number ? new $util.LongBits(m.userId.low >>> 0, m.userId.high >>> 0).toNumber(true) : m.userId;
+            }
+            if (m.encryptedSecretValuesJson != null && $Object.hasOwnProperty.call(m, "encryptedSecretValuesJson")) {
+                d.encryptedSecretValuesJson = m.encryptedSecretValuesJson;
+            }
+            if (m.virtualDeviceBaseEpochId != null && $Object.hasOwnProperty.call(m, "virtualDeviceBaseEpochId")) {
+                if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
+                    d.virtualDeviceBaseEpochId = typeof m.virtualDeviceBaseEpochId === "number" ? $BigInt(m.virtualDeviceBaseEpochId) : $util.Long.fromBits(m.virtualDeviceBaseEpochId.low >>> 0, m.virtualDeviceBaseEpochId.high >>> 0, true).toBigInt();
+                else if (typeof m.virtualDeviceBaseEpochId === "number")
+                    d.virtualDeviceBaseEpochId = o.longs === $String ? $String(m.virtualDeviceBaseEpochId) : m.virtualDeviceBaseEpochId;
+                else
+                    d.virtualDeviceBaseEpochId = o.longs === $String ? $util.Long.prototype.toString.call(m.virtualDeviceBaseEpochId) : o.longs === $Number ? new $util.LongBits(m.virtualDeviceBaseEpochId.low >>> 0, m.virtualDeviceBaseEpochId.high >>> 0).toNumber(true) : m.virtualDeviceBaseEpochId;
+            }
+            if (m.activeEpochId != null && $Object.hasOwnProperty.call(m, "activeEpochId")) {
+                if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
+                    d.activeEpochId = typeof m.activeEpochId === "number" ? $BigInt(m.activeEpochId) : $util.Long.fromBits(m.activeEpochId.low >>> 0, m.activeEpochId.high >>> 0, true).toBigInt();
+                else if (typeof m.activeEpochId === "number")
+                    d.activeEpochId = o.longs === $String ? $String(m.activeEpochId) : m.activeEpochId;
+                else
+                    d.activeEpochId = o.longs === $String ? $util.Long.prototype.toString.call(m.activeEpochId) : o.longs === $Number ? new $util.LongBits(m.activeEpochId.low >>> 0, m.activeEpochId.high >>> 0).toNumber(true) : m.activeEpochId;
+            }
+            if (m.syncEpochs && m.syncEpochs.length) {
+                d.syncEpochs = $Array(m.syncEpochs.length);
+                for (var j = 0; j < m.syncEpochs.length; ++j) {
+                    d.syncEpochs[j] = $root.proto.AddDeviceSyncEpochInput.toObject(m.syncEpochs[j], o, q + 1);
+                }
+            }
+            return d;
+        };
+
+        PrepareAddDeviceInput.prototype.toJSON = function() {
+            return PrepareAddDeviceInput.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        PrepareAddDeviceInput.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.PrepareAddDeviceInput";
+        };
+
+        return PrepareAddDeviceInput;
+    })();
+
+    proto.PrepareAddDeviceOutput = (function() {
+
+        const PrepareAddDeviceOutput = function (p) {
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        PrepareAddDeviceOutput.prototype.success = null;
+        PrepareAddDeviceOutput.prototype.error = null;
+
+        let $oneOfFields;
+
+        $Object.defineProperty(PrepareAddDeviceOutput.prototype, "result", {
+            get: $util.oneOfGetter($oneOfFields = ["success", "error"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        PrepareAddDeviceOutput.create = function(properties) {
+            return new PrepareAddDeviceOutput(properties);
+        };
+
+        PrepareAddDeviceOutput.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.success != null && $Object.hasOwnProperty.call(m, "success"))
+                $root.proto.PrepareAddDeviceSuccess.encode(m.success, w.uint32(10).fork(), q + 1).ldelim();
+            if (m.error != null && $Object.hasOwnProperty.call(m, "error"))
+                w.uint32(18).string(m.error);
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        PrepareAddDeviceOutput.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.PrepareAddDeviceOutput();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 2)
+                            break;
+                        m.success = $root.proto.PrepareAddDeviceSuccess.decode(r, r.size(), $undefined, q + 1, m.success);
+                        m.result = "success";
+                        continue;
+                    }
+                case 2: {
+                        if (u !== 2)
+                            break;
+                        m.error = r.stringVerify();
+                        m.result = "error";
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        PrepareAddDeviceOutput.fromObject = function (d, q) {
+            if (d instanceof $root.proto.PrepareAddDeviceOutput)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.PrepareAddDeviceOutput: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.PrepareAddDeviceOutput();
+            if (d.success != null) {
+                if (!$util.isObject(d.success))
+                    throw $TypeError(".proto.PrepareAddDeviceOutput.success: object expected");
+                m.success = $root.proto.PrepareAddDeviceSuccess.fromObject(d.success, q + 1);
+            }
+            if (d.error != null) {
+                m.error = $String(d.error);
+            }
+            return m;
+        };
+
+        PrepareAddDeviceOutput.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (m.success != null && $Object.hasOwnProperty.call(m, "success")) {
+                d.success = $root.proto.PrepareAddDeviceSuccess.toObject(m.success, o, q + 1);
+                if (o.oneofs)
+                    d.result = "success";
+            }
+            if (m.error != null && $Object.hasOwnProperty.call(m, "error")) {
+                d.error = m.error;
+                if (o.oneofs)
+                    d.result = "error";
+            }
+            return d;
+        };
+
+        PrepareAddDeviceOutput.prototype.toJSON = function() {
+            return PrepareAddDeviceOutput.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        PrepareAddDeviceOutput.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.PrepareAddDeviceOutput";
+        };
+
+        return PrepareAddDeviceOutput;
+    })();
+
+    proto.PrepareAddDeviceSuccess = (function() {
+
+        const PrepareAddDeviceSuccess = function (p) {
+            this.supportedEncryptionVersions = [];
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        PrepareAddDeviceSuccess.prototype.deviceKeys = null;
+        PrepareAddDeviceSuccess.prototype.currentEpoch = null;
+        PrepareAddDeviceSuccess.prototype.mailboxRootSalt = null;
+        PrepareAddDeviceSuccess.prototype.orfRotationToken = null;
+        PrepareAddDeviceSuccess.prototype.deviceEpochHmac = null;
+        PrepareAddDeviceSuccess.prototype.epochRootKeyFingerprint = null;
+        PrepareAddDeviceSuccess.prototype.supportedEncryptionVersions = $util.emptyArray;
+        PrepareAddDeviceSuccess.prototype.encryptionVersionSignature = null;
+        PrepareAddDeviceSuccess.prototype.clientVersion = null;
+
+        let $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(PrepareAddDeviceSuccess.prototype, "_deviceKeys", {
+            get: $util.oneOfGetter($oneOfFields = ["deviceKeys"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(PrepareAddDeviceSuccess.prototype, "_currentEpoch", {
+            get: $util.oneOfGetter($oneOfFields = ["currentEpoch"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(PrepareAddDeviceSuccess.prototype, "_mailboxRootSalt", {
+            get: $util.oneOfGetter($oneOfFields = ["mailboxRootSalt"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(PrepareAddDeviceSuccess.prototype, "_orfRotationToken", {
+            get: $util.oneOfGetter($oneOfFields = ["orfRotationToken"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(PrepareAddDeviceSuccess.prototype, "_deviceEpochHmac", {
+            get: $util.oneOfGetter($oneOfFields = ["deviceEpochHmac"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(PrepareAddDeviceSuccess.prototype, "_epochRootKeyFingerprint", {
+            get: $util.oneOfGetter($oneOfFields = ["epochRootKeyFingerprint"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(PrepareAddDeviceSuccess.prototype, "_encryptionVersionSignature", {
+            get: $util.oneOfGetter($oneOfFields = ["encryptionVersionSignature"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(PrepareAddDeviceSuccess.prototype, "_clientVersion", {
+            get: $util.oneOfGetter($oneOfFields = ["clientVersion"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        PrepareAddDeviceSuccess.create = function(properties) {
+            return new PrepareAddDeviceSuccess(properties);
+        };
+
+        PrepareAddDeviceSuccess.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.deviceKeys != null && $Object.hasOwnProperty.call(m, "deviceKeys"))
+                $root.proto.AddDeviceKeysOutput.encode(m.deviceKeys, w.uint32(10).fork(), q + 1).ldelim();
+            if (m.currentEpoch != null && $Object.hasOwnProperty.call(m, "currentEpoch"))
+                $root.proto.EpochKey.encode(m.currentEpoch, w.uint32(18).fork(), q + 1).ldelim();
+            if (m.mailboxRootSalt != null && $Object.hasOwnProperty.call(m, "mailboxRootSalt"))
+                w.uint32(26).bytes(m.mailboxRootSalt);
+            if (m.orfRotationToken != null && $Object.hasOwnProperty.call(m, "orfRotationToken"))
+                w.uint32(34).bytes(m.orfRotationToken);
+            if (m.deviceEpochHmac != null && $Object.hasOwnProperty.call(m, "deviceEpochHmac"))
+                w.uint32(42).bytes(m.deviceEpochHmac);
+            if (m.epochRootKeyFingerprint != null && $Object.hasOwnProperty.call(m, "epochRootKeyFingerprint"))
+                w.uint32(50).bytes(m.epochRootKeyFingerprint);
+            if (m.supportedEncryptionVersions != null && m.supportedEncryptionVersions.length) {
+                w.uint32(58).int32s(m.supportedEncryptionVersions);
+            }
+            if (m.encryptionVersionSignature != null && $Object.hasOwnProperty.call(m, "encryptionVersionSignature"))
+                w.uint32(66).bytes(m.encryptionVersionSignature);
+            if (m.clientVersion != null && $Object.hasOwnProperty.call(m, "clientVersion"))
+                w.uint32(72).int32(m.clientVersion);
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        PrepareAddDeviceSuccess.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.PrepareAddDeviceSuccess();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 2)
+                            break;
+                        m.deviceKeys = $root.proto.AddDeviceKeysOutput.decode(r, r.size(), $undefined, q + 1, m.deviceKeys);
+                        m._deviceKeys = "deviceKeys";
+                        continue;
+                    }
+                case 2: {
+                        if (u !== 2)
+                            break;
+                        m.currentEpoch = $root.proto.EpochKey.decode(r, r.size(), $undefined, q + 1, m.currentEpoch);
+                        m._currentEpoch = "currentEpoch";
+                        continue;
+                    }
+                case 3: {
+                        if (u !== 2)
+                            break;
+                        m.mailboxRootSalt = r.bytes();
+                        m._mailboxRootSalt = "mailboxRootSalt";
+                        continue;
+                    }
+                case 4: {
+                        if (u !== 2)
+                            break;
+                        m.orfRotationToken = r.bytes();
+                        m._orfRotationToken = "orfRotationToken";
+                        continue;
+                    }
+                case 5: {
+                        if (u !== 2)
+                            break;
+                        m.deviceEpochHmac = r.bytes();
+                        m._deviceEpochHmac = "deviceEpochHmac";
+                        continue;
+                    }
+                case 6: {
+                        if (u !== 2)
+                            break;
+                        m.epochRootKeyFingerprint = r.bytes();
+                        m._epochRootKeyFingerprint = "epochRootKeyFingerprint";
+                        continue;
+                    }
+                case 7: {
+                        if (u === 2) {
+                            if (!(m.supportedEncryptionVersions && m.supportedEncryptionVersions.length))
+                                m.supportedEncryptionVersions = [];
+                            r.int32s(m.supportedEncryptionVersions);
+                            continue;
+                        }
+                        if (u !== 0)
+                            break;
+                        if (!(m.supportedEncryptionVersions && m.supportedEncryptionVersions.length))
+                            m.supportedEncryptionVersions = [];
+                        m.supportedEncryptionVersions.push(r.int32());
+                        continue;
+                    }
+                case 8: {
+                        if (u !== 2)
+                            break;
+                        m.encryptionVersionSignature = r.bytes();
+                        m._encryptionVersionSignature = "encryptionVersionSignature";
+                        continue;
+                    }
+                case 9: {
+                        if (u !== 0)
+                            break;
+                        m.clientVersion = r.int32();
+                        m._clientVersion = "clientVersion";
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        PrepareAddDeviceSuccess.fromObject = function (d, q) {
+            if (d instanceof $root.proto.PrepareAddDeviceSuccess)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.PrepareAddDeviceSuccess: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.PrepareAddDeviceSuccess();
+            if (d.deviceKeys != null) {
+                if (!$util.isObject(d.deviceKeys))
+                    throw $TypeError(".proto.PrepareAddDeviceSuccess.deviceKeys: object expected");
+                m.deviceKeys = $root.proto.AddDeviceKeysOutput.fromObject(d.deviceKeys, q + 1);
+            }
+            if (d.currentEpoch != null) {
+                if (!$util.isObject(d.currentEpoch))
+                    throw $TypeError(".proto.PrepareAddDeviceSuccess.currentEpoch: object expected");
+                m.currentEpoch = $root.proto.EpochKey.fromObject(d.currentEpoch, q + 1);
+            }
+            if (d.mailboxRootSalt != null) {
+                if (typeof d.mailboxRootSalt === "string")
+                    $util.base64.decode(d.mailboxRootSalt, m.mailboxRootSalt = $util.newBuffer($util.base64.length(d.mailboxRootSalt)), 0);
+                else if (d.mailboxRootSalt.length >= 0)
+                    m.mailboxRootSalt = d.mailboxRootSalt;
+            }
+            if (d.orfRotationToken != null) {
+                if (typeof d.orfRotationToken === "string")
+                    $util.base64.decode(d.orfRotationToken, m.orfRotationToken = $util.newBuffer($util.base64.length(d.orfRotationToken)), 0);
+                else if (d.orfRotationToken.length >= 0)
+                    m.orfRotationToken = d.orfRotationToken;
+            }
+            if (d.deviceEpochHmac != null) {
+                if (typeof d.deviceEpochHmac === "string")
+                    $util.base64.decode(d.deviceEpochHmac, m.deviceEpochHmac = $util.newBuffer($util.base64.length(d.deviceEpochHmac)), 0);
+                else if (d.deviceEpochHmac.length >= 0)
+                    m.deviceEpochHmac = d.deviceEpochHmac;
+            }
+            if (d.epochRootKeyFingerprint != null) {
+                if (typeof d.epochRootKeyFingerprint === "string")
+                    $util.base64.decode(d.epochRootKeyFingerprint, m.epochRootKeyFingerprint = $util.newBuffer($util.base64.length(d.epochRootKeyFingerprint)), 0);
+                else if (d.epochRootKeyFingerprint.length >= 0)
+                    m.epochRootKeyFingerprint = d.epochRootKeyFingerprint;
+            }
+            if (d.supportedEncryptionVersions) {
+                if (!$Array.isArray(d.supportedEncryptionVersions))
+                    throw $TypeError(".proto.PrepareAddDeviceSuccess.supportedEncryptionVersions: array expected");
+                m.supportedEncryptionVersions = $Array(d.supportedEncryptionVersions.length);
+                for (var i = 0; i < d.supportedEncryptionVersions.length; ++i) {
+                    m.supportedEncryptionVersions[i] = d.supportedEncryptionVersions[i] | 0;
+                }
+            }
+            if (d.encryptionVersionSignature != null) {
+                if (typeof d.encryptionVersionSignature === "string")
+                    $util.base64.decode(d.encryptionVersionSignature, m.encryptionVersionSignature = $util.newBuffer($util.base64.length(d.encryptionVersionSignature)), 0);
+                else if (d.encryptionVersionSignature.length >= 0)
+                    m.encryptionVersionSignature = d.encryptionVersionSignature;
+            }
+            if (d.clientVersion != null) {
+                m.clientVersion = d.clientVersion | 0;
+            }
+            return m;
+        };
+
+        PrepareAddDeviceSuccess.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (o.arrays || o.defaults) {
+                d.supportedEncryptionVersions = [];
+            }
+            if (m.deviceKeys != null && $Object.hasOwnProperty.call(m, "deviceKeys")) {
+                d.deviceKeys = $root.proto.AddDeviceKeysOutput.toObject(m.deviceKeys, o, q + 1);
+            }
+            if (m.currentEpoch != null && $Object.hasOwnProperty.call(m, "currentEpoch")) {
+                d.currentEpoch = $root.proto.EpochKey.toObject(m.currentEpoch, o, q + 1);
+            }
+            if (m.mailboxRootSalt != null && $Object.hasOwnProperty.call(m, "mailboxRootSalt")) {
+                d.mailboxRootSalt = o.bytes === $String ? $util.base64.encode(m.mailboxRootSalt, 0, m.mailboxRootSalt.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.mailboxRootSalt) : m.mailboxRootSalt;
+            }
+            if (m.orfRotationToken != null && $Object.hasOwnProperty.call(m, "orfRotationToken")) {
+                d.orfRotationToken = o.bytes === $String ? $util.base64.encode(m.orfRotationToken, 0, m.orfRotationToken.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.orfRotationToken) : m.orfRotationToken;
+            }
+            if (m.deviceEpochHmac != null && $Object.hasOwnProperty.call(m, "deviceEpochHmac")) {
+                d.deviceEpochHmac = o.bytes === $String ? $util.base64.encode(m.deviceEpochHmac, 0, m.deviceEpochHmac.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.deviceEpochHmac) : m.deviceEpochHmac;
+            }
+            if (m.epochRootKeyFingerprint != null && $Object.hasOwnProperty.call(m, "epochRootKeyFingerprint")) {
+                d.epochRootKeyFingerprint = o.bytes === $String ? $util.base64.encode(m.epochRootKeyFingerprint, 0, m.epochRootKeyFingerprint.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.epochRootKeyFingerprint) : m.epochRootKeyFingerprint;
+            }
+            if (m.supportedEncryptionVersions && m.supportedEncryptionVersions.length) {
+                d.supportedEncryptionVersions = $Array(m.supportedEncryptionVersions.length);
+                for (var j = 0; j < m.supportedEncryptionVersions.length; ++j) {
+                    d.supportedEncryptionVersions[j] = m.supportedEncryptionVersions[j];
+                }
+            }
+            if (m.encryptionVersionSignature != null && $Object.hasOwnProperty.call(m, "encryptionVersionSignature")) {
+                d.encryptionVersionSignature = o.bytes === $String ? $util.base64.encode(m.encryptionVersionSignature, 0, m.encryptionVersionSignature.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.encryptionVersionSignature) : m.encryptionVersionSignature;
+            }
+            if (m.clientVersion != null && $Object.hasOwnProperty.call(m, "clientVersion")) {
+                d.clientVersion = m.clientVersion;
+            }
+            return d;
+        };
+
+        PrepareAddDeviceSuccess.prototype.toJSON = function() {
+            return PrepareAddDeviceSuccess.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        PrepareAddDeviceSuccess.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.PrepareAddDeviceSuccess";
+        };
+
+        return PrepareAddDeviceSuccess;
+    })();
+
+    proto.PrepareAddPeerDeviceInput = (function() {
+
+        const PrepareAddPeerDeviceInput = function (p) {
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        PrepareAddPeerDeviceInput.prototype.advSecret = null;
+        PrepareAddPeerDeviceInput.prototype.sealedPayload = null;
+        PrepareAddPeerDeviceInput.prototype.backupId = null;
+        PrepareAddPeerDeviceInput.prototype.userId = null;
+        PrepareAddPeerDeviceInput.prototype.companionIdentityPub = null;
+        PrepareAddPeerDeviceInput.prototype.activeEpochId = null;
+
+        let $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(PrepareAddPeerDeviceInput.prototype, "_advSecret", {
+            get: $util.oneOfGetter($oneOfFields = ["advSecret"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(PrepareAddPeerDeviceInput.prototype, "_sealedPayload", {
+            get: $util.oneOfGetter($oneOfFields = ["sealedPayload"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(PrepareAddPeerDeviceInput.prototype, "_backupId", {
+            get: $util.oneOfGetter($oneOfFields = ["backupId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(PrepareAddPeerDeviceInput.prototype, "_userId", {
+            get: $util.oneOfGetter($oneOfFields = ["userId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(PrepareAddPeerDeviceInput.prototype, "_companionIdentityPub", {
+            get: $util.oneOfGetter($oneOfFields = ["companionIdentityPub"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(PrepareAddPeerDeviceInput.prototype, "_activeEpochId", {
+            get: $util.oneOfGetter($oneOfFields = ["activeEpochId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        PrepareAddPeerDeviceInput.create = function(properties) {
+            return new PrepareAddPeerDeviceInput(properties);
+        };
+
+        PrepareAddPeerDeviceInput.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.advSecret != null && $Object.hasOwnProperty.call(m, "advSecret"))
+                w.uint32(10).bytes(m.advSecret);
+            if (m.sealedPayload != null && $Object.hasOwnProperty.call(m, "sealedPayload"))
+                w.uint32(18).bytes(m.sealedPayload);
+            if (m.backupId != null && $Object.hasOwnProperty.call(m, "backupId"))
+                w.uint32(24).uint64(m.backupId);
+            if (m.userId != null && $Object.hasOwnProperty.call(m, "userId"))
+                w.uint32(32).uint64(m.userId);
+            if (m.companionIdentityPub != null && $Object.hasOwnProperty.call(m, "companionIdentityPub"))
+                w.uint32(42).bytes(m.companionIdentityPub);
+            if (m.activeEpochId != null && $Object.hasOwnProperty.call(m, "activeEpochId"))
+                w.uint32(48).uint64(m.activeEpochId);
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        PrepareAddPeerDeviceInput.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.PrepareAddPeerDeviceInput();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 2)
+                            break;
+                        m.advSecret = r.bytes();
+                        m._advSecret = "advSecret";
+                        continue;
+                    }
+                case 2: {
+                        if (u !== 2)
+                            break;
+                        m.sealedPayload = r.bytes();
+                        m._sealedPayload = "sealedPayload";
+                        continue;
+                    }
+                case 3: {
+                        if (u !== 0)
+                            break;
+                        m.backupId = r.uint64();
+                        m._backupId = "backupId";
+                        continue;
+                    }
+                case 4: {
+                        if (u !== 0)
+                            break;
+                        m.userId = r.uint64();
+                        m._userId = "userId";
+                        continue;
+                    }
+                case 5: {
+                        if (u !== 2)
+                            break;
+                        m.companionIdentityPub = r.bytes();
+                        m._companionIdentityPub = "companionIdentityPub";
+                        continue;
+                    }
+                case 6: {
+                        if (u !== 0)
+                            break;
+                        m.activeEpochId = r.uint64();
+                        m._activeEpochId = "activeEpochId";
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        PrepareAddPeerDeviceInput.fromObject = function (d, q) {
+            if (d instanceof $root.proto.PrepareAddPeerDeviceInput)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.PrepareAddPeerDeviceInput: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.PrepareAddPeerDeviceInput();
+            if (d.advSecret != null) {
+                if (typeof d.advSecret === "string")
+                    $util.base64.decode(d.advSecret, m.advSecret = $util.newBuffer($util.base64.length(d.advSecret)), 0);
+                else if (d.advSecret.length >= 0)
+                    m.advSecret = d.advSecret;
+            }
+            if (d.sealedPayload != null) {
+                if (typeof d.sealedPayload === "string")
+                    $util.base64.decode(d.sealedPayload, m.sealedPayload = $util.newBuffer($util.base64.length(d.sealedPayload)), 0);
+                else if (d.sealedPayload.length >= 0)
+                    m.sealedPayload = d.sealedPayload;
+            }
+            if (d.backupId != null) {
+                if ($util.Long)
+                    m.backupId = $util.Long.fromValue(d.backupId, true);
+                else if (typeof d.backupId === "string")
+                    m.backupId = $parseInt(d.backupId, 10);
+                else if (typeof d.backupId === "number")
+                    m.backupId = d.backupId;
+                else if (typeof d.backupId === "object")
+                    m.backupId = new $util.LongBits(d.backupId.low >>> 0, d.backupId.high >>> 0).toNumber(true);
+            }
+            if (d.userId != null) {
+                if ($util.Long)
+                    m.userId = $util.Long.fromValue(d.userId, true);
+                else if (typeof d.userId === "string")
+                    m.userId = $parseInt(d.userId, 10);
+                else if (typeof d.userId === "number")
+                    m.userId = d.userId;
+                else if (typeof d.userId === "object")
+                    m.userId = new $util.LongBits(d.userId.low >>> 0, d.userId.high >>> 0).toNumber(true);
+            }
+            if (d.companionIdentityPub != null) {
+                if (typeof d.companionIdentityPub === "string")
+                    $util.base64.decode(d.companionIdentityPub, m.companionIdentityPub = $util.newBuffer($util.base64.length(d.companionIdentityPub)), 0);
+                else if (d.companionIdentityPub.length >= 0)
+                    m.companionIdentityPub = d.companionIdentityPub;
+            }
+            if (d.activeEpochId != null) {
+                if ($util.Long)
+                    m.activeEpochId = $util.Long.fromValue(d.activeEpochId, true);
+                else if (typeof d.activeEpochId === "string")
+                    m.activeEpochId = $parseInt(d.activeEpochId, 10);
+                else if (typeof d.activeEpochId === "number")
+                    m.activeEpochId = d.activeEpochId;
+                else if (typeof d.activeEpochId === "object")
+                    m.activeEpochId = new $util.LongBits(d.activeEpochId.low >>> 0, d.activeEpochId.high >>> 0).toNumber(true);
+            }
+            return m;
+        };
+
+        PrepareAddPeerDeviceInput.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (m.advSecret != null && $Object.hasOwnProperty.call(m, "advSecret")) {
+                d.advSecret = o.bytes === $String ? $util.base64.encode(m.advSecret, 0, m.advSecret.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.advSecret) : m.advSecret;
+            }
+            if (m.sealedPayload != null && $Object.hasOwnProperty.call(m, "sealedPayload")) {
+                d.sealedPayload = o.bytes === $String ? $util.base64.encode(m.sealedPayload, 0, m.sealedPayload.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.sealedPayload) : m.sealedPayload;
+            }
+            if (m.backupId != null && $Object.hasOwnProperty.call(m, "backupId")) {
+                if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
+                    d.backupId = typeof m.backupId === "number" ? $BigInt(m.backupId) : $util.Long.fromBits(m.backupId.low >>> 0, m.backupId.high >>> 0, true).toBigInt();
+                else if (typeof m.backupId === "number")
+                    d.backupId = o.longs === $String ? $String(m.backupId) : m.backupId;
+                else
+                    d.backupId = o.longs === $String ? $util.Long.prototype.toString.call(m.backupId) : o.longs === $Number ? new $util.LongBits(m.backupId.low >>> 0, m.backupId.high >>> 0).toNumber(true) : m.backupId;
+            }
+            if (m.userId != null && $Object.hasOwnProperty.call(m, "userId")) {
+                if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
+                    d.userId = typeof m.userId === "number" ? $BigInt(m.userId) : $util.Long.fromBits(m.userId.low >>> 0, m.userId.high >>> 0, true).toBigInt();
+                else if (typeof m.userId === "number")
+                    d.userId = o.longs === $String ? $String(m.userId) : m.userId;
+                else
+                    d.userId = o.longs === $String ? $util.Long.prototype.toString.call(m.userId) : o.longs === $Number ? new $util.LongBits(m.userId.low >>> 0, m.userId.high >>> 0).toNumber(true) : m.userId;
+            }
+            if (m.companionIdentityPub != null && $Object.hasOwnProperty.call(m, "companionIdentityPub")) {
+                d.companionIdentityPub = o.bytes === $String ? $util.base64.encode(m.companionIdentityPub, 0, m.companionIdentityPub.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.companionIdentityPub) : m.companionIdentityPub;
+            }
+            if (m.activeEpochId != null && $Object.hasOwnProperty.call(m, "activeEpochId")) {
+                if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
+                    d.activeEpochId = typeof m.activeEpochId === "number" ? $BigInt(m.activeEpochId) : $util.Long.fromBits(m.activeEpochId.low >>> 0, m.activeEpochId.high >>> 0, true).toBigInt();
+                else if (typeof m.activeEpochId === "number")
+                    d.activeEpochId = o.longs === $String ? $String(m.activeEpochId) : m.activeEpochId;
+                else
+                    d.activeEpochId = o.longs === $String ? $util.Long.prototype.toString.call(m.activeEpochId) : o.longs === $Number ? new $util.LongBits(m.activeEpochId.low >>> 0, m.activeEpochId.high >>> 0).toNumber(true) : m.activeEpochId;
+            }
+            return d;
+        };
+
+        PrepareAddPeerDeviceInput.prototype.toJSON = function() {
+            return PrepareAddPeerDeviceInput.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        PrepareAddPeerDeviceInput.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.PrepareAddPeerDeviceInput";
+        };
+
+        return PrepareAddPeerDeviceInput;
+    })();
+
+    proto.PrepareAddPeerDeviceOutput = (function() {
+
+        const PrepareAddPeerDeviceOutput = function (p) {
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        PrepareAddPeerDeviceOutput.prototype.success = null;
+        PrepareAddPeerDeviceOutput.prototype.error = null;
+
+        let $oneOfFields;
+
+        $Object.defineProperty(PrepareAddPeerDeviceOutput.prototype, "result", {
+            get: $util.oneOfGetter($oneOfFields = ["success", "error"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        PrepareAddPeerDeviceOutput.create = function(properties) {
+            return new PrepareAddPeerDeviceOutput(properties);
+        };
+
+        PrepareAddPeerDeviceOutput.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.success != null && $Object.hasOwnProperty.call(m, "success"))
+                $root.proto.PrepareAddPeerDeviceSuccess.encode(m.success, w.uint32(10).fork(), q + 1).ldelim();
+            if (m.error != null && $Object.hasOwnProperty.call(m, "error"))
+                w.uint32(18).string(m.error);
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        PrepareAddPeerDeviceOutput.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.PrepareAddPeerDeviceOutput();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 2)
+                            break;
+                        m.success = $root.proto.PrepareAddPeerDeviceSuccess.decode(r, r.size(), $undefined, q + 1, m.success);
+                        m.result = "success";
+                        continue;
+                    }
+                case 2: {
+                        if (u !== 2)
+                            break;
+                        m.error = r.stringVerify();
+                        m.result = "error";
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        PrepareAddPeerDeviceOutput.fromObject = function (d, q) {
+            if (d instanceof $root.proto.PrepareAddPeerDeviceOutput)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.PrepareAddPeerDeviceOutput: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.PrepareAddPeerDeviceOutput();
+            if (d.success != null) {
+                if (!$util.isObject(d.success))
+                    throw $TypeError(".proto.PrepareAddPeerDeviceOutput.success: object expected");
+                m.success = $root.proto.PrepareAddPeerDeviceSuccess.fromObject(d.success, q + 1);
+            }
+            if (d.error != null) {
+                m.error = $String(d.error);
+            }
+            return m;
+        };
+
+        PrepareAddPeerDeviceOutput.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (m.success != null && $Object.hasOwnProperty.call(m, "success")) {
+                d.success = $root.proto.PrepareAddPeerDeviceSuccess.toObject(m.success, o, q + 1);
+                if (o.oneofs)
+                    d.result = "success";
+            }
+            if (m.error != null && $Object.hasOwnProperty.call(m, "error")) {
+                d.error = m.error;
+                if (o.oneofs)
+                    d.result = "error";
+            }
+            return d;
+        };
+
+        PrepareAddPeerDeviceOutput.prototype.toJSON = function() {
+            return PrepareAddPeerDeviceOutput.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        PrepareAddPeerDeviceOutput.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.PrepareAddPeerDeviceOutput";
+        };
+
+        return PrepareAddPeerDeviceOutput;
+    })();
+
+    proto.PrepareAddPeerDeviceSuccess = (function() {
+
+        const PrepareAddPeerDeviceSuccess = function (p) {
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        PrepareAddPeerDeviceSuccess.prototype.enrolment = null;
+        PrepareAddPeerDeviceSuccess.prototype.serverDataId = null;
+        PrepareAddPeerDeviceSuccess.prototype.companionDeviceBinding = null;
+
+        let $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(PrepareAddPeerDeviceSuccess.prototype, "_enrolment", {
+            get: $util.oneOfGetter($oneOfFields = ["enrolment"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(PrepareAddPeerDeviceSuccess.prototype, "_serverDataId", {
+            get: $util.oneOfGetter($oneOfFields = ["serverDataId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(PrepareAddPeerDeviceSuccess.prototype, "_companionDeviceBinding", {
+            get: $util.oneOfGetter($oneOfFields = ["companionDeviceBinding"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        PrepareAddPeerDeviceSuccess.create = function(properties) {
+            return new PrepareAddPeerDeviceSuccess(properties);
+        };
+
+        PrepareAddPeerDeviceSuccess.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.enrolment != null && $Object.hasOwnProperty.call(m, "enrolment"))
+                $root.proto.PrepareAddDeviceSuccess.encode(m.enrolment, w.uint32(10).fork(), q + 1).ldelim();
+            if (m.serverDataId != null && $Object.hasOwnProperty.call(m, "serverDataId"))
+                w.uint32(16).uint64(m.serverDataId);
+            if (m.companionDeviceBinding != null && $Object.hasOwnProperty.call(m, "companionDeviceBinding"))
+                w.uint32(26).bytes(m.companionDeviceBinding);
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        PrepareAddPeerDeviceSuccess.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.PrepareAddPeerDeviceSuccess();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 2)
+                            break;
+                        m.enrolment = $root.proto.PrepareAddDeviceSuccess.decode(r, r.size(), $undefined, q + 1, m.enrolment);
+                        m._enrolment = "enrolment";
+                        continue;
+                    }
+                case 2: {
+                        if (u !== 0)
+                            break;
+                        m.serverDataId = r.uint64();
+                        m._serverDataId = "serverDataId";
+                        continue;
+                    }
+                case 3: {
+                        if (u !== 2)
+                            break;
+                        m.companionDeviceBinding = r.bytes();
+                        m._companionDeviceBinding = "companionDeviceBinding";
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        PrepareAddPeerDeviceSuccess.fromObject = function (d, q) {
+            if (d instanceof $root.proto.PrepareAddPeerDeviceSuccess)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.PrepareAddPeerDeviceSuccess: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.PrepareAddPeerDeviceSuccess();
+            if (d.enrolment != null) {
+                if (!$util.isObject(d.enrolment))
+                    throw $TypeError(".proto.PrepareAddPeerDeviceSuccess.enrolment: object expected");
+                m.enrolment = $root.proto.PrepareAddDeviceSuccess.fromObject(d.enrolment, q + 1);
+            }
+            if (d.serverDataId != null) {
+                if ($util.Long)
+                    m.serverDataId = $util.Long.fromValue(d.serverDataId, true);
+                else if (typeof d.serverDataId === "string")
+                    m.serverDataId = $parseInt(d.serverDataId, 10);
+                else if (typeof d.serverDataId === "number")
+                    m.serverDataId = d.serverDataId;
+                else if (typeof d.serverDataId === "object")
+                    m.serverDataId = new $util.LongBits(d.serverDataId.low >>> 0, d.serverDataId.high >>> 0).toNumber(true);
+            }
+            if (d.companionDeviceBinding != null) {
+                if (typeof d.companionDeviceBinding === "string")
+                    $util.base64.decode(d.companionDeviceBinding, m.companionDeviceBinding = $util.newBuffer($util.base64.length(d.companionDeviceBinding)), 0);
+                else if (d.companionDeviceBinding.length >= 0)
+                    m.companionDeviceBinding = d.companionDeviceBinding;
+            }
+            return m;
+        };
+
+        PrepareAddPeerDeviceSuccess.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (m.enrolment != null && $Object.hasOwnProperty.call(m, "enrolment")) {
+                d.enrolment = $root.proto.PrepareAddDeviceSuccess.toObject(m.enrolment, o, q + 1);
+            }
+            if (m.serverDataId != null && $Object.hasOwnProperty.call(m, "serverDataId")) {
+                if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
+                    d.serverDataId = typeof m.serverDataId === "number" ? $BigInt(m.serverDataId) : $util.Long.fromBits(m.serverDataId.low >>> 0, m.serverDataId.high >>> 0, true).toBigInt();
+                else if (typeof m.serverDataId === "number")
+                    d.serverDataId = o.longs === $String ? $String(m.serverDataId) : m.serverDataId;
+                else
+                    d.serverDataId = o.longs === $String ? $util.Long.prototype.toString.call(m.serverDataId) : o.longs === $Number ? new $util.LongBits(m.serverDataId.low >>> 0, m.serverDataId.high >>> 0).toNumber(true) : m.serverDataId;
+            }
+            if (m.companionDeviceBinding != null && $Object.hasOwnProperty.call(m, "companionDeviceBinding")) {
+                d.companionDeviceBinding = o.bytes === $String ? $util.base64.encode(m.companionDeviceBinding, 0, m.companionDeviceBinding.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.companionDeviceBinding) : m.companionDeviceBinding;
+            }
+            return d;
+        };
+
+        PrepareAddPeerDeviceSuccess.prototype.toJSON = function() {
+            return PrepareAddPeerDeviceSuccess.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        PrepareAddPeerDeviceSuccess.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.PrepareAddPeerDeviceSuccess";
+        };
+
+        return PrepareAddPeerDeviceSuccess;
+    })();
+
+    proto.RotateEpochInput = (function() {
+
+        const RotateEpochInput = function (p) {
+            this.members = [];
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        RotateEpochInput.prototype.currentEpochRootKey = null;
+        RotateEpochInput.prototype.currentEpochAnonId = null;
+        RotateEpochInput.prototype.currentEpochFbid = null;
+        RotateEpochInput.prototype.epochStorageAuthPrivateKey = null;
+        RotateEpochInput.prototype.members = $util.emptyArray;
+
+        let $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(RotateEpochInput.prototype, "_currentEpochRootKey", {
+            get: $util.oneOfGetter($oneOfFields = ["currentEpochRootKey"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(RotateEpochInput.prototype, "_currentEpochAnonId", {
+            get: $util.oneOfGetter($oneOfFields = ["currentEpochAnonId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(RotateEpochInput.prototype, "_currentEpochFbid", {
+            get: $util.oneOfGetter($oneOfFields = ["currentEpochFbid"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(RotateEpochInput.prototype, "_epochStorageAuthPrivateKey", {
+            get: $util.oneOfGetter($oneOfFields = ["epochStorageAuthPrivateKey"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        RotateEpochInput.create = function(properties) {
+            return new RotateEpochInput(properties);
+        };
+
+        RotateEpochInput.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.currentEpochRootKey != null && $Object.hasOwnProperty.call(m, "currentEpochRootKey"))
+                w.uint32(10).bytes(m.currentEpochRootKey);
+            if (m.currentEpochAnonId != null && $Object.hasOwnProperty.call(m, "currentEpochAnonId"))
+                w.uint32(16).int32(m.currentEpochAnonId);
+            if (m.currentEpochFbid != null && $Object.hasOwnProperty.call(m, "currentEpochFbid"))
+                w.uint32(24).uint64(m.currentEpochFbid);
+            if (m.epochStorageAuthPrivateKey != null && $Object.hasOwnProperty.call(m, "epochStorageAuthPrivateKey"))
+                w.uint32(34).bytes(m.epochStorageAuthPrivateKey);
+            if (m.members != null && m.members.length) {
+                for (var i = 0; i < m.members.length; ++i)
+                    $root.proto.RotateEpochMemberInput.encode(m.members[i], w.uint32(42).fork(), q + 1).ldelim();
+            }
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        RotateEpochInput.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.RotateEpochInput();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 2)
+                            break;
+                        m.currentEpochRootKey = r.bytes();
+                        m._currentEpochRootKey = "currentEpochRootKey";
+                        continue;
+                    }
+                case 2: {
+                        if (u !== 0)
+                            break;
+                        m.currentEpochAnonId = r.int32();
+                        m._currentEpochAnonId = "currentEpochAnonId";
+                        continue;
+                    }
+                case 3: {
+                        if (u !== 0)
+                            break;
+                        m.currentEpochFbid = r.uint64();
+                        m._currentEpochFbid = "currentEpochFbid";
+                        continue;
+                    }
+                case 4: {
+                        if (u !== 2)
+                            break;
+                        m.epochStorageAuthPrivateKey = r.bytes();
+                        m._epochStorageAuthPrivateKey = "epochStorageAuthPrivateKey";
+                        continue;
+                    }
+                case 5: {
+                        if (u !== 2)
+                            break;
+                        if (!(m.members && m.members.length))
+                            m.members = [];
+                        m.members.push($root.proto.RotateEpochMemberInput.decode(r, r.size(), $undefined, q + 1));
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        RotateEpochInput.fromObject = function (d, q) {
+            if (d instanceof $root.proto.RotateEpochInput)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.RotateEpochInput: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.RotateEpochInput();
+            if (d.currentEpochRootKey != null) {
+                if (typeof d.currentEpochRootKey === "string")
+                    $util.base64.decode(d.currentEpochRootKey, m.currentEpochRootKey = $util.newBuffer($util.base64.length(d.currentEpochRootKey)), 0);
+                else if (d.currentEpochRootKey.length >= 0)
+                    m.currentEpochRootKey = d.currentEpochRootKey;
+            }
+            if (d.currentEpochAnonId != null) {
+                m.currentEpochAnonId = d.currentEpochAnonId | 0;
+            }
+            if (d.currentEpochFbid != null) {
+                if ($util.Long)
+                    m.currentEpochFbid = $util.Long.fromValue(d.currentEpochFbid, true);
+                else if (typeof d.currentEpochFbid === "string")
+                    m.currentEpochFbid = $parseInt(d.currentEpochFbid, 10);
+                else if (typeof d.currentEpochFbid === "number")
+                    m.currentEpochFbid = d.currentEpochFbid;
+                else if (typeof d.currentEpochFbid === "object")
+                    m.currentEpochFbid = new $util.LongBits(d.currentEpochFbid.low >>> 0, d.currentEpochFbid.high >>> 0).toNumber(true);
+            }
+            if (d.epochStorageAuthPrivateKey != null) {
+                if (typeof d.epochStorageAuthPrivateKey === "string")
+                    $util.base64.decode(d.epochStorageAuthPrivateKey, m.epochStorageAuthPrivateKey = $util.newBuffer($util.base64.length(d.epochStorageAuthPrivateKey)), 0);
+                else if (d.epochStorageAuthPrivateKey.length >= 0)
+                    m.epochStorageAuthPrivateKey = d.epochStorageAuthPrivateKey;
+            }
+            if (d.members) {
+                if (!$Array.isArray(d.members))
+                    throw $TypeError(".proto.RotateEpochInput.members: array expected");
+                m.members = $Array(d.members.length);
+                for (var i = 0; i < d.members.length; ++i) {
+                    if (!$util.isObject(d.members[i]))
+                        throw $TypeError(".proto.RotateEpochInput.members: object expected");
+                    m.members[i] = $root.proto.RotateEpochMemberInput.fromObject(d.members[i], q + 1);
+                }
+            }
+            return m;
+        };
+
+        RotateEpochInput.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (o.arrays || o.defaults) {
+                d.members = [];
+            }
+            if (m.currentEpochRootKey != null && $Object.hasOwnProperty.call(m, "currentEpochRootKey")) {
+                d.currentEpochRootKey = o.bytes === $String ? $util.base64.encode(m.currentEpochRootKey, 0, m.currentEpochRootKey.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.currentEpochRootKey) : m.currentEpochRootKey;
+            }
+            if (m.currentEpochAnonId != null && $Object.hasOwnProperty.call(m, "currentEpochAnonId")) {
+                d.currentEpochAnonId = m.currentEpochAnonId;
+            }
+            if (m.currentEpochFbid != null && $Object.hasOwnProperty.call(m, "currentEpochFbid")) {
+                if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
+                    d.currentEpochFbid = typeof m.currentEpochFbid === "number" ? $BigInt(m.currentEpochFbid) : $util.Long.fromBits(m.currentEpochFbid.low >>> 0, m.currentEpochFbid.high >>> 0, true).toBigInt();
+                else if (typeof m.currentEpochFbid === "number")
+                    d.currentEpochFbid = o.longs === $String ? $String(m.currentEpochFbid) : m.currentEpochFbid;
+                else
+                    d.currentEpochFbid = o.longs === $String ? $util.Long.prototype.toString.call(m.currentEpochFbid) : o.longs === $Number ? new $util.LongBits(m.currentEpochFbid.low >>> 0, m.currentEpochFbid.high >>> 0).toNumber(true) : m.currentEpochFbid;
+            }
+            if (m.epochStorageAuthPrivateKey != null && $Object.hasOwnProperty.call(m, "epochStorageAuthPrivateKey")) {
+                d.epochStorageAuthPrivateKey = o.bytes === $String ? $util.base64.encode(m.epochStorageAuthPrivateKey, 0, m.epochStorageAuthPrivateKey.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.epochStorageAuthPrivateKey) : m.epochStorageAuthPrivateKey;
+            }
+            if (m.members && m.members.length) {
+                d.members = $Array(m.members.length);
+                for (var j = 0; j < m.members.length; ++j) {
+                    d.members[j] = $root.proto.RotateEpochMemberInput.toObject(m.members[j], o, q + 1);
+                }
+            }
+            return d;
+        };
+
+        RotateEpochInput.prototype.toJSON = function() {
+            return RotateEpochInput.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        RotateEpochInput.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.RotateEpochInput";
+        };
+
+        return RotateEpochInput;
+    })();
+
+    proto.RotateEpochMemberEdge = (function() {
+
+        const RotateEpochMemberEdge = function (p) {
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        RotateEpochMemberEdge.prototype.deviceId = null;
+        RotateEpochMemberEdge.prototype.encryptedEpochKey = null;
+        RotateEpochMemberEdge.prototype.deviceEpochHmac = null;
+
+        let $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(RotateEpochMemberEdge.prototype, "_deviceId", {
+            get: $util.oneOfGetter($oneOfFields = ["deviceId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(RotateEpochMemberEdge.prototype, "_encryptedEpochKey", {
+            get: $util.oneOfGetter($oneOfFields = ["encryptedEpochKey"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(RotateEpochMemberEdge.prototype, "_deviceEpochHmac", {
+            get: $util.oneOfGetter($oneOfFields = ["deviceEpochHmac"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        RotateEpochMemberEdge.create = function(properties) {
+            return new RotateEpochMemberEdge(properties);
+        };
+
+        RotateEpochMemberEdge.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.deviceId != null && $Object.hasOwnProperty.call(m, "deviceId"))
+                w.uint32(8).uint64(m.deviceId);
+            if (m.encryptedEpochKey != null && $Object.hasOwnProperty.call(m, "encryptedEpochKey"))
+                w.uint32(18).bytes(m.encryptedEpochKey);
+            if (m.deviceEpochHmac != null && $Object.hasOwnProperty.call(m, "deviceEpochHmac"))
+                w.uint32(26).bytes(m.deviceEpochHmac);
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        RotateEpochMemberEdge.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.RotateEpochMemberEdge();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 0)
+                            break;
+                        m.deviceId = r.uint64();
+                        m._deviceId = "deviceId";
+                        continue;
+                    }
+                case 2: {
+                        if (u !== 2)
+                            break;
+                        m.encryptedEpochKey = r.bytes();
+                        m._encryptedEpochKey = "encryptedEpochKey";
+                        continue;
+                    }
+                case 3: {
+                        if (u !== 2)
+                            break;
+                        m.deviceEpochHmac = r.bytes();
+                        m._deviceEpochHmac = "deviceEpochHmac";
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        RotateEpochMemberEdge.fromObject = function (d, q) {
+            if (d instanceof $root.proto.RotateEpochMemberEdge)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.RotateEpochMemberEdge: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.RotateEpochMemberEdge();
+            if (d.deviceId != null) {
+                if ($util.Long)
+                    m.deviceId = $util.Long.fromValue(d.deviceId, true);
+                else if (typeof d.deviceId === "string")
+                    m.deviceId = $parseInt(d.deviceId, 10);
+                else if (typeof d.deviceId === "number")
+                    m.deviceId = d.deviceId;
+                else if (typeof d.deviceId === "object")
+                    m.deviceId = new $util.LongBits(d.deviceId.low >>> 0, d.deviceId.high >>> 0).toNumber(true);
+            }
+            if (d.encryptedEpochKey != null) {
+                if (typeof d.encryptedEpochKey === "string")
+                    $util.base64.decode(d.encryptedEpochKey, m.encryptedEpochKey = $util.newBuffer($util.base64.length(d.encryptedEpochKey)), 0);
+                else if (d.encryptedEpochKey.length >= 0)
+                    m.encryptedEpochKey = d.encryptedEpochKey;
+            }
+            if (d.deviceEpochHmac != null) {
+                if (typeof d.deviceEpochHmac === "string")
+                    $util.base64.decode(d.deviceEpochHmac, m.deviceEpochHmac = $util.newBuffer($util.base64.length(d.deviceEpochHmac)), 0);
+                else if (d.deviceEpochHmac.length >= 0)
+                    m.deviceEpochHmac = d.deviceEpochHmac;
+            }
+            return m;
+        };
+
+        RotateEpochMemberEdge.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (m.deviceId != null && $Object.hasOwnProperty.call(m, "deviceId")) {
+                if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
+                    d.deviceId = typeof m.deviceId === "number" ? $BigInt(m.deviceId) : $util.Long.fromBits(m.deviceId.low >>> 0, m.deviceId.high >>> 0, true).toBigInt();
+                else if (typeof m.deviceId === "number")
+                    d.deviceId = o.longs === $String ? $String(m.deviceId) : m.deviceId;
+                else
+                    d.deviceId = o.longs === $String ? $util.Long.prototype.toString.call(m.deviceId) : o.longs === $Number ? new $util.LongBits(m.deviceId.low >>> 0, m.deviceId.high >>> 0).toNumber(true) : m.deviceId;
+            }
+            if (m.encryptedEpochKey != null && $Object.hasOwnProperty.call(m, "encryptedEpochKey")) {
+                d.encryptedEpochKey = o.bytes === $String ? $util.base64.encode(m.encryptedEpochKey, 0, m.encryptedEpochKey.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.encryptedEpochKey) : m.encryptedEpochKey;
+            }
+            if (m.deviceEpochHmac != null && $Object.hasOwnProperty.call(m, "deviceEpochHmac")) {
+                d.deviceEpochHmac = o.bytes === $String ? $util.base64.encode(m.deviceEpochHmac, 0, m.deviceEpochHmac.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.deviceEpochHmac) : m.deviceEpochHmac;
+            }
+            return d;
+        };
+
+        RotateEpochMemberEdge.prototype.toJSON = function() {
+            return RotateEpochMemberEdge.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        RotateEpochMemberEdge.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.RotateEpochMemberEdge";
+        };
+
+        return RotateEpochMemberEdge;
+    })();
+
+    proto.RotateEpochMemberInput = (function() {
+
+        const RotateEpochMemberInput = function (p) {
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        RotateEpochMemberInput.prototype.deviceId = null;
+        RotateEpochMemberInput.prototype.epochStoragePublicKey = null;
+        RotateEpochMemberInput.prototype.devicePublicKey = null;
+        RotateEpochMemberInput.prototype.prevDeviceEpochHmac = null;
+        RotateEpochMemberInput.prototype.epochStoragePublicKeySig = null;
+
+        let $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(RotateEpochMemberInput.prototype, "_deviceId", {
+            get: $util.oneOfGetter($oneOfFields = ["deviceId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(RotateEpochMemberInput.prototype, "_epochStoragePublicKey", {
+            get: $util.oneOfGetter($oneOfFields = ["epochStoragePublicKey"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(RotateEpochMemberInput.prototype, "_devicePublicKey", {
+            get: $util.oneOfGetter($oneOfFields = ["devicePublicKey"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(RotateEpochMemberInput.prototype, "_prevDeviceEpochHmac", {
+            get: $util.oneOfGetter($oneOfFields = ["prevDeviceEpochHmac"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(RotateEpochMemberInput.prototype, "_epochStoragePublicKeySig", {
+            get: $util.oneOfGetter($oneOfFields = ["epochStoragePublicKeySig"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        RotateEpochMemberInput.create = function(properties) {
+            return new RotateEpochMemberInput(properties);
+        };
+
+        RotateEpochMemberInput.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.deviceId != null && $Object.hasOwnProperty.call(m, "deviceId"))
+                w.uint32(8).uint64(m.deviceId);
+            if (m.epochStoragePublicKey != null && $Object.hasOwnProperty.call(m, "epochStoragePublicKey"))
+                w.uint32(18).bytes(m.epochStoragePublicKey);
+            if (m.devicePublicKey != null && $Object.hasOwnProperty.call(m, "devicePublicKey"))
+                w.uint32(26).bytes(m.devicePublicKey);
+            if (m.prevDeviceEpochHmac != null && $Object.hasOwnProperty.call(m, "prevDeviceEpochHmac"))
+                w.uint32(34).bytes(m.prevDeviceEpochHmac);
+            if (m.epochStoragePublicKeySig != null && $Object.hasOwnProperty.call(m, "epochStoragePublicKeySig"))
+                w.uint32(42).bytes(m.epochStoragePublicKeySig);
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        RotateEpochMemberInput.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.RotateEpochMemberInput();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 0)
+                            break;
+                        m.deviceId = r.uint64();
+                        m._deviceId = "deviceId";
+                        continue;
+                    }
+                case 2: {
+                        if (u !== 2)
+                            break;
+                        m.epochStoragePublicKey = r.bytes();
+                        m._epochStoragePublicKey = "epochStoragePublicKey";
+                        continue;
+                    }
+                case 3: {
+                        if (u !== 2)
+                            break;
+                        m.devicePublicKey = r.bytes();
+                        m._devicePublicKey = "devicePublicKey";
+                        continue;
+                    }
+                case 4: {
+                        if (u !== 2)
+                            break;
+                        m.prevDeviceEpochHmac = r.bytes();
+                        m._prevDeviceEpochHmac = "prevDeviceEpochHmac";
+                        continue;
+                    }
+                case 5: {
+                        if (u !== 2)
+                            break;
+                        m.epochStoragePublicKeySig = r.bytes();
+                        m._epochStoragePublicKeySig = "epochStoragePublicKeySig";
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        RotateEpochMemberInput.fromObject = function (d, q) {
+            if (d instanceof $root.proto.RotateEpochMemberInput)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.RotateEpochMemberInput: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.RotateEpochMemberInput();
+            if (d.deviceId != null) {
+                if ($util.Long)
+                    m.deviceId = $util.Long.fromValue(d.deviceId, true);
+                else if (typeof d.deviceId === "string")
+                    m.deviceId = $parseInt(d.deviceId, 10);
+                else if (typeof d.deviceId === "number")
+                    m.deviceId = d.deviceId;
+                else if (typeof d.deviceId === "object")
+                    m.deviceId = new $util.LongBits(d.deviceId.low >>> 0, d.deviceId.high >>> 0).toNumber(true);
+            }
+            if (d.epochStoragePublicKey != null) {
+                if (typeof d.epochStoragePublicKey === "string")
+                    $util.base64.decode(d.epochStoragePublicKey, m.epochStoragePublicKey = $util.newBuffer($util.base64.length(d.epochStoragePublicKey)), 0);
+                else if (d.epochStoragePublicKey.length >= 0)
+                    m.epochStoragePublicKey = d.epochStoragePublicKey;
+            }
+            if (d.devicePublicKey != null) {
+                if (typeof d.devicePublicKey === "string")
+                    $util.base64.decode(d.devicePublicKey, m.devicePublicKey = $util.newBuffer($util.base64.length(d.devicePublicKey)), 0);
+                else if (d.devicePublicKey.length >= 0)
+                    m.devicePublicKey = d.devicePublicKey;
+            }
+            if (d.prevDeviceEpochHmac != null) {
+                if (typeof d.prevDeviceEpochHmac === "string")
+                    $util.base64.decode(d.prevDeviceEpochHmac, m.prevDeviceEpochHmac = $util.newBuffer($util.base64.length(d.prevDeviceEpochHmac)), 0);
+                else if (d.prevDeviceEpochHmac.length >= 0)
+                    m.prevDeviceEpochHmac = d.prevDeviceEpochHmac;
+            }
+            if (d.epochStoragePublicKeySig != null) {
+                if (typeof d.epochStoragePublicKeySig === "string")
+                    $util.base64.decode(d.epochStoragePublicKeySig, m.epochStoragePublicKeySig = $util.newBuffer($util.base64.length(d.epochStoragePublicKeySig)), 0);
+                else if (d.epochStoragePublicKeySig.length >= 0)
+                    m.epochStoragePublicKeySig = d.epochStoragePublicKeySig;
+            }
+            return m;
+        };
+
+        RotateEpochMemberInput.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (m.deviceId != null && $Object.hasOwnProperty.call(m, "deviceId")) {
+                if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
+                    d.deviceId = typeof m.deviceId === "number" ? $BigInt(m.deviceId) : $util.Long.fromBits(m.deviceId.low >>> 0, m.deviceId.high >>> 0, true).toBigInt();
+                else if (typeof m.deviceId === "number")
+                    d.deviceId = o.longs === $String ? $String(m.deviceId) : m.deviceId;
+                else
+                    d.deviceId = o.longs === $String ? $util.Long.prototype.toString.call(m.deviceId) : o.longs === $Number ? new $util.LongBits(m.deviceId.low >>> 0, m.deviceId.high >>> 0).toNumber(true) : m.deviceId;
+            }
+            if (m.epochStoragePublicKey != null && $Object.hasOwnProperty.call(m, "epochStoragePublicKey")) {
+                d.epochStoragePublicKey = o.bytes === $String ? $util.base64.encode(m.epochStoragePublicKey, 0, m.epochStoragePublicKey.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.epochStoragePublicKey) : m.epochStoragePublicKey;
+            }
+            if (m.devicePublicKey != null && $Object.hasOwnProperty.call(m, "devicePublicKey")) {
+                d.devicePublicKey = o.bytes === $String ? $util.base64.encode(m.devicePublicKey, 0, m.devicePublicKey.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.devicePublicKey) : m.devicePublicKey;
+            }
+            if (m.prevDeviceEpochHmac != null && $Object.hasOwnProperty.call(m, "prevDeviceEpochHmac")) {
+                d.prevDeviceEpochHmac = o.bytes === $String ? $util.base64.encode(m.prevDeviceEpochHmac, 0, m.prevDeviceEpochHmac.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.prevDeviceEpochHmac) : m.prevDeviceEpochHmac;
+            }
+            if (m.epochStoragePublicKeySig != null && $Object.hasOwnProperty.call(m, "epochStoragePublicKeySig")) {
+                d.epochStoragePublicKeySig = o.bytes === $String ? $util.base64.encode(m.epochStoragePublicKeySig, 0, m.epochStoragePublicKeySig.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.epochStoragePublicKeySig) : m.epochStoragePublicKeySig;
+            }
+            return d;
+        };
+
+        RotateEpochMemberInput.prototype.toJSON = function() {
+            return RotateEpochMemberInput.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        RotateEpochMemberInput.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.RotateEpochMemberInput";
+        };
+
+        return RotateEpochMemberInput;
+    })();
+
+    proto.RotateEpochOutput = (function() {
+
+        const RotateEpochOutput = function (p) {
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        RotateEpochOutput.prototype.success = null;
+        RotateEpochOutput.prototype.error = null;
+
+        let $oneOfFields;
+
+        $Object.defineProperty(RotateEpochOutput.prototype, "result", {
+            get: $util.oneOfGetter($oneOfFields = ["success", "error"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        RotateEpochOutput.create = function(properties) {
+            return new RotateEpochOutput(properties);
+        };
+
+        RotateEpochOutput.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.success != null && $Object.hasOwnProperty.call(m, "success"))
+                $root.proto.RotateEpochSuccess.encode(m.success, w.uint32(10).fork(), q + 1).ldelim();
+            if (m.error != null && $Object.hasOwnProperty.call(m, "error"))
+                w.uint32(18).string(m.error);
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        RotateEpochOutput.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.RotateEpochOutput();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 2)
+                            break;
+                        m.success = $root.proto.RotateEpochSuccess.decode(r, r.size(), $undefined, q + 1, m.success);
+                        m.result = "success";
+                        continue;
+                    }
+                case 2: {
+                        if (u !== 2)
+                            break;
+                        m.error = r.stringVerify();
+                        m.result = "error";
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        RotateEpochOutput.fromObject = function (d, q) {
+            if (d instanceof $root.proto.RotateEpochOutput)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.RotateEpochOutput: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.RotateEpochOutput();
+            if (d.success != null) {
+                if (!$util.isObject(d.success))
+                    throw $TypeError(".proto.RotateEpochOutput.success: object expected");
+                m.success = $root.proto.RotateEpochSuccess.fromObject(d.success, q + 1);
+            }
+            if (d.error != null) {
+                m.error = $String(d.error);
+            }
+            return m;
+        };
+
+        RotateEpochOutput.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (m.success != null && $Object.hasOwnProperty.call(m, "success")) {
+                d.success = $root.proto.RotateEpochSuccess.toObject(m.success, o, q + 1);
+                if (o.oneofs)
+                    d.result = "success";
+            }
+            if (m.error != null && $Object.hasOwnProperty.call(m, "error")) {
+                d.error = m.error;
+                if (o.oneofs)
+                    d.result = "error";
+            }
+            return d;
+        };
+
+        RotateEpochOutput.prototype.toJSON = function() {
+            return RotateEpochOutput.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        RotateEpochOutput.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.RotateEpochOutput";
+        };
+
+        return RotateEpochOutput;
+    })();
+
+    proto.RotateEpochSuccess = (function() {
+
+        const RotateEpochSuccess = function (p) {
+            this.memberEdges = [];
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        RotateEpochSuccess.prototype.newEpochRootKey = null;
+        RotateEpochSuccess.prototype.newEpochAnonId = null;
+        RotateEpochSuccess.prototype.backwardEdge = null;
+        RotateEpochSuccess.prototype.memberEdges = $util.emptyArray;
+        RotateEpochSuccess.prototype.epochRootKeyFingerprint = null;
+
+        let $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(RotateEpochSuccess.prototype, "_newEpochRootKey", {
+            get: $util.oneOfGetter($oneOfFields = ["newEpochRootKey"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(RotateEpochSuccess.prototype, "_newEpochAnonId", {
+            get: $util.oneOfGetter($oneOfFields = ["newEpochAnonId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(RotateEpochSuccess.prototype, "_backwardEdge", {
+            get: $util.oneOfGetter($oneOfFields = ["backwardEdge"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(RotateEpochSuccess.prototype, "_epochRootKeyFingerprint", {
+            get: $util.oneOfGetter($oneOfFields = ["epochRootKeyFingerprint"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        RotateEpochSuccess.create = function(properties) {
+            return new RotateEpochSuccess(properties);
+        };
+
+        RotateEpochSuccess.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.newEpochRootKey != null && $Object.hasOwnProperty.call(m, "newEpochRootKey"))
+                w.uint32(10).bytes(m.newEpochRootKey);
+            if (m.newEpochAnonId != null && $Object.hasOwnProperty.call(m, "newEpochAnonId"))
+                w.uint32(16).int32(m.newEpochAnonId);
+            if (m.backwardEdge != null && $Object.hasOwnProperty.call(m, "backwardEdge"))
+                $root.proto.BackwardEdge.encode(m.backwardEdge, w.uint32(34).fork(), q + 1).ldelim();
+            if (m.memberEdges != null && m.memberEdges.length) {
+                for (var i = 0; i < m.memberEdges.length; ++i)
+                    $root.proto.RotateEpochMemberEdge.encode(m.memberEdges[i], w.uint32(42).fork(), q + 1).ldelim();
+            }
+            if (m.epochRootKeyFingerprint != null && $Object.hasOwnProperty.call(m, "epochRootKeyFingerprint"))
+                w.uint32(50).bytes(m.epochRootKeyFingerprint);
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        RotateEpochSuccess.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.RotateEpochSuccess();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 2)
+                            break;
+                        m.newEpochRootKey = r.bytes();
+                        m._newEpochRootKey = "newEpochRootKey";
+                        continue;
+                    }
+                case 2: {
+                        if (u !== 0)
+                            break;
+                        m.newEpochAnonId = r.int32();
+                        m._newEpochAnonId = "newEpochAnonId";
+                        continue;
+                    }
+                case 4: {
+                        if (u !== 2)
+                            break;
+                        m.backwardEdge = $root.proto.BackwardEdge.decode(r, r.size(), $undefined, q + 1, m.backwardEdge);
+                        m._backwardEdge = "backwardEdge";
+                        continue;
+                    }
+                case 5: {
+                        if (u !== 2)
+                            break;
+                        if (!(m.memberEdges && m.memberEdges.length))
+                            m.memberEdges = [];
+                        m.memberEdges.push($root.proto.RotateEpochMemberEdge.decode(r, r.size(), $undefined, q + 1));
+                        continue;
+                    }
+                case 6: {
+                        if (u !== 2)
+                            break;
+                        m.epochRootKeyFingerprint = r.bytes();
+                        m._epochRootKeyFingerprint = "epochRootKeyFingerprint";
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        RotateEpochSuccess.fromObject = function (d, q) {
+            if (d instanceof $root.proto.RotateEpochSuccess)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.RotateEpochSuccess: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.RotateEpochSuccess();
+            if (d.newEpochRootKey != null) {
+                if (typeof d.newEpochRootKey === "string")
+                    $util.base64.decode(d.newEpochRootKey, m.newEpochRootKey = $util.newBuffer($util.base64.length(d.newEpochRootKey)), 0);
+                else if (d.newEpochRootKey.length >= 0)
+                    m.newEpochRootKey = d.newEpochRootKey;
+            }
+            if (d.newEpochAnonId != null) {
+                m.newEpochAnonId = d.newEpochAnonId | 0;
+            }
+            if (d.backwardEdge != null) {
+                if (!$util.isObject(d.backwardEdge))
+                    throw $TypeError(".proto.RotateEpochSuccess.backwardEdge: object expected");
+                m.backwardEdge = $root.proto.BackwardEdge.fromObject(d.backwardEdge, q + 1);
+            }
+            if (d.memberEdges) {
+                if (!$Array.isArray(d.memberEdges))
+                    throw $TypeError(".proto.RotateEpochSuccess.memberEdges: array expected");
+                m.memberEdges = $Array(d.memberEdges.length);
+                for (var i = 0; i < d.memberEdges.length; ++i) {
+                    if (!$util.isObject(d.memberEdges[i]))
+                        throw $TypeError(".proto.RotateEpochSuccess.memberEdges: object expected");
+                    m.memberEdges[i] = $root.proto.RotateEpochMemberEdge.fromObject(d.memberEdges[i], q + 1);
+                }
+            }
+            if (d.epochRootKeyFingerprint != null) {
+                if (typeof d.epochRootKeyFingerprint === "string")
+                    $util.base64.decode(d.epochRootKeyFingerprint, m.epochRootKeyFingerprint = $util.newBuffer($util.base64.length(d.epochRootKeyFingerprint)), 0);
+                else if (d.epochRootKeyFingerprint.length >= 0)
+                    m.epochRootKeyFingerprint = d.epochRootKeyFingerprint;
+            }
+            return m;
+        };
+
+        RotateEpochSuccess.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (o.arrays || o.defaults) {
+                d.memberEdges = [];
+            }
+            if (m.newEpochRootKey != null && $Object.hasOwnProperty.call(m, "newEpochRootKey")) {
+                d.newEpochRootKey = o.bytes === $String ? $util.base64.encode(m.newEpochRootKey, 0, m.newEpochRootKey.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.newEpochRootKey) : m.newEpochRootKey;
+            }
+            if (m.newEpochAnonId != null && $Object.hasOwnProperty.call(m, "newEpochAnonId")) {
+                d.newEpochAnonId = m.newEpochAnonId;
+            }
+            if (m.backwardEdge != null && $Object.hasOwnProperty.call(m, "backwardEdge")) {
+                d.backwardEdge = $root.proto.BackwardEdge.toObject(m.backwardEdge, o, q + 1);
+            }
+            if (m.memberEdges && m.memberEdges.length) {
+                d.memberEdges = $Array(m.memberEdges.length);
+                for (var j = 0; j < m.memberEdges.length; ++j) {
+                    d.memberEdges[j] = $root.proto.RotateEpochMemberEdge.toObject(m.memberEdges[j], o, q + 1);
+                }
+            }
+            if (m.epochRootKeyFingerprint != null && $Object.hasOwnProperty.call(m, "epochRootKeyFingerprint")) {
+                d.epochRootKeyFingerprint = o.bytes === $String ? $util.base64.encode(m.epochRootKeyFingerprint, 0, m.epochRootKeyFingerprint.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.epochRootKeyFingerprint) : m.epochRootKeyFingerprint;
+            }
+            return d;
+        };
+
+        RotateEpochSuccess.prototype.toJSON = function() {
+            return RotateEpochSuccess.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        RotateEpochSuccess.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.RotateEpochSuccess";
+        };
+
+        return RotateEpochSuccess;
+    })();
+
+    proto.SealThreadIdInput = (function() {
+
+        const SealThreadIdInput = function (p) {
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        SealThreadIdInput.prototype.epochRootKey = null;
+        SealThreadIdInput.prototype.epochAnonId = null;
+        SealThreadIdInput.prototype.backupId = null;
+        SealThreadIdInput.prototype.threadId = null;
+
+        let $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(SealThreadIdInput.prototype, "_epochRootKey", {
+            get: $util.oneOfGetter($oneOfFields = ["epochRootKey"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(SealThreadIdInput.prototype, "_epochAnonId", {
+            get: $util.oneOfGetter($oneOfFields = ["epochAnonId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(SealThreadIdInput.prototype, "_backupId", {
+            get: $util.oneOfGetter($oneOfFields = ["backupId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(SealThreadIdInput.prototype, "_threadId", {
+            get: $util.oneOfGetter($oneOfFields = ["threadId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        SealThreadIdInput.create = function(properties) {
+            return new SealThreadIdInput(properties);
+        };
+
+        SealThreadIdInput.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.epochRootKey != null && $Object.hasOwnProperty.call(m, "epochRootKey"))
+                w.uint32(10).bytes(m.epochRootKey);
+            if (m.epochAnonId != null && $Object.hasOwnProperty.call(m, "epochAnonId"))
+                w.uint32(16).int32(m.epochAnonId);
+            if (m.backupId != null && $Object.hasOwnProperty.call(m, "backupId"))
+                w.uint32(24).uint64(m.backupId);
+            if (m.threadId != null && $Object.hasOwnProperty.call(m, "threadId"))
+                w.uint32(34).string(m.threadId);
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        SealThreadIdInput.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.SealThreadIdInput();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 2)
+                            break;
+                        m.epochRootKey = r.bytes();
+                        m._epochRootKey = "epochRootKey";
+                        continue;
+                    }
+                case 2: {
+                        if (u !== 0)
+                            break;
+                        m.epochAnonId = r.int32();
+                        m._epochAnonId = "epochAnonId";
+                        continue;
+                    }
+                case 3: {
+                        if (u !== 0)
+                            break;
+                        m.backupId = r.uint64();
+                        m._backupId = "backupId";
+                        continue;
+                    }
+                case 4: {
+                        if (u !== 2)
+                            break;
+                        m.threadId = r.stringVerify();
+                        m._threadId = "threadId";
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        SealThreadIdInput.fromObject = function (d, q) {
+            if (d instanceof $root.proto.SealThreadIdInput)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.SealThreadIdInput: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.SealThreadIdInput();
+            if (d.epochRootKey != null) {
+                if (typeof d.epochRootKey === "string")
+                    $util.base64.decode(d.epochRootKey, m.epochRootKey = $util.newBuffer($util.base64.length(d.epochRootKey)), 0);
+                else if (d.epochRootKey.length >= 0)
+                    m.epochRootKey = d.epochRootKey;
+            }
+            if (d.epochAnonId != null) {
+                m.epochAnonId = d.epochAnonId | 0;
+            }
+            if (d.backupId != null) {
+                if ($util.Long)
+                    m.backupId = $util.Long.fromValue(d.backupId, true);
+                else if (typeof d.backupId === "string")
+                    m.backupId = $parseInt(d.backupId, 10);
+                else if (typeof d.backupId === "number")
+                    m.backupId = d.backupId;
+                else if (typeof d.backupId === "object")
+                    m.backupId = new $util.LongBits(d.backupId.low >>> 0, d.backupId.high >>> 0).toNumber(true);
+            }
+            if (d.threadId != null) {
+                m.threadId = $String(d.threadId);
+            }
+            return m;
+        };
+
+        SealThreadIdInput.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (m.epochRootKey != null && $Object.hasOwnProperty.call(m, "epochRootKey")) {
+                d.epochRootKey = o.bytes === $String ? $util.base64.encode(m.epochRootKey, 0, m.epochRootKey.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.epochRootKey) : m.epochRootKey;
+            }
+            if (m.epochAnonId != null && $Object.hasOwnProperty.call(m, "epochAnonId")) {
+                d.epochAnonId = m.epochAnonId;
+            }
+            if (m.backupId != null && $Object.hasOwnProperty.call(m, "backupId")) {
+                if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
+                    d.backupId = typeof m.backupId === "number" ? $BigInt(m.backupId) : $util.Long.fromBits(m.backupId.low >>> 0, m.backupId.high >>> 0, true).toBigInt();
+                else if (typeof m.backupId === "number")
+                    d.backupId = o.longs === $String ? $String(m.backupId) : m.backupId;
+                else
+                    d.backupId = o.longs === $String ? $util.Long.prototype.toString.call(m.backupId) : o.longs === $Number ? new $util.LongBits(m.backupId.low >>> 0, m.backupId.high >>> 0).toNumber(true) : m.backupId;
+            }
+            if (m.threadId != null && $Object.hasOwnProperty.call(m, "threadId")) {
+                d.threadId = m.threadId;
+            }
+            return d;
+        };
+
+        SealThreadIdInput.prototype.toJSON = function() {
+            return SealThreadIdInput.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        SealThreadIdInput.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.SealThreadIdInput";
+        };
+
+        return SealThreadIdInput;
+    })();
+
+    proto.SealThreadIdOutput = (function() {
+
+        const SealThreadIdOutput = function (p) {
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        SealThreadIdOutput.prototype.success = null;
+        SealThreadIdOutput.prototype.error = null;
+
+        let $oneOfFields;
+
+        $Object.defineProperty(SealThreadIdOutput.prototype, "result", {
+            get: $util.oneOfGetter($oneOfFields = ["success", "error"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        SealThreadIdOutput.create = function(properties) {
+            return new SealThreadIdOutput(properties);
+        };
+
+        SealThreadIdOutput.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.success != null && $Object.hasOwnProperty.call(m, "success"))
+                $root.proto.SealThreadIdSuccess.encode(m.success, w.uint32(10).fork(), q + 1).ldelim();
+            if (m.error != null && $Object.hasOwnProperty.call(m, "error"))
+                w.uint32(18).string(m.error);
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        SealThreadIdOutput.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.SealThreadIdOutput();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 2)
+                            break;
+                        m.success = $root.proto.SealThreadIdSuccess.decode(r, r.size(), $undefined, q + 1, m.success);
+                        m.result = "success";
+                        continue;
+                    }
+                case 2: {
+                        if (u !== 2)
+                            break;
+                        m.error = r.stringVerify();
+                        m.result = "error";
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        SealThreadIdOutput.fromObject = function (d, q) {
+            if (d instanceof $root.proto.SealThreadIdOutput)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.SealThreadIdOutput: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.SealThreadIdOutput();
+            if (d.success != null) {
+                if (!$util.isObject(d.success))
+                    throw $TypeError(".proto.SealThreadIdOutput.success: object expected");
+                m.success = $root.proto.SealThreadIdSuccess.fromObject(d.success, q + 1);
+            }
+            if (d.error != null) {
+                m.error = $String(d.error);
+            }
+            return m;
+        };
+
+        SealThreadIdOutput.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (m.success != null && $Object.hasOwnProperty.call(m, "success")) {
+                d.success = $root.proto.SealThreadIdSuccess.toObject(m.success, o, q + 1);
+                if (o.oneofs)
+                    d.result = "success";
+            }
+            if (m.error != null && $Object.hasOwnProperty.call(m, "error")) {
+                d.error = m.error;
+                if (o.oneofs)
+                    d.result = "error";
+            }
+            return d;
+        };
+
+        SealThreadIdOutput.prototype.toJSON = function() {
+            return SealThreadIdOutput.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        SealThreadIdOutput.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.SealThreadIdOutput";
+        };
+
+        return SealThreadIdOutput;
+    })();
+
+    proto.SealThreadIdSuccess = (function() {
+
+        const SealThreadIdSuccess = function (p) {
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        SealThreadIdSuccess.prototype.sealedThreadId = null;
+
+        let $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(SealThreadIdSuccess.prototype, "_sealedThreadId", {
+            get: $util.oneOfGetter($oneOfFields = ["sealedThreadId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        SealThreadIdSuccess.create = function(properties) {
+            return new SealThreadIdSuccess(properties);
+        };
+
+        SealThreadIdSuccess.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.sealedThreadId != null && $Object.hasOwnProperty.call(m, "sealedThreadId"))
+                w.uint32(10).bytes(m.sealedThreadId);
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        SealThreadIdSuccess.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.SealThreadIdSuccess();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 2)
+                            break;
+                        m.sealedThreadId = r.bytes();
+                        m._sealedThreadId = "sealedThreadId";
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        SealThreadIdSuccess.fromObject = function (d, q) {
+            if (d instanceof $root.proto.SealThreadIdSuccess)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.SealThreadIdSuccess: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.SealThreadIdSuccess();
+            if (d.sealedThreadId != null) {
+                if (typeof d.sealedThreadId === "string")
+                    $util.base64.decode(d.sealedThreadId, m.sealedThreadId = $util.newBuffer($util.base64.length(d.sealedThreadId)), 0);
+                else if (d.sealedThreadId.length >= 0)
+                    m.sealedThreadId = d.sealedThreadId;
+            }
+            return m;
+        };
+
+        SealThreadIdSuccess.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (m.sealedThreadId != null && $Object.hasOwnProperty.call(m, "sealedThreadId")) {
+                d.sealedThreadId = o.bytes === $String ? $util.base64.encode(m.sealedThreadId, 0, m.sealedThreadId.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.sealedThreadId) : m.sealedThreadId;
+            }
+            return d;
+        };
+
+        SealThreadIdSuccess.prototype.toJSON = function() {
+            return SealThreadIdSuccess.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        SealThreadIdSuccess.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.SealThreadIdSuccess";
+        };
+
+        return SealThreadIdSuccess;
+    })();
+
+    proto.VirtualDeviceOutput = (function() {
+
+        const VirtualDeviceOutput = function (p) {
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        VirtualDeviceOutput.prototype.vdId = null;
+        VirtualDeviceOutput.prototype.vdPublicKey = null;
+        VirtualDeviceOutput.prototype.vdEpochStoragePublicKey = null;
+        VirtualDeviceOutput.prototype.vdEpochStoragePublicKeySig = null;
+        VirtualDeviceOutput.prototype.ocmfRotationToken = null;
+        VirtualDeviceOutput.prototype.deviceEpochHmac = null;
+        VirtualDeviceOutput.prototype.encryptedSecretValues = null;
+
+        let $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(VirtualDeviceOutput.prototype, "_vdId", {
+            get: $util.oneOfGetter($oneOfFields = ["vdId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(VirtualDeviceOutput.prototype, "_vdPublicKey", {
+            get: $util.oneOfGetter($oneOfFields = ["vdPublicKey"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(VirtualDeviceOutput.prototype, "_vdEpochStoragePublicKey", {
+            get: $util.oneOfGetter($oneOfFields = ["vdEpochStoragePublicKey"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(VirtualDeviceOutput.prototype, "_vdEpochStoragePublicKeySig", {
+            get: $util.oneOfGetter($oneOfFields = ["vdEpochStoragePublicKeySig"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(VirtualDeviceOutput.prototype, "_ocmfRotationToken", {
+            get: $util.oneOfGetter($oneOfFields = ["ocmfRotationToken"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(VirtualDeviceOutput.prototype, "_deviceEpochHmac", {
+            get: $util.oneOfGetter($oneOfFields = ["deviceEpochHmac"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(VirtualDeviceOutput.prototype, "_encryptedSecretValues", {
+            get: $util.oneOfGetter($oneOfFields = ["encryptedSecretValues"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        VirtualDeviceOutput.create = function(properties) {
+            return new VirtualDeviceOutput(properties);
+        };
+
+        VirtualDeviceOutput.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.vdId != null && $Object.hasOwnProperty.call(m, "vdId"))
+                w.uint32(10).bytes(m.vdId);
+            if (m.vdPublicKey != null && $Object.hasOwnProperty.call(m, "vdPublicKey"))
+                w.uint32(18).bytes(m.vdPublicKey);
+            if (m.vdEpochStoragePublicKey != null && $Object.hasOwnProperty.call(m, "vdEpochStoragePublicKey"))
+                w.uint32(26).bytes(m.vdEpochStoragePublicKey);
+            if (m.vdEpochStoragePublicKeySig != null && $Object.hasOwnProperty.call(m, "vdEpochStoragePublicKeySig"))
+                w.uint32(34).bytes(m.vdEpochStoragePublicKeySig);
+            if (m.ocmfRotationToken != null && $Object.hasOwnProperty.call(m, "ocmfRotationToken"))
+                w.uint32(42).bytes(m.ocmfRotationToken);
+            if (m.deviceEpochHmac != null && $Object.hasOwnProperty.call(m, "deviceEpochHmac"))
+                w.uint32(50).bytes(m.deviceEpochHmac);
+            if (m.encryptedSecretValues != null && $Object.hasOwnProperty.call(m, "encryptedSecretValues"))
+                $root.proto.EncryptedSecretValuesOutput.encode(m.encryptedSecretValues, w.uint32(58).fork(), q + 1).ldelim();
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        VirtualDeviceOutput.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.VirtualDeviceOutput();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 2)
+                            break;
+                        m.vdId = r.bytes();
+                        m._vdId = "vdId";
+                        continue;
+                    }
+                case 2: {
+                        if (u !== 2)
+                            break;
+                        m.vdPublicKey = r.bytes();
+                        m._vdPublicKey = "vdPublicKey";
+                        continue;
+                    }
+                case 3: {
+                        if (u !== 2)
+                            break;
+                        m.vdEpochStoragePublicKey = r.bytes();
+                        m._vdEpochStoragePublicKey = "vdEpochStoragePublicKey";
+                        continue;
+                    }
+                case 4: {
+                        if (u !== 2)
+                            break;
+                        m.vdEpochStoragePublicKeySig = r.bytes();
+                        m._vdEpochStoragePublicKeySig = "vdEpochStoragePublicKeySig";
+                        continue;
+                    }
+                case 5: {
+                        if (u !== 2)
+                            break;
+                        m.ocmfRotationToken = r.bytes();
+                        m._ocmfRotationToken = "ocmfRotationToken";
+                        continue;
+                    }
+                case 6: {
+                        if (u !== 2)
+                            break;
+                        m.deviceEpochHmac = r.bytes();
+                        m._deviceEpochHmac = "deviceEpochHmac";
+                        continue;
+                    }
+                case 7: {
+                        if (u !== 2)
+                            break;
+                        m.encryptedSecretValues = $root.proto.EncryptedSecretValuesOutput.decode(r, r.size(), $undefined, q + 1, m.encryptedSecretValues);
+                        m._encryptedSecretValues = "encryptedSecretValues";
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        VirtualDeviceOutput.fromObject = function (d, q) {
+            if (d instanceof $root.proto.VirtualDeviceOutput)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.VirtualDeviceOutput: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.VirtualDeviceOutput();
+            if (d.vdId != null) {
+                if (typeof d.vdId === "string")
+                    $util.base64.decode(d.vdId, m.vdId = $util.newBuffer($util.base64.length(d.vdId)), 0);
+                else if (d.vdId.length >= 0)
+                    m.vdId = d.vdId;
+            }
+            if (d.vdPublicKey != null) {
+                if (typeof d.vdPublicKey === "string")
+                    $util.base64.decode(d.vdPublicKey, m.vdPublicKey = $util.newBuffer($util.base64.length(d.vdPublicKey)), 0);
+                else if (d.vdPublicKey.length >= 0)
+                    m.vdPublicKey = d.vdPublicKey;
+            }
+            if (d.vdEpochStoragePublicKey != null) {
+                if (typeof d.vdEpochStoragePublicKey === "string")
+                    $util.base64.decode(d.vdEpochStoragePublicKey, m.vdEpochStoragePublicKey = $util.newBuffer($util.base64.length(d.vdEpochStoragePublicKey)), 0);
+                else if (d.vdEpochStoragePublicKey.length >= 0)
+                    m.vdEpochStoragePublicKey = d.vdEpochStoragePublicKey;
+            }
+            if (d.vdEpochStoragePublicKeySig != null) {
+                if (typeof d.vdEpochStoragePublicKeySig === "string")
+                    $util.base64.decode(d.vdEpochStoragePublicKeySig, m.vdEpochStoragePublicKeySig = $util.newBuffer($util.base64.length(d.vdEpochStoragePublicKeySig)), 0);
+                else if (d.vdEpochStoragePublicKeySig.length >= 0)
+                    m.vdEpochStoragePublicKeySig = d.vdEpochStoragePublicKeySig;
+            }
+            if (d.ocmfRotationToken != null) {
+                if (typeof d.ocmfRotationToken === "string")
+                    $util.base64.decode(d.ocmfRotationToken, m.ocmfRotationToken = $util.newBuffer($util.base64.length(d.ocmfRotationToken)), 0);
+                else if (d.ocmfRotationToken.length >= 0)
+                    m.ocmfRotationToken = d.ocmfRotationToken;
+            }
+            if (d.deviceEpochHmac != null) {
+                if (typeof d.deviceEpochHmac === "string")
+                    $util.base64.decode(d.deviceEpochHmac, m.deviceEpochHmac = $util.newBuffer($util.base64.length(d.deviceEpochHmac)), 0);
+                else if (d.deviceEpochHmac.length >= 0)
+                    m.deviceEpochHmac = d.deviceEpochHmac;
+            }
+            if (d.encryptedSecretValues != null) {
+                if (!$util.isObject(d.encryptedSecretValues))
+                    throw $TypeError(".proto.VirtualDeviceOutput.encryptedSecretValues: object expected");
+                m.encryptedSecretValues = $root.proto.EncryptedSecretValuesOutput.fromObject(d.encryptedSecretValues, q + 1);
+            }
+            return m;
+        };
+
+        VirtualDeviceOutput.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (m.vdId != null && $Object.hasOwnProperty.call(m, "vdId")) {
+                d.vdId = o.bytes === $String ? $util.base64.encode(m.vdId, 0, m.vdId.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.vdId) : m.vdId;
+            }
+            if (m.vdPublicKey != null && $Object.hasOwnProperty.call(m, "vdPublicKey")) {
+                d.vdPublicKey = o.bytes === $String ? $util.base64.encode(m.vdPublicKey, 0, m.vdPublicKey.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.vdPublicKey) : m.vdPublicKey;
+            }
+            if (m.vdEpochStoragePublicKey != null && $Object.hasOwnProperty.call(m, "vdEpochStoragePublicKey")) {
+                d.vdEpochStoragePublicKey = o.bytes === $String ? $util.base64.encode(m.vdEpochStoragePublicKey, 0, m.vdEpochStoragePublicKey.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.vdEpochStoragePublicKey) : m.vdEpochStoragePublicKey;
+            }
+            if (m.vdEpochStoragePublicKeySig != null && $Object.hasOwnProperty.call(m, "vdEpochStoragePublicKeySig")) {
+                d.vdEpochStoragePublicKeySig = o.bytes === $String ? $util.base64.encode(m.vdEpochStoragePublicKeySig, 0, m.vdEpochStoragePublicKeySig.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.vdEpochStoragePublicKeySig) : m.vdEpochStoragePublicKeySig;
+            }
+            if (m.ocmfRotationToken != null && $Object.hasOwnProperty.call(m, "ocmfRotationToken")) {
+                d.ocmfRotationToken = o.bytes === $String ? $util.base64.encode(m.ocmfRotationToken, 0, m.ocmfRotationToken.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.ocmfRotationToken) : m.ocmfRotationToken;
+            }
+            if (m.deviceEpochHmac != null && $Object.hasOwnProperty.call(m, "deviceEpochHmac")) {
+                d.deviceEpochHmac = o.bytes === $String ? $util.base64.encode(m.deviceEpochHmac, 0, m.deviceEpochHmac.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.deviceEpochHmac) : m.deviceEpochHmac;
+            }
+            if (m.encryptedSecretValues != null && $Object.hasOwnProperty.call(m, "encryptedSecretValues")) {
+                d.encryptedSecretValues = $root.proto.EncryptedSecretValuesOutput.toObject(m.encryptedSecretValues, o, q + 1);
+            }
+            return d;
+        };
+
+        VirtualDeviceOutput.prototype.toJSON = function() {
+            return VirtualDeviceOutput.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        VirtualDeviceOutput.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.VirtualDeviceOutput";
+        };
+
+        return VirtualDeviceOutput;
+    })();
+
     return proto;
 })();
 
