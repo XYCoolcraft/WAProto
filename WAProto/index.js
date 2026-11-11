@@ -31710,6 +31710,7 @@ export const proto = $root.proto = (() => {
         ContextInfo.prototype.sourceExperienceId = null;
         ContextInfo.prototype.sourceExperienceIds = $util.emptyArray;
         ContextInfo.prototype.foaMutualsSignature = null;
+        ContextInfo.prototype.forwardReachScore = null;
 
         let $oneOfFields;
 
@@ -32097,6 +32098,12 @@ export const proto = $root.proto = (() => {
             set: $util.oneOfSetter($oneOfFields)
         });
 
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(ContextInfo.prototype, "_forwardReachScore", {
+            get: $util.oneOfGetter($oneOfFields = ["forwardReachScore"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
         ContextInfo.create = function(properties) {
             return new ContextInfo(properties);
         };
@@ -32254,6 +32261,8 @@ export const proto = $root.proto = (() => {
             }
             if (m.foaMutualsSignature != null && $Object.hasOwnProperty.call(m, "foaMutualsSignature"))
                 w.uint32(690).bytes(m.foaMutualsSignature);
+            if (m.forwardReachScore != null && $Object.hasOwnProperty.call(m, "forwardReachScore"))
+                w.uint32(701).fixed32(m.forwardReachScore);
             if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                 for (var i = 0; i < m.$unknowns.length; ++i)
                     w.raw(m.$unknowns[i]);
@@ -32787,6 +32796,13 @@ export const proto = $root.proto = (() => {
                         m._foaMutualsSignature = "foaMutualsSignature";
                         continue;
                     }
+                case 87: {
+                        if (u !== 5)
+                            break;
+                        m.forwardReachScore = r.fixed32();
+                        m._forwardReachScore = "forwardReachScore";
+                        continue;
+                    }
                 }
                 r.skipType(u, q, t);
                 if (!r.discardUnknown) {
@@ -33273,6 +33289,9 @@ export const proto = $root.proto = (() => {
                 else if (d.foaMutualsSignature.length >= 0)
                     m.foaMutualsSignature = d.foaMutualsSignature;
             }
+            if (d.forwardReachScore != null) {
+                m.forwardReachScore = d.forwardReachScore >>> 0;
+            }
             return m;
         };
 
@@ -33517,6 +33536,9 @@ export const proto = $root.proto = (() => {
             }
             if (m.foaMutualsSignature != null && $Object.hasOwnProperty.call(m, "foaMutualsSignature")) {
                 d.foaMutualsSignature = o.bytes === $String ? $util.base64.encode(m.foaMutualsSignature, 0, m.foaMutualsSignature.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.foaMutualsSignature) : m.foaMutualsSignature;
+            }
+            if (m.forwardReachScore != null && $Object.hasOwnProperty.call(m, "forwardReachScore")) {
+                d.forwardReachScore = m.forwardReachScore;
             }
             return d;
         };
@@ -71614,6 +71636,8 @@ export const proto = $root.proto = (() => {
         Message.prototype.botGroupParticipantMessage = null;
         Message.prototype.requestLocationUpdateMessage = null;
         Message.prototype.vpcRequestMessage = null;
+        Message.prototype.instantVideoMessage = null;
+        Message.prototype.paymentDetailsMessage = null;
 
         let $oneOfFields;
 
@@ -72325,6 +72349,18 @@ export const proto = $root.proto = (() => {
             set: $util.oneOfSetter($oneOfFields)
         });
 
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(Message.prototype, "_instantVideoMessage", {
+            get: $util.oneOfGetter($oneOfFields = ["instantVideoMessage"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(Message.prototype, "_paymentDetailsMessage", {
+            get: $util.oneOfGetter($oneOfFields = ["paymentDetailsMessage"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
         Message.create = function(properties) {
             return new Message(properties);
         };
@@ -72572,6 +72608,10 @@ export const proto = $root.proto = (() => {
                 $root.proto.Message.RequestLocationUpdateMessage.encode(m.requestLocationUpdateMessage, w.uint32(1106).fork(), q + 1).ldelim();
             if (m.vpcRequestMessage != null && $Object.hasOwnProperty.call(m, "vpcRequestMessage"))
                 $root.proto.Message.VpcRequestMessage.encode(m.vpcRequestMessage, w.uint32(1114).fork(), q + 1).ldelim();
+            if (m.instantVideoMessage != null && $Object.hasOwnProperty.call(m, "instantVideoMessage"))
+                $root.proto.Message.VideoMessage.encode(m.instantVideoMessage, w.uint32(1122).fork(), q + 1).ldelim();
+            if (m.paymentDetailsMessage != null && $Object.hasOwnProperty.call(m, "paymentDetailsMessage"))
+                $root.proto.Message.PaymentDetailsMessage.encode(m.paymentDetailsMessage, w.uint32(1130).fork(), q + 1).ldelim();
             if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                 for (var i = 0; i < m.$unknowns.length; ++i)
                     w.raw(m.$unknowns[i]);
@@ -73431,6 +73471,20 @@ export const proto = $root.proto = (() => {
                         m._vpcRequestMessage = "vpcRequestMessage";
                         continue;
                     }
+                case 140: {
+                        if (u !== 2)
+                            break;
+                        m.instantVideoMessage = $root.proto.Message.VideoMessage.decode(r, r.size(), $undefined, q + 1, m.instantVideoMessage);
+                        m._instantVideoMessage = "instantVideoMessage";
+                        continue;
+                    }
+                case 141: {
+                        if (u !== 2)
+                            break;
+                        m.paymentDetailsMessage = $root.proto.Message.PaymentDetailsMessage.decode(r, r.size(), $undefined, q + 1, m.paymentDetailsMessage);
+                        m._paymentDetailsMessage = "paymentDetailsMessage";
+                        continue;
+                    }
                 }
                 r.skipType(u, q, t);
                 if (!r.discardUnknown) {
@@ -74046,6 +74100,16 @@ export const proto = $root.proto = (() => {
                     throw $TypeError(".proto.Message.vpcRequestMessage: object expected");
                 m.vpcRequestMessage = $root.proto.Message.VpcRequestMessage.fromObject(d.vpcRequestMessage, q + 1);
             }
+            if (d.instantVideoMessage != null) {
+                if (!$util.isObject(d.instantVideoMessage))
+                    throw $TypeError(".proto.Message.instantVideoMessage: object expected");
+                m.instantVideoMessage = $root.proto.Message.VideoMessage.fromObject(d.instantVideoMessage, q + 1);
+            }
+            if (d.paymentDetailsMessage != null) {
+                if (!$util.isObject(d.paymentDetailsMessage))
+                    throw $TypeError(".proto.Message.paymentDetailsMessage: object expected");
+                m.paymentDetailsMessage = $root.proto.Message.PaymentDetailsMessage.fromObject(d.paymentDetailsMessage, q + 1);
+            }
             return m;
         };
 
@@ -74410,6 +74474,12 @@ export const proto = $root.proto = (() => {
             }
             if (m.vpcRequestMessage != null && $Object.hasOwnProperty.call(m, "vpcRequestMessage")) {
                 d.vpcRequestMessage = $root.proto.Message.VpcRequestMessage.toObject(m.vpcRequestMessage, o, q + 1);
+            }
+            if (m.instantVideoMessage != null && $Object.hasOwnProperty.call(m, "instantVideoMessage")) {
+                d.instantVideoMessage = $root.proto.Message.VideoMessage.toObject(m.instantVideoMessage, o, q + 1);
+            }
+            if (m.paymentDetailsMessage != null && $Object.hasOwnProperty.call(m, "paymentDetailsMessage")) {
+                d.paymentDetailsMessage = $root.proto.Message.PaymentDetailsMessage.toObject(m.paymentDetailsMessage, o, q + 1);
             }
             return d;
         };
@@ -119134,6 +119204,342 @@ export const proto = $root.proto = (() => {
             })();
 
             return VpcRequestMessage;
+        })();
+
+        Message.PaymentDetailsMessage = (function() {
+
+            const PaymentDetailsMessage = function (p) {
+                if (p)
+                    for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                        if (p[ks[i]] != null && ks[i] !== "__proto__")
+                            this[ks[i]] = p[ks[i]];
+            };
+
+            PaymentDetailsMessage.prototype.serviceType = null;
+            PaymentDetailsMessage.prototype.amount = null;
+            PaymentDetailsMessage.prototype.payeeName = null;
+            PaymentDetailsMessage.prototype.payerName = null;
+            PaymentDetailsMessage.prototype.transactionTimestampMs = null;
+            PaymentDetailsMessage.prototype.transactionId = null;
+            PaymentDetailsMessage.prototype.status = null;
+            PaymentDetailsMessage.prototype.contextInfo = null;
+
+            let $oneOfFields;
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(PaymentDetailsMessage.prototype, "_serviceType", {
+                get: $util.oneOfGetter($oneOfFields = ["serviceType"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(PaymentDetailsMessage.prototype, "_amount", {
+                get: $util.oneOfGetter($oneOfFields = ["amount"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(PaymentDetailsMessage.prototype, "_payeeName", {
+                get: $util.oneOfGetter($oneOfFields = ["payeeName"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(PaymentDetailsMessage.prototype, "_payerName", {
+                get: $util.oneOfGetter($oneOfFields = ["payerName"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(PaymentDetailsMessage.prototype, "_transactionTimestampMs", {
+                get: $util.oneOfGetter($oneOfFields = ["transactionTimestampMs"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(PaymentDetailsMessage.prototype, "_transactionId", {
+                get: $util.oneOfGetter($oneOfFields = ["transactionId"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(PaymentDetailsMessage.prototype, "_status", {
+                get: $util.oneOfGetter($oneOfFields = ["status"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(PaymentDetailsMessage.prototype, "_contextInfo", {
+                get: $util.oneOfGetter($oneOfFields = ["contextInfo"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            PaymentDetailsMessage.create = function(properties) {
+                return new PaymentDetailsMessage(properties);
+            };
+
+            PaymentDetailsMessage.encode = function (m, w, q) {
+                if (!w)
+                    w = $Writer.create();
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                if (m.serviceType != null && $Object.hasOwnProperty.call(m, "serviceType"))
+                    w.uint32(8).int32(m.serviceType);
+                if (m.amount != null && $Object.hasOwnProperty.call(m, "amount"))
+                    $root.proto.Money.encode(m.amount, w.uint32(18).fork(), q + 1).ldelim();
+                if (m.payeeName != null && $Object.hasOwnProperty.call(m, "payeeName"))
+                    w.uint32(26).string(m.payeeName);
+                if (m.payerName != null && $Object.hasOwnProperty.call(m, "payerName"))
+                    w.uint32(34).string(m.payerName);
+                if (m.transactionTimestampMs != null && $Object.hasOwnProperty.call(m, "transactionTimestampMs"))
+                    w.uint32(40).int64(m.transactionTimestampMs);
+                if (m.transactionId != null && $Object.hasOwnProperty.call(m, "transactionId"))
+                    w.uint32(50).string(m.transactionId);
+                if (m.status != null && $Object.hasOwnProperty.call(m, "status"))
+                    w.uint32(56).int32(m.status);
+                if (m.contextInfo != null && $Object.hasOwnProperty.call(m, "contextInfo"))
+                    $root.proto.ContextInfo.encode(m.contextInfo, w.uint32(138).fork(), q + 1).ldelim();
+                if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                    for (var i = 0; i < m.$unknowns.length; ++i)
+                        w.raw(m.$unknowns[i]);
+                return w;
+            };
+
+            PaymentDetailsMessage.decode = function (r, l, z, q, g) {
+                if (!(r instanceof $Reader))
+                    r = $Reader.create(r);
+                if (q === $undefined)
+                    q = 0;
+                if (q > $Reader.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.proto.Message.PaymentDetailsMessage();
+                while (r.pos < c) {
+                    var s = r.pos;
+                    var t = r.tag();
+                    if (t === z) {
+                        z = $undefined;
+                        break;
+                    }
+                    var u = t & 7;
+                    switch (t >>>= 3) {
+                    case 1: {
+                            if (u !== 0)
+                                break;
+                            m.serviceType = r.int32();
+                            m._serviceType = "serviceType";
+                            continue;
+                        }
+                    case 2: {
+                            if (u !== 2)
+                                break;
+                            m.amount = $root.proto.Money.decode(r, r.size(), $undefined, q + 1, m.amount);
+                            m._amount = "amount";
+                            continue;
+                        }
+                    case 3: {
+                            if (u !== 2)
+                                break;
+                            m.payeeName = r.stringVerify();
+                            m._payeeName = "payeeName";
+                            continue;
+                        }
+                    case 4: {
+                            if (u !== 2)
+                                break;
+                            m.payerName = r.stringVerify();
+                            m._payerName = "payerName";
+                            continue;
+                        }
+                    case 5: {
+                            if (u !== 0)
+                                break;
+                            m.transactionTimestampMs = r.int64();
+                            m._transactionTimestampMs = "transactionTimestampMs";
+                            continue;
+                        }
+                    case 6: {
+                            if (u !== 2)
+                                break;
+                            m.transactionId = r.stringVerify();
+                            m._transactionId = "transactionId";
+                            continue;
+                        }
+                    case 7: {
+                            if (u !== 0)
+                                break;
+                            m.status = r.int32();
+                            m._status = "status";
+                            continue;
+                        }
+                    case 17: {
+                            if (u !== 2)
+                                break;
+                            m.contextInfo = $root.proto.ContextInfo.decode(r, r.size(), $undefined, q + 1, m.contextInfo);
+                            m._contextInfo = "contextInfo";
+                            continue;
+                        }
+                    }
+                    r.skipType(u, q, t);
+                    if (!r.discardUnknown) {
+                        $util.makeProp(m, "$unknowns", false);
+                        (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                    }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
+                }
+                if (z !== $undefined)
+                    throw $Error("missing end group");
+                return m;
+            };
+
+            PaymentDetailsMessage.fromObject = function (d, q) {
+                if (d instanceof $root.proto.Message.PaymentDetailsMessage)
+                    return d;
+                if (!$util.isObject(d))
+                    throw $TypeError(".proto.Message.PaymentDetailsMessage: object expected");
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var m = new $root.proto.Message.PaymentDetailsMessage();
+                switch (d.serviceType) {
+                case "UNKNOWN":
+                case 0:
+                    m.serviceType = 0;
+                    break;
+                case "UPI":
+                case 1:
+                    m.serviceType = 1;
+                    break;
+                default:
+                    if (typeof d.serviceType === "number" && (d.serviceType | 0) === d.serviceType)
+                        m.serviceType = d.serviceType;
+                }
+                if (d.amount != null) {
+                    if (!$util.isObject(d.amount))
+                        throw $TypeError(".proto.Message.PaymentDetailsMessage.amount: object expected");
+                    m.amount = $root.proto.Money.fromObject(d.amount, q + 1);
+                }
+                if (d.payeeName != null) {
+                    m.payeeName = $String(d.payeeName);
+                }
+                if (d.payerName != null) {
+                    m.payerName = $String(d.payerName);
+                }
+                if (d.transactionTimestampMs != null) {
+                    if ($util.Long)
+                        m.transactionTimestampMs = $util.Long.fromValue(d.transactionTimestampMs, false);
+                    else if (typeof d.transactionTimestampMs === "string")
+                        m.transactionTimestampMs = $parseInt(d.transactionTimestampMs, 10);
+                    else if (typeof d.transactionTimestampMs === "number")
+                        m.transactionTimestampMs = d.transactionTimestampMs;
+                    else if (typeof d.transactionTimestampMs === "object")
+                        m.transactionTimestampMs = new $util.LongBits(d.transactionTimestampMs.low >>> 0, d.transactionTimestampMs.high >>> 0).toNumber();
+                }
+                if (d.transactionId != null) {
+                    m.transactionId = $String(d.transactionId);
+                }
+                switch (d.status) {
+                case "STATUS_UNKNOWN":
+                case 0:
+                    m.status = 0;
+                    break;
+                case "SUCCESS":
+                case 1:
+                    m.status = 1;
+                    break;
+                default:
+                    if (typeof d.status === "number" && (d.status | 0) === d.status)
+                        m.status = d.status;
+                }
+                if (d.contextInfo != null) {
+                    if (!$util.isObject(d.contextInfo))
+                        throw $TypeError(".proto.Message.PaymentDetailsMessage.contextInfo: object expected");
+                    m.contextInfo = $root.proto.ContextInfo.fromObject(d.contextInfo, q + 1);
+                }
+                return m;
+            };
+
+            PaymentDetailsMessage.toObject = function (m, o, q) {
+                if (!o)
+                    o = {};
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var d = {};
+                if (m.serviceType != null && $Object.hasOwnProperty.call(m, "serviceType")) {
+                    d.serviceType = o.enums === $String ? $root.proto.Message.PaymentDetailsMessage.ServiceType[m.serviceType] === $undefined ? m.serviceType : $root.proto.Message.PaymentDetailsMessage.ServiceType[m.serviceType] : m.serviceType;
+                }
+                if (m.amount != null && $Object.hasOwnProperty.call(m, "amount")) {
+                    d.amount = $root.proto.Money.toObject(m.amount, o, q + 1);
+                }
+                if (m.payeeName != null && $Object.hasOwnProperty.call(m, "payeeName")) {
+                    d.payeeName = m.payeeName;
+                }
+                if (m.payerName != null && $Object.hasOwnProperty.call(m, "payerName")) {
+                    d.payerName = m.payerName;
+                }
+                if (m.transactionTimestampMs != null && $Object.hasOwnProperty.call(m, "transactionTimestampMs")) {
+                    if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
+                        d.transactionTimestampMs = typeof m.transactionTimestampMs === "number" ? $BigInt(m.transactionTimestampMs) : $util.Long.fromBits(m.transactionTimestampMs.low >>> 0, m.transactionTimestampMs.high >>> 0, false).toBigInt();
+                    else if (typeof m.transactionTimestampMs === "number")
+                        d.transactionTimestampMs = o.longs === $String ? $String(m.transactionTimestampMs) : m.transactionTimestampMs;
+                    else
+                        d.transactionTimestampMs = o.longs === $String ? $util.Long.prototype.toString.call(m.transactionTimestampMs) : o.longs === $Number ? new $util.LongBits(m.transactionTimestampMs.low >>> 0, m.transactionTimestampMs.high >>> 0).toNumber() : m.transactionTimestampMs;
+                }
+                if (m.transactionId != null && $Object.hasOwnProperty.call(m, "transactionId")) {
+                    d.transactionId = m.transactionId;
+                }
+                if (m.status != null && $Object.hasOwnProperty.call(m, "status")) {
+                    d.status = o.enums === $String ? $root.proto.Message.PaymentDetailsMessage.Status[m.status] === $undefined ? m.status : $root.proto.Message.PaymentDetailsMessage.Status[m.status] : m.status;
+                }
+                if (m.contextInfo != null && $Object.hasOwnProperty.call(m, "contextInfo")) {
+                    d.contextInfo = $root.proto.ContextInfo.toObject(m.contextInfo, o, q + 1);
+                }
+                return d;
+            };
+
+            PaymentDetailsMessage.prototype.toJSON = function() {
+                return PaymentDetailsMessage.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            PaymentDetailsMessage.getTypeUrl = function(prefix) {
+                if (prefix === $undefined)
+                    prefix = "type.googleapis.com";
+                return prefix + "/proto.Message.PaymentDetailsMessage";
+            };
+
+            PaymentDetailsMessage.ServiceType = (function() {
+                const valuesById = $Object.create(null), values = $Object.create(valuesById);
+                values[valuesById[0] = "UNKNOWN"] = 0;
+                values[valuesById[1] = "UPI"] = 1;
+                return values;
+            })();
+
+            PaymentDetailsMessage.Status = (function() {
+                const valuesById = $Object.create(null), values = $Object.create(valuesById);
+                values[valuesById[0] = "STATUS_UNKNOWN"] = 0;
+                values[valuesById[1] = "SUCCESS"] = 1;
+                return values;
+            })();
+
+            return PaymentDetailsMessage;
         })();
 
         return Message;

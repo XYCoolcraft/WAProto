@@ -1,8 +1,8 @@
 {
- "protoVersion": "2.3000.1053925913",
+ "protoVersion": "2.3000.1053984976",
  "counts": {
-  "messages": 744,
-  "enums": 226
+  "messages": 745,
+  "enums": 228
  },
  "fields": "[nomor, tipe, label]",
  "messages": {
@@ -905,7 +905,8 @@
    "partnerDeepLinkToken": [83, "string", "optional"],
    "sourceExperienceId": [84, "uint32", "optional"],
    "sourceExperienceIds": [85, "uint32", "repeated"],
-   "foaMutualsSignature": [86, "bytes", "optional"]
+   "foaMutualsSignature": [86, "bytes", "optional"],
+   "forwardReachScore": [87, "fixed32", "optional"]
   },
   "ContextInfo.AdReplyInfo": {
    "advertiserName": [1, "string", "optional"],
@@ -2109,7 +2110,9 @@
    "requestLocationMessage": [136, "RequestLocationMessage", "optional"],
    "botGroupParticipantMessage": [137, "FutureProofMessage", "optional"],
    "requestLocationUpdateMessage": [138, "RequestLocationUpdateMessage", "optional"],
-   "vpcRequestMessage": [139, "VpcRequestMessage", "optional"]
+   "vpcRequestMessage": [139, "VpcRequestMessage", "optional"],
+   "instantVideoMessage": [140, "VideoMessage", "optional"],
+   "paymentDetailsMessage": [141, "PaymentDetailsMessage", "optional"]
   },
   "Message.AlbumMessage": {
    "expectedImageCount": [2, "uint32", "optional"],
@@ -2805,6 +2808,16 @@
    "messageVersion": [12, "int32", "optional"],
    "orderRequestMessageId": [13, "MessageKey", "optional"],
    "catalogType": [15, "string", "optional"],
+   "contextInfo": [17, "ContextInfo", "optional"]
+  },
+  "Message.PaymentDetailsMessage": {
+   "serviceType": [1, "ServiceType", "optional"],
+   "amount": [2, "Money", "optional"],
+   "payeeName": [3, "string", "optional"],
+   "payerName": [4, "string", "optional"],
+   "transactionTimestampMs": [5, "int64", "optional"],
+   "transactionId": [6, "string", "optional"],
+   "status": [7, "Status", "optional"],
    "contextInfo": [17, "ContextInfo", "optional"]
   },
   "Message.PaymentExtendedMetadata": {
@@ -6147,6 +6160,14 @@
   },
   "Message.OrderMessage.OrderSurface": {
    "CATALOG": 1
+  },
+  "Message.PaymentDetailsMessage.ServiceType": {
+   "UNKNOWN": 0,
+   "UPI": 1
+  },
+  "Message.PaymentDetailsMessage.Status": {
+   "STATUS_UNKNOWN": 0,
+   "SUCCESS": 1
   },
   "Message.PaymentInviteMessage.InviteType": {
    "DEFAULT": 0,

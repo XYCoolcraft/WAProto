@@ -2,6 +2,22 @@
 
 Terbaru di atas. Dibuat otomatis oleh update-proto.mjs.
 
+## 2.3000.1053925913 → 2.3000.1053984976
+
+By: https://t.me/XYCoolcrafts
+
+### Tipe baru (3)
+
+- Message.PaymentDetailsMessage
+- Message.PaymentDetailsMessage.ServiceType
+- Message.PaymentDetailsMessage.Status
+
+### Field baru (3)
+
+- ContextInfo.forwardReachScore = 87
+- Message.instantVideoMessage = 140
+- Message.paymentDetailsMessage = 141
+
 ## 2.3000.1053895232 → 2.3000.1053925913
 
 By: https://t.me/XYCoolcrafts
@@ -192,9 +208,3 @@ By: https://t.me/XYCoolcrafts
 - MsgOpaqueData.sharableEventInviteLocationName = 66
 - MsgOpaqueData.sharableEventInviteCoverImageHandle = 67
 - MsgOpaqueData.sharableEventInviteLastUpdatedTsUsec = 68
-
-## 2.3000.1052645975 → 2.3000.1052682108
-
-By: https://t.me/XYCoolcrafts
-
-Hanya nomor versi yang naik — tidak ada tipe/field/enum baru.

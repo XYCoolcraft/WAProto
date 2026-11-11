@@ -8219,6 +8219,11 @@
               "oneof": [
                 "foaMutualsSignature"
               ]
+            },
+            "_forwardReachScore": {
+              "oneof": [
+                "forwardReachScore"
+              ]
             }
           },
           "fields": {
@@ -8697,6 +8702,13 @@
             "foaMutualsSignature": {
               "type": "bytes",
               "id": 86,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "forwardReachScore": {
+              "type": "fixed32",
+              "id": 87,
               "options": {
                 "proto3_optional": true
               }
@@ -19168,6 +19180,16 @@
               "oneof": [
                 "vpcRequestMessage"
               ]
+            },
+            "_instantVideoMessage": {
+              "oneof": [
+                "instantVideoMessage"
+              ]
+            },
+            "_paymentDetailsMessage": {
+              "oneof": [
+                "paymentDetailsMessage"
+              ]
             }
           },
           "fields": {
@@ -19993,6 +20015,20 @@
             "vpcRequestMessage": {
               "type": "VpcRequestMessage",
               "id": 139,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "instantVideoMessage": {
+              "type": "VideoMessage",
+              "id": 140,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "paymentDetailsMessage": {
+              "type": "PaymentDetailsMessage",
+              "id": 141,
               "options": {
                 "proto3_optional": true
               }
@@ -32288,6 +32324,122 @@
                     "WA_META_AI": 3,
                     "META_AI_ONLY": 4,
                     "FOA_ONLY": 5
+                  }
+                }
+              }
+            },
+            "PaymentDetailsMessage": {
+              "oneofs": {
+                "_serviceType": {
+                  "oneof": [
+                    "serviceType"
+                  ]
+                },
+                "_amount": {
+                  "oneof": [
+                    "amount"
+                  ]
+                },
+                "_payeeName": {
+                  "oneof": [
+                    "payeeName"
+                  ]
+                },
+                "_payerName": {
+                  "oneof": [
+                    "payerName"
+                  ]
+                },
+                "_transactionTimestampMs": {
+                  "oneof": [
+                    "transactionTimestampMs"
+                  ]
+                },
+                "_transactionId": {
+                  "oneof": [
+                    "transactionId"
+                  ]
+                },
+                "_status": {
+                  "oneof": [
+                    "status"
+                  ]
+                },
+                "_contextInfo": {
+                  "oneof": [
+                    "contextInfo"
+                  ]
+                }
+              },
+              "fields": {
+                "serviceType": {
+                  "type": "ServiceType",
+                  "id": 1,
+                  "options": {
+                    "proto3_optional": true
+                  }
+                },
+                "amount": {
+                  "type": "Money",
+                  "id": 2,
+                  "options": {
+                    "proto3_optional": true
+                  }
+                },
+                "payeeName": {
+                  "type": "string",
+                  "id": 3,
+                  "options": {
+                    "proto3_optional": true
+                  }
+                },
+                "payerName": {
+                  "type": "string",
+                  "id": 4,
+                  "options": {
+                    "proto3_optional": true
+                  }
+                },
+                "transactionTimestampMs": {
+                  "type": "int64",
+                  "id": 5,
+                  "options": {
+                    "proto3_optional": true
+                  }
+                },
+                "transactionId": {
+                  "type": "string",
+                  "id": 6,
+                  "options": {
+                    "proto3_optional": true
+                  }
+                },
+                "status": {
+                  "type": "Status",
+                  "id": 7,
+                  "options": {
+                    "proto3_optional": true
+                  }
+                },
+                "contextInfo": {
+                  "type": "ContextInfo",
+                  "id": 17,
+                  "options": {
+                    "proto3_optional": true
+                  }
+                }
+              },
+              "nested": {
+                "ServiceType": {
+                  "values": {
+                    "UNKNOWN": 0,
+                    "UPI": 1
+                  }
+                },
+                "Status": {
+                  "values": {
+                    "STATUS_UNKNOWN": 0,
+                    "SUCCESS": 1
                   }
                 }
               }
