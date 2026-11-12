@@ -10617,6 +10617,14 @@ export const proto = $root.proto = (() => {
                     case 87:
                         m.capabilities[m.capabilities.length] = 87;
                         break;
+                    case "AI_RICH_RESPONSE_ITEM_LISTS_ENABLED":
+                    case 88:
+                        m.capabilities[m.capabilities.length] = 88;
+                        break;
+                    case "RICH_RESPONSE_SIDE_BY_SIDE_BUFFER_BOTH":
+                    case 89:
+                        m.capabilities[m.capabilities.length] = 89;
+                        break;
                     default:
                         if (typeof d.capabilities[i] === "number" && (d.capabilities[i] | 0) === d.capabilities[i])
                             m.capabilities[m.capabilities.length] = d.capabilities[i];
@@ -10746,6 +10754,8 @@ export const proto = $root.proto = (() => {
             values[valuesById[85] = "AI_MUSE_JARVIS_EXTENDED_CARDS_ENABLED"] = 85;
             values[valuesById[86] = "AI_INTERJECTIONS_ENABLED"] = 86;
             values[valuesById[87] = "AI_RICH_RESPONSE_READ_ALOUD_ENABLED"] = 87;
+            values[valuesById[88] = "AI_RICH_RESPONSE_ITEM_LISTS_ENABLED"] = 88;
+            values[valuesById[89] = "RICH_RESPONSE_SIDE_BY_SIDE_BUFFER_BOTH"] = 89;
             return values;
         })();
 
@@ -15519,6 +15529,10 @@ export const proto = $root.proto = (() => {
             case 59:
                 m.botEntryPointOrigin = 59;
                 break;
+            case "BIRTHDAY_BANNER":
+            case 60:
+                m.botEntryPointOrigin = 60;
+                break;
             default:
                 if (typeof d.botEntryPointOrigin === "number" && (d.botEntryPointOrigin | 0) === d.botEntryPointOrigin)
                     m.botEntryPointOrigin = d.botEntryPointOrigin;
@@ -16790,6 +16804,7 @@ export const proto = $root.proto = (() => {
         values[valuesById[57] = "CONTACTS_TAB"] = 57;
         values[valuesById[58] = "NEW_3P_AGENT_CREATION"] = 58;
         values[valuesById[59] = "SHARE"] = 59;
+        values[valuesById[60] = "BIRTHDAY_BANNER"] = 60;
         return values;
     })();
 
@@ -17131,6 +17146,10 @@ export const proto = $root.proto = (() => {
             case "SHARE":
             case 59:
                 m.destinationEntryPoint = 59;
+                break;
+            case "BIRTHDAY_BANNER":
+            case 60:
+                m.destinationEntryPoint = 60;
                 break;
             default:
                 if (typeof d.destinationEntryPoint === "number" && (d.destinationEntryPoint | 0) === d.destinationEntryPoint)
@@ -37777,6 +37796,9 @@ export const proto = $root.proto = (() => {
         Conversation.prototype.acp2Setting = null;
         Conversation.prototype.acp2HistoryWithheld = null;
         Conversation.prototype.groupRootKeys = $util.emptyArray;
+        Conversation.prototype.isWorkGroup = null;
+        Conversation.prototype.nonE2EeType = null;
+        Conversation.prototype.contactAccountEncryptionAttestationType = null;
 
         let $oneOfFields;
 
@@ -38158,6 +38180,24 @@ export const proto = $root.proto = (() => {
             set: $util.oneOfSetter($oneOfFields)
         });
 
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(Conversation.prototype, "_isWorkGroup", {
+            get: $util.oneOfGetter($oneOfFields = ["isWorkGroup"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(Conversation.prototype, "_nonE2EeType", {
+            get: $util.oneOfGetter($oneOfFields = ["nonE2EeType"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(Conversation.prototype, "_contactAccountEncryptionAttestationType", {
+            get: $util.oneOfGetter($oneOfFields = ["contactAccountEncryptionAttestationType"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
         Conversation.create = function(properties) {
             return new Conversation(properties);
         };
@@ -38307,6 +38347,12 @@ export const proto = $root.proto = (() => {
                 for (var i = 0; i < m.groupRootKeys.length; ++i)
                     $root.proto.GroupRootKey.encode(m.groupRootKeys[i], w.uint32(530).fork(), q + 1).ldelim();
             }
+            if (m.isWorkGroup != null && $Object.hasOwnProperty.call(m, "isWorkGroup"))
+                w.uint32(536).bool(m.isWorkGroup);
+            if (m.nonE2EeType != null && $Object.hasOwnProperty.call(m, "nonE2EeType"))
+                w.uint32(544).int32(m.nonE2EeType);
+            if (m.contactAccountEncryptionAttestationType != null && $Object.hasOwnProperty.call(m, "contactAccountEncryptionAttestationType"))
+                w.uint32(552).int32(m.contactAccountEncryptionAttestationType);
             if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                 for (var i = 0; i < m.$unknowns.length; ++i)
                     w.raw(m.$unknowns[i]);
@@ -38805,6 +38851,27 @@ export const proto = $root.proto = (() => {
                         m.groupRootKeys.push($root.proto.GroupRootKey.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
+                case 67: {
+                        if (u !== 0)
+                            break;
+                        m.isWorkGroup = r.bool();
+                        m._isWorkGroup = "isWorkGroup";
+                        continue;
+                    }
+                case 68: {
+                        if (u !== 0)
+                            break;
+                        m.nonE2EeType = r.int32();
+                        m._nonE2EeType = "nonE2EeType";
+                        continue;
+                    }
+                case 69: {
+                        if (u !== 0)
+                            break;
+                        m.contactAccountEncryptionAttestationType = r.int32();
+                        m._contactAccountEncryptionAttestationType = "contactAccountEncryptionAttestationType";
+                        continue;
+                    }
                 }
                 r.skipType(u, q, t);
                 if (!r.discardUnknown) {
@@ -39210,6 +39277,29 @@ export const proto = $root.proto = (() => {
                     m.groupRootKeys[i] = $root.proto.GroupRootKey.fromObject(d.groupRootKeys[i], q + 1);
                 }
             }
+            if (d.isWorkGroup != null) {
+                m.isWorkGroup = $Boolean(d.isWorkGroup);
+            }
+            if (d.nonE2EeType != null) {
+                m.nonE2EeType = d.nonE2EeType | 0;
+            }
+            switch (d.contactAccountEncryptionAttestationType) {
+            case "E2EE":
+            case 0:
+                m.contactAccountEncryptionAttestationType = 0;
+                break;
+            case "HYBRID_E2EE":
+            case 1:
+                m.contactAccountEncryptionAttestationType = 1;
+                break;
+            case "NON_E2EE":
+            case 2:
+                m.contactAccountEncryptionAttestationType = 2;
+                break;
+            default:
+                if (typeof d.contactAccountEncryptionAttestationType === "number" && (d.contactAccountEncryptionAttestationType | 0) === d.contactAccountEncryptionAttestationType)
+                    m.contactAccountEncryptionAttestationType = d.contactAccountEncryptionAttestationType;
+            }
             return m;
         };
 
@@ -39477,6 +39567,15 @@ export const proto = $root.proto = (() => {
                 for (var j = 0; j < m.groupRootKeys.length; ++j) {
                     d.groupRootKeys[j] = $root.proto.GroupRootKey.toObject(m.groupRootKeys[j], o, q + 1);
                 }
+            }
+            if (m.isWorkGroup != null && $Object.hasOwnProperty.call(m, "isWorkGroup")) {
+                d.isWorkGroup = m.isWorkGroup;
+            }
+            if (m.nonE2EeType != null && $Object.hasOwnProperty.call(m, "nonE2EeType")) {
+                d.nonE2EeType = m.nonE2EeType;
+            }
+            if (m.contactAccountEncryptionAttestationType != null && $Object.hasOwnProperty.call(m, "contactAccountEncryptionAttestationType")) {
+                d.contactAccountEncryptionAttestationType = o.enums === $String ? $root.proto.NonE2EEAttestation.AccountType[m.contactAccountEncryptionAttestationType] === $undefined ? m.contactAccountEncryptionAttestationType : $root.proto.NonE2EEAttestation.AccountType[m.contactAccountEncryptionAttestationType] : m.contactAccountEncryptionAttestationType;
             }
             return d;
         };
@@ -46723,6 +46822,7 @@ export const proto = $root.proto = (() => {
         DeviceProps.prototype.platformType = null;
         DeviceProps.prototype.requireFullSync = null;
         DeviceProps.prototype.historySyncConfig = null;
+        DeviceProps.prototype.deviceName = null;
 
         let $oneOfFields;
 
@@ -46756,6 +46856,12 @@ export const proto = $root.proto = (() => {
             set: $util.oneOfSetter($oneOfFields)
         });
 
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(DeviceProps.prototype, "_deviceName", {
+            get: $util.oneOfGetter($oneOfFields = ["deviceName"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
         DeviceProps.create = function(properties) {
             return new DeviceProps(properties);
         };
@@ -46777,6 +46883,8 @@ export const proto = $root.proto = (() => {
                 w.uint32(32).bool(m.requireFullSync);
             if (m.historySyncConfig != null && $Object.hasOwnProperty.call(m, "historySyncConfig"))
                 $root.proto.DeviceProps.HistorySyncConfig.encode(m.historySyncConfig, w.uint32(42).fork(), q + 1).ldelim();
+            if (m.deviceName != null && $Object.hasOwnProperty.call(m, "deviceName"))
+                w.uint32(50).string(m.deviceName);
             if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                 for (var i = 0; i < m.$unknowns.length; ++i)
                     w.raw(m.$unknowns[i]);
@@ -46843,6 +46951,13 @@ export const proto = $root.proto = (() => {
                             break;
                         m.historySyncConfig = $root.proto.DeviceProps.HistorySyncConfig.decode(r, r.size(), $undefined, q + 1, m.historySyncConfig);
                         m._historySyncConfig = "historySyncConfig";
+                        continue;
+                    }
+                case 6: {
+                        if (u !== 2)
+                            break;
+                        m.deviceName = r.stringVerify();
+                        m._deviceName = "deviceName";
                         continue;
                     }
                 }
@@ -47017,6 +47132,9 @@ export const proto = $root.proto = (() => {
                     throw $TypeError(".proto.DeviceProps.historySyncConfig: object expected");
                 m.historySyncConfig = $root.proto.DeviceProps.HistorySyncConfig.fromObject(d.historySyncConfig, q + 1);
             }
+            if (d.deviceName != null) {
+                m.deviceName = $String(d.deviceName);
+            }
             return m;
         };
 
@@ -47042,6 +47160,9 @@ export const proto = $root.proto = (() => {
             }
             if (m.historySyncConfig != null && $Object.hasOwnProperty.call(m, "historySyncConfig")) {
                 d.historySyncConfig = $root.proto.DeviceProps.HistorySyncConfig.toObject(m.historySyncConfig, o, q + 1);
+            }
+            if (m.deviceName != null && $Object.hasOwnProperty.call(m, "deviceName")) {
+                d.deviceName = m.deviceName;
             }
             return d;
         };
@@ -92340,6 +92461,7 @@ export const proto = $root.proto = (() => {
             LinkPreviewMetadata.prototype.videoContentUrl = null;
             LinkPreviewMetadata.prototype.musicMetadata = null;
             LinkPreviewMetadata.prototype.videoContentCaption = null;
+            LinkPreviewMetadata.prototype.videoId = null;
 
             let $oneOfFields;
 
@@ -92397,6 +92519,12 @@ export const proto = $root.proto = (() => {
                 set: $util.oneOfSetter($oneOfFields)
             });
 
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(LinkPreviewMetadata.prototype, "_videoId", {
+                get: $util.oneOfGetter($oneOfFields = ["videoId"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
             LinkPreviewMetadata.create = function(properties) {
                 return new LinkPreviewMetadata(properties);
             };
@@ -92426,6 +92554,8 @@ export const proto = $root.proto = (() => {
                     $root.proto.EmbeddedMusic.encode(m.musicMetadata, w.uint32(66).fork(), q + 1).ldelim();
                 if (m.videoContentCaption != null && $Object.hasOwnProperty.call(m, "videoContentCaption"))
                     w.uint32(74).string(m.videoContentCaption);
+                if (m.videoId != null && $Object.hasOwnProperty.call(m, "videoId"))
+                    w.uint32(82).string(m.videoId);
                 if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                     for (var i = 0; i < m.$unknowns.length; ++i)
                         w.raw(m.$unknowns[i]);
@@ -92522,6 +92652,13 @@ export const proto = $root.proto = (() => {
                             m._videoContentCaption = "videoContentCaption";
                             continue;
                         }
+                    case 10: {
+                            if (u !== 2)
+                                break;
+                            m.videoId = r.stringVerify();
+                            m._videoId = "videoId";
+                            continue;
+                        }
                     }
                     r.skipType(u, q, t);
                     if (!r.discardUnknown) {
@@ -92608,6 +92745,9 @@ export const proto = $root.proto = (() => {
                 if (d.videoContentCaption != null) {
                     m.videoContentCaption = $String(d.videoContentCaption);
                 }
+                if (d.videoId != null) {
+                    m.videoId = $String(d.videoId);
+                }
                 return m;
             };
 
@@ -92645,6 +92785,9 @@ export const proto = $root.proto = (() => {
                 }
                 if (m.videoContentCaption != null && $Object.hasOwnProperty.call(m, "videoContentCaption")) {
                     d.videoContentCaption = m.videoContentCaption;
+                }
+                if (m.videoId != null && $Object.hasOwnProperty.call(m, "videoId")) {
+                    d.videoId = m.videoId;
                 }
                 return d;
             };
@@ -134825,6 +134968,7 @@ export const proto = $root.proto = (() => {
         const PollAdditionalMetadata = function (p) {
             this.pollNameHashHistory = [];
             this.originalOptions = [];
+            this.pollOptionReplayEntries = [];
             if (p)
                 for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
                     if (p[ks[i]] != null && ks[i] !== "__proto__")
@@ -134834,12 +134978,20 @@ export const proto = $root.proto = (() => {
         PollAdditionalMetadata.prototype.pollInvalidated = null;
         PollAdditionalMetadata.prototype.pollNameHashHistory = $util.emptyArray;
         PollAdditionalMetadata.prototype.originalOptions = $util.emptyArray;
+        PollAdditionalMetadata.prototype.pollOptionReplayEntries = $util.emptyArray;
+        PollAdditionalMetadata.prototype.pollOptionReplayBase = null;
 
         let $oneOfFields;
 
         // Virtual OneOf for proto3 optional field
         $Object.defineProperty(PollAdditionalMetadata.prototype, "_pollInvalidated", {
             get: $util.oneOfGetter($oneOfFields = ["pollInvalidated"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(PollAdditionalMetadata.prototype, "_pollOptionReplayBase", {
+            get: $util.oneOfGetter($oneOfFields = ["pollOptionReplayBase"]),
             set: $util.oneOfSetter($oneOfFields)
         });
 
@@ -134864,6 +135016,12 @@ export const proto = $root.proto = (() => {
                 for (var i = 0; i < m.originalOptions.length; ++i)
                     $root.proto.Message.PollCreationMessage.Option.encode(m.originalOptions[i], w.uint32(26).fork(), q + 1).ldelim();
             }
+            if (m.pollOptionReplayEntries != null && m.pollOptionReplayEntries.length) {
+                for (var i = 0; i < m.pollOptionReplayEntries.length; ++i)
+                    $root.proto.PollAdditionalMetadata.PollOptionReplayEntry.encode(m.pollOptionReplayEntries[i], w.uint32(34).fork(), q + 1).ldelim();
+            }
+            if (m.pollOptionReplayBase != null && $Object.hasOwnProperty.call(m, "pollOptionReplayBase"))
+                $root.proto.PollAdditionalMetadata.PollOptionReplayBase.encode(m.pollOptionReplayBase, w.uint32(42).fork(), q + 1).ldelim();
             if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                 for (var i = 0; i < m.$unknowns.length; ++i)
                     w.raw(m.$unknowns[i]);
@@ -134920,6 +135078,21 @@ export const proto = $root.proto = (() => {
                         m.originalOptions.push($root.proto.Message.PollCreationMessage.Option.decode(r, r.size(), $undefined, q + 1));
                         continue;
                     }
+                case 4: {
+                        if (u !== 2)
+                            break;
+                        if (!(m.pollOptionReplayEntries && m.pollOptionReplayEntries.length))
+                            m.pollOptionReplayEntries = [];
+                        m.pollOptionReplayEntries.push($root.proto.PollAdditionalMetadata.PollOptionReplayEntry.decode(r, r.size(), $undefined, q + 1));
+                        continue;
+                    }
+                case 5: {
+                        if (u !== 2)
+                            break;
+                        m.pollOptionReplayBase = $root.proto.PollAdditionalMetadata.PollOptionReplayBase.decode(r, r.size(), $undefined, q + 1, m.pollOptionReplayBase);
+                        m._pollOptionReplayBase = "pollOptionReplayBase";
+                        continue;
+                    }
                 }
                 r.skipType(u, q, t);
                 if (!r.discardUnknown) {
@@ -134970,6 +135143,21 @@ export const proto = $root.proto = (() => {
                     m.originalOptions[i] = $root.proto.Message.PollCreationMessage.Option.fromObject(d.originalOptions[i], q + 1);
                 }
             }
+            if (d.pollOptionReplayEntries) {
+                if (!$Array.isArray(d.pollOptionReplayEntries))
+                    throw $TypeError(".proto.PollAdditionalMetadata.pollOptionReplayEntries: array expected");
+                m.pollOptionReplayEntries = $Array(d.pollOptionReplayEntries.length);
+                for (var i = 0; i < d.pollOptionReplayEntries.length; ++i) {
+                    if (!$util.isObject(d.pollOptionReplayEntries[i]))
+                        throw $TypeError(".proto.PollAdditionalMetadata.pollOptionReplayEntries: object expected");
+                    m.pollOptionReplayEntries[i] = $root.proto.PollAdditionalMetadata.PollOptionReplayEntry.fromObject(d.pollOptionReplayEntries[i], q + 1);
+                }
+            }
+            if (d.pollOptionReplayBase != null) {
+                if (!$util.isObject(d.pollOptionReplayBase))
+                    throw $TypeError(".proto.PollAdditionalMetadata.pollOptionReplayBase: object expected");
+                m.pollOptionReplayBase = $root.proto.PollAdditionalMetadata.PollOptionReplayBase.fromObject(d.pollOptionReplayBase, q + 1);
+            }
             return m;
         };
 
@@ -134984,6 +135172,7 @@ export const proto = $root.proto = (() => {
             if (o.arrays || o.defaults) {
                 d.pollNameHashHistory = [];
                 d.originalOptions = [];
+                d.pollOptionReplayEntries = [];
             }
             if (m.pollInvalidated != null && $Object.hasOwnProperty.call(m, "pollInvalidated")) {
                 d.pollInvalidated = m.pollInvalidated;
@@ -134999,6 +135188,15 @@ export const proto = $root.proto = (() => {
                 for (var j = 0; j < m.originalOptions.length; ++j) {
                     d.originalOptions[j] = $root.proto.Message.PollCreationMessage.Option.toObject(m.originalOptions[j], o, q + 1);
                 }
+            }
+            if (m.pollOptionReplayEntries && m.pollOptionReplayEntries.length) {
+                d.pollOptionReplayEntries = $Array(m.pollOptionReplayEntries.length);
+                for (var j = 0; j < m.pollOptionReplayEntries.length; ++j) {
+                    d.pollOptionReplayEntries[j] = $root.proto.PollAdditionalMetadata.PollOptionReplayEntry.toObject(m.pollOptionReplayEntries[j], o, q + 1);
+                }
+            }
+            if (m.pollOptionReplayBase != null && $Object.hasOwnProperty.call(m, "pollOptionReplayBase")) {
+                d.pollOptionReplayBase = $root.proto.PollAdditionalMetadata.PollOptionReplayBase.toObject(m.pollOptionReplayBase, o, q + 1);
             }
             return d;
         };
@@ -135168,6 +135366,719 @@ export const proto = $root.proto = (() => {
             };
 
             return PollNameHashHistoryEntry;
+        })();
+
+        PollAdditionalMetadata.PollOptionReplayBase = (function() {
+
+            const PollOptionReplayBase = function (p) {
+                this.options = [];
+                if (p)
+                    for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                        if (p[ks[i]] != null && ks[i] !== "__proto__")
+                            this[ks[i]] = p[ks[i]];
+            };
+
+            PollOptionReplayBase.prototype.boundaryTimestampMs = null;
+            PollOptionReplayBase.prototype.editTimestampMs = null;
+            PollOptionReplayBase.prototype.options = $util.emptyArray;
+
+            let $oneOfFields;
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(PollOptionReplayBase.prototype, "_boundaryTimestampMs", {
+                get: $util.oneOfGetter($oneOfFields = ["boundaryTimestampMs"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(PollOptionReplayBase.prototype, "_editTimestampMs", {
+                get: $util.oneOfGetter($oneOfFields = ["editTimestampMs"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            PollOptionReplayBase.create = function(properties) {
+                return new PollOptionReplayBase(properties);
+            };
+
+            PollOptionReplayBase.encode = function (m, w, q) {
+                if (!w)
+                    w = $Writer.create();
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                if (m.boundaryTimestampMs != null && $Object.hasOwnProperty.call(m, "boundaryTimestampMs"))
+                    w.uint32(8).int64(m.boundaryTimestampMs);
+                if (m.editTimestampMs != null && $Object.hasOwnProperty.call(m, "editTimestampMs"))
+                    w.uint32(16).int64(m.editTimestampMs);
+                if (m.options != null && m.options.length) {
+                    for (var i = 0; i < m.options.length; ++i)
+                        $root.proto.PollAdditionalMetadata.PollOptionReplayBase.Option.encode(m.options[i], w.uint32(26).fork(), q + 1).ldelim();
+                }
+                if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                    for (var i = 0; i < m.$unknowns.length; ++i)
+                        w.raw(m.$unknowns[i]);
+                return w;
+            };
+
+            PollOptionReplayBase.decode = function (r, l, z, q, g) {
+                if (!(r instanceof $Reader))
+                    r = $Reader.create(r);
+                if (q === $undefined)
+                    q = 0;
+                if (q > $Reader.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.proto.PollAdditionalMetadata.PollOptionReplayBase();
+                while (r.pos < c) {
+                    var s = r.pos;
+                    var t = r.tag();
+                    if (t === z) {
+                        z = $undefined;
+                        break;
+                    }
+                    var u = t & 7;
+                    switch (t >>>= 3) {
+                    case 1: {
+                            if (u !== 0)
+                                break;
+                            m.boundaryTimestampMs = r.int64();
+                            m._boundaryTimestampMs = "boundaryTimestampMs";
+                            continue;
+                        }
+                    case 2: {
+                            if (u !== 0)
+                                break;
+                            m.editTimestampMs = r.int64();
+                            m._editTimestampMs = "editTimestampMs";
+                            continue;
+                        }
+                    case 3: {
+                            if (u !== 2)
+                                break;
+                            if (!(m.options && m.options.length))
+                                m.options = [];
+                            m.options.push($root.proto.PollAdditionalMetadata.PollOptionReplayBase.Option.decode(r, r.size(), $undefined, q + 1));
+                            continue;
+                        }
+                    }
+                    r.skipType(u, q, t);
+                    if (!r.discardUnknown) {
+                        $util.makeProp(m, "$unknowns", false);
+                        (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                    }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
+                }
+                if (z !== $undefined)
+                    throw $Error("missing end group");
+                return m;
+            };
+
+            PollOptionReplayBase.fromObject = function (d, q) {
+                if (d instanceof $root.proto.PollAdditionalMetadata.PollOptionReplayBase)
+                    return d;
+                if (!$util.isObject(d))
+                    throw $TypeError(".proto.PollAdditionalMetadata.PollOptionReplayBase: object expected");
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var m = new $root.proto.PollAdditionalMetadata.PollOptionReplayBase();
+                if (d.boundaryTimestampMs != null) {
+                    if ($util.Long)
+                        m.boundaryTimestampMs = $util.Long.fromValue(d.boundaryTimestampMs, false);
+                    else if (typeof d.boundaryTimestampMs === "string")
+                        m.boundaryTimestampMs = $parseInt(d.boundaryTimestampMs, 10);
+                    else if (typeof d.boundaryTimestampMs === "number")
+                        m.boundaryTimestampMs = d.boundaryTimestampMs;
+                    else if (typeof d.boundaryTimestampMs === "object")
+                        m.boundaryTimestampMs = new $util.LongBits(d.boundaryTimestampMs.low >>> 0, d.boundaryTimestampMs.high >>> 0).toNumber();
+                }
+                if (d.editTimestampMs != null) {
+                    if ($util.Long)
+                        m.editTimestampMs = $util.Long.fromValue(d.editTimestampMs, false);
+                    else if (typeof d.editTimestampMs === "string")
+                        m.editTimestampMs = $parseInt(d.editTimestampMs, 10);
+                    else if (typeof d.editTimestampMs === "number")
+                        m.editTimestampMs = d.editTimestampMs;
+                    else if (typeof d.editTimestampMs === "object")
+                        m.editTimestampMs = new $util.LongBits(d.editTimestampMs.low >>> 0, d.editTimestampMs.high >>> 0).toNumber();
+                }
+                if (d.options) {
+                    if (!$Array.isArray(d.options))
+                        throw $TypeError(".proto.PollAdditionalMetadata.PollOptionReplayBase.options: array expected");
+                    m.options = $Array(d.options.length);
+                    for (var i = 0; i < d.options.length; ++i) {
+                        if (!$util.isObject(d.options[i]))
+                            throw $TypeError(".proto.PollAdditionalMetadata.PollOptionReplayBase.options: object expected");
+                        m.options[i] = $root.proto.PollAdditionalMetadata.PollOptionReplayBase.Option.fromObject(d.options[i], q + 1);
+                    }
+                }
+                return m;
+            };
+
+            PollOptionReplayBase.toObject = function (m, o, q) {
+                if (!o)
+                    o = {};
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var d = {};
+                if (o.arrays || o.defaults) {
+                    d.options = [];
+                }
+                if (m.boundaryTimestampMs != null && $Object.hasOwnProperty.call(m, "boundaryTimestampMs")) {
+                    if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
+                        d.boundaryTimestampMs = typeof m.boundaryTimestampMs === "number" ? $BigInt(m.boundaryTimestampMs) : $util.Long.fromBits(m.boundaryTimestampMs.low >>> 0, m.boundaryTimestampMs.high >>> 0, false).toBigInt();
+                    else if (typeof m.boundaryTimestampMs === "number")
+                        d.boundaryTimestampMs = o.longs === $String ? $String(m.boundaryTimestampMs) : m.boundaryTimestampMs;
+                    else
+                        d.boundaryTimestampMs = o.longs === $String ? $util.Long.prototype.toString.call(m.boundaryTimestampMs) : o.longs === $Number ? new $util.LongBits(m.boundaryTimestampMs.low >>> 0, m.boundaryTimestampMs.high >>> 0).toNumber() : m.boundaryTimestampMs;
+                }
+                if (m.editTimestampMs != null && $Object.hasOwnProperty.call(m, "editTimestampMs")) {
+                    if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
+                        d.editTimestampMs = typeof m.editTimestampMs === "number" ? $BigInt(m.editTimestampMs) : $util.Long.fromBits(m.editTimestampMs.low >>> 0, m.editTimestampMs.high >>> 0, false).toBigInt();
+                    else if (typeof m.editTimestampMs === "number")
+                        d.editTimestampMs = o.longs === $String ? $String(m.editTimestampMs) : m.editTimestampMs;
+                    else
+                        d.editTimestampMs = o.longs === $String ? $util.Long.prototype.toString.call(m.editTimestampMs) : o.longs === $Number ? new $util.LongBits(m.editTimestampMs.low >>> 0, m.editTimestampMs.high >>> 0).toNumber() : m.editTimestampMs;
+                }
+                if (m.options && m.options.length) {
+                    d.options = $Array(m.options.length);
+                    for (var j = 0; j < m.options.length; ++j) {
+                        d.options[j] = $root.proto.PollAdditionalMetadata.PollOptionReplayBase.Option.toObject(m.options[j], o, q + 1);
+                    }
+                }
+                return d;
+            };
+
+            PollOptionReplayBase.prototype.toJSON = function() {
+                return PollOptionReplayBase.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            PollOptionReplayBase.getTypeUrl = function(prefix) {
+                if (prefix === $undefined)
+                    prefix = "type.googleapis.com";
+                return prefix + "/proto.PollAdditionalMetadata.PollOptionReplayBase";
+            };
+
+            PollOptionReplayBase.Option = (function() {
+
+                const Option = function (p) {
+                    if (p)
+                        for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                            if (p[ks[i]] != null && ks[i] !== "__proto__")
+                                this[ks[i]] = p[ks[i]];
+                };
+
+                Option.prototype.optionHash = null;
+                Option.prototype.enteredTimestampMs = null;
+                Option.prototype.addMessageKey = null;
+
+                let $oneOfFields;
+
+                // Virtual OneOf for proto3 optional field
+                $Object.defineProperty(Option.prototype, "_optionHash", {
+                    get: $util.oneOfGetter($oneOfFields = ["optionHash"]),
+                    set: $util.oneOfSetter($oneOfFields)
+                });
+
+                // Virtual OneOf for proto3 optional field
+                $Object.defineProperty(Option.prototype, "_enteredTimestampMs", {
+                    get: $util.oneOfGetter($oneOfFields = ["enteredTimestampMs"]),
+                    set: $util.oneOfSetter($oneOfFields)
+                });
+
+                // Virtual OneOf for proto3 optional field
+                $Object.defineProperty(Option.prototype, "_addMessageKey", {
+                    get: $util.oneOfGetter($oneOfFields = ["addMessageKey"]),
+                    set: $util.oneOfSetter($oneOfFields)
+                });
+
+                Option.create = function(properties) {
+                    return new Option(properties);
+                };
+
+                Option.encode = function (m, w, q) {
+                    if (!w)
+                        w = $Writer.create();
+                    if (q === $undefined)
+                        q = 0;
+                    if (q > $util.recursionLimit)
+                        throw $Error("max depth exceeded");
+                    if (m.optionHash != null && $Object.hasOwnProperty.call(m, "optionHash"))
+                        w.uint32(10).bytes(m.optionHash);
+                    if (m.enteredTimestampMs != null && $Object.hasOwnProperty.call(m, "enteredTimestampMs"))
+                        w.uint32(16).int64(m.enteredTimestampMs);
+                    if (m.addMessageKey != null && $Object.hasOwnProperty.call(m, "addMessageKey"))
+                        $root.proto.MessageKey.encode(m.addMessageKey, w.uint32(26).fork(), q + 1).ldelim();
+                    if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                        for (var i = 0; i < m.$unknowns.length; ++i)
+                            w.raw(m.$unknowns[i]);
+                    return w;
+                };
+
+                Option.decode = function (r, l, z, q, g) {
+                    if (!(r instanceof $Reader))
+                        r = $Reader.create(r);
+                    if (q === $undefined)
+                        q = 0;
+                    if (q > $Reader.recursionLimit)
+                        throw $Error("max depth exceeded");
+                    var c, m;
+                    if (l === $undefined)
+                        c = r.len;
+                    else {
+                        c = r.pos + l;
+                        if (c > r.len)
+                            throw $RangeError("index out of range");
+                        l = r.len;
+                        r.len = c;
+                    }
+                    m = g || new $root.proto.PollAdditionalMetadata.PollOptionReplayBase.Option();
+                    while (r.pos < c) {
+                        var s = r.pos;
+                        var t = r.tag();
+                        if (t === z) {
+                            z = $undefined;
+                            break;
+                        }
+                        var u = t & 7;
+                        switch (t >>>= 3) {
+                        case 1: {
+                                if (u !== 2)
+                                    break;
+                                m.optionHash = r.bytes();
+                                m._optionHash = "optionHash";
+                                continue;
+                            }
+                        case 2: {
+                                if (u !== 0)
+                                    break;
+                                m.enteredTimestampMs = r.int64();
+                                m._enteredTimestampMs = "enteredTimestampMs";
+                                continue;
+                            }
+                        case 3: {
+                                if (u !== 2)
+                                    break;
+                                m.addMessageKey = $root.proto.MessageKey.decode(r, r.size(), $undefined, q + 1, m.addMessageKey);
+                                m._addMessageKey = "addMessageKey";
+                                continue;
+                            }
+                        }
+                        r.skipType(u, q, t);
+                        if (!r.discardUnknown) {
+                            $util.makeProp(m, "$unknowns", false);
+                            (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                        }
+                    }
+                    if (l !== $undefined) {
+                        if (r.pos !== c)
+                            throw $RangeError("index out of range");
+                        r.len = l;
+                    }
+                    if (z !== $undefined)
+                        throw $Error("missing end group");
+                    return m;
+                };
+
+                Option.fromObject = function (d, q) {
+                    if (d instanceof $root.proto.PollAdditionalMetadata.PollOptionReplayBase.Option)
+                        return d;
+                    if (!$util.isObject(d))
+                        throw $TypeError(".proto.PollAdditionalMetadata.PollOptionReplayBase.Option: object expected");
+                    if (q === $undefined)
+                        q = 0;
+                    if (q > $util.recursionLimit)
+                        throw $Error("max depth exceeded");
+                    var m = new $root.proto.PollAdditionalMetadata.PollOptionReplayBase.Option();
+                    if (d.optionHash != null) {
+                        if (typeof d.optionHash === "string")
+                            $util.base64.decode(d.optionHash, m.optionHash = $util.newBuffer($util.base64.length(d.optionHash)), 0);
+                        else if (d.optionHash.length >= 0)
+                            m.optionHash = d.optionHash;
+                    }
+                    if (d.enteredTimestampMs != null) {
+                        if ($util.Long)
+                            m.enteredTimestampMs = $util.Long.fromValue(d.enteredTimestampMs, false);
+                        else if (typeof d.enteredTimestampMs === "string")
+                            m.enteredTimestampMs = $parseInt(d.enteredTimestampMs, 10);
+                        else if (typeof d.enteredTimestampMs === "number")
+                            m.enteredTimestampMs = d.enteredTimestampMs;
+                        else if (typeof d.enteredTimestampMs === "object")
+                            m.enteredTimestampMs = new $util.LongBits(d.enteredTimestampMs.low >>> 0, d.enteredTimestampMs.high >>> 0).toNumber();
+                    }
+                    if (d.addMessageKey != null) {
+                        if (!$util.isObject(d.addMessageKey))
+                            throw $TypeError(".proto.PollAdditionalMetadata.PollOptionReplayBase.Option.addMessageKey: object expected");
+                        m.addMessageKey = $root.proto.MessageKey.fromObject(d.addMessageKey, q + 1);
+                    }
+                    return m;
+                };
+
+                Option.toObject = function (m, o, q) {
+                    if (!o)
+                        o = {};
+                    if (q === $undefined)
+                        q = 0;
+                    if (q > $util.recursionLimit)
+                        throw $Error("max depth exceeded");
+                    var d = {};
+                    if (m.optionHash != null && $Object.hasOwnProperty.call(m, "optionHash")) {
+                        d.optionHash = o.bytes === $String ? $util.base64.encode(m.optionHash, 0, m.optionHash.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.optionHash) : m.optionHash;
+                    }
+                    if (m.enteredTimestampMs != null && $Object.hasOwnProperty.call(m, "enteredTimestampMs")) {
+                        if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
+                            d.enteredTimestampMs = typeof m.enteredTimestampMs === "number" ? $BigInt(m.enteredTimestampMs) : $util.Long.fromBits(m.enteredTimestampMs.low >>> 0, m.enteredTimestampMs.high >>> 0, false).toBigInt();
+                        else if (typeof m.enteredTimestampMs === "number")
+                            d.enteredTimestampMs = o.longs === $String ? $String(m.enteredTimestampMs) : m.enteredTimestampMs;
+                        else
+                            d.enteredTimestampMs = o.longs === $String ? $util.Long.prototype.toString.call(m.enteredTimestampMs) : o.longs === $Number ? new $util.LongBits(m.enteredTimestampMs.low >>> 0, m.enteredTimestampMs.high >>> 0).toNumber() : m.enteredTimestampMs;
+                    }
+                    if (m.addMessageKey != null && $Object.hasOwnProperty.call(m, "addMessageKey")) {
+                        d.addMessageKey = $root.proto.MessageKey.toObject(m.addMessageKey, o, q + 1);
+                    }
+                    return d;
+                };
+
+                Option.prototype.toJSON = function() {
+                    return Option.toObject(this, $protobuf.util.toJSONOptions);
+                };
+
+                Option.getTypeUrl = function(prefix) {
+                    if (prefix === $undefined)
+                        prefix = "type.googleapis.com";
+                    return prefix + "/proto.PollAdditionalMetadata.PollOptionReplayBase.Option";
+                };
+
+                return Option;
+            })();
+
+            return PollOptionReplayBase;
+        })();
+
+        PollAdditionalMetadata.PollOptionReplayEntry = (function() {
+
+            const PollOptionReplayEntry = function (p) {
+                this.optionHashes = [];
+                if (p)
+                    for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                        if (p[ks[i]] != null && ks[i] !== "__proto__")
+                            this[ks[i]] = p[ks[i]];
+            };
+
+            PollOptionReplayEntry.prototype.type = null;
+            PollOptionReplayEntry.prototype.messageKey = null;
+            PollOptionReplayEntry.prototype.serverTimestampMs = null;
+            PollOptionReplayEntry.prototype.editTimestampMs = null;
+            PollOptionReplayEntry.prototype.optionHashes = $util.emptyArray;
+            PollOptionReplayEntry.prototype.revokedMessageKey = null;
+
+            let $oneOfFields;
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(PollOptionReplayEntry.prototype, "_type", {
+                get: $util.oneOfGetter($oneOfFields = ["type"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(PollOptionReplayEntry.prototype, "_messageKey", {
+                get: $util.oneOfGetter($oneOfFields = ["messageKey"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(PollOptionReplayEntry.prototype, "_serverTimestampMs", {
+                get: $util.oneOfGetter($oneOfFields = ["serverTimestampMs"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(PollOptionReplayEntry.prototype, "_editTimestampMs", {
+                get: $util.oneOfGetter($oneOfFields = ["editTimestampMs"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(PollOptionReplayEntry.prototype, "_revokedMessageKey", {
+                get: $util.oneOfGetter($oneOfFields = ["revokedMessageKey"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            PollOptionReplayEntry.create = function(properties) {
+                return new PollOptionReplayEntry(properties);
+            };
+
+            PollOptionReplayEntry.encode = function (m, w, q) {
+                if (!w)
+                    w = $Writer.create();
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                if (m.type != null && $Object.hasOwnProperty.call(m, "type"))
+                    w.uint32(8).int32(m.type);
+                if (m.messageKey != null && $Object.hasOwnProperty.call(m, "messageKey"))
+                    $root.proto.MessageKey.encode(m.messageKey, w.uint32(18).fork(), q + 1).ldelim();
+                if (m.serverTimestampMs != null && $Object.hasOwnProperty.call(m, "serverTimestampMs"))
+                    w.uint32(24).int64(m.serverTimestampMs);
+                if (m.editTimestampMs != null && $Object.hasOwnProperty.call(m, "editTimestampMs"))
+                    w.uint32(32).int64(m.editTimestampMs);
+                if (m.optionHashes != null && m.optionHashes.length) {
+                    for (var i = 0; i < m.optionHashes.length; ++i)
+                        w.uint32(42).bytes(m.optionHashes[i]);
+                }
+                if (m.revokedMessageKey != null && $Object.hasOwnProperty.call(m, "revokedMessageKey"))
+                    $root.proto.MessageKey.encode(m.revokedMessageKey, w.uint32(50).fork(), q + 1).ldelim();
+                if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                    for (var i = 0; i < m.$unknowns.length; ++i)
+                        w.raw(m.$unknowns[i]);
+                return w;
+            };
+
+            PollOptionReplayEntry.decode = function (r, l, z, q, g) {
+                if (!(r instanceof $Reader))
+                    r = $Reader.create(r);
+                if (q === $undefined)
+                    q = 0;
+                if (q > $Reader.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.proto.PollAdditionalMetadata.PollOptionReplayEntry();
+                while (r.pos < c) {
+                    var s = r.pos;
+                    var t = r.tag();
+                    if (t === z) {
+                        z = $undefined;
+                        break;
+                    }
+                    var u = t & 7;
+                    switch (t >>>= 3) {
+                    case 1: {
+                            if (u !== 0)
+                                break;
+                            m.type = r.int32();
+                            m._type = "type";
+                            continue;
+                        }
+                    case 2: {
+                            if (u !== 2)
+                                break;
+                            m.messageKey = $root.proto.MessageKey.decode(r, r.size(), $undefined, q + 1, m.messageKey);
+                            m._messageKey = "messageKey";
+                            continue;
+                        }
+                    case 3: {
+                            if (u !== 0)
+                                break;
+                            m.serverTimestampMs = r.int64();
+                            m._serverTimestampMs = "serverTimestampMs";
+                            continue;
+                        }
+                    case 4: {
+                            if (u !== 0)
+                                break;
+                            m.editTimestampMs = r.int64();
+                            m._editTimestampMs = "editTimestampMs";
+                            continue;
+                        }
+                    case 5: {
+                            if (u !== 2)
+                                break;
+                            if (!(m.optionHashes && m.optionHashes.length))
+                                m.optionHashes = [];
+                            m.optionHashes.push(r.bytes());
+                            continue;
+                        }
+                    case 6: {
+                            if (u !== 2)
+                                break;
+                            m.revokedMessageKey = $root.proto.MessageKey.decode(r, r.size(), $undefined, q + 1, m.revokedMessageKey);
+                            m._revokedMessageKey = "revokedMessageKey";
+                            continue;
+                        }
+                    }
+                    r.skipType(u, q, t);
+                    if (!r.discardUnknown) {
+                        $util.makeProp(m, "$unknowns", false);
+                        (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                    }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
+                }
+                if (z !== $undefined)
+                    throw $Error("missing end group");
+                return m;
+            };
+
+            PollOptionReplayEntry.fromObject = function (d, q) {
+                if (d instanceof $root.proto.PollAdditionalMetadata.PollOptionReplayEntry)
+                    return d;
+                if (!$util.isObject(d))
+                    throw $TypeError(".proto.PollAdditionalMetadata.PollOptionReplayEntry: object expected");
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var m = new $root.proto.PollAdditionalMetadata.PollOptionReplayEntry();
+                switch (d.type) {
+                case "UNKNOWN":
+                case 0:
+                    m.type = 0;
+                    break;
+                case "EDIT":
+                case 1:
+                    m.type = 1;
+                    break;
+                case "ADD":
+                case 2:
+                    m.type = 2;
+                    break;
+                case "REVOKE":
+                case 3:
+                    m.type = 3;
+                    break;
+                default:
+                    if (typeof d.type === "number" && (d.type | 0) === d.type)
+                        m.type = d.type;
+                }
+                if (d.messageKey != null) {
+                    if (!$util.isObject(d.messageKey))
+                        throw $TypeError(".proto.PollAdditionalMetadata.PollOptionReplayEntry.messageKey: object expected");
+                    m.messageKey = $root.proto.MessageKey.fromObject(d.messageKey, q + 1);
+                }
+                if (d.serverTimestampMs != null) {
+                    if ($util.Long)
+                        m.serverTimestampMs = $util.Long.fromValue(d.serverTimestampMs, false);
+                    else if (typeof d.serverTimestampMs === "string")
+                        m.serverTimestampMs = $parseInt(d.serverTimestampMs, 10);
+                    else if (typeof d.serverTimestampMs === "number")
+                        m.serverTimestampMs = d.serverTimestampMs;
+                    else if (typeof d.serverTimestampMs === "object")
+                        m.serverTimestampMs = new $util.LongBits(d.serverTimestampMs.low >>> 0, d.serverTimestampMs.high >>> 0).toNumber();
+                }
+                if (d.editTimestampMs != null) {
+                    if ($util.Long)
+                        m.editTimestampMs = $util.Long.fromValue(d.editTimestampMs, false);
+                    else if (typeof d.editTimestampMs === "string")
+                        m.editTimestampMs = $parseInt(d.editTimestampMs, 10);
+                    else if (typeof d.editTimestampMs === "number")
+                        m.editTimestampMs = d.editTimestampMs;
+                    else if (typeof d.editTimestampMs === "object")
+                        m.editTimestampMs = new $util.LongBits(d.editTimestampMs.low >>> 0, d.editTimestampMs.high >>> 0).toNumber();
+                }
+                if (d.optionHashes) {
+                    if (!$Array.isArray(d.optionHashes))
+                        throw $TypeError(".proto.PollAdditionalMetadata.PollOptionReplayEntry.optionHashes: array expected");
+                    m.optionHashes = $Array(d.optionHashes.length);
+                    for (var i = 0; i < d.optionHashes.length; ++i) {
+                        if (typeof d.optionHashes[i] === "string")
+                            $util.base64.decode(d.optionHashes[i], m.optionHashes[i] = $util.newBuffer($util.base64.length(d.optionHashes[i])), 0);
+                        else if (d.optionHashes[i].length >= 0)
+                            m.optionHashes[i] = d.optionHashes[i];
+                    }
+                }
+                if (d.revokedMessageKey != null) {
+                    if (!$util.isObject(d.revokedMessageKey))
+                        throw $TypeError(".proto.PollAdditionalMetadata.PollOptionReplayEntry.revokedMessageKey: object expected");
+                    m.revokedMessageKey = $root.proto.MessageKey.fromObject(d.revokedMessageKey, q + 1);
+                }
+                return m;
+            };
+
+            PollOptionReplayEntry.toObject = function (m, o, q) {
+                if (!o)
+                    o = {};
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var d = {};
+                if (o.arrays || o.defaults) {
+                    d.optionHashes = [];
+                }
+                if (m.type != null && $Object.hasOwnProperty.call(m, "type")) {
+                    d.type = o.enums === $String ? $root.proto.PollAdditionalMetadata.PollOptionReplayEntry.Type[m.type] === $undefined ? m.type : $root.proto.PollAdditionalMetadata.PollOptionReplayEntry.Type[m.type] : m.type;
+                }
+                if (m.messageKey != null && $Object.hasOwnProperty.call(m, "messageKey")) {
+                    d.messageKey = $root.proto.MessageKey.toObject(m.messageKey, o, q + 1);
+                }
+                if (m.serverTimestampMs != null && $Object.hasOwnProperty.call(m, "serverTimestampMs")) {
+                    if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
+                        d.serverTimestampMs = typeof m.serverTimestampMs === "number" ? $BigInt(m.serverTimestampMs) : $util.Long.fromBits(m.serverTimestampMs.low >>> 0, m.serverTimestampMs.high >>> 0, false).toBigInt();
+                    else if (typeof m.serverTimestampMs === "number")
+                        d.serverTimestampMs = o.longs === $String ? $String(m.serverTimestampMs) : m.serverTimestampMs;
+                    else
+                        d.serverTimestampMs = o.longs === $String ? $util.Long.prototype.toString.call(m.serverTimestampMs) : o.longs === $Number ? new $util.LongBits(m.serverTimestampMs.low >>> 0, m.serverTimestampMs.high >>> 0).toNumber() : m.serverTimestampMs;
+                }
+                if (m.editTimestampMs != null && $Object.hasOwnProperty.call(m, "editTimestampMs")) {
+                    if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
+                        d.editTimestampMs = typeof m.editTimestampMs === "number" ? $BigInt(m.editTimestampMs) : $util.Long.fromBits(m.editTimestampMs.low >>> 0, m.editTimestampMs.high >>> 0, false).toBigInt();
+                    else if (typeof m.editTimestampMs === "number")
+                        d.editTimestampMs = o.longs === $String ? $String(m.editTimestampMs) : m.editTimestampMs;
+                    else
+                        d.editTimestampMs = o.longs === $String ? $util.Long.prototype.toString.call(m.editTimestampMs) : o.longs === $Number ? new $util.LongBits(m.editTimestampMs.low >>> 0, m.editTimestampMs.high >>> 0).toNumber() : m.editTimestampMs;
+                }
+                if (m.optionHashes && m.optionHashes.length) {
+                    d.optionHashes = $Array(m.optionHashes.length);
+                    for (var j = 0; j < m.optionHashes.length; ++j) {
+                        d.optionHashes[j] = o.bytes === $String ? $util.base64.encode(m.optionHashes[j], 0, m.optionHashes[j].length) : o.bytes === $Array ? $Array.prototype.slice.call(m.optionHashes[j]) : m.optionHashes[j];
+                    }
+                }
+                if (m.revokedMessageKey != null && $Object.hasOwnProperty.call(m, "revokedMessageKey")) {
+                    d.revokedMessageKey = $root.proto.MessageKey.toObject(m.revokedMessageKey, o, q + 1);
+                }
+                return d;
+            };
+
+            PollOptionReplayEntry.prototype.toJSON = function() {
+                return PollOptionReplayEntry.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            PollOptionReplayEntry.getTypeUrl = function(prefix) {
+                if (prefix === $undefined)
+                    prefix = "type.googleapis.com";
+                return prefix + "/proto.PollAdditionalMetadata.PollOptionReplayEntry";
+            };
+
+            PollOptionReplayEntry.Type = (function() {
+                const valuesById = $Object.create(null), values = $Object.create(valuesById);
+                values[valuesById[0] = "UNKNOWN"] = 0;
+                values[valuesById[1] = "EDIT"] = 1;
+                values[valuesById[2] = "ADD"] = 2;
+                values[valuesById[3] = "REVOKE"] = 3;
+                return values;
+            })();
+
+            return PollOptionReplayEntry;
         })();
 
         return PollAdditionalMetadata;

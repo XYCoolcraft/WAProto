@@ -1,8 +1,8 @@
 {
- "protoVersion": "2.3000.1054203907",
+ "protoVersion": "2.3000.1054320313",
  "counts": {
-  "messages": 798,
-  "enums": 228
+  "messages": 801,
+  "enums": 229
  },
  "fields": "[nomor, tipe, label]",
  "messages": {
@@ -1129,7 +1129,10 @@
    "identityVerification": [63, "IdentityVerificationState", "optional"],
    "acp2Setting": [64, "ACP2Setting", "optional"],
    "acp2HistoryWithheld": [65, "bool", "optional"],
-   "groupRootKeys": [66, "GroupRootKey", "repeated"]
+   "groupRootKeys": [66, "GroupRootKey", "repeated"],
+   "isWorkGroup": [67, "bool", "optional"],
+   "nonE2EeType": [68, "int32", "optional"],
+   "contactAccountEncryptionAttestationType": [69, "NonE2EEAttestation.AccountType", "optional"]
   },
   "CreateBackupInput": {
    "recoveryCode": [1, "string", "optional"],
@@ -1400,7 +1403,8 @@
    "version": [2, "AppVersion", "optional"],
    "platformType": [3, "PlatformType", "optional"],
    "requireFullSync": [4, "bool", "optional"],
-   "historySyncConfig": [5, "HistorySyncConfig", "optional"]
+   "historySyncConfig": [5, "HistorySyncConfig", "optional"],
+   "deviceName": [6, "string", "optional"]
   },
   "DeviceProps.AppVersion": {
    "primary": [1, "uint32", "optional"],
@@ -2825,7 +2829,8 @@
    "linkInlineVideoMuted": [6, "bool", "optional"],
    "videoContentUrl": [7, "string", "optional"],
    "musicMetadata": [8, "EmbeddedMusic", "optional"],
-   "videoContentCaption": [9, "string", "optional"]
+   "videoContentCaption": [9, "string", "optional"],
+   "videoId": [10, "string", "optional"]
   },
   "Message.ListMessage": {
    "title": [1, "string", "optional"],
@@ -4087,11 +4092,31 @@
   "PollAdditionalMetadata": {
    "pollInvalidated": [1, "bool", "optional"],
    "pollNameHashHistory": [2, "PollNameHashHistoryEntry", "repeated"],
-   "originalOptions": [3, "Message.PollCreationMessage.Option", "repeated"]
+   "originalOptions": [3, "Message.PollCreationMessage.Option", "repeated"],
+   "pollOptionReplayEntries": [4, "PollOptionReplayEntry", "repeated"],
+   "pollOptionReplayBase": [5, "PollOptionReplayBase", "optional"]
   },
   "PollAdditionalMetadata.PollNameHashHistoryEntry": {
    "editStanzaId": [1, "string", "optional"],
    "pollNameHash": [2, "bytes", "optional"]
+  },
+  "PollAdditionalMetadata.PollOptionReplayBase": {
+   "boundaryTimestampMs": [1, "int64", "optional"],
+   "editTimestampMs": [2, "int64", "optional"],
+   "options": [3, "Option", "repeated"]
+  },
+  "PollAdditionalMetadata.PollOptionReplayBase.Option": {
+   "optionHash": [1, "bytes", "optional"],
+   "enteredTimestampMs": [2, "int64", "optional"],
+   "addMessageKey": [3, "MessageKey", "optional"]
+  },
+  "PollAdditionalMetadata.PollOptionReplayEntry": {
+   "type": [1, "Type", "optional"],
+   "messageKey": [2, "MessageKey", "optional"],
+   "serverTimestampMs": [3, "int64", "optional"],
+   "editTimestampMs": [4, "int64", "optional"],
+   "optionHashes": [5, "bytes", "repeated"],
+   "revokedMessageKey": [6, "MessageKey", "optional"]
   },
   "PollEncValue": {
    "encPayload": [1, "bytes", "optional"],
@@ -5504,7 +5529,9 @@
    "RICH_RESPONSE_SOCIAL_ENTITY_PREFETCH_SCHEDULER_ENABLED": 84,
    "AI_MUSE_JARVIS_EXTENDED_CARDS_ENABLED": 85,
    "AI_INTERJECTIONS_ENABLED": 86,
-   "AI_RICH_RESPONSE_READ_ALOUD_ENABLED": 87
+   "AI_RICH_RESPONSE_READ_ALOUD_ENABLED": 87,
+   "AI_RICH_RESPONSE_ITEM_LISTS_ENABLED": 88,
+   "RICH_RESPONSE_SIDE_BY_SIDE_BUFFER_BOTH": 89
   },
   "BotDocumentMessageMetadata.DocumentPluginType": {
    "TEXT_EXTRACTION": 0,
@@ -5619,7 +5646,8 @@
    "NEW_CHAT_LIST": 56,
    "CONTACTS_TAB": 57,
    "NEW_3P_AGENT_CREATION": 58,
-   "SHARE": 59
+   "SHARE": 59,
+   "BIRTHDAY_BANNER": 60
   },
   "BotMetricsThreadEntryPoint": {
    "AI_TAB_THREAD": 1,
@@ -6909,6 +6937,12 @@
    "UNKNOWN_TYPE": 0,
    "PIN_FOR_ALL": 1,
    "UNPIN_FOR_ALL": 2
+  },
+  "PollAdditionalMetadata.PollOptionReplayEntry.Type": {
+   "UNKNOWN": 0,
+   "EDIT": 1,
+   "ADD": 2,
+   "REVOKE": 3
   },
   "PrivacySystemMessage": {
    "E2EE_MSG": 1,
