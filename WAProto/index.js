@@ -190305,6 +190305,824 @@ export const proto = $root.proto = (() => {
         return VirtualDeviceOutput;
     })();
 
+    proto.GroupMembershipForm = (function() {
+
+        const GroupMembershipForm = function (p) {
+            this.questions = [];
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        GroupMembershipForm.prototype.questions = $util.emptyArray;
+        GroupMembershipForm.prototype.memberTagPrompt = null;
+        GroupMembershipForm.prototype.schemaVersion = null;
+
+        let $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(GroupMembershipForm.prototype, "_memberTagPrompt", {
+            get: $util.oneOfGetter($oneOfFields = ["memberTagPrompt"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(GroupMembershipForm.prototype, "_schemaVersion", {
+            get: $util.oneOfGetter($oneOfFields = ["schemaVersion"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        GroupMembershipForm.create = function(properties) {
+            return new GroupMembershipForm(properties);
+        };
+
+        GroupMembershipForm.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.questions != null && m.questions.length) {
+                for (var i = 0; i < m.questions.length; ++i)
+                    $root.proto.GroupMembershipFormQuestion.encode(m.questions[i], w.uint32(10).fork(), q + 1).ldelim();
+            }
+            if (m.memberTagPrompt != null && $Object.hasOwnProperty.call(m, "memberTagPrompt"))
+                w.uint32(18).string(m.memberTagPrompt);
+            if (m.schemaVersion != null && $Object.hasOwnProperty.call(m, "schemaVersion"))
+                w.uint32(24).uint32(m.schemaVersion);
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        GroupMembershipForm.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.GroupMembershipForm();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 2)
+                            break;
+                        if (!(m.questions && m.questions.length))
+                            m.questions = [];
+                        m.questions.push($root.proto.GroupMembershipFormQuestion.decode(r, r.size(), $undefined, q + 1));
+                        continue;
+                    }
+                case 2: {
+                        if (u !== 2)
+                            break;
+                        m.memberTagPrompt = r.stringVerify();
+                        m._memberTagPrompt = "memberTagPrompt";
+                        continue;
+                    }
+                case 3: {
+                        if (u !== 0)
+                            break;
+                        m.schemaVersion = r.uint32();
+                        m._schemaVersion = "schemaVersion";
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        GroupMembershipForm.fromObject = function (d, q) {
+            if (d instanceof $root.proto.GroupMembershipForm)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.GroupMembershipForm: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.GroupMembershipForm();
+            if (d.questions) {
+                if (!$Array.isArray(d.questions))
+                    throw $TypeError(".proto.GroupMembershipForm.questions: array expected");
+                m.questions = $Array(d.questions.length);
+                for (var i = 0; i < d.questions.length; ++i) {
+                    if (!$util.isObject(d.questions[i]))
+                        throw $TypeError(".proto.GroupMembershipForm.questions: object expected");
+                    m.questions[i] = $root.proto.GroupMembershipFormQuestion.fromObject(d.questions[i], q + 1);
+                }
+            }
+            if (d.memberTagPrompt != null) {
+                m.memberTagPrompt = $String(d.memberTagPrompt);
+            }
+            if (d.schemaVersion != null) {
+                m.schemaVersion = d.schemaVersion >>> 0;
+            }
+            return m;
+        };
+
+        GroupMembershipForm.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (o.arrays || o.defaults) {
+                d.questions = [];
+            }
+            if (m.questions && m.questions.length) {
+                d.questions = $Array(m.questions.length);
+                for (var j = 0; j < m.questions.length; ++j) {
+                    d.questions[j] = $root.proto.GroupMembershipFormQuestion.toObject(m.questions[j], o, q + 1);
+                }
+            }
+            if (m.memberTagPrompt != null && $Object.hasOwnProperty.call(m, "memberTagPrompt")) {
+                d.memberTagPrompt = m.memberTagPrompt;
+            }
+            if (m.schemaVersion != null && $Object.hasOwnProperty.call(m, "schemaVersion")) {
+                d.schemaVersion = m.schemaVersion;
+            }
+            return d;
+        };
+
+        GroupMembershipForm.prototype.toJSON = function() {
+            return GroupMembershipForm.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        GroupMembershipForm.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.GroupMembershipForm";
+        };
+
+        return GroupMembershipForm;
+    })();
+
+    proto.GroupMembershipFormMemberTagAnswer = (function() {
+
+        const GroupMembershipFormMemberTagAnswer = function (p) {
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        GroupMembershipFormMemberTagAnswer.prototype.prompt = null;
+        GroupMembershipFormMemberTagAnswer.prototype.memberTag = null;
+
+        let $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(GroupMembershipFormMemberTagAnswer.prototype, "_prompt", {
+            get: $util.oneOfGetter($oneOfFields = ["prompt"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(GroupMembershipFormMemberTagAnswer.prototype, "_memberTag", {
+            get: $util.oneOfGetter($oneOfFields = ["memberTag"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        GroupMembershipFormMemberTagAnswer.create = function(properties) {
+            return new GroupMembershipFormMemberTagAnswer(properties);
+        };
+
+        GroupMembershipFormMemberTagAnswer.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.prompt != null && $Object.hasOwnProperty.call(m, "prompt"))
+                w.uint32(10).string(m.prompt);
+            if (m.memberTag != null && $Object.hasOwnProperty.call(m, "memberTag"))
+                w.uint32(18).string(m.memberTag);
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        GroupMembershipFormMemberTagAnswer.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.GroupMembershipFormMemberTagAnswer();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 2)
+                            break;
+                        m.prompt = r.stringVerify();
+                        m._prompt = "prompt";
+                        continue;
+                    }
+                case 2: {
+                        if (u !== 2)
+                            break;
+                        m.memberTag = r.stringVerify();
+                        m._memberTag = "memberTag";
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        GroupMembershipFormMemberTagAnswer.fromObject = function (d, q) {
+            if (d instanceof $root.proto.GroupMembershipFormMemberTagAnswer)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.GroupMembershipFormMemberTagAnswer: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.GroupMembershipFormMemberTagAnswer();
+            if (d.prompt != null) {
+                m.prompt = $String(d.prompt);
+            }
+            if (d.memberTag != null) {
+                m.memberTag = $String(d.memberTag);
+            }
+            return m;
+        };
+
+        GroupMembershipFormMemberTagAnswer.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (m.prompt != null && $Object.hasOwnProperty.call(m, "prompt")) {
+                d.prompt = m.prompt;
+            }
+            if (m.memberTag != null && $Object.hasOwnProperty.call(m, "memberTag")) {
+                d.memberTag = m.memberTag;
+            }
+            return d;
+        };
+
+        GroupMembershipFormMemberTagAnswer.prototype.toJSON = function() {
+            return GroupMembershipFormMemberTagAnswer.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        GroupMembershipFormMemberTagAnswer.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.GroupMembershipFormMemberTagAnswer";
+        };
+
+        return GroupMembershipFormMemberTagAnswer;
+    })();
+
+    proto.GroupMembershipFormQuestion = (function() {
+
+        const GroupMembershipFormQuestion = function (p) {
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        GroupMembershipFormQuestion.prototype.text = null;
+
+        let $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(GroupMembershipFormQuestion.prototype, "_text", {
+            get: $util.oneOfGetter($oneOfFields = ["text"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        GroupMembershipFormQuestion.create = function(properties) {
+            return new GroupMembershipFormQuestion(properties);
+        };
+
+        GroupMembershipFormQuestion.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.text != null && $Object.hasOwnProperty.call(m, "text"))
+                w.uint32(10).string(m.text);
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        GroupMembershipFormQuestion.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.GroupMembershipFormQuestion();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 2)
+                            break;
+                        m.text = r.stringVerify();
+                        m._text = "text";
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        GroupMembershipFormQuestion.fromObject = function (d, q) {
+            if (d instanceof $root.proto.GroupMembershipFormQuestion)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.GroupMembershipFormQuestion: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.GroupMembershipFormQuestion();
+            if (d.text != null) {
+                m.text = $String(d.text);
+            }
+            return m;
+        };
+
+        GroupMembershipFormQuestion.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (m.text != null && $Object.hasOwnProperty.call(m, "text")) {
+                d.text = m.text;
+            }
+            return d;
+        };
+
+        GroupMembershipFormQuestion.prototype.toJSON = function() {
+            return GroupMembershipFormQuestion.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        GroupMembershipFormQuestion.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.GroupMembershipFormQuestion";
+        };
+
+        return GroupMembershipFormQuestion;
+    })();
+
+    proto.GroupMembershipFormQuestionAnswer = (function() {
+
+        const GroupMembershipFormQuestionAnswer = function (p) {
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        GroupMembershipFormQuestionAnswer.prototype.question = null;
+        GroupMembershipFormQuestionAnswer.prototype.answer = null;
+
+        let $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(GroupMembershipFormQuestionAnswer.prototype, "_question", {
+            get: $util.oneOfGetter($oneOfFields = ["question"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(GroupMembershipFormQuestionAnswer.prototype, "_answer", {
+            get: $util.oneOfGetter($oneOfFields = ["answer"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        GroupMembershipFormQuestionAnswer.create = function(properties) {
+            return new GroupMembershipFormQuestionAnswer(properties);
+        };
+
+        GroupMembershipFormQuestionAnswer.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.question != null && $Object.hasOwnProperty.call(m, "question"))
+                $root.proto.GroupMembershipFormQuestion.encode(m.question, w.uint32(10).fork(), q + 1).ldelim();
+            if (m.answer != null && $Object.hasOwnProperty.call(m, "answer"))
+                w.uint32(18).string(m.answer);
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        GroupMembershipFormQuestionAnswer.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.GroupMembershipFormQuestionAnswer();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 2)
+                            break;
+                        m.question = $root.proto.GroupMembershipFormQuestion.decode(r, r.size(), $undefined, q + 1, m.question);
+                        m._question = "question";
+                        continue;
+                    }
+                case 2: {
+                        if (u !== 2)
+                            break;
+                        m.answer = r.stringVerify();
+                        m._answer = "answer";
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        GroupMembershipFormQuestionAnswer.fromObject = function (d, q) {
+            if (d instanceof $root.proto.GroupMembershipFormQuestionAnswer)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.GroupMembershipFormQuestionAnswer: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.GroupMembershipFormQuestionAnswer();
+            if (d.question != null) {
+                if (!$util.isObject(d.question))
+                    throw $TypeError(".proto.GroupMembershipFormQuestionAnswer.question: object expected");
+                m.question = $root.proto.GroupMembershipFormQuestion.fromObject(d.question, q + 1);
+            }
+            if (d.answer != null) {
+                m.answer = $String(d.answer);
+            }
+            return m;
+        };
+
+        GroupMembershipFormQuestionAnswer.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (m.question != null && $Object.hasOwnProperty.call(m, "question")) {
+                d.question = $root.proto.GroupMembershipFormQuestion.toObject(m.question, o, q + 1);
+            }
+            if (m.answer != null && $Object.hasOwnProperty.call(m, "answer")) {
+                d.answer = m.answer;
+            }
+            return d;
+        };
+
+        GroupMembershipFormQuestionAnswer.prototype.toJSON = function() {
+            return GroupMembershipFormQuestionAnswer.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        GroupMembershipFormQuestionAnswer.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.GroupMembershipFormQuestionAnswer";
+        };
+
+        return GroupMembershipFormQuestionAnswer;
+    })();
+
+    proto.GroupMembershipFormSubmission = (function() {
+
+        const GroupMembershipFormSubmission = function (p) {
+            this.questionAnswers = [];
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        GroupMembershipFormSubmission.prototype.questionAnswers = $util.emptyArray;
+        GroupMembershipFormSubmission.prototype.memberTagAnswer = null;
+        GroupMembershipFormSubmission.prototype.schemaVersion = null;
+
+        let $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(GroupMembershipFormSubmission.prototype, "_memberTagAnswer", {
+            get: $util.oneOfGetter($oneOfFields = ["memberTagAnswer"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(GroupMembershipFormSubmission.prototype, "_schemaVersion", {
+            get: $util.oneOfGetter($oneOfFields = ["schemaVersion"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        GroupMembershipFormSubmission.create = function(properties) {
+            return new GroupMembershipFormSubmission(properties);
+        };
+
+        GroupMembershipFormSubmission.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.questionAnswers != null && m.questionAnswers.length) {
+                for (var i = 0; i < m.questionAnswers.length; ++i)
+                    $root.proto.GroupMembershipFormQuestionAnswer.encode(m.questionAnswers[i], w.uint32(10).fork(), q + 1).ldelim();
+            }
+            if (m.memberTagAnswer != null && $Object.hasOwnProperty.call(m, "memberTagAnswer"))
+                $root.proto.GroupMembershipFormMemberTagAnswer.encode(m.memberTagAnswer, w.uint32(18).fork(), q + 1).ldelim();
+            if (m.schemaVersion != null && $Object.hasOwnProperty.call(m, "schemaVersion"))
+                w.uint32(24).uint32(m.schemaVersion);
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        GroupMembershipFormSubmission.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.GroupMembershipFormSubmission();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 2)
+                            break;
+                        if (!(m.questionAnswers && m.questionAnswers.length))
+                            m.questionAnswers = [];
+                        m.questionAnswers.push($root.proto.GroupMembershipFormQuestionAnswer.decode(r, r.size(), $undefined, q + 1));
+                        continue;
+                    }
+                case 2: {
+                        if (u !== 2)
+                            break;
+                        m.memberTagAnswer = $root.proto.GroupMembershipFormMemberTagAnswer.decode(r, r.size(), $undefined, q + 1, m.memberTagAnswer);
+                        m._memberTagAnswer = "memberTagAnswer";
+                        continue;
+                    }
+                case 3: {
+                        if (u !== 0)
+                            break;
+                        m.schemaVersion = r.uint32();
+                        m._schemaVersion = "schemaVersion";
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        GroupMembershipFormSubmission.fromObject = function (d, q) {
+            if (d instanceof $root.proto.GroupMembershipFormSubmission)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.GroupMembershipFormSubmission: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.GroupMembershipFormSubmission();
+            if (d.questionAnswers) {
+                if (!$Array.isArray(d.questionAnswers))
+                    throw $TypeError(".proto.GroupMembershipFormSubmission.questionAnswers: array expected");
+                m.questionAnswers = $Array(d.questionAnswers.length);
+                for (var i = 0; i < d.questionAnswers.length; ++i) {
+                    if (!$util.isObject(d.questionAnswers[i]))
+                        throw $TypeError(".proto.GroupMembershipFormSubmission.questionAnswers: object expected");
+                    m.questionAnswers[i] = $root.proto.GroupMembershipFormQuestionAnswer.fromObject(d.questionAnswers[i], q + 1);
+                }
+            }
+            if (d.memberTagAnswer != null) {
+                if (!$util.isObject(d.memberTagAnswer))
+                    throw $TypeError(".proto.GroupMembershipFormSubmission.memberTagAnswer: object expected");
+                m.memberTagAnswer = $root.proto.GroupMembershipFormMemberTagAnswer.fromObject(d.memberTagAnswer, q + 1);
+            }
+            if (d.schemaVersion != null) {
+                m.schemaVersion = d.schemaVersion >>> 0;
+            }
+            return m;
+        };
+
+        GroupMembershipFormSubmission.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (o.arrays || o.defaults) {
+                d.questionAnswers = [];
+            }
+            if (m.questionAnswers && m.questionAnswers.length) {
+                d.questionAnswers = $Array(m.questionAnswers.length);
+                for (var j = 0; j < m.questionAnswers.length; ++j) {
+                    d.questionAnswers[j] = $root.proto.GroupMembershipFormQuestionAnswer.toObject(m.questionAnswers[j], o, q + 1);
+                }
+            }
+            if (m.memberTagAnswer != null && $Object.hasOwnProperty.call(m, "memberTagAnswer")) {
+                d.memberTagAnswer = $root.proto.GroupMembershipFormMemberTagAnswer.toObject(m.memberTagAnswer, o, q + 1);
+            }
+            if (m.schemaVersion != null && $Object.hasOwnProperty.call(m, "schemaVersion")) {
+                d.schemaVersion = m.schemaVersion;
+            }
+            return d;
+        };
+
+        GroupMembershipFormSubmission.prototype.toJSON = function() {
+            return GroupMembershipFormSubmission.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        GroupMembershipFormSubmission.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.GroupMembershipFormSubmission";
+        };
+
+        return GroupMembershipFormSubmission;
+    })();
+
     return proto;
 })();
 

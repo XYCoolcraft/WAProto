@@ -1,7 +1,7 @@
 syntax = "proto3";
 package proto;
 
-/// WhatsApp Version: 2.3000.1054320313
+/// WhatsApp Version: 2.3000.1054357583
 
 message ACP2Setting {
     optional bool enabled = 1;
@@ -8426,4 +8426,30 @@ message VirtualDeviceOutput {
     optional bytes ocmfRotationToken = 5;
     optional bytes deviceEpochHmac = 6;
     optional EncryptedSecretValuesOutput encryptedSecretValues = 7;
+}
+
+message GroupMembershipForm {
+    repeated GroupMembershipFormQuestion questions = 1;
+    optional string memberTagPrompt = 2;
+    optional uint32 schemaVersion = 3;
+}
+
+message GroupMembershipFormMemberTagAnswer {
+    optional string prompt = 1;
+    optional string memberTag = 2;
+}
+
+message GroupMembershipFormQuestion {
+    optional string text = 1;
+}
+
+message GroupMembershipFormQuestionAnswer {
+    optional GroupMembershipFormQuestion question = 1;
+    optional string answer = 2;
+}
+
+message GroupMembershipFormSubmission {
+    repeated GroupMembershipFormQuestionAnswer questionAnswers = 1;
+    optional GroupMembershipFormMemberTagAnswer memberTagAnswer = 2;
+    optional uint32 schemaVersion = 3;
 }

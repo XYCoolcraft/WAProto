@@ -30001,4 +30001,141 @@ export namespace proto {
         }
         type $Shape = proto.VirtualDeviceOutput.$Properties;
     }
+
+    interface IGroupMembershipForm extends proto.GroupMembershipForm.$Properties {
+    }
+
+    class GroupMembershipForm {
+        constructor(p?: proto.GroupMembershipForm.$Properties);
+        $unknowns?: Uint8Array[];
+        questions: proto.GroupMembershipFormQuestion.$Properties[];
+        memberTagPrompt?: (string|null);
+        schemaVersion?: (number|null);
+        static create(properties: proto.GroupMembershipForm.$Shape): proto.GroupMembershipForm & proto.GroupMembershipForm.$Shape;
+        static create(properties?: proto.GroupMembershipForm.$Properties): proto.GroupMembershipForm;
+        static encode(m: proto.GroupMembershipForm.$Properties, w?: $protobuf.Writer): $protobuf.Writer;
+        static decode(r: ($protobuf.Reader|Uint8Array), l?: number): proto.GroupMembershipForm & proto.GroupMembershipForm.$Shape;
+        static fromObject(d: { [k: string]: any }): proto.GroupMembershipForm;
+        static toObject(m: proto.GroupMembershipForm, o?: $protobuf.IConversionOptions): { [k: string]: any };
+        toJSON(): { [k: string]: any };
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace GroupMembershipForm {
+        interface $Properties {
+            questions?: (proto.GroupMembershipFormQuestion.$Properties[]|null);
+            memberTagPrompt?: (string|null);
+            schemaVersion?: (number|null);
+            $unknowns?: Uint8Array[];
+        }
+        type $Shape = proto.GroupMembershipForm.$Properties;
+    }
+
+    interface IGroupMembershipFormMemberTagAnswer extends proto.GroupMembershipFormMemberTagAnswer.$Properties {
+    }
+
+    class GroupMembershipFormMemberTagAnswer {
+        constructor(p?: proto.GroupMembershipFormMemberTagAnswer.$Properties);
+        $unknowns?: Uint8Array[];
+        prompt?: (string|null);
+        memberTag?: (string|null);
+        static create(properties: proto.GroupMembershipFormMemberTagAnswer.$Shape): proto.GroupMembershipFormMemberTagAnswer & proto.GroupMembershipFormMemberTagAnswer.$Shape;
+        static create(properties?: proto.GroupMembershipFormMemberTagAnswer.$Properties): proto.GroupMembershipFormMemberTagAnswer;
+        static encode(m: proto.GroupMembershipFormMemberTagAnswer.$Properties, w?: $protobuf.Writer): $protobuf.Writer;
+        static decode(r: ($protobuf.Reader|Uint8Array), l?: number): proto.GroupMembershipFormMemberTagAnswer & proto.GroupMembershipFormMemberTagAnswer.$Shape;
+        static fromObject(d: { [k: string]: any }): proto.GroupMembershipFormMemberTagAnswer;
+        static toObject(m: proto.GroupMembershipFormMemberTagAnswer, o?: $protobuf.IConversionOptions): { [k: string]: any };
+        toJSON(): { [k: string]: any };
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace GroupMembershipFormMemberTagAnswer {
+        interface $Properties {
+            prompt?: (string|null);
+            memberTag?: (string|null);
+            $unknowns?: Uint8Array[];
+        }
+        type $Shape = proto.GroupMembershipFormMemberTagAnswer.$Properties;
+    }
+
+    interface IGroupMembershipFormQuestion extends proto.GroupMembershipFormQuestion.$Properties {
+    }
+
+    class GroupMembershipFormQuestion {
+        constructor(p?: proto.GroupMembershipFormQuestion.$Properties);
+        $unknowns?: Uint8Array[];
+        text?: (string|null);
+        static create(properties: proto.GroupMembershipFormQuestion.$Shape): proto.GroupMembershipFormQuestion & proto.GroupMembershipFormQuestion.$Shape;
+        static create(properties?: proto.GroupMembershipFormQuestion.$Properties): proto.GroupMembershipFormQuestion;
+        static encode(m: proto.GroupMembershipFormQuestion.$Properties, w?: $protobuf.Writer): $protobuf.Writer;
+        static decode(r: ($protobuf.Reader|Uint8Array), l?: number): proto.GroupMembershipFormQuestion & proto.GroupMembershipFormQuestion.$Shape;
+        static fromObject(d: { [k: string]: any }): proto.GroupMembershipFormQuestion;
+        static toObject(m: proto.GroupMembershipFormQuestion, o?: $protobuf.IConversionOptions): { [k: string]: any };
+        toJSON(): { [k: string]: any };
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace GroupMembershipFormQuestion {
+        interface $Properties {
+            text?: (string|null);
+            $unknowns?: Uint8Array[];
+        }
+        type $Shape = proto.GroupMembershipFormQuestion.$Properties;
+    }
+
+    interface IGroupMembershipFormQuestionAnswer extends proto.GroupMembershipFormQuestionAnswer.$Properties {
+    }
+
+    class GroupMembershipFormQuestionAnswer {
+        constructor(p?: proto.GroupMembershipFormQuestionAnswer.$Properties);
+        $unknowns?: Uint8Array[];
+        question?: (proto.GroupMembershipFormQuestion.$Properties|null);
+        answer?: (string|null);
+        static create(properties: proto.GroupMembershipFormQuestionAnswer.$Shape): proto.GroupMembershipFormQuestionAnswer & proto.GroupMembershipFormQuestionAnswer.$Shape;
+        static create(properties?: proto.GroupMembershipFormQuestionAnswer.$Properties): proto.GroupMembershipFormQuestionAnswer;
+        static encode(m: proto.GroupMembershipFormQuestionAnswer.$Properties, w?: $protobuf.Writer): $protobuf.Writer;
+        static decode(r: ($protobuf.Reader|Uint8Array), l?: number): proto.GroupMembershipFormQuestionAnswer & proto.GroupMembershipFormQuestionAnswer.$Shape;
+        static fromObject(d: { [k: string]: any }): proto.GroupMembershipFormQuestionAnswer;
+        static toObject(m: proto.GroupMembershipFormQuestionAnswer, o?: $protobuf.IConversionOptions): { [k: string]: any };
+        toJSON(): { [k: string]: any };
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace GroupMembershipFormQuestionAnswer {
+        interface $Properties {
+            question?: (proto.GroupMembershipFormQuestion.$Properties|null);
+            answer?: (string|null);
+            $unknowns?: Uint8Array[];
+        }
+        type $Shape = proto.GroupMembershipFormQuestionAnswer.$Properties;
+    }
+
+    interface IGroupMembershipFormSubmission extends proto.GroupMembershipFormSubmission.$Properties {
+    }
+
+    class GroupMembershipFormSubmission {
+        constructor(p?: proto.GroupMembershipFormSubmission.$Properties);
+        $unknowns?: Uint8Array[];
+        questionAnswers: proto.GroupMembershipFormQuestionAnswer.$Properties[];
+        memberTagAnswer?: (proto.GroupMembershipFormMemberTagAnswer.$Properties|null);
+        schemaVersion?: (number|null);
+        static create(properties: proto.GroupMembershipFormSubmission.$Shape): proto.GroupMembershipFormSubmission & proto.GroupMembershipFormSubmission.$Shape;
+        static create(properties?: proto.GroupMembershipFormSubmission.$Properties): proto.GroupMembershipFormSubmission;
+        static encode(m: proto.GroupMembershipFormSubmission.$Properties, w?: $protobuf.Writer): $protobuf.Writer;
+        static decode(r: ($protobuf.Reader|Uint8Array), l?: number): proto.GroupMembershipFormSubmission & proto.GroupMembershipFormSubmission.$Shape;
+        static fromObject(d: { [k: string]: any }): proto.GroupMembershipFormSubmission;
+        static toObject(m: proto.GroupMembershipFormSubmission, o?: $protobuf.IConversionOptions): { [k: string]: any };
+        toJSON(): { [k: string]: any };
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace GroupMembershipFormSubmission {
+        interface $Properties {
+            questionAnswers?: (proto.GroupMembershipFormQuestionAnswer.$Properties[]|null);
+            memberTagAnswer?: (proto.GroupMembershipFormMemberTagAnswer.$Properties|null);
+            schemaVersion?: (number|null);
+            $unknowns?: Uint8Array[];
+        }
+        type $Shape = proto.GroupMembershipFormSubmission.$Properties;
+    }
 }

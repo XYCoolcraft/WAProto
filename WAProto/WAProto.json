@@ -50082,6 +50082,154 @@
               }
             }
           }
+        },
+        "GroupMembershipForm": {
+          "oneofs": {
+            "_memberTagPrompt": {
+              "oneof": [
+                "memberTagPrompt"
+              ]
+            },
+            "_schemaVersion": {
+              "oneof": [
+                "schemaVersion"
+              ]
+            }
+          },
+          "fields": {
+            "questions": {
+              "rule": "repeated",
+              "type": "GroupMembershipFormQuestion",
+              "id": 1
+            },
+            "memberTagPrompt": {
+              "type": "string",
+              "id": 2,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "schemaVersion": {
+              "type": "uint32",
+              "id": 3,
+              "options": {
+                "proto3_optional": true
+              }
+            }
+          }
+        },
+        "GroupMembershipFormMemberTagAnswer": {
+          "oneofs": {
+            "_prompt": {
+              "oneof": [
+                "prompt"
+              ]
+            },
+            "_memberTag": {
+              "oneof": [
+                "memberTag"
+              ]
+            }
+          },
+          "fields": {
+            "prompt": {
+              "type": "string",
+              "id": 1,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "memberTag": {
+              "type": "string",
+              "id": 2,
+              "options": {
+                "proto3_optional": true
+              }
+            }
+          }
+        },
+        "GroupMembershipFormQuestion": {
+          "oneofs": {
+            "_text": {
+              "oneof": [
+                "text"
+              ]
+            }
+          },
+          "fields": {
+            "text": {
+              "type": "string",
+              "id": 1,
+              "options": {
+                "proto3_optional": true
+              }
+            }
+          }
+        },
+        "GroupMembershipFormQuestionAnswer": {
+          "oneofs": {
+            "_question": {
+              "oneof": [
+                "question"
+              ]
+            },
+            "_answer": {
+              "oneof": [
+                "answer"
+              ]
+            }
+          },
+          "fields": {
+            "question": {
+              "type": "GroupMembershipFormQuestion",
+              "id": 1,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "answer": {
+              "type": "string",
+              "id": 2,
+              "options": {
+                "proto3_optional": true
+              }
+            }
+          }
+        },
+        "GroupMembershipFormSubmission": {
+          "oneofs": {
+            "_memberTagAnswer": {
+              "oneof": [
+                "memberTagAnswer"
+              ]
+            },
+            "_schemaVersion": {
+              "oneof": [
+                "schemaVersion"
+              ]
+            }
+          },
+          "fields": {
+            "questionAnswers": {
+              "rule": "repeated",
+              "type": "GroupMembershipFormQuestionAnswer",
+              "id": 1
+            },
+            "memberTagAnswer": {
+              "type": "GroupMembershipFormMemberTagAnswer",
+              "id": 2,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "schemaVersion": {
+              "type": "uint32",
+              "id": 3,
+              "options": {
+                "proto3_optional": true
+              }
+            }
+          }
         }
       }
     }

@@ -1,7 +1,7 @@
 {
- "protoVersion": "2.3000.1054320313",
+ "protoVersion": "2.3000.1054357583",
  "counts": {
-  "messages": 801,
+  "messages": 806,
   "enums": 229
  },
  "fields": "[nomor, tipe, label]",
@@ -1722,6 +1722,27 @@
    "commentMessages": [3, "WebMessageInfoWithMessageBytes", "repeated"],
    "outOfWindowPinnedMessages": [4, "WebMessageInfoWithMessageBytes", "repeated"],
    "themeMessage": [5, "WebMessageInfoWithMessageBytes", "optional"]
+  },
+  "GroupMembershipForm": {
+   "questions": [1, "GroupMembershipFormQuestion", "repeated"],
+   "memberTagPrompt": [2, "string", "optional"],
+   "schemaVersion": [3, "uint32", "optional"]
+  },
+  "GroupMembershipFormMemberTagAnswer": {
+   "prompt": [1, "string", "optional"],
+   "memberTag": [2, "string", "optional"]
+  },
+  "GroupMembershipFormQuestion": {
+   "text": [1, "string", "optional"]
+  },
+  "GroupMembershipFormQuestionAnswer": {
+   "question": [1, "GroupMembershipFormQuestion", "optional"],
+   "answer": [2, "string", "optional"]
+  },
+  "GroupMembershipFormSubmission": {
+   "questionAnswers": [1, "GroupMembershipFormQuestionAnswer", "repeated"],
+   "memberTagAnswer": [2, "GroupMembershipFormMemberTagAnswer", "optional"],
+   "schemaVersion": [3, "uint32", "optional"]
   },
   "GroupMention": {
    "groupJid": [1, "string", "optional"],
