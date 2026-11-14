@@ -2,6 +2,12 @@
 
 Terbaru di atas. Dibuat otomatis oleh update-proto.mjs.
 
+## 2.3000.1054618140 → 2.3000.1054634694
+
+By: https://t.me/XYCoolcrafts
+
+Hanya nomor versi yang naik — tidak ada tipe/field/enum baru.
+
 ## 2.3000.1054509844 → 2.3000.1054618140
 
 By: https://t.me/XYCoolcrafts
@@ -291,9 +297,3 @@ By: https://t.me/XYCoolcrafts
 - MessageAssociation.AssociationType.ORIGINAL_VIDEO_DUAL_UPLOAD = 23
 - MessageAssociation.AssociationType.ORIGINAL_IMAGE_DUAL_UPLOAD = 24
 - StatusAttribution.Type.STATUS_TEMPLATES = 13
-
-## 2.3000.1053362161 → 2.3000.1053411851
-
-By: https://t.me/XYCoolcrafts
-
-Hanya nomor versi yang naik — tidak ada tipe/field/enum baru.
