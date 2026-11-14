@@ -13762,6 +13762,26 @@
               "oneof": [
                 "isUpdated"
               ]
+            },
+            "_selfAccessStatus": {
+              "oneof": [
+                "selfAccessStatus"
+              ]
+            },
+            "_selfRsvpStatus": {
+              "oneof": [
+                "selfRsvpStatus"
+              ]
+            },
+            "_selfAdditionalGuestCount": {
+              "oneof": [
+                "selfAdditionalGuestCount"
+              ]
+            },
+            "_selfInviteeLastUpdatedTsUsec": {
+              "oneof": [
+                "selfInviteeLastUpdatedTsUsec"
+              ]
             }
           },
           "fields": {
@@ -13770,6 +13790,54 @@
               "id": 1,
               "options": {
                 "proto3_optional": true
+              }
+            },
+            "selfAccessStatus": {
+              "type": "AccessStatus",
+              "id": 2,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "selfRsvpStatus": {
+              "type": "RsvpStatus",
+              "id": 3,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "selfAdditionalGuestCount": {
+              "type": "uint32",
+              "id": 4,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "selfInviteeLastUpdatedTsUsec": {
+              "type": "int64",
+              "id": 5,
+              "options": {
+                "proto3_optional": true
+              }
+            }
+          },
+          "nested": {
+            "AccessStatus": {
+              "values": {
+                "ACCESS_STATUS_UNKNOWN": 0,
+                "HAS_ACCESS": 1,
+                "LEFT_EVENT": 2,
+                "REMOVED_FROM_INVITE_LIST": 3,
+                "UNAVAILABLE": 4
+              }
+            },
+            "RsvpStatus": {
+              "values": {
+                "RSVP_STATUS_UNKNOWN": 0,
+                "GOING": 1,
+                "NOT_GOING": 2,
+                "MAYBE": 3,
+                "NO_RESPONSE": 4
               }
             }
           }
@@ -21948,6 +22016,11 @@
                   "oneof": [
                     "accessibilityLabel"
                   ]
+                },
+                "_qrUrl": {
+                  "oneof": [
+                    "qrUrl"
+                  ]
                 }
               },
               "fields": {
@@ -22094,6 +22167,13 @@
                 "accessibilityLabel": {
                   "type": "string",
                   "id": 21,
+                  "options": {
+                    "proto3_optional": true
+                  }
+                },
+                "qrUrl": {
+                  "type": "string",
+                  "id": 23,
                   "options": {
                     "proto3_optional": true
                   }

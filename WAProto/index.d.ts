@@ -8144,6 +8144,10 @@ export namespace proto {
         constructor(p?: proto.EventInviteAdditionalMetadata.$Properties);
         $unknowns?: Uint8Array[];
         isUpdated?: (boolean|null);
+        selfAccessStatus?: (proto.EventInviteAdditionalMetadata.AccessStatus|null);
+        selfRsvpStatus?: (proto.EventInviteAdditionalMetadata.RsvpStatus|null);
+        selfAdditionalGuestCount?: (number|null);
+        selfInviteeLastUpdatedTsUsec?: (number|Long|null);
         static create(properties: proto.EventInviteAdditionalMetadata.$Shape): proto.EventInviteAdditionalMetadata & proto.EventInviteAdditionalMetadata.$Shape;
         static create(properties?: proto.EventInviteAdditionalMetadata.$Properties): proto.EventInviteAdditionalMetadata;
         static encode(m: proto.EventInviteAdditionalMetadata.$Properties, w?: $protobuf.Writer): $protobuf.Writer;
@@ -8157,9 +8161,29 @@ export namespace proto {
     namespace EventInviteAdditionalMetadata {
         interface $Properties {
             isUpdated?: (boolean|null);
+            selfAccessStatus?: (proto.EventInviteAdditionalMetadata.AccessStatus|null);
+            selfRsvpStatus?: (proto.EventInviteAdditionalMetadata.RsvpStatus|null);
+            selfAdditionalGuestCount?: (number|null);
+            selfInviteeLastUpdatedTsUsec?: (number|Long|null);
             $unknowns?: Uint8Array[];
         }
         type $Shape = proto.EventInviteAdditionalMetadata.$Properties;
+
+        enum AccessStatus {
+            ACCESS_STATUS_UNKNOWN = 0,
+            HAS_ACCESS = 1,
+            LEFT_EVENT = 2,
+            REMOVED_FROM_INVITE_LIST = 3,
+            UNAVAILABLE = 4
+        }
+
+        enum RsvpStatus {
+            RSVP_STATUS_UNKNOWN = 0,
+            GOING = 1,
+            NOT_GOING = 2,
+            MAYBE = 3,
+            NO_RESPONSE = 4
+        }
     }
 
     interface IEventResponse extends proto.EventResponse.$Properties {
@@ -12865,6 +12889,7 @@ export namespace proto {
             thumbnailWidth?: (number|null);
             caption?: (string|null);
             accessibilityLabel?: (string|null);
+            qrUrl?: (string|null);
             static create(properties: proto.Message.DocumentMessage.$Shape): proto.Message.DocumentMessage & proto.Message.DocumentMessage.$Shape;
             static create(properties?: proto.Message.DocumentMessage.$Properties): proto.Message.DocumentMessage;
             static encode(m: proto.Message.DocumentMessage.$Properties, w?: $protobuf.Writer): $protobuf.Writer;
@@ -12898,6 +12923,7 @@ export namespace proto {
                 thumbnailWidth?: (number|null);
                 caption?: (string|null);
                 accessibilityLabel?: (string|null);
+                qrUrl?: (string|null);
                 $unknowns?: Uint8Array[];
             }
             type $Shape = {
@@ -12922,6 +12948,7 @@ export namespace proto {
               thumbnailWidth?: number|null;
               caption?: string|null;
               accessibilityLabel?: string|null;
+              qrUrl?: string|null;
               $unknowns?: Uint8Array[];
             };
         }

@@ -51487,12 +51487,40 @@ export const proto = $root.proto = (() => {
         };
 
         EventInviteAdditionalMetadata.prototype.isUpdated = null;
+        EventInviteAdditionalMetadata.prototype.selfAccessStatus = null;
+        EventInviteAdditionalMetadata.prototype.selfRsvpStatus = null;
+        EventInviteAdditionalMetadata.prototype.selfAdditionalGuestCount = null;
+        EventInviteAdditionalMetadata.prototype.selfInviteeLastUpdatedTsUsec = null;
 
         let $oneOfFields;
 
         // Virtual OneOf for proto3 optional field
         $Object.defineProperty(EventInviteAdditionalMetadata.prototype, "_isUpdated", {
             get: $util.oneOfGetter($oneOfFields = ["isUpdated"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(EventInviteAdditionalMetadata.prototype, "_selfAccessStatus", {
+            get: $util.oneOfGetter($oneOfFields = ["selfAccessStatus"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(EventInviteAdditionalMetadata.prototype, "_selfRsvpStatus", {
+            get: $util.oneOfGetter($oneOfFields = ["selfRsvpStatus"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(EventInviteAdditionalMetadata.prototype, "_selfAdditionalGuestCount", {
+            get: $util.oneOfGetter($oneOfFields = ["selfAdditionalGuestCount"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(EventInviteAdditionalMetadata.prototype, "_selfInviteeLastUpdatedTsUsec", {
+            get: $util.oneOfGetter($oneOfFields = ["selfInviteeLastUpdatedTsUsec"]),
             set: $util.oneOfSetter($oneOfFields)
         });
 
@@ -51509,6 +51537,14 @@ export const proto = $root.proto = (() => {
                 throw $Error("max depth exceeded");
             if (m.isUpdated != null && $Object.hasOwnProperty.call(m, "isUpdated"))
                 w.uint32(8).bool(m.isUpdated);
+            if (m.selfAccessStatus != null && $Object.hasOwnProperty.call(m, "selfAccessStatus"))
+                w.uint32(16).int32(m.selfAccessStatus);
+            if (m.selfRsvpStatus != null && $Object.hasOwnProperty.call(m, "selfRsvpStatus"))
+                w.uint32(24).int32(m.selfRsvpStatus);
+            if (m.selfAdditionalGuestCount != null && $Object.hasOwnProperty.call(m, "selfAdditionalGuestCount"))
+                w.uint32(32).uint32(m.selfAdditionalGuestCount);
+            if (m.selfInviteeLastUpdatedTsUsec != null && $Object.hasOwnProperty.call(m, "selfInviteeLastUpdatedTsUsec"))
+                w.uint32(40).int64(m.selfInviteeLastUpdatedTsUsec);
             if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                 for (var i = 0; i < m.$unknowns.length; ++i)
                     w.raw(m.$unknowns[i]);
@@ -51522,7 +51558,7 @@ export const proto = $root.proto = (() => {
                 q = 0;
             if (q > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var c, m;
+            var c, m, v;
             if (l === $undefined)
                 c = r.len;
             else {
@@ -51547,6 +51583,34 @@ export const proto = $root.proto = (() => {
                             break;
                         m.isUpdated = r.bool();
                         m._isUpdated = "isUpdated";
+                        continue;
+                    }
+                case 2: {
+                        if (u !== 0)
+                            break;
+                        m.selfAccessStatus = r.int32();
+                        m._selfAccessStatus = "selfAccessStatus";
+                        continue;
+                    }
+                case 3: {
+                        if (u !== 0)
+                            break;
+                        m.selfRsvpStatus = r.int32();
+                        m._selfRsvpStatus = "selfRsvpStatus";
+                        continue;
+                    }
+                case 4: {
+                        if (u !== 0)
+                            break;
+                        m.selfAdditionalGuestCount = r.uint32();
+                        m._selfAdditionalGuestCount = "selfAdditionalGuestCount";
+                        continue;
+                    }
+                case 5: {
+                        if (u !== 0)
+                            break;
+                        m.selfInviteeLastUpdatedTsUsec = r.int64();
+                        m._selfInviteeLastUpdatedTsUsec = "selfInviteeLastUpdatedTsUsec";
                         continue;
                     }
                 }
@@ -51579,6 +51643,69 @@ export const proto = $root.proto = (() => {
             if (d.isUpdated != null) {
                 m.isUpdated = $Boolean(d.isUpdated);
             }
+            switch (d.selfAccessStatus) {
+            case "ACCESS_STATUS_UNKNOWN":
+            case 0:
+                m.selfAccessStatus = 0;
+                break;
+            case "HAS_ACCESS":
+            case 1:
+                m.selfAccessStatus = 1;
+                break;
+            case "LEFT_EVENT":
+            case 2:
+                m.selfAccessStatus = 2;
+                break;
+            case "REMOVED_FROM_INVITE_LIST":
+            case 3:
+                m.selfAccessStatus = 3;
+                break;
+            case "UNAVAILABLE":
+            case 4:
+                m.selfAccessStatus = 4;
+                break;
+            default:
+                if (typeof d.selfAccessStatus === "number" && (d.selfAccessStatus | 0) === d.selfAccessStatus)
+                    m.selfAccessStatus = d.selfAccessStatus;
+            }
+            switch (d.selfRsvpStatus) {
+            case "RSVP_STATUS_UNKNOWN":
+            case 0:
+                m.selfRsvpStatus = 0;
+                break;
+            case "GOING":
+            case 1:
+                m.selfRsvpStatus = 1;
+                break;
+            case "NOT_GOING":
+            case 2:
+                m.selfRsvpStatus = 2;
+                break;
+            case "MAYBE":
+            case 3:
+                m.selfRsvpStatus = 3;
+                break;
+            case "NO_RESPONSE":
+            case 4:
+                m.selfRsvpStatus = 4;
+                break;
+            default:
+                if (typeof d.selfRsvpStatus === "number" && (d.selfRsvpStatus | 0) === d.selfRsvpStatus)
+                    m.selfRsvpStatus = d.selfRsvpStatus;
+            }
+            if (d.selfAdditionalGuestCount != null) {
+                m.selfAdditionalGuestCount = d.selfAdditionalGuestCount >>> 0;
+            }
+            if (d.selfInviteeLastUpdatedTsUsec != null) {
+                if ($util.Long)
+                    m.selfInviteeLastUpdatedTsUsec = $util.Long.fromValue(d.selfInviteeLastUpdatedTsUsec, false);
+                else if (typeof d.selfInviteeLastUpdatedTsUsec === "string")
+                    m.selfInviteeLastUpdatedTsUsec = $parseInt(d.selfInviteeLastUpdatedTsUsec, 10);
+                else if (typeof d.selfInviteeLastUpdatedTsUsec === "number")
+                    m.selfInviteeLastUpdatedTsUsec = d.selfInviteeLastUpdatedTsUsec;
+                else if (typeof d.selfInviteeLastUpdatedTsUsec === "object")
+                    m.selfInviteeLastUpdatedTsUsec = new $util.LongBits(d.selfInviteeLastUpdatedTsUsec.low >>> 0, d.selfInviteeLastUpdatedTsUsec.high >>> 0).toNumber();
+            }
             return m;
         };
 
@@ -51593,6 +51720,23 @@ export const proto = $root.proto = (() => {
             if (m.isUpdated != null && $Object.hasOwnProperty.call(m, "isUpdated")) {
                 d.isUpdated = m.isUpdated;
             }
+            if (m.selfAccessStatus != null && $Object.hasOwnProperty.call(m, "selfAccessStatus")) {
+                d.selfAccessStatus = o.enums === $String ? $root.proto.EventInviteAdditionalMetadata.AccessStatus[m.selfAccessStatus] === $undefined ? m.selfAccessStatus : $root.proto.EventInviteAdditionalMetadata.AccessStatus[m.selfAccessStatus] : m.selfAccessStatus;
+            }
+            if (m.selfRsvpStatus != null && $Object.hasOwnProperty.call(m, "selfRsvpStatus")) {
+                d.selfRsvpStatus = o.enums === $String ? $root.proto.EventInviteAdditionalMetadata.RsvpStatus[m.selfRsvpStatus] === $undefined ? m.selfRsvpStatus : $root.proto.EventInviteAdditionalMetadata.RsvpStatus[m.selfRsvpStatus] : m.selfRsvpStatus;
+            }
+            if (m.selfAdditionalGuestCount != null && $Object.hasOwnProperty.call(m, "selfAdditionalGuestCount")) {
+                d.selfAdditionalGuestCount = m.selfAdditionalGuestCount;
+            }
+            if (m.selfInviteeLastUpdatedTsUsec != null && $Object.hasOwnProperty.call(m, "selfInviteeLastUpdatedTsUsec")) {
+                if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
+                    d.selfInviteeLastUpdatedTsUsec = typeof m.selfInviteeLastUpdatedTsUsec === "number" ? $BigInt(m.selfInviteeLastUpdatedTsUsec) : $util.Long.fromBits(m.selfInviteeLastUpdatedTsUsec.low >>> 0, m.selfInviteeLastUpdatedTsUsec.high >>> 0, false).toBigInt();
+                else if (typeof m.selfInviteeLastUpdatedTsUsec === "number")
+                    d.selfInviteeLastUpdatedTsUsec = o.longs === $String ? $String(m.selfInviteeLastUpdatedTsUsec) : m.selfInviteeLastUpdatedTsUsec;
+                else
+                    d.selfInviteeLastUpdatedTsUsec = o.longs === $String ? $util.Long.prototype.toString.call(m.selfInviteeLastUpdatedTsUsec) : o.longs === $Number ? new $util.LongBits(m.selfInviteeLastUpdatedTsUsec.low >>> 0, m.selfInviteeLastUpdatedTsUsec.high >>> 0).toNumber() : m.selfInviteeLastUpdatedTsUsec;
+            }
             return d;
         };
 
@@ -51605,6 +51749,26 @@ export const proto = $root.proto = (() => {
                 prefix = "type.googleapis.com";
             return prefix + "/proto.EventInviteAdditionalMetadata";
         };
+
+        EventInviteAdditionalMetadata.AccessStatus = (function() {
+            const valuesById = $Object.create(null), values = $Object.create(valuesById);
+            values[valuesById[0] = "ACCESS_STATUS_UNKNOWN"] = 0;
+            values[valuesById[1] = "HAS_ACCESS"] = 1;
+            values[valuesById[2] = "LEFT_EVENT"] = 2;
+            values[valuesById[3] = "REMOVED_FROM_INVITE_LIST"] = 3;
+            values[valuesById[4] = "UNAVAILABLE"] = 4;
+            return values;
+        })();
+
+        EventInviteAdditionalMetadata.RsvpStatus = (function() {
+            const valuesById = $Object.create(null), values = $Object.create(valuesById);
+            values[valuesById[0] = "RSVP_STATUS_UNKNOWN"] = 0;
+            values[valuesById[1] = "GOING"] = 1;
+            values[valuesById[2] = "NOT_GOING"] = 2;
+            values[valuesById[3] = "MAYBE"] = 3;
+            values[valuesById[4] = "NO_RESPONSE"] = 4;
+            return values;
+        })();
 
         return EventInviteAdditionalMetadata;
     })();
@@ -82027,6 +82191,7 @@ export const proto = $root.proto = (() => {
             DocumentMessage.prototype.thumbnailWidth = null;
             DocumentMessage.prototype.caption = null;
             DocumentMessage.prototype.accessibilityLabel = null;
+            DocumentMessage.prototype.qrUrl = null;
 
             let $oneOfFields;
 
@@ -82156,6 +82321,12 @@ export const proto = $root.proto = (() => {
                 set: $util.oneOfSetter($oneOfFields)
             });
 
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(DocumentMessage.prototype, "_qrUrl", {
+                get: $util.oneOfGetter($oneOfFields = ["qrUrl"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
             DocumentMessage.create = function(properties) {
                 return new DocumentMessage(properties);
             };
@@ -82209,6 +82380,8 @@ export const proto = $root.proto = (() => {
                     w.uint32(162).string(m.caption);
                 if (m.accessibilityLabel != null && $Object.hasOwnProperty.call(m, "accessibilityLabel"))
                     w.uint32(170).string(m.accessibilityLabel);
+                if (m.qrUrl != null && $Object.hasOwnProperty.call(m, "qrUrl"))
+                    w.uint32(186).string(m.qrUrl);
                 if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                     for (var i = 0; i < m.$unknowns.length; ++i)
                         w.raw(m.$unknowns[i]);
@@ -82389,6 +82562,13 @@ export const proto = $root.proto = (() => {
                             m._accessibilityLabel = "accessibilityLabel";
                             continue;
                         }
+                    case 23: {
+                            if (u !== 2)
+                                break;
+                            m.qrUrl = r.stringVerify();
+                            m._qrUrl = "qrUrl";
+                            continue;
+                        }
                     }
                     r.skipType(u, q, t);
                     if (!r.discardUnknown) {
@@ -82513,6 +82693,9 @@ export const proto = $root.proto = (() => {
                 if (d.accessibilityLabel != null) {
                     m.accessibilityLabel = $String(d.accessibilityLabel);
                 }
+                if (d.qrUrl != null) {
+                    m.qrUrl = $String(d.qrUrl);
+                }
                 return m;
             };
 
@@ -82596,6 +82779,9 @@ export const proto = $root.proto = (() => {
                 }
                 if (m.accessibilityLabel != null && $Object.hasOwnProperty.call(m, "accessibilityLabel")) {
                     d.accessibilityLabel = m.accessibilityLabel;
+                }
+                if (m.qrUrl != null && $Object.hasOwnProperty.call(m, "qrUrl")) {
+                    d.qrUrl = m.qrUrl;
                 }
                 return d;
             };

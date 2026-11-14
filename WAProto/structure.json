@@ -1,8 +1,8 @@
 {
- "protoVersion": "2.3000.1054468000",
+ "protoVersion": "2.3000.1054509844",
  "counts": {
   "messages": 806,
-  "enums": 229
+  "enums": 231
  },
  "fields": "[nomor, tipe, label]",
  "messages": {
@@ -1584,7 +1584,11 @@
    "isStale": [1, "bool", "optional"]
   },
   "EventInviteAdditionalMetadata": {
-   "isUpdated": [1, "bool", "optional"]
+   "isUpdated": [1, "bool", "optional"],
+   "selfAccessStatus": [2, "AccessStatus", "optional"],
+   "selfRsvpStatus": [3, "RsvpStatus", "optional"],
+   "selfAdditionalGuestCount": [4, "uint32", "optional"],
+   "selfInviteeLastUpdatedTsUsec": [5, "int64", "optional"]
   },
   "EventResponse": {
    "eventResponseMessageKey": [1, "MessageKey", "optional"],
@@ -2545,7 +2549,8 @@
    "thumbnailHeight": [18, "uint32", "optional"],
    "thumbnailWidth": [19, "uint32", "optional"],
    "caption": [20, "string", "optional"],
-   "accessibilityLabel": [21, "string", "optional"]
+   "accessibilityLabel": [21, "string", "optional"],
+   "qrUrl": [23, "string", "optional"]
   },
   "Message.EncCommentMessage": {
    "targetMessageKey": [1, "MessageKey", "optional"],
@@ -6239,6 +6244,20 @@
    "STANDARD_DXMA": 12,
    "LIST_DXMA": 15,
    "GRID": 16
+  },
+  "EventInviteAdditionalMetadata.AccessStatus": {
+   "ACCESS_STATUS_UNKNOWN": 0,
+   "HAS_ACCESS": 1,
+   "LEFT_EVENT": 2,
+   "REMOVED_FROM_INVITE_LIST": 3,
+   "UNAVAILABLE": 4
+  },
+  "EventInviteAdditionalMetadata.RsvpStatus": {
+   "RSVP_STATUS_UNKNOWN": 0,
+   "GOING": 1,
+   "NOT_GOING": 2,
+   "MAYBE": 3,
+   "NO_RESPONSE": 4
   },
   "FUTURE_PROOF_BEHAVIOR": {
    "PLACEHOLDER": 0,
