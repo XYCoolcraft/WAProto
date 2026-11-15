@@ -1,7 +1,7 @@
 {
- "protoVersion": "2.3000.1054696247",
+ "protoVersion": "2.3000.1054710185",
  "counts": {
-  "messages": 806,
+  "messages": 812,
   "enums": 231
  },
  "fields": "[nomor, tipe, label]",
@@ -852,6 +852,14 @@
    "publicKey": [1, "bytes", "optional"],
    "deviceType": [2, "DeviceProps.PlatformType", "optional"],
    "ref": [3, "string", "optional"]
+  },
+  "CompanionTestMessageThreadIdInput": {},
+  "CompanionTestMessageThreadIdOutput": {
+   "success": [1, "CompanionTestMessageThreadIdSuccess", ""],
+   "error": [2, "string", ""]
+  },
+  "CompanionTestMessageThreadIdSuccess": {
+   "threadId": [1, "string", "optional"]
   },
   "ComputeClientSealTokenInput": {
    "orfClientState": [1, "bytes", "optional"],
@@ -1958,7 +1966,9 @@
    "openSealedThreadIdInput": [10, "OpenSealedThreadIdInput", ""],
    "deriveEpochsInput": [11, "DeriveEpochsInput", ""],
    "sealThreadIdInput": [12, "SealThreadIdInput", ""],
-   "prepareAddPeerDeviceInput": [13, "PrepareAddPeerDeviceInput", ""]
+   "prepareAddPeerDeviceInput": [13, "PrepareAddPeerDeviceInput", ""],
+   "companionTestMessageThreadIdInput": [14, "CompanionTestMessageThreadIdInput", ""],
+   "parseCompanionTestMessageInput": [15, "ParseCompanionTestMessageInput", ""]
   },
   "LegacyMessage": {
    "eventResponseMessage": [1, "Message.EventResponseMessage", "optional"],
@@ -4036,6 +4046,16 @@
    "companionPublicKey": [1, "bytes", "optional"],
    "companionIdentityKey": [2, "bytes", "optional"],
    "advSecret": [3, "bytes", "optional"]
+  },
+  "ParseCompanionTestMessageInput": {
+   "plaintext": [1, "bytes", "optional"]
+  },
+  "ParseCompanionTestMessageOutput": {
+   "success": [1, "ParseCompanionTestMessageSuccess", ""],
+   "error": [2, "string", ""]
+  },
+  "ParseCompanionTestMessageSuccess": {
+   "createdAtMs": [1, "uint64", "optional"]
   },
   "PastParticipant": {
    "userJid": [1, "string", "optional"],

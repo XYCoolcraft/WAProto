@@ -1,7 +1,7 @@
 syntax = "proto3";
 package proto;
 
-/// WhatsApp Version: 2.3000.1054696247
+/// WhatsApp Version: 2.3000.1054710185
 
 message ACP2Setting {
     optional bool enabled = 1;
@@ -8297,6 +8297,8 @@ message LabyrinthWaCommand {
         DeriveEpochsInput deriveEpochsInput = 11;
         SealThreadIdInput sealThreadIdInput = 12;
         PrepareAddPeerDeviceInput prepareAddPeerDeviceInput = 13;
+        CompanionTestMessageThreadIdInput companionTestMessageThreadIdInput = 14;
+        ParseCompanionTestMessageInput parseCompanionTestMessageInput = 15;
     }
 }
 
@@ -8473,4 +8475,33 @@ message GroupMembershipFormSubmission {
     repeated GroupMembershipFormQuestionAnswer questionAnswers = 1;
     optional GroupMembershipFormMemberTagAnswer memberTagAnswer = 2;
     optional uint32 schemaVersion = 3;
+}
+
+message CompanionTestMessageThreadIdInput {
+}
+
+message CompanionTestMessageThreadIdOutput {
+    oneof result {
+        CompanionTestMessageThreadIdSuccess success = 1;
+        string error = 2;
+    }
+}
+
+message CompanionTestMessageThreadIdSuccess {
+    optional string threadId = 1;
+}
+
+message ParseCompanionTestMessageInput {
+    optional bytes plaintext = 1;
+}
+
+message ParseCompanionTestMessageOutput {
+    oneof result {
+        ParseCompanionTestMessageSuccess success = 1;
+        string error = 2;
+    }
+}
+
+message ParseCompanionTestMessageSuccess {
+    optional uint64 createdAtMs = 1;
 }

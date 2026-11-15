@@ -49185,7 +49185,9 @@
                 "openSealedThreadIdInput",
                 "deriveEpochsInput",
                 "sealThreadIdInput",
-                "prepareAddPeerDeviceInput"
+                "prepareAddPeerDeviceInput",
+                "companionTestMessageThreadIdInput",
+                "parseCompanionTestMessageInput"
               ]
             }
           },
@@ -49241,6 +49243,14 @@
             "prepareAddPeerDeviceInput": {
               "type": "PrepareAddPeerDeviceInput",
               "id": 13
+            },
+            "companionTestMessageThreadIdInput": {
+              "type": "CompanionTestMessageThreadIdInput",
+              "id": 14
+            },
+            "parseCompanionTestMessageInput": {
+              "type": "ParseCompanionTestMessageInput",
+              "id": 15
             }
           }
         },
@@ -50305,6 +50315,103 @@
             "schemaVersion": {
               "type": "uint32",
               "id": 3,
+              "options": {
+                "proto3_optional": true
+              }
+            }
+          }
+        },
+        "CompanionTestMessageThreadIdInput": {
+          "fields": {}
+        },
+        "CompanionTestMessageThreadIdOutput": {
+          "oneofs": {
+            "result": {
+              "oneof": [
+                "success",
+                "error"
+              ]
+            }
+          },
+          "fields": {
+            "success": {
+              "type": "CompanionTestMessageThreadIdSuccess",
+              "id": 1
+            },
+            "error": {
+              "type": "string",
+              "id": 2
+            }
+          }
+        },
+        "CompanionTestMessageThreadIdSuccess": {
+          "oneofs": {
+            "_threadId": {
+              "oneof": [
+                "threadId"
+              ]
+            }
+          },
+          "fields": {
+            "threadId": {
+              "type": "string",
+              "id": 1,
+              "options": {
+                "proto3_optional": true
+              }
+            }
+          }
+        },
+        "ParseCompanionTestMessageInput": {
+          "oneofs": {
+            "_plaintext": {
+              "oneof": [
+                "plaintext"
+              ]
+            }
+          },
+          "fields": {
+            "plaintext": {
+              "type": "bytes",
+              "id": 1,
+              "options": {
+                "proto3_optional": true
+              }
+            }
+          }
+        },
+        "ParseCompanionTestMessageOutput": {
+          "oneofs": {
+            "result": {
+              "oneof": [
+                "success",
+                "error"
+              ]
+            }
+          },
+          "fields": {
+            "success": {
+              "type": "ParseCompanionTestMessageSuccess",
+              "id": 1
+            },
+            "error": {
+              "type": "string",
+              "id": 2
+            }
+          }
+        },
+        "ParseCompanionTestMessageSuccess": {
+          "oneofs": {
+            "_createdAtMs": {
+              "oneof": [
+                "createdAtMs"
+              ]
+            }
+          },
+          "fields": {
+            "createdAtMs": {
+              "type": "uint64",
+              "id": 1,
               "options": {
                 "proto3_optional": true
               }

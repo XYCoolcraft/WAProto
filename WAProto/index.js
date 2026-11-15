@@ -185904,11 +185904,13 @@ export const proto = $root.proto = (() => {
         LabyrinthWaCommand.prototype.deriveEpochsInput = null;
         LabyrinthWaCommand.prototype.sealThreadIdInput = null;
         LabyrinthWaCommand.prototype.prepareAddPeerDeviceInput = null;
+        LabyrinthWaCommand.prototype.companionTestMessageThreadIdInput = null;
+        LabyrinthWaCommand.prototype.parseCompanionTestMessageInput = null;
 
         let $oneOfFields;
 
         $Object.defineProperty(LabyrinthWaCommand.prototype, "commandInput", {
-            get: $util.oneOfGetter($oneOfFields = ["createBackupInput", "encryptMessageInput", "decryptMessageInput", "orfThreadIdInput", "deriveMessageKeyInput", "rotateEpochInput", "deriveVirtualDeviceIdInput", "prepareAddDeviceInput", "computeClientSealTokenInput", "openSealedThreadIdInput", "deriveEpochsInput", "sealThreadIdInput", "prepareAddPeerDeviceInput"]),
+            get: $util.oneOfGetter($oneOfFields = ["createBackupInput", "encryptMessageInput", "decryptMessageInput", "orfThreadIdInput", "deriveMessageKeyInput", "rotateEpochInput", "deriveVirtualDeviceIdInput", "prepareAddDeviceInput", "computeClientSealTokenInput", "openSealedThreadIdInput", "deriveEpochsInput", "sealThreadIdInput", "prepareAddPeerDeviceInput", "companionTestMessageThreadIdInput", "parseCompanionTestMessageInput"]),
             set: $util.oneOfSetter($oneOfFields)
         });
 
@@ -185949,6 +185951,10 @@ export const proto = $root.proto = (() => {
                 $root.proto.SealThreadIdInput.encode(m.sealThreadIdInput, w.uint32(98).fork(), q + 1).ldelim();
             if (m.prepareAddPeerDeviceInput != null && $Object.hasOwnProperty.call(m, "prepareAddPeerDeviceInput"))
                 $root.proto.PrepareAddPeerDeviceInput.encode(m.prepareAddPeerDeviceInput, w.uint32(106).fork(), q + 1).ldelim();
+            if (m.companionTestMessageThreadIdInput != null && $Object.hasOwnProperty.call(m, "companionTestMessageThreadIdInput"))
+                $root.proto.CompanionTestMessageThreadIdInput.encode(m.companionTestMessageThreadIdInput, w.uint32(114).fork(), q + 1).ldelim();
+            if (m.parseCompanionTestMessageInput != null && $Object.hasOwnProperty.call(m, "parseCompanionTestMessageInput"))
+                $root.proto.ParseCompanionTestMessageInput.encode(m.parseCompanionTestMessageInput, w.uint32(122).fork(), q + 1).ldelim();
             if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                 for (var i = 0; i < m.$unknowns.length; ++i)
                     w.raw(m.$unknowns[i]);
@@ -186073,6 +186079,20 @@ export const proto = $root.proto = (() => {
                         m.commandInput = "prepareAddPeerDeviceInput";
                         continue;
                     }
+                case 14: {
+                        if (u !== 2)
+                            break;
+                        m.companionTestMessageThreadIdInput = $root.proto.CompanionTestMessageThreadIdInput.decode(r, r.size(), $undefined, q + 1, m.companionTestMessageThreadIdInput);
+                        m.commandInput = "companionTestMessageThreadIdInput";
+                        continue;
+                    }
+                case 15: {
+                        if (u !== 2)
+                            break;
+                        m.parseCompanionTestMessageInput = $root.proto.ParseCompanionTestMessageInput.decode(r, r.size(), $undefined, q + 1, m.parseCompanionTestMessageInput);
+                        m.commandInput = "parseCompanionTestMessageInput";
+                        continue;
+                    }
                 }
                 r.skipType(u, q, t);
                 if (!r.discardUnknown) {
@@ -186165,6 +186185,16 @@ export const proto = $root.proto = (() => {
                     throw $TypeError(".proto.LabyrinthWaCommand.prepareAddPeerDeviceInput: object expected");
                 m.prepareAddPeerDeviceInput = $root.proto.PrepareAddPeerDeviceInput.fromObject(d.prepareAddPeerDeviceInput, q + 1);
             }
+            if (d.companionTestMessageThreadIdInput != null) {
+                if (!$util.isObject(d.companionTestMessageThreadIdInput))
+                    throw $TypeError(".proto.LabyrinthWaCommand.companionTestMessageThreadIdInput: object expected");
+                m.companionTestMessageThreadIdInput = $root.proto.CompanionTestMessageThreadIdInput.fromObject(d.companionTestMessageThreadIdInput, q + 1);
+            }
+            if (d.parseCompanionTestMessageInput != null) {
+                if (!$util.isObject(d.parseCompanionTestMessageInput))
+                    throw $TypeError(".proto.LabyrinthWaCommand.parseCompanionTestMessageInput: object expected");
+                m.parseCompanionTestMessageInput = $root.proto.ParseCompanionTestMessageInput.fromObject(d.parseCompanionTestMessageInput, q + 1);
+            }
             return m;
         };
 
@@ -186240,6 +186270,16 @@ export const proto = $root.proto = (() => {
                 d.prepareAddPeerDeviceInput = $root.proto.PrepareAddPeerDeviceInput.toObject(m.prepareAddPeerDeviceInput, o, q + 1);
                 if (o.oneofs)
                     d.commandInput = "prepareAddPeerDeviceInput";
+            }
+            if (m.companionTestMessageThreadIdInput != null && $Object.hasOwnProperty.call(m, "companionTestMessageThreadIdInput")) {
+                d.companionTestMessageThreadIdInput = $root.proto.CompanionTestMessageThreadIdInput.toObject(m.companionTestMessageThreadIdInput, o, q + 1);
+                if (o.oneofs)
+                    d.commandInput = "companionTestMessageThreadIdInput";
+            }
+            if (m.parseCompanionTestMessageInput != null && $Object.hasOwnProperty.call(m, "parseCompanionTestMessageInput")) {
+                d.parseCompanionTestMessageInput = $root.proto.ParseCompanionTestMessageInput.toObject(m.parseCompanionTestMessageInput, o, q + 1);
+                if (o.oneofs)
+                    d.commandInput = "parseCompanionTestMessageInput";
             }
             return d;
         };
@@ -191307,6 +191347,819 @@ export const proto = $root.proto = (() => {
         };
 
         return GroupMembershipFormSubmission;
+    })();
+
+    proto.CompanionTestMessageThreadIdInput = (function() {
+
+        const CompanionTestMessageThreadIdInput = function (p) {
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        CompanionTestMessageThreadIdInput.create = function(properties) {
+            return new CompanionTestMessageThreadIdInput(properties);
+        };
+
+        CompanionTestMessageThreadIdInput.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        CompanionTestMessageThreadIdInput.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.CompanionTestMessageThreadIdInput();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                r.skipType(t & 7, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        CompanionTestMessageThreadIdInput.fromObject = function (d, q) {
+            if (d instanceof $root.proto.CompanionTestMessageThreadIdInput)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.CompanionTestMessageThreadIdInput: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            return new $root.proto.CompanionTestMessageThreadIdInput();
+        };
+
+        CompanionTestMessageThreadIdInput.toObject = function () {
+            return {};
+        };
+
+        CompanionTestMessageThreadIdInput.prototype.toJSON = function() {
+            return CompanionTestMessageThreadIdInput.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        CompanionTestMessageThreadIdInput.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.CompanionTestMessageThreadIdInput";
+        };
+
+        return CompanionTestMessageThreadIdInput;
+    })();
+
+    proto.CompanionTestMessageThreadIdOutput = (function() {
+
+        const CompanionTestMessageThreadIdOutput = function (p) {
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        CompanionTestMessageThreadIdOutput.prototype.success = null;
+        CompanionTestMessageThreadIdOutput.prototype.error = null;
+
+        let $oneOfFields;
+
+        $Object.defineProperty(CompanionTestMessageThreadIdOutput.prototype, "result", {
+            get: $util.oneOfGetter($oneOfFields = ["success", "error"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        CompanionTestMessageThreadIdOutput.create = function(properties) {
+            return new CompanionTestMessageThreadIdOutput(properties);
+        };
+
+        CompanionTestMessageThreadIdOutput.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.success != null && $Object.hasOwnProperty.call(m, "success"))
+                $root.proto.CompanionTestMessageThreadIdSuccess.encode(m.success, w.uint32(10).fork(), q + 1).ldelim();
+            if (m.error != null && $Object.hasOwnProperty.call(m, "error"))
+                w.uint32(18).string(m.error);
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        CompanionTestMessageThreadIdOutput.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.CompanionTestMessageThreadIdOutput();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 2)
+                            break;
+                        m.success = $root.proto.CompanionTestMessageThreadIdSuccess.decode(r, r.size(), $undefined, q + 1, m.success);
+                        m.result = "success";
+                        continue;
+                    }
+                case 2: {
+                        if (u !== 2)
+                            break;
+                        m.error = r.stringVerify();
+                        m.result = "error";
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        CompanionTestMessageThreadIdOutput.fromObject = function (d, q) {
+            if (d instanceof $root.proto.CompanionTestMessageThreadIdOutput)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.CompanionTestMessageThreadIdOutput: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.CompanionTestMessageThreadIdOutput();
+            if (d.success != null) {
+                if (!$util.isObject(d.success))
+                    throw $TypeError(".proto.CompanionTestMessageThreadIdOutput.success: object expected");
+                m.success = $root.proto.CompanionTestMessageThreadIdSuccess.fromObject(d.success, q + 1);
+            }
+            if (d.error != null) {
+                m.error = $String(d.error);
+            }
+            return m;
+        };
+
+        CompanionTestMessageThreadIdOutput.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (m.success != null && $Object.hasOwnProperty.call(m, "success")) {
+                d.success = $root.proto.CompanionTestMessageThreadIdSuccess.toObject(m.success, o, q + 1);
+                if (o.oneofs)
+                    d.result = "success";
+            }
+            if (m.error != null && $Object.hasOwnProperty.call(m, "error")) {
+                d.error = m.error;
+                if (o.oneofs)
+                    d.result = "error";
+            }
+            return d;
+        };
+
+        CompanionTestMessageThreadIdOutput.prototype.toJSON = function() {
+            return CompanionTestMessageThreadIdOutput.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        CompanionTestMessageThreadIdOutput.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.CompanionTestMessageThreadIdOutput";
+        };
+
+        return CompanionTestMessageThreadIdOutput;
+    })();
+
+    proto.CompanionTestMessageThreadIdSuccess = (function() {
+
+        const CompanionTestMessageThreadIdSuccess = function (p) {
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        CompanionTestMessageThreadIdSuccess.prototype.threadId = null;
+
+        let $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(CompanionTestMessageThreadIdSuccess.prototype, "_threadId", {
+            get: $util.oneOfGetter($oneOfFields = ["threadId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        CompanionTestMessageThreadIdSuccess.create = function(properties) {
+            return new CompanionTestMessageThreadIdSuccess(properties);
+        };
+
+        CompanionTestMessageThreadIdSuccess.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.threadId != null && $Object.hasOwnProperty.call(m, "threadId"))
+                w.uint32(10).string(m.threadId);
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        CompanionTestMessageThreadIdSuccess.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.CompanionTestMessageThreadIdSuccess();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 2)
+                            break;
+                        m.threadId = r.stringVerify();
+                        m._threadId = "threadId";
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        CompanionTestMessageThreadIdSuccess.fromObject = function (d, q) {
+            if (d instanceof $root.proto.CompanionTestMessageThreadIdSuccess)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.CompanionTestMessageThreadIdSuccess: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.CompanionTestMessageThreadIdSuccess();
+            if (d.threadId != null) {
+                m.threadId = $String(d.threadId);
+            }
+            return m;
+        };
+
+        CompanionTestMessageThreadIdSuccess.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (m.threadId != null && $Object.hasOwnProperty.call(m, "threadId")) {
+                d.threadId = m.threadId;
+            }
+            return d;
+        };
+
+        CompanionTestMessageThreadIdSuccess.prototype.toJSON = function() {
+            return CompanionTestMessageThreadIdSuccess.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        CompanionTestMessageThreadIdSuccess.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.CompanionTestMessageThreadIdSuccess";
+        };
+
+        return CompanionTestMessageThreadIdSuccess;
+    })();
+
+    proto.ParseCompanionTestMessageInput = (function() {
+
+        const ParseCompanionTestMessageInput = function (p) {
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        ParseCompanionTestMessageInput.prototype.plaintext = null;
+
+        let $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(ParseCompanionTestMessageInput.prototype, "_plaintext", {
+            get: $util.oneOfGetter($oneOfFields = ["plaintext"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        ParseCompanionTestMessageInput.create = function(properties) {
+            return new ParseCompanionTestMessageInput(properties);
+        };
+
+        ParseCompanionTestMessageInput.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.plaintext != null && $Object.hasOwnProperty.call(m, "plaintext"))
+                w.uint32(10).bytes(m.plaintext);
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        ParseCompanionTestMessageInput.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.ParseCompanionTestMessageInput();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 2)
+                            break;
+                        m.plaintext = r.bytes();
+                        m._plaintext = "plaintext";
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        ParseCompanionTestMessageInput.fromObject = function (d, q) {
+            if (d instanceof $root.proto.ParseCompanionTestMessageInput)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.ParseCompanionTestMessageInput: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.ParseCompanionTestMessageInput();
+            if (d.plaintext != null) {
+                if (typeof d.plaintext === "string")
+                    $util.base64.decode(d.plaintext, m.plaintext = $util.newBuffer($util.base64.length(d.plaintext)), 0);
+                else if (d.plaintext.length >= 0)
+                    m.plaintext = d.plaintext;
+            }
+            return m;
+        };
+
+        ParseCompanionTestMessageInput.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (m.plaintext != null && $Object.hasOwnProperty.call(m, "plaintext")) {
+                d.plaintext = o.bytes === $String ? $util.base64.encode(m.plaintext, 0, m.plaintext.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.plaintext) : m.plaintext;
+            }
+            return d;
+        };
+
+        ParseCompanionTestMessageInput.prototype.toJSON = function() {
+            return ParseCompanionTestMessageInput.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        ParseCompanionTestMessageInput.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.ParseCompanionTestMessageInput";
+        };
+
+        return ParseCompanionTestMessageInput;
+    })();
+
+    proto.ParseCompanionTestMessageOutput = (function() {
+
+        const ParseCompanionTestMessageOutput = function (p) {
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        ParseCompanionTestMessageOutput.prototype.success = null;
+        ParseCompanionTestMessageOutput.prototype.error = null;
+
+        let $oneOfFields;
+
+        $Object.defineProperty(ParseCompanionTestMessageOutput.prototype, "result", {
+            get: $util.oneOfGetter($oneOfFields = ["success", "error"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        ParseCompanionTestMessageOutput.create = function(properties) {
+            return new ParseCompanionTestMessageOutput(properties);
+        };
+
+        ParseCompanionTestMessageOutput.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.success != null && $Object.hasOwnProperty.call(m, "success"))
+                $root.proto.ParseCompanionTestMessageSuccess.encode(m.success, w.uint32(10).fork(), q + 1).ldelim();
+            if (m.error != null && $Object.hasOwnProperty.call(m, "error"))
+                w.uint32(18).string(m.error);
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        ParseCompanionTestMessageOutput.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.ParseCompanionTestMessageOutput();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 2)
+                            break;
+                        m.success = $root.proto.ParseCompanionTestMessageSuccess.decode(r, r.size(), $undefined, q + 1, m.success);
+                        m.result = "success";
+                        continue;
+                    }
+                case 2: {
+                        if (u !== 2)
+                            break;
+                        m.error = r.stringVerify();
+                        m.result = "error";
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        ParseCompanionTestMessageOutput.fromObject = function (d, q) {
+            if (d instanceof $root.proto.ParseCompanionTestMessageOutput)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.ParseCompanionTestMessageOutput: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.ParseCompanionTestMessageOutput();
+            if (d.success != null) {
+                if (!$util.isObject(d.success))
+                    throw $TypeError(".proto.ParseCompanionTestMessageOutput.success: object expected");
+                m.success = $root.proto.ParseCompanionTestMessageSuccess.fromObject(d.success, q + 1);
+            }
+            if (d.error != null) {
+                m.error = $String(d.error);
+            }
+            return m;
+        };
+
+        ParseCompanionTestMessageOutput.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (m.success != null && $Object.hasOwnProperty.call(m, "success")) {
+                d.success = $root.proto.ParseCompanionTestMessageSuccess.toObject(m.success, o, q + 1);
+                if (o.oneofs)
+                    d.result = "success";
+            }
+            if (m.error != null && $Object.hasOwnProperty.call(m, "error")) {
+                d.error = m.error;
+                if (o.oneofs)
+                    d.result = "error";
+            }
+            return d;
+        };
+
+        ParseCompanionTestMessageOutput.prototype.toJSON = function() {
+            return ParseCompanionTestMessageOutput.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        ParseCompanionTestMessageOutput.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.ParseCompanionTestMessageOutput";
+        };
+
+        return ParseCompanionTestMessageOutput;
+    })();
+
+    proto.ParseCompanionTestMessageSuccess = (function() {
+
+        const ParseCompanionTestMessageSuccess = function (p) {
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        ParseCompanionTestMessageSuccess.prototype.createdAtMs = null;
+
+        let $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(ParseCompanionTestMessageSuccess.prototype, "_createdAtMs", {
+            get: $util.oneOfGetter($oneOfFields = ["createdAtMs"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        ParseCompanionTestMessageSuccess.create = function(properties) {
+            return new ParseCompanionTestMessageSuccess(properties);
+        };
+
+        ParseCompanionTestMessageSuccess.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.createdAtMs != null && $Object.hasOwnProperty.call(m, "createdAtMs"))
+                w.uint32(8).uint64(m.createdAtMs);
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        ParseCompanionTestMessageSuccess.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.ParseCompanionTestMessageSuccess();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 0)
+                            break;
+                        m.createdAtMs = r.uint64();
+                        m._createdAtMs = "createdAtMs";
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        ParseCompanionTestMessageSuccess.fromObject = function (d, q) {
+            if (d instanceof $root.proto.ParseCompanionTestMessageSuccess)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.ParseCompanionTestMessageSuccess: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.ParseCompanionTestMessageSuccess();
+            if (d.createdAtMs != null) {
+                if ($util.Long)
+                    m.createdAtMs = $util.Long.fromValue(d.createdAtMs, true);
+                else if (typeof d.createdAtMs === "string")
+                    m.createdAtMs = $parseInt(d.createdAtMs, 10);
+                else if (typeof d.createdAtMs === "number")
+                    m.createdAtMs = d.createdAtMs;
+                else if (typeof d.createdAtMs === "object")
+                    m.createdAtMs = new $util.LongBits(d.createdAtMs.low >>> 0, d.createdAtMs.high >>> 0).toNumber(true);
+            }
+            return m;
+        };
+
+        ParseCompanionTestMessageSuccess.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (m.createdAtMs != null && $Object.hasOwnProperty.call(m, "createdAtMs")) {
+                if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
+                    d.createdAtMs = typeof m.createdAtMs === "number" ? $BigInt(m.createdAtMs) : $util.Long.fromBits(m.createdAtMs.low >>> 0, m.createdAtMs.high >>> 0, true).toBigInt();
+                else if (typeof m.createdAtMs === "number")
+                    d.createdAtMs = o.longs === $String ? $String(m.createdAtMs) : m.createdAtMs;
+                else
+                    d.createdAtMs = o.longs === $String ? $util.Long.prototype.toString.call(m.createdAtMs) : o.longs === $Number ? new $util.LongBits(m.createdAtMs.low >>> 0, m.createdAtMs.high >>> 0).toNumber(true) : m.createdAtMs;
+            }
+            return d;
+        };
+
+        ParseCompanionTestMessageSuccess.prototype.toJSON = function() {
+            return ParseCompanionTestMessageSuccess.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        ParseCompanionTestMessageSuccess.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.ParseCompanionTestMessageSuccess";
+        };
+
+        return ParseCompanionTestMessageSuccess;
     })();
 
     return proto;

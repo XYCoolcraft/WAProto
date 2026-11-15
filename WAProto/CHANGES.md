@@ -2,6 +2,24 @@
 
 Terbaru di atas. Dibuat otomatis oleh update-proto.mjs.
 
+## 2.3000.1054696247 → 2.3000.1054710185
+
+By: https://t.me/XYCoolcrafts
+
+### Tipe baru (6)
+
+- CompanionTestMessageThreadIdInput
+- CompanionTestMessageThreadIdOutput
+- CompanionTestMessageThreadIdSuccess
+- ParseCompanionTestMessageInput
+- ParseCompanionTestMessageOutput
+- ParseCompanionTestMessageSuccess
+
+### Field baru (2)
+
+- LabyrinthWaCommand.companionTestMessageThreadIdInput = 14
+- LabyrinthWaCommand.parseCompanionTestMessageInput = 15
+
 ## 2.3000.1054660005 → 2.3000.1054696247
 
 By: https://t.me/XYCoolcrafts
@@ -247,12 +265,6 @@ By: https://t.me/XYCoolcrafts
 Hanya nomor versi yang naik — tidak ada tipe/field/enum baru.
 
 ## 2.3000.1053592890 → 2.3000.1053614044
-
-By: https://t.me/XYCoolcrafts
-
-Hanya nomor versi yang naik — tidak ada tipe/field/enum baru.
-
-## 2.3000.1053579369 → 2.3000.1053592890
 
 By: https://t.me/XYCoolcrafts
 

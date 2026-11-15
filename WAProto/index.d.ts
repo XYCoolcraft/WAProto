@@ -29301,7 +29301,9 @@ export namespace proto {
         deriveEpochsInput?: (proto.DeriveEpochsInput.$Properties|null);
         sealThreadIdInput?: (proto.SealThreadIdInput.$Properties|null);
         prepareAddPeerDeviceInput?: (proto.PrepareAddPeerDeviceInput.$Properties|null);
-        commandInput?: ("createBackupInput"|"encryptMessageInput"|"decryptMessageInput"|"orfThreadIdInput"|"deriveMessageKeyInput"|"rotateEpochInput"|"deriveVirtualDeviceIdInput"|"prepareAddDeviceInput"|"computeClientSealTokenInput"|"openSealedThreadIdInput"|"deriveEpochsInput"|"sealThreadIdInput"|"prepareAddPeerDeviceInput");
+        companionTestMessageThreadIdInput?: (proto.CompanionTestMessageThreadIdInput.$Properties|null);
+        parseCompanionTestMessageInput?: (proto.ParseCompanionTestMessageInput.$Properties|null);
+        commandInput?: ("createBackupInput"|"encryptMessageInput"|"decryptMessageInput"|"orfThreadIdInput"|"deriveMessageKeyInput"|"rotateEpochInput"|"deriveVirtualDeviceIdInput"|"prepareAddDeviceInput"|"computeClientSealTokenInput"|"openSealedThreadIdInput"|"deriveEpochsInput"|"sealThreadIdInput"|"prepareAddPeerDeviceInput"|"companionTestMessageThreadIdInput"|"parseCompanionTestMessageInput");
         static create(properties: proto.LabyrinthWaCommand.$Shape): proto.LabyrinthWaCommand & proto.LabyrinthWaCommand.$Shape;
         static create(properties?: proto.LabyrinthWaCommand.$Properties): proto.LabyrinthWaCommand;
         static encode(m: proto.LabyrinthWaCommand.$Properties, w?: $protobuf.Writer): $protobuf.Writer;
@@ -29327,7 +29329,9 @@ export namespace proto {
             deriveEpochsInput?: (proto.DeriveEpochsInput.$Properties|null);
             sealThreadIdInput?: (proto.SealThreadIdInput.$Properties|null);
             prepareAddPeerDeviceInput?: (proto.PrepareAddPeerDeviceInput.$Properties|null);
-            commandInput?: ("createBackupInput"|"encryptMessageInput"|"decryptMessageInput"|"orfThreadIdInput"|"deriveMessageKeyInput"|"rotateEpochInput"|"deriveVirtualDeviceIdInput"|"prepareAddDeviceInput"|"computeClientSealTokenInput"|"openSealedThreadIdInput"|"deriveEpochsInput"|"sealThreadIdInput"|"prepareAddPeerDeviceInput");
+            companionTestMessageThreadIdInput?: (proto.CompanionTestMessageThreadIdInput.$Properties|null);
+            parseCompanionTestMessageInput?: (proto.ParseCompanionTestMessageInput.$Properties|null);
+            commandInput?: ("createBackupInput"|"encryptMessageInput"|"decryptMessageInput"|"orfThreadIdInput"|"deriveMessageKeyInput"|"rotateEpochInput"|"deriveVirtualDeviceIdInput"|"prepareAddDeviceInput"|"computeClientSealTokenInput"|"openSealedThreadIdInput"|"deriveEpochsInput"|"sealThreadIdInput"|"prepareAddPeerDeviceInput"|"companionTestMessageThreadIdInput"|"parseCompanionTestMessageInput");
             $unknowns?: Uint8Array[];
         }
         type $Shape = {
@@ -29344,9 +29348,11 @@ export namespace proto {
           deriveEpochsInput?: proto.DeriveEpochsInput.$Shape|null;
           sealThreadIdInput?: proto.SealThreadIdInput.$Shape|null;
           prepareAddPeerDeviceInput?: proto.PrepareAddPeerDeviceInput.$Shape|null;
+          companionTestMessageThreadIdInput?: proto.CompanionTestMessageThreadIdInput.$Shape|null;
+          parseCompanionTestMessageInput?: proto.ParseCompanionTestMessageInput.$Shape|null;
           $unknowns?: Uint8Array[];
         } & (
-          ({ commandInput?: undefined; createBackupInput?: null; encryptMessageInput?: null; decryptMessageInput?: null; orfThreadIdInput?: null; deriveMessageKeyInput?: null; rotateEpochInput?: null; deriveVirtualDeviceIdInput?: null; prepareAddDeviceInput?: null; computeClientSealTokenInput?: null; openSealedThreadIdInput?: null; deriveEpochsInput?: null; sealThreadIdInput?: null; prepareAddPeerDeviceInput?: null }|{ commandInput?: "createBackupInput"; createBackupInput: proto.CreateBackupInput.$Shape; encryptMessageInput?: null; decryptMessageInput?: null; orfThreadIdInput?: null; deriveMessageKeyInput?: null; rotateEpochInput?: null; deriveVirtualDeviceIdInput?: null; prepareAddDeviceInput?: null; computeClientSealTokenInput?: null; openSealedThreadIdInput?: null; deriveEpochsInput?: null; sealThreadIdInput?: null; prepareAddPeerDeviceInput?: null }|{ commandInput?: "encryptMessageInput"; createBackupInput?: null; encryptMessageInput: proto.EncryptMessageInput.$Shape; decryptMessageInput?: null; orfThreadIdInput?: null; deriveMessageKeyInput?: null; rotateEpochInput?: null; deriveVirtualDeviceIdInput?: null; prepareAddDeviceInput?: null; computeClientSealTokenInput?: null; openSealedThreadIdInput?: null; deriveEpochsInput?: null; sealThreadIdInput?: null; prepareAddPeerDeviceInput?: null }|{ commandInput?: "decryptMessageInput"; createBackupInput?: null; encryptMessageInput?: null; decryptMessageInput: proto.DecryptMessageInput.$Shape; orfThreadIdInput?: null; deriveMessageKeyInput?: null; rotateEpochInput?: null; deriveVirtualDeviceIdInput?: null; prepareAddDeviceInput?: null; computeClientSealTokenInput?: null; openSealedThreadIdInput?: null; deriveEpochsInput?: null; sealThreadIdInput?: null; prepareAddPeerDeviceInput?: null }|{ commandInput?: "orfThreadIdInput"; createBackupInput?: null; encryptMessageInput?: null; decryptMessageInput?: null; orfThreadIdInput: proto.OrfThreadIdInput.$Shape; deriveMessageKeyInput?: null; rotateEpochInput?: null; deriveVirtualDeviceIdInput?: null; prepareAddDeviceInput?: null; computeClientSealTokenInput?: null; openSealedThreadIdInput?: null; deriveEpochsInput?: null; sealThreadIdInput?: null; prepareAddPeerDeviceInput?: null }|{ commandInput?: "deriveMessageKeyInput"; createBackupInput?: null; encryptMessageInput?: null; decryptMessageInput?: null; orfThreadIdInput?: null; deriveMessageKeyInput: proto.DeriveMessageKeyInput.$Shape; rotateEpochInput?: null; deriveVirtualDeviceIdInput?: null; prepareAddDeviceInput?: null; computeClientSealTokenInput?: null; openSealedThreadIdInput?: null; deriveEpochsInput?: null; sealThreadIdInput?: null; prepareAddPeerDeviceInput?: null }|{ commandInput?: "rotateEpochInput"; createBackupInput?: null; encryptMessageInput?: null; decryptMessageInput?: null; orfThreadIdInput?: null; deriveMessageKeyInput?: null; rotateEpochInput: proto.RotateEpochInput.$Shape; deriveVirtualDeviceIdInput?: null; prepareAddDeviceInput?: null; computeClientSealTokenInput?: null; openSealedThreadIdInput?: null; deriveEpochsInput?: null; sealThreadIdInput?: null; prepareAddPeerDeviceInput?: null }|{ commandInput?: "deriveVirtualDeviceIdInput"; createBackupInput?: null; encryptMessageInput?: null; decryptMessageInput?: null; orfThreadIdInput?: null; deriveMessageKeyInput?: null; rotateEpochInput?: null; deriveVirtualDeviceIdInput: proto.DeriveVirtualDeviceIdInput.$Shape; prepareAddDeviceInput?: null; computeClientSealTokenInput?: null; openSealedThreadIdInput?: null; deriveEpochsInput?: null; sealThreadIdInput?: null; prepareAddPeerDeviceInput?: null }|{ commandInput?: "prepareAddDeviceInput"; createBackupInput?: null; encryptMessageInput?: null; decryptMessageInput?: null; orfThreadIdInput?: null; deriveMessageKeyInput?: null; rotateEpochInput?: null; deriveVirtualDeviceIdInput?: null; prepareAddDeviceInput: proto.PrepareAddDeviceInput.$Shape; computeClientSealTokenInput?: null; openSealedThreadIdInput?: null; deriveEpochsInput?: null; sealThreadIdInput?: null; prepareAddPeerDeviceInput?: null }|{ commandInput?: "computeClientSealTokenInput"; createBackupInput?: null; encryptMessageInput?: null; decryptMessageInput?: null; orfThreadIdInput?: null; deriveMessageKeyInput?: null; rotateEpochInput?: null; deriveVirtualDeviceIdInput?: null; prepareAddDeviceInput?: null; computeClientSealTokenInput: proto.ComputeClientSealTokenInput.$Shape; openSealedThreadIdInput?: null; deriveEpochsInput?: null; sealThreadIdInput?: null; prepareAddPeerDeviceInput?: null }|{ commandInput?: "openSealedThreadIdInput"; createBackupInput?: null; encryptMessageInput?: null; decryptMessageInput?: null; orfThreadIdInput?: null; deriveMessageKeyInput?: null; rotateEpochInput?: null; deriveVirtualDeviceIdInput?: null; prepareAddDeviceInput?: null; computeClientSealTokenInput?: null; openSealedThreadIdInput: proto.OpenSealedThreadIdInput.$Shape; deriveEpochsInput?: null; sealThreadIdInput?: null; prepareAddPeerDeviceInput?: null }|{ commandInput?: "deriveEpochsInput"; createBackupInput?: null; encryptMessageInput?: null; decryptMessageInput?: null; orfThreadIdInput?: null; deriveMessageKeyInput?: null; rotateEpochInput?: null; deriveVirtualDeviceIdInput?: null; prepareAddDeviceInput?: null; computeClientSealTokenInput?: null; openSealedThreadIdInput?: null; deriveEpochsInput: proto.DeriveEpochsInput.$Shape; sealThreadIdInput?: null; prepareAddPeerDeviceInput?: null }|{ commandInput?: "sealThreadIdInput"; createBackupInput?: null; encryptMessageInput?: null; decryptMessageInput?: null; orfThreadIdInput?: null; deriveMessageKeyInput?: null; rotateEpochInput?: null; deriveVirtualDeviceIdInput?: null; prepareAddDeviceInput?: null; computeClientSealTokenInput?: null; openSealedThreadIdInput?: null; deriveEpochsInput?: null; sealThreadIdInput: proto.SealThreadIdInput.$Shape; prepareAddPeerDeviceInput?: null }|{ commandInput?: "prepareAddPeerDeviceInput"; createBackupInput?: null; encryptMessageInput?: null; decryptMessageInput?: null; orfThreadIdInput?: null; deriveMessageKeyInput?: null; rotateEpochInput?: null; deriveVirtualDeviceIdInput?: null; prepareAddDeviceInput?: null; computeClientSealTokenInput?: null; openSealedThreadIdInput?: null; deriveEpochsInput?: null; sealThreadIdInput?: null; prepareAddPeerDeviceInput: proto.PrepareAddPeerDeviceInput.$Shape })
+          ({ commandInput?: undefined; createBackupInput?: null; encryptMessageInput?: null; decryptMessageInput?: null; orfThreadIdInput?: null; deriveMessageKeyInput?: null; rotateEpochInput?: null; deriveVirtualDeviceIdInput?: null; prepareAddDeviceInput?: null; computeClientSealTokenInput?: null; openSealedThreadIdInput?: null; deriveEpochsInput?: null; sealThreadIdInput?: null; prepareAddPeerDeviceInput?: null; companionTestMessageThreadIdInput?: null; parseCompanionTestMessageInput?: null }|{ commandInput?: "createBackupInput"; createBackupInput: proto.CreateBackupInput.$Shape; encryptMessageInput?: null; decryptMessageInput?: null; orfThreadIdInput?: null; deriveMessageKeyInput?: null; rotateEpochInput?: null; deriveVirtualDeviceIdInput?: null; prepareAddDeviceInput?: null; computeClientSealTokenInput?: null; openSealedThreadIdInput?: null; deriveEpochsInput?: null; sealThreadIdInput?: null; prepareAddPeerDeviceInput?: null; companionTestMessageThreadIdInput?: null; parseCompanionTestMessageInput?: null }|{ commandInput?: "encryptMessageInput"; createBackupInput?: null; encryptMessageInput: proto.EncryptMessageInput.$Shape; decryptMessageInput?: null; orfThreadIdInput?: null; deriveMessageKeyInput?: null; rotateEpochInput?: null; deriveVirtualDeviceIdInput?: null; prepareAddDeviceInput?: null; computeClientSealTokenInput?: null; openSealedThreadIdInput?: null; deriveEpochsInput?: null; sealThreadIdInput?: null; prepareAddPeerDeviceInput?: null; companionTestMessageThreadIdInput?: null; parseCompanionTestMessageInput?: null }|{ commandInput?: "decryptMessageInput"; createBackupInput?: null; encryptMessageInput?: null; decryptMessageInput: proto.DecryptMessageInput.$Shape; orfThreadIdInput?: null; deriveMessageKeyInput?: null; rotateEpochInput?: null; deriveVirtualDeviceIdInput?: null; prepareAddDeviceInput?: null; computeClientSealTokenInput?: null; openSealedThreadIdInput?: null; deriveEpochsInput?: null; sealThreadIdInput?: null; prepareAddPeerDeviceInput?: null; companionTestMessageThreadIdInput?: null; parseCompanionTestMessageInput?: null }|{ commandInput?: "orfThreadIdInput"; createBackupInput?: null; encryptMessageInput?: null; decryptMessageInput?: null; orfThreadIdInput: proto.OrfThreadIdInput.$Shape; deriveMessageKeyInput?: null; rotateEpochInput?: null; deriveVirtualDeviceIdInput?: null; prepareAddDeviceInput?: null; computeClientSealTokenInput?: null; openSealedThreadIdInput?: null; deriveEpochsInput?: null; sealThreadIdInput?: null; prepareAddPeerDeviceInput?: null; companionTestMessageThreadIdInput?: null; parseCompanionTestMessageInput?: null }|{ commandInput?: "deriveMessageKeyInput"; createBackupInput?: null; encryptMessageInput?: null; decryptMessageInput?: null; orfThreadIdInput?: null; deriveMessageKeyInput: proto.DeriveMessageKeyInput.$Shape; rotateEpochInput?: null; deriveVirtualDeviceIdInput?: null; prepareAddDeviceInput?: null; computeClientSealTokenInput?: null; openSealedThreadIdInput?: null; deriveEpochsInput?: null; sealThreadIdInput?: null; prepareAddPeerDeviceInput?: null; companionTestMessageThreadIdInput?: null; parseCompanionTestMessageInput?: null }|{ commandInput?: "rotateEpochInput"; createBackupInput?: null; encryptMessageInput?: null; decryptMessageInput?: null; orfThreadIdInput?: null; deriveMessageKeyInput?: null; rotateEpochInput: proto.RotateEpochInput.$Shape; deriveVirtualDeviceIdInput?: null; prepareAddDeviceInput?: null; computeClientSealTokenInput?: null; openSealedThreadIdInput?: null; deriveEpochsInput?: null; sealThreadIdInput?: null; prepareAddPeerDeviceInput?: null; companionTestMessageThreadIdInput?: null; parseCompanionTestMessageInput?: null }|{ commandInput?: "deriveVirtualDeviceIdInput"; createBackupInput?: null; encryptMessageInput?: null; decryptMessageInput?: null; orfThreadIdInput?: null; deriveMessageKeyInput?: null; rotateEpochInput?: null; deriveVirtualDeviceIdInput: proto.DeriveVirtualDeviceIdInput.$Shape; prepareAddDeviceInput?: null; computeClientSealTokenInput?: null; openSealedThreadIdInput?: null; deriveEpochsInput?: null; sealThreadIdInput?: null; prepareAddPeerDeviceInput?: null; companionTestMessageThreadIdInput?: null; parseCompanionTestMessageInput?: null }|{ commandInput?: "prepareAddDeviceInput"; createBackupInput?: null; encryptMessageInput?: null; decryptMessageInput?: null; orfThreadIdInput?: null; deriveMessageKeyInput?: null; rotateEpochInput?: null; deriveVirtualDeviceIdInput?: null; prepareAddDeviceInput: proto.PrepareAddDeviceInput.$Shape; computeClientSealTokenInput?: null; openSealedThreadIdInput?: null; deriveEpochsInput?: null; sealThreadIdInput?: null; prepareAddPeerDeviceInput?: null; companionTestMessageThreadIdInput?: null; parseCompanionTestMessageInput?: null }|{ commandInput?: "computeClientSealTokenInput"; createBackupInput?: null; encryptMessageInput?: null; decryptMessageInput?: null; orfThreadIdInput?: null; deriveMessageKeyInput?: null; rotateEpochInput?: null; deriveVirtualDeviceIdInput?: null; prepareAddDeviceInput?: null; computeClientSealTokenInput: proto.ComputeClientSealTokenInput.$Shape; openSealedThreadIdInput?: null; deriveEpochsInput?: null; sealThreadIdInput?: null; prepareAddPeerDeviceInput?: null; companionTestMessageThreadIdInput?: null; parseCompanionTestMessageInput?: null }|{ commandInput?: "openSealedThreadIdInput"; createBackupInput?: null; encryptMessageInput?: null; decryptMessageInput?: null; orfThreadIdInput?: null; deriveMessageKeyInput?: null; rotateEpochInput?: null; deriveVirtualDeviceIdInput?: null; prepareAddDeviceInput?: null; computeClientSealTokenInput?: null; openSealedThreadIdInput: proto.OpenSealedThreadIdInput.$Shape; deriveEpochsInput?: null; sealThreadIdInput?: null; prepareAddPeerDeviceInput?: null; companionTestMessageThreadIdInput?: null; parseCompanionTestMessageInput?: null }|{ commandInput?: "deriveEpochsInput"; createBackupInput?: null; encryptMessageInput?: null; decryptMessageInput?: null; orfThreadIdInput?: null; deriveMessageKeyInput?: null; rotateEpochInput?: null; deriveVirtualDeviceIdInput?: null; prepareAddDeviceInput?: null; computeClientSealTokenInput?: null; openSealedThreadIdInput?: null; deriveEpochsInput: proto.DeriveEpochsInput.$Shape; sealThreadIdInput?: null; prepareAddPeerDeviceInput?: null; companionTestMessageThreadIdInput?: null; parseCompanionTestMessageInput?: null }|{ commandInput?: "sealThreadIdInput"; createBackupInput?: null; encryptMessageInput?: null; decryptMessageInput?: null; orfThreadIdInput?: null; deriveMessageKeyInput?: null; rotateEpochInput?: null; deriveVirtualDeviceIdInput?: null; prepareAddDeviceInput?: null; computeClientSealTokenInput?: null; openSealedThreadIdInput?: null; deriveEpochsInput?: null; sealThreadIdInput: proto.SealThreadIdInput.$Shape; prepareAddPeerDeviceInput?: null; companionTestMessageThreadIdInput?: null; parseCompanionTestMessageInput?: null }|{ commandInput?: "prepareAddPeerDeviceInput"; createBackupInput?: null; encryptMessageInput?: null; decryptMessageInput?: null; orfThreadIdInput?: null; deriveMessageKeyInput?: null; rotateEpochInput?: null; deriveVirtualDeviceIdInput?: null; prepareAddDeviceInput?: null; computeClientSealTokenInput?: null; openSealedThreadIdInput?: null; deriveEpochsInput?: null; sealThreadIdInput?: null; prepareAddPeerDeviceInput: proto.PrepareAddPeerDeviceInput.$Shape; companionTestMessageThreadIdInput?: null; parseCompanionTestMessageInput?: null }|{ commandInput?: "companionTestMessageThreadIdInput"; createBackupInput?: null; encryptMessageInput?: null; decryptMessageInput?: null; orfThreadIdInput?: null; deriveMessageKeyInput?: null; rotateEpochInput?: null; deriveVirtualDeviceIdInput?: null; prepareAddDeviceInput?: null; computeClientSealTokenInput?: null; openSealedThreadIdInput?: null; deriveEpochsInput?: null; sealThreadIdInput?: null; prepareAddPeerDeviceInput?: null; companionTestMessageThreadIdInput: proto.CompanionTestMessageThreadIdInput.$Shape; parseCompanionTestMessageInput?: null }|{ commandInput?: "parseCompanionTestMessageInput"; createBackupInput?: null; encryptMessageInput?: null; decryptMessageInput?: null; orfThreadIdInput?: null; deriveMessageKeyInput?: null; rotateEpochInput?: null; deriveVirtualDeviceIdInput?: null; prepareAddDeviceInput?: null; computeClientSealTokenInput?: null; openSealedThreadIdInput?: null; deriveEpochsInput?: null; sealThreadIdInput?: null; prepareAddPeerDeviceInput?: null; companionTestMessageThreadIdInput?: null; parseCompanionTestMessageInput: proto.ParseCompanionTestMessageInput.$Shape })
         );
     }
 
@@ -30164,5 +30170,173 @@ export namespace proto {
             $unknowns?: Uint8Array[];
         }
         type $Shape = proto.GroupMembershipFormSubmission.$Properties;
+    }
+
+    interface ICompanionTestMessageThreadIdInput extends proto.CompanionTestMessageThreadIdInput.$Properties {
+    }
+
+    class CompanionTestMessageThreadIdInput {
+        constructor(p?: proto.CompanionTestMessageThreadIdInput.$Properties);
+        $unknowns?: Uint8Array[];
+        static create(properties: proto.CompanionTestMessageThreadIdInput.$Shape): proto.CompanionTestMessageThreadIdInput & proto.CompanionTestMessageThreadIdInput.$Shape;
+        static create(properties?: proto.CompanionTestMessageThreadIdInput.$Properties): proto.CompanionTestMessageThreadIdInput;
+        static encode(m: proto.CompanionTestMessageThreadIdInput.$Properties, w?: $protobuf.Writer): $protobuf.Writer;
+        static decode(r: ($protobuf.Reader|Uint8Array), l?: number): proto.CompanionTestMessageThreadIdInput & proto.CompanionTestMessageThreadIdInput.$Shape;
+        static fromObject(d: { [k: string]: any }): proto.CompanionTestMessageThreadIdInput;
+        static toObject(m: proto.CompanionTestMessageThreadIdInput, o?: $protobuf.IConversionOptions): { [k: string]: any };
+        toJSON(): { [k: string]: any };
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace CompanionTestMessageThreadIdInput {
+        interface $Properties {
+            $unknowns?: Uint8Array[];
+        }
+        type $Shape = proto.CompanionTestMessageThreadIdInput.$Properties;
+    }
+
+    interface ICompanionTestMessageThreadIdOutput extends proto.CompanionTestMessageThreadIdOutput.$Properties {
+    }
+
+    class CompanionTestMessageThreadIdOutput {
+        constructor(p?: proto.CompanionTestMessageThreadIdOutput.$Properties);
+        $unknowns?: Uint8Array[];
+        success?: (proto.CompanionTestMessageThreadIdSuccess.$Properties|null);
+        error?: (string|null);
+        result?: ("success"|"error");
+        static create(properties: proto.CompanionTestMessageThreadIdOutput.$Shape): proto.CompanionTestMessageThreadIdOutput & proto.CompanionTestMessageThreadIdOutput.$Shape;
+        static create(properties?: proto.CompanionTestMessageThreadIdOutput.$Properties): proto.CompanionTestMessageThreadIdOutput;
+        static encode(m: proto.CompanionTestMessageThreadIdOutput.$Properties, w?: $protobuf.Writer): $protobuf.Writer;
+        static decode(r: ($protobuf.Reader|Uint8Array), l?: number): proto.CompanionTestMessageThreadIdOutput & proto.CompanionTestMessageThreadIdOutput.$Shape;
+        static fromObject(d: { [k: string]: any }): proto.CompanionTestMessageThreadIdOutput;
+        static toObject(m: proto.CompanionTestMessageThreadIdOutput, o?: $protobuf.IConversionOptions): { [k: string]: any };
+        toJSON(): { [k: string]: any };
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace CompanionTestMessageThreadIdOutput {
+        interface $Properties {
+            success?: (proto.CompanionTestMessageThreadIdSuccess.$Properties|null);
+            error?: (string|null);
+            result?: ("success"|"error");
+            $unknowns?: Uint8Array[];
+        }
+        type $Shape = {
+          success?: proto.CompanionTestMessageThreadIdSuccess.$Shape|null;
+          error?: string|null;
+          $unknowns?: Uint8Array[];
+        } & (
+          ({ result?: undefined; success?: null; error?: null }|{ result?: "success"; success: proto.CompanionTestMessageThreadIdSuccess.$Shape; error?: null }|{ result?: "error"; success?: null; error: string })
+        );
+    }
+
+    interface ICompanionTestMessageThreadIdSuccess extends proto.CompanionTestMessageThreadIdSuccess.$Properties {
+    }
+
+    class CompanionTestMessageThreadIdSuccess {
+        constructor(p?: proto.CompanionTestMessageThreadIdSuccess.$Properties);
+        $unknowns?: Uint8Array[];
+        threadId?: (string|null);
+        static create(properties: proto.CompanionTestMessageThreadIdSuccess.$Shape): proto.CompanionTestMessageThreadIdSuccess & proto.CompanionTestMessageThreadIdSuccess.$Shape;
+        static create(properties?: proto.CompanionTestMessageThreadIdSuccess.$Properties): proto.CompanionTestMessageThreadIdSuccess;
+        static encode(m: proto.CompanionTestMessageThreadIdSuccess.$Properties, w?: $protobuf.Writer): $protobuf.Writer;
+        static decode(r: ($protobuf.Reader|Uint8Array), l?: number): proto.CompanionTestMessageThreadIdSuccess & proto.CompanionTestMessageThreadIdSuccess.$Shape;
+        static fromObject(d: { [k: string]: any }): proto.CompanionTestMessageThreadIdSuccess;
+        static toObject(m: proto.CompanionTestMessageThreadIdSuccess, o?: $protobuf.IConversionOptions): { [k: string]: any };
+        toJSON(): { [k: string]: any };
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace CompanionTestMessageThreadIdSuccess {
+        interface $Properties {
+            threadId?: (string|null);
+            $unknowns?: Uint8Array[];
+        }
+        type $Shape = proto.CompanionTestMessageThreadIdSuccess.$Properties;
+    }
+
+    interface IParseCompanionTestMessageInput extends proto.ParseCompanionTestMessageInput.$Properties {
+    }
+
+    class ParseCompanionTestMessageInput {
+        constructor(p?: proto.ParseCompanionTestMessageInput.$Properties);
+        $unknowns?: Uint8Array[];
+        plaintext?: (Uint8Array|null);
+        static create(properties: proto.ParseCompanionTestMessageInput.$Shape): proto.ParseCompanionTestMessageInput & proto.ParseCompanionTestMessageInput.$Shape;
+        static create(properties?: proto.ParseCompanionTestMessageInput.$Properties): proto.ParseCompanionTestMessageInput;
+        static encode(m: proto.ParseCompanionTestMessageInput.$Properties, w?: $protobuf.Writer): $protobuf.Writer;
+        static decode(r: ($protobuf.Reader|Uint8Array), l?: number): proto.ParseCompanionTestMessageInput & proto.ParseCompanionTestMessageInput.$Shape;
+        static fromObject(d: { [k: string]: any }): proto.ParseCompanionTestMessageInput;
+        static toObject(m: proto.ParseCompanionTestMessageInput, o?: $protobuf.IConversionOptions): { [k: string]: any };
+        toJSON(): { [k: string]: any };
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace ParseCompanionTestMessageInput {
+        interface $Properties {
+            plaintext?: (Uint8Array|null);
+            $unknowns?: Uint8Array[];
+        }
+        type $Shape = proto.ParseCompanionTestMessageInput.$Properties;
+    }
+
+    interface IParseCompanionTestMessageOutput extends proto.ParseCompanionTestMessageOutput.$Properties {
+    }
+
+    class ParseCompanionTestMessageOutput {
+        constructor(p?: proto.ParseCompanionTestMessageOutput.$Properties);
+        $unknowns?: Uint8Array[];
+        success?: (proto.ParseCompanionTestMessageSuccess.$Properties|null);
+        error?: (string|null);
+        result?: ("success"|"error");
+        static create(properties: proto.ParseCompanionTestMessageOutput.$Shape): proto.ParseCompanionTestMessageOutput & proto.ParseCompanionTestMessageOutput.$Shape;
+        static create(properties?: proto.ParseCompanionTestMessageOutput.$Properties): proto.ParseCompanionTestMessageOutput;
+        static encode(m: proto.ParseCompanionTestMessageOutput.$Properties, w?: $protobuf.Writer): $protobuf.Writer;
+        static decode(r: ($protobuf.Reader|Uint8Array), l?: number): proto.ParseCompanionTestMessageOutput & proto.ParseCompanionTestMessageOutput.$Shape;
+        static fromObject(d: { [k: string]: any }): proto.ParseCompanionTestMessageOutput;
+        static toObject(m: proto.ParseCompanionTestMessageOutput, o?: $protobuf.IConversionOptions): { [k: string]: any };
+        toJSON(): { [k: string]: any };
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace ParseCompanionTestMessageOutput {
+        interface $Properties {
+            success?: (proto.ParseCompanionTestMessageSuccess.$Properties|null);
+            error?: (string|null);
+            result?: ("success"|"error");
+            $unknowns?: Uint8Array[];
+        }
+        type $Shape = {
+          success?: proto.ParseCompanionTestMessageSuccess.$Shape|null;
+          error?: string|null;
+          $unknowns?: Uint8Array[];
+        } & (
+          ({ result?: undefined; success?: null; error?: null }|{ result?: "success"; success: proto.ParseCompanionTestMessageSuccess.$Shape; error?: null }|{ result?: "error"; success?: null; error: string })
+        );
+    }
+
+    interface IParseCompanionTestMessageSuccess extends proto.ParseCompanionTestMessageSuccess.$Properties {
+    }
+
+    class ParseCompanionTestMessageSuccess {
+        constructor(p?: proto.ParseCompanionTestMessageSuccess.$Properties);
+        $unknowns?: Uint8Array[];
+        createdAtMs?: (number|Long|null);
+        static create(properties: proto.ParseCompanionTestMessageSuccess.$Shape): proto.ParseCompanionTestMessageSuccess & proto.ParseCompanionTestMessageSuccess.$Shape;
+        static create(properties?: proto.ParseCompanionTestMessageSuccess.$Properties): proto.ParseCompanionTestMessageSuccess;
+        static encode(m: proto.ParseCompanionTestMessageSuccess.$Properties, w?: $protobuf.Writer): $protobuf.Writer;
+        static decode(r: ($protobuf.Reader|Uint8Array), l?: number): proto.ParseCompanionTestMessageSuccess & proto.ParseCompanionTestMessageSuccess.$Shape;
+        static fromObject(d: { [k: string]: any }): proto.ParseCompanionTestMessageSuccess;
+        static toObject(m: proto.ParseCompanionTestMessageSuccess, o?: $protobuf.IConversionOptions): { [k: string]: any };
+        toJSON(): { [k: string]: any };
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace ParseCompanionTestMessageSuccess {
+        interface $Properties {
+            createdAtMs?: (number|Long|null);
+            $unknowns?: Uint8Array[];
+        }
+        type $Shape = proto.ParseCompanionTestMessageSuccess.$Properties;
     }
 }
