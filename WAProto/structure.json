@@ -1,8 +1,8 @@
 {
- "protoVersion": "2.3000.1054721061",
+ "protoVersion": "2.3000.1054777660",
  "counts": {
-  "messages": 812,
-  "enums": 231
+  "messages": 813,
+  "enums": 232
  },
  "fields": "[nomor, tipe, label]",
  "messages": {
@@ -705,7 +705,8 @@
    "subscriptionSyncPayload": [5, "bytes", "optional"],
    "isBotJidDbMigrated": [6, "bool", "optional"],
    "companionAddPeerPayload": [7, "bytes", "optional"],
-   "isCompanionRegistrationFgsEnabled": [8, "bool", "optional"]
+   "isCompanionRegistrationFgsEnabled": [8, "bool", "optional"],
+   "isCompanionPairingProgressUiEnabled": [10, "bool", "optional"]
   },
   "ClientPayload": {
    "username": [1, "uint64", "optional"],
@@ -1927,7 +1928,8 @@
    "embeddedContent": [5, "EmbeddedContent", "optional"],
    "embeddedAction": [6, "bool", ""],
    "tapAction": [7, "TapLinkAction", ""],
-   "statusLinkType": [8, "StatusLinkType", "optional"]
+   "statusLinkType": [8, "StatusLinkType", "optional"],
+   "pixKey": [9, "StatusPixKey", ""]
   },
   "InteractiveMessageAdditionalMetadata": {
    "isGalaxyFlowCompleted": [1, "bool", "optional"]
@@ -4522,6 +4524,11 @@
    "campaignId": [44, "uint64", "optional"],
    "campaignExpirationTimestamp": [45, "uint64", "optional"]
   },
+  "StatusPixKey": {
+   "key": [1, "string", "optional"],
+   "keyType": [2, "KeyType", "optional"],
+   "displayName": [3, "string", "optional"]
+  },
   "StickerMetadata": {
    "url": [1, "string", "optional"],
    "fileSha256": [2, "bytes", "optional"],
@@ -5577,7 +5584,8 @@
    "AI_INTERJECTIONS_ENABLED": 86,
    "AI_RICH_RESPONSE_READ_ALOUD_ENABLED": 87,
    "AI_RICH_RESPONSE_ITEM_LISTS_ENABLED": 88,
-   "RICH_RESPONSE_SIDE_BY_SIDE_BUFFER_BOTH": 89
+   "RICH_RESPONSE_SIDE_BY_SIDE_BUFFER_BOTH": 89,
+   "AI_MUSE_JARVIS_ENVELOPE_GZIP_ENABLED": 90
   },
   "BotDocumentMessageMetadata.DocumentPluginType": {
    "TEXT_EXTRACTION": 0,
@@ -7081,6 +7089,14 @@
    "PAID_PARTNERSHIP": 11,
    "USERNAME_STATUS": 12,
    "STATUS_TEMPLATES": 13
+  },
+  "StatusPixKey.KeyType": {
+   "UNKNOWN": 0,
+   "CPF": 1,
+   "CNPJ": 2,
+   "PHONE": 3,
+   "EMAIL": 4,
+   "EVP": 5
   },
   "SyncActionValue.AvatarUpdatedAction.AvatarEventType": {
    "UPDATED": 0,

@@ -2,6 +2,24 @@
 
 Terbaru di atas. Dibuat otomatis oleh update-proto.mjs.
 
+## 2.3000.1054721061 → 2.3000.1054777660
+
+By: https://t.me/XYCoolcrafts
+
+### Tipe baru (2)
+
+- StatusPixKey
+- StatusPixKey.KeyType
+
+### Field baru (2)
+
+- ClientPairingProps.isCompanionPairingProgressUiEnabled = 10
+- InteractiveAnnotation.pixKey = 9
+
+### Nilai enum baru (1)
+
+- BotCapabilityMetadata.BotCapabilityType.AI_MUSE_JARVIS_ENVELOPE_GZIP_ENABLED = 90
+
 ## 2.3000.1054710185 → 2.3000.1054721061
 
 By: https://t.me/XYCoolcrafts
@@ -259,12 +277,6 @@ By: https://t.me/XYCoolcrafts
 Hanya nomor versi yang naik — tidak ada tipe/field/enum baru.
 
 ## 2.3000.1053628755 → 2.3000.1053651158
-
-By: https://t.me/XYCoolcrafts
-
-Hanya nomor versi yang naik — tidak ada tipe/field/enum baru.
-
-## 2.3000.1053614044 → 2.3000.1053628755
 
 By: https://t.me/XYCoolcrafts
 

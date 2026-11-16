@@ -1791,7 +1791,8 @@ export namespace proto {
             AI_INTERJECTIONS_ENABLED = 86,
             AI_RICH_RESPONSE_READ_ALOUD_ENABLED = 87,
             AI_RICH_RESPONSE_ITEM_LISTS_ENABLED = 88,
-            RICH_RESPONSE_SIDE_BY_SIDE_BUFFER_BOTH = 89
+            RICH_RESPONSE_SIDE_BY_SIDE_BUFFER_BOTH = 89,
+            AI_MUSE_JARVIS_ENVELOPE_GZIP_ENABLED = 90
         }
     }
 
@@ -4177,6 +4178,7 @@ export namespace proto {
         isBotJidDbMigrated?: (boolean|null);
         companionAddPeerPayload?: (Uint8Array|null);
         isCompanionRegistrationFgsEnabled?: (boolean|null);
+        isCompanionPairingProgressUiEnabled?: (boolean|null);
         static create(properties: proto.ClientPairingProps.$Shape): proto.ClientPairingProps & proto.ClientPairingProps.$Shape;
         static create(properties?: proto.ClientPairingProps.$Properties): proto.ClientPairingProps;
         static encode(m: proto.ClientPairingProps.$Properties, w?: $protobuf.Writer): $protobuf.Writer;
@@ -4197,6 +4199,7 @@ export namespace proto {
             isBotJidDbMigrated?: (boolean|null);
             companionAddPeerPayload?: (Uint8Array|null);
             isCompanionRegistrationFgsEnabled?: (boolean|null);
+            isCompanionPairingProgressUiEnabled?: (boolean|null);
             $unknowns?: Uint8Array[];
         }
         type $Shape = proto.ClientPairingProps.$Properties;
@@ -9652,7 +9655,8 @@ export namespace proto {
         newsletter?: (proto.ContextInfo.ForwardedNewsletterMessageInfo.$Properties|null);
         embeddedAction?: (boolean|null);
         tapAction?: (proto.TapLinkAction.$Properties|null);
-        action?: ("location"|"newsletter"|"embeddedAction"|"tapAction");
+        pixKey?: (proto.StatusPixKey.$Properties|null);
+        action?: ("location"|"newsletter"|"embeddedAction"|"tapAction"|"pixKey");
         static create(properties: proto.InteractiveAnnotation.$Shape): proto.InteractiveAnnotation & proto.InteractiveAnnotation.$Shape;
         static create(properties?: proto.InteractiveAnnotation.$Properties): proto.InteractiveAnnotation;
         static encode(m: proto.InteractiveAnnotation.$Properties, w?: $protobuf.Writer): $protobuf.Writer;
@@ -9673,7 +9677,8 @@ export namespace proto {
             newsletter?: (proto.ContextInfo.ForwardedNewsletterMessageInfo.$Properties|null);
             embeddedAction?: (boolean|null);
             tapAction?: (proto.TapLinkAction.$Properties|null);
-            action?: ("location"|"newsletter"|"embeddedAction"|"tapAction");
+            pixKey?: (proto.StatusPixKey.$Properties|null);
+            action?: ("location"|"newsletter"|"embeddedAction"|"tapAction"|"pixKey");
             $unknowns?: Uint8Array[];
         }
         type $Shape = {
@@ -9685,9 +9690,10 @@ export namespace proto {
           newsletter?: proto.ContextInfo.ForwardedNewsletterMessageInfo.$Shape|null;
           embeddedAction?: boolean|null;
           tapAction?: proto.TapLinkAction.$Shape|null;
+          pixKey?: proto.StatusPixKey.$Shape|null;
           $unknowns?: Uint8Array[];
         } & (
-          ({ action?: undefined; location?: null; newsletter?: null; embeddedAction?: null; tapAction?: null }|{ action?: "location"; location: proto.Location.$Shape; newsletter?: null; embeddedAction?: null; tapAction?: null }|{ action?: "newsletter"; location?: null; newsletter: proto.ContextInfo.ForwardedNewsletterMessageInfo.$Shape; embeddedAction?: null; tapAction?: null }|{ action?: "embeddedAction"; location?: null; newsletter?: null; embeddedAction: boolean; tapAction?: null }|{ action?: "tapAction"; location?: null; newsletter?: null; embeddedAction?: null; tapAction: proto.TapLinkAction.$Shape })
+          ({ action?: undefined; location?: null; newsletter?: null; embeddedAction?: null; tapAction?: null; pixKey?: null }|{ action?: "location"; location: proto.Location.$Shape; newsletter?: null; embeddedAction?: null; tapAction?: null; pixKey?: null }|{ action?: "newsletter"; location?: null; newsletter: proto.ContextInfo.ForwardedNewsletterMessageInfo.$Shape; embeddedAction?: null; tapAction?: null; pixKey?: null }|{ action?: "embeddedAction"; location?: null; newsletter?: null; embeddedAction: boolean; tapAction?: null; pixKey?: null }|{ action?: "tapAction"; location?: null; newsletter?: null; embeddedAction?: null; tapAction: proto.TapLinkAction.$Shape; pixKey?: null }|{ action?: "pixKey"; location?: null; newsletter?: null; embeddedAction?: null; tapAction?: null; pixKey: proto.StatusPixKey.$Shape })
         );
 
         enum StatusLinkType {
@@ -30338,5 +30344,43 @@ export namespace proto {
             $unknowns?: Uint8Array[];
         }
         type $Shape = proto.ParseCompanionTestMessageSuccess.$Properties;
+    }
+
+    interface IStatusPixKey extends proto.StatusPixKey.$Properties {
+    }
+
+    class StatusPixKey {
+        constructor(p?: proto.StatusPixKey.$Properties);
+        $unknowns?: Uint8Array[];
+        key?: (string|null);
+        keyType?: (proto.StatusPixKey.KeyType|null);
+        displayName?: (string|null);
+        static create(properties: proto.StatusPixKey.$Shape): proto.StatusPixKey & proto.StatusPixKey.$Shape;
+        static create(properties?: proto.StatusPixKey.$Properties): proto.StatusPixKey;
+        static encode(m: proto.StatusPixKey.$Properties, w?: $protobuf.Writer): $protobuf.Writer;
+        static decode(r: ($protobuf.Reader|Uint8Array), l?: number): proto.StatusPixKey & proto.StatusPixKey.$Shape;
+        static fromObject(d: { [k: string]: any }): proto.StatusPixKey;
+        static toObject(m: proto.StatusPixKey, o?: $protobuf.IConversionOptions): { [k: string]: any };
+        toJSON(): { [k: string]: any };
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace StatusPixKey {
+        interface $Properties {
+            key?: (string|null);
+            keyType?: (proto.StatusPixKey.KeyType|null);
+            displayName?: (string|null);
+            $unknowns?: Uint8Array[];
+        }
+        type $Shape = proto.StatusPixKey.$Properties;
+
+        enum KeyType {
+            UNKNOWN = 0,
+            CPF = 1,
+            CNPJ = 2,
+            PHONE = 3,
+            EMAIL = 4,
+            EVP = 5
+        }
     }
 }
