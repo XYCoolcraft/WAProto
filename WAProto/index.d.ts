@@ -30383,4 +30383,62 @@ export namespace proto {
             EVP = 5
         }
     }
+
+    interface IEncryptedJoinRequestPayload extends proto.EncryptedJoinRequestPayload.$Properties {
+    }
+
+    class EncryptedJoinRequestPayload {
+        constructor(p?: proto.EncryptedJoinRequestPayload.$Properties);
+        $unknowns?: Uint8Array[];
+        encryptedAnswers?: (Uint8Array|null);
+        encIv?: (Uint8Array|null);
+        signalIdentityPublicKey?: (Uint8Array|null);
+        kemCiphertext?: (Uint8Array|null);
+        static create(properties: proto.EncryptedJoinRequestPayload.$Shape): proto.EncryptedJoinRequestPayload & proto.EncryptedJoinRequestPayload.$Shape;
+        static create(properties?: proto.EncryptedJoinRequestPayload.$Properties): proto.EncryptedJoinRequestPayload;
+        static encode(m: proto.EncryptedJoinRequestPayload.$Properties, w?: $protobuf.Writer): $protobuf.Writer;
+        static decode(r: ($protobuf.Reader|Uint8Array), l?: number): proto.EncryptedJoinRequestPayload & proto.EncryptedJoinRequestPayload.$Shape;
+        static fromObject(d: { [k: string]: any }): proto.EncryptedJoinRequestPayload;
+        static toObject(m: proto.EncryptedJoinRequestPayload, o?: $protobuf.IConversionOptions): { [k: string]: any };
+        toJSON(): { [k: string]: any };
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace EncryptedJoinRequestPayload {
+        interface $Properties {
+            encryptedAnswers?: (Uint8Array|null);
+            encIv?: (Uint8Array|null);
+            signalIdentityPublicKey?: (Uint8Array|null);
+            kemCiphertext?: (Uint8Array|null);
+            $unknowns?: Uint8Array[];
+        }
+        type $Shape = proto.EncryptedJoinRequestPayload.$Properties;
+    }
+
+    interface IMembershipFormPublicKeys extends proto.MembershipFormPublicKeys.$Properties {
+    }
+
+    class MembershipFormPublicKeys {
+        constructor(p?: proto.MembershipFormPublicKeys.$Properties);
+        $unknowns?: Uint8Array[];
+        mlKemPublicKey?: (Uint8Array|null);
+        x25519PublicKey?: (Uint8Array|null);
+        static create(properties: proto.MembershipFormPublicKeys.$Shape): proto.MembershipFormPublicKeys & proto.MembershipFormPublicKeys.$Shape;
+        static create(properties?: proto.MembershipFormPublicKeys.$Properties): proto.MembershipFormPublicKeys;
+        static encode(m: proto.MembershipFormPublicKeys.$Properties, w?: $protobuf.Writer): $protobuf.Writer;
+        static decode(r: ($protobuf.Reader|Uint8Array), l?: number): proto.MembershipFormPublicKeys & proto.MembershipFormPublicKeys.$Shape;
+        static fromObject(d: { [k: string]: any }): proto.MembershipFormPublicKeys;
+        static toObject(m: proto.MembershipFormPublicKeys, o?: $protobuf.IConversionOptions): { [k: string]: any };
+        toJSON(): { [k: string]: any };
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace MembershipFormPublicKeys {
+        interface $Properties {
+            mlKemPublicKey?: (Uint8Array|null);
+            x25519PublicKey?: (Uint8Array|null);
+            $unknowns?: Uint8Array[];
+        }
+        type $Shape = proto.MembershipFormPublicKeys.$Properties;
+    }
 }

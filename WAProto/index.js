@@ -192422,6 +192422,376 @@ export const proto = $root.proto = (() => {
         return StatusPixKey;
     })();
 
+    proto.EncryptedJoinRequestPayload = (function() {
+
+        const EncryptedJoinRequestPayload = function (p) {
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        EncryptedJoinRequestPayload.prototype.encryptedAnswers = null;
+        EncryptedJoinRequestPayload.prototype.encIv = null;
+        EncryptedJoinRequestPayload.prototype.signalIdentityPublicKey = null;
+        EncryptedJoinRequestPayload.prototype.kemCiphertext = null;
+
+        let $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(EncryptedJoinRequestPayload.prototype, "_encryptedAnswers", {
+            get: $util.oneOfGetter($oneOfFields = ["encryptedAnswers"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(EncryptedJoinRequestPayload.prototype, "_encIv", {
+            get: $util.oneOfGetter($oneOfFields = ["encIv"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(EncryptedJoinRequestPayload.prototype, "_signalIdentityPublicKey", {
+            get: $util.oneOfGetter($oneOfFields = ["signalIdentityPublicKey"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(EncryptedJoinRequestPayload.prototype, "_kemCiphertext", {
+            get: $util.oneOfGetter($oneOfFields = ["kemCiphertext"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        EncryptedJoinRequestPayload.create = function(properties) {
+            return new EncryptedJoinRequestPayload(properties);
+        };
+
+        EncryptedJoinRequestPayload.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.encryptedAnswers != null && $Object.hasOwnProperty.call(m, "encryptedAnswers"))
+                w.uint32(10).bytes(m.encryptedAnswers);
+            if (m.encIv != null && $Object.hasOwnProperty.call(m, "encIv"))
+                w.uint32(18).bytes(m.encIv);
+            if (m.signalIdentityPublicKey != null && $Object.hasOwnProperty.call(m, "signalIdentityPublicKey"))
+                w.uint32(26).bytes(m.signalIdentityPublicKey);
+            if (m.kemCiphertext != null && $Object.hasOwnProperty.call(m, "kemCiphertext"))
+                w.uint32(34).bytes(m.kemCiphertext);
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        EncryptedJoinRequestPayload.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.EncryptedJoinRequestPayload();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 2)
+                            break;
+                        m.encryptedAnswers = r.bytes();
+                        m._encryptedAnswers = "encryptedAnswers";
+                        continue;
+                    }
+                case 2: {
+                        if (u !== 2)
+                            break;
+                        m.encIv = r.bytes();
+                        m._encIv = "encIv";
+                        continue;
+                    }
+                case 3: {
+                        if (u !== 2)
+                            break;
+                        m.signalIdentityPublicKey = r.bytes();
+                        m._signalIdentityPublicKey = "signalIdentityPublicKey";
+                        continue;
+                    }
+                case 4: {
+                        if (u !== 2)
+                            break;
+                        m.kemCiphertext = r.bytes();
+                        m._kemCiphertext = "kemCiphertext";
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        EncryptedJoinRequestPayload.fromObject = function (d, q) {
+            if (d instanceof $root.proto.EncryptedJoinRequestPayload)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.EncryptedJoinRequestPayload: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.EncryptedJoinRequestPayload();
+            if (d.encryptedAnswers != null) {
+                if (typeof d.encryptedAnswers === "string")
+                    $util.base64.decode(d.encryptedAnswers, m.encryptedAnswers = $util.newBuffer($util.base64.length(d.encryptedAnswers)), 0);
+                else if (d.encryptedAnswers.length >= 0)
+                    m.encryptedAnswers = d.encryptedAnswers;
+            }
+            if (d.encIv != null) {
+                if (typeof d.encIv === "string")
+                    $util.base64.decode(d.encIv, m.encIv = $util.newBuffer($util.base64.length(d.encIv)), 0);
+                else if (d.encIv.length >= 0)
+                    m.encIv = d.encIv;
+            }
+            if (d.signalIdentityPublicKey != null) {
+                if (typeof d.signalIdentityPublicKey === "string")
+                    $util.base64.decode(d.signalIdentityPublicKey, m.signalIdentityPublicKey = $util.newBuffer($util.base64.length(d.signalIdentityPublicKey)), 0);
+                else if (d.signalIdentityPublicKey.length >= 0)
+                    m.signalIdentityPublicKey = d.signalIdentityPublicKey;
+            }
+            if (d.kemCiphertext != null) {
+                if (typeof d.kemCiphertext === "string")
+                    $util.base64.decode(d.kemCiphertext, m.kemCiphertext = $util.newBuffer($util.base64.length(d.kemCiphertext)), 0);
+                else if (d.kemCiphertext.length >= 0)
+                    m.kemCiphertext = d.kemCiphertext;
+            }
+            return m;
+        };
+
+        EncryptedJoinRequestPayload.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (m.encryptedAnswers != null && $Object.hasOwnProperty.call(m, "encryptedAnswers")) {
+                d.encryptedAnswers = o.bytes === $String ? $util.base64.encode(m.encryptedAnswers, 0, m.encryptedAnswers.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.encryptedAnswers) : m.encryptedAnswers;
+            }
+            if (m.encIv != null && $Object.hasOwnProperty.call(m, "encIv")) {
+                d.encIv = o.bytes === $String ? $util.base64.encode(m.encIv, 0, m.encIv.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.encIv) : m.encIv;
+            }
+            if (m.signalIdentityPublicKey != null && $Object.hasOwnProperty.call(m, "signalIdentityPublicKey")) {
+                d.signalIdentityPublicKey = o.bytes === $String ? $util.base64.encode(m.signalIdentityPublicKey, 0, m.signalIdentityPublicKey.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.signalIdentityPublicKey) : m.signalIdentityPublicKey;
+            }
+            if (m.kemCiphertext != null && $Object.hasOwnProperty.call(m, "kemCiphertext")) {
+                d.kemCiphertext = o.bytes === $String ? $util.base64.encode(m.kemCiphertext, 0, m.kemCiphertext.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.kemCiphertext) : m.kemCiphertext;
+            }
+            return d;
+        };
+
+        EncryptedJoinRequestPayload.prototype.toJSON = function() {
+            return EncryptedJoinRequestPayload.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        EncryptedJoinRequestPayload.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.EncryptedJoinRequestPayload";
+        };
+
+        return EncryptedJoinRequestPayload;
+    })();
+
+    proto.MembershipFormPublicKeys = (function() {
+
+        const MembershipFormPublicKeys = function (p) {
+            if (p)
+                for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                    if (p[ks[i]] != null && ks[i] !== "__proto__")
+                        this[ks[i]] = p[ks[i]];
+        };
+
+        MembershipFormPublicKeys.prototype.mlKemPublicKey = null;
+        MembershipFormPublicKeys.prototype.x25519PublicKey = null;
+
+        let $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(MembershipFormPublicKeys.prototype, "_mlKemPublicKey", {
+            get: $util.oneOfGetter($oneOfFields = ["mlKemPublicKey"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(MembershipFormPublicKeys.prototype, "_x25519PublicKey", {
+            get: $util.oneOfGetter($oneOfFields = ["x25519PublicKey"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        MembershipFormPublicKeys.create = function(properties) {
+            return new MembershipFormPublicKeys(properties);
+        };
+
+        MembershipFormPublicKeys.encode = function (m, w, q) {
+            if (!w)
+                w = $Writer.create();
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (m.mlKemPublicKey != null && $Object.hasOwnProperty.call(m, "mlKemPublicKey"))
+                w.uint32(10).bytes(m.mlKemPublicKey);
+            if (m.x25519PublicKey != null && $Object.hasOwnProperty.call(m, "x25519PublicKey"))
+                w.uint32(18).bytes(m.x25519PublicKey);
+            if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                for (var i = 0; i < m.$unknowns.length; ++i)
+                    w.raw(m.$unknowns[i]);
+            return w;
+        };
+
+        MembershipFormPublicKeys.decode = function (r, l, z, q, g) {
+            if (!(r instanceof $Reader))
+                r = $Reader.create(r);
+            if (q === $undefined)
+                q = 0;
+            if (q > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var c, m;
+            if (l === $undefined)
+                c = r.len;
+            else {
+                c = r.pos + l;
+                if (c > r.len)
+                    throw $RangeError("index out of range");
+                l = r.len;
+                r.len = c;
+            }
+            m = g || new $root.proto.MembershipFormPublicKeys();
+            while (r.pos < c) {
+                var s = r.pos;
+                var t = r.tag();
+                if (t === z) {
+                    z = $undefined;
+                    break;
+                }
+                var u = t & 7;
+                switch (t >>>= 3) {
+                case 1: {
+                        if (u !== 2)
+                            break;
+                        m.mlKemPublicKey = r.bytes();
+                        m._mlKemPublicKey = "mlKemPublicKey";
+                        continue;
+                    }
+                case 2: {
+                        if (u !== 2)
+                            break;
+                        m.x25519PublicKey = r.bytes();
+                        m._x25519PublicKey = "x25519PublicKey";
+                        continue;
+                    }
+                }
+                r.skipType(u, q, t);
+                if (!r.discardUnknown) {
+                    $util.makeProp(m, "$unknowns", false);
+                    (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                }
+            }
+            if (l !== $undefined) {
+                if (r.pos !== c)
+                    throw $RangeError("index out of range");
+                r.len = l;
+            }
+            if (z !== $undefined)
+                throw $Error("missing end group");
+            return m;
+        };
+
+        MembershipFormPublicKeys.fromObject = function (d, q) {
+            if (d instanceof $root.proto.MembershipFormPublicKeys)
+                return d;
+            if (!$util.isObject(d))
+                throw $TypeError(".proto.MembershipFormPublicKeys: object expected");
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var m = new $root.proto.MembershipFormPublicKeys();
+            if (d.mlKemPublicKey != null) {
+                if (typeof d.mlKemPublicKey === "string")
+                    $util.base64.decode(d.mlKemPublicKey, m.mlKemPublicKey = $util.newBuffer($util.base64.length(d.mlKemPublicKey)), 0);
+                else if (d.mlKemPublicKey.length >= 0)
+                    m.mlKemPublicKey = d.mlKemPublicKey;
+            }
+            if (d.x25519PublicKey != null) {
+                if (typeof d.x25519PublicKey === "string")
+                    $util.base64.decode(d.x25519PublicKey, m.x25519PublicKey = $util.newBuffer($util.base64.length(d.x25519PublicKey)), 0);
+                else if (d.x25519PublicKey.length >= 0)
+                    m.x25519PublicKey = d.x25519PublicKey;
+            }
+            return m;
+        };
+
+        MembershipFormPublicKeys.toObject = function (m, o, q) {
+            if (!o)
+                o = {};
+            if (q === $undefined)
+                q = 0;
+            if (q > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var d = {};
+            if (m.mlKemPublicKey != null && $Object.hasOwnProperty.call(m, "mlKemPublicKey")) {
+                d.mlKemPublicKey = o.bytes === $String ? $util.base64.encode(m.mlKemPublicKey, 0, m.mlKemPublicKey.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.mlKemPublicKey) : m.mlKemPublicKey;
+            }
+            if (m.x25519PublicKey != null && $Object.hasOwnProperty.call(m, "x25519PublicKey")) {
+                d.x25519PublicKey = o.bytes === $String ? $util.base64.encode(m.x25519PublicKey, 0, m.x25519PublicKey.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.x25519PublicKey) : m.x25519PublicKey;
+            }
+            return d;
+        };
+
+        MembershipFormPublicKeys.prototype.toJSON = function() {
+            return MembershipFormPublicKeys.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        MembershipFormPublicKeys.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/proto.MembershipFormPublicKeys";
+        };
+
+        return MembershipFormPublicKeys;
+    })();
+
     return proto;
 })();
 

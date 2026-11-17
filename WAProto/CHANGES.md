@@ -2,6 +2,15 @@
 
 Terbaru di atas. Dibuat otomatis oleh update-proto.mjs.
 
+## 2.3000.1054865281 → 2.3000.1054943879
+
+By: https://t.me/XYCoolcrafts
+
+### Tipe baru (2)
+
+- EncryptedJoinRequestPayload
+- MembershipFormPublicKeys
+
 ## 2.3000.1054777660 → 2.3000.1054865281
 
 By: https://t.me/XYCoolcrafts
@@ -271,12 +280,6 @@ By: https://t.me/XYCoolcrafts
 Hanya nomor versi yang naik — tidak ada tipe/field/enum baru.
 
 ## 2.3000.1053659828 → 2.3000.1053677024
-
-By: https://t.me/XYCoolcrafts
-
-Hanya nomor versi yang naik — tidak ada tipe/field/enum baru.
-
-## 2.3000.1053651158 → 2.3000.1053659828
 
 By: https://t.me/XYCoolcrafts
 

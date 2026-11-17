@@ -1,7 +1,7 @@
 {
- "protoVersion": "2.3000.1054865281",
+ "protoVersion": "2.3000.1054943879",
  "counts": {
-  "messages": 813,
+  "messages": 815,
   "enums": 232
  },
  "fields": "[nomor, tipe, label]",
@@ -1540,6 +1540,12 @@
    "offlineThreadingId": [4, "uint64", "optional"],
    "timestampMs": [5, "uint64", "optional"]
   },
+  "EncryptedJoinRequestPayload": {
+   "encryptedAnswers": [1, "bytes", "optional"],
+   "encIv": [2, "bytes", "optional"],
+   "signalIdentityPublicKey": [3, "bytes", "optional"],
+   "kemCiphertext": [4, "bytes", "optional"]
+  },
   "EncryptedPairingRequest": {
    "encryptedPayload": [1, "bytes", "optional"],
    "iv": [2, "bytes", "optional"]
@@ -2201,6 +2207,10 @@
    "requestId": [1, "string", "optional"],
    "keyId": [2, "string", "optional"],
    "keyFingerprint": [3, "bytes", "optional"]
+  },
+  "MembershipFormPublicKeys": {
+   "mlKemPublicKey": [1, "bytes", "optional"],
+   "x25519PublicKey": [2, "bytes", "optional"]
   },
   "Mention": {
    "mentionType": [1, "MENTION_MENTION_TYPE", "optional"],

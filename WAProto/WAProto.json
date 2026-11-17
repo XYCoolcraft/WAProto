@@ -50489,6 +50489,90 @@
               }
             }
           }
+        },
+        "EncryptedJoinRequestPayload": {
+          "oneofs": {
+            "_encryptedAnswers": {
+              "oneof": [
+                "encryptedAnswers"
+              ]
+            },
+            "_encIv": {
+              "oneof": [
+                "encIv"
+              ]
+            },
+            "_signalIdentityPublicKey": {
+              "oneof": [
+                "signalIdentityPublicKey"
+              ]
+            },
+            "_kemCiphertext": {
+              "oneof": [
+                "kemCiphertext"
+              ]
+            }
+          },
+          "fields": {
+            "encryptedAnswers": {
+              "type": "bytes",
+              "id": 1,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "encIv": {
+              "type": "bytes",
+              "id": 2,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "signalIdentityPublicKey": {
+              "type": "bytes",
+              "id": 3,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "kemCiphertext": {
+              "type": "bytes",
+              "id": 4,
+              "options": {
+                "proto3_optional": true
+              }
+            }
+          }
+        },
+        "MembershipFormPublicKeys": {
+          "oneofs": {
+            "_mlKemPublicKey": {
+              "oneof": [
+                "mlKemPublicKey"
+              ]
+            },
+            "_x25519PublicKey": {
+              "oneof": [
+                "x25519PublicKey"
+              ]
+            }
+          },
+          "fields": {
+            "mlKemPublicKey": {
+              "type": "bytes",
+              "id": 1,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "x25519PublicKey": {
+              "type": "bytes",
+              "id": 2,
+              "options": {
+                "proto3_optional": true
+              }
+            }
+          }
         }
       }
     }
