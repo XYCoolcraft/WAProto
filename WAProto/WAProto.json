@@ -11801,6 +11801,11 @@
               "oneof": [
                 "phoneNumberSharing"
               ]
+            },
+            "_recentConversationsOnDemand": {
+              "oneof": [
+                "recentConversationsOnDemand"
+              ]
             }
           },
           "fields": {
@@ -11898,6 +11903,13 @@
             "phoneNumberSharing": {
               "type": "PhoneNumberSharing",
               "id": 14,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "recentConversationsOnDemand": {
+              "type": "RecentConversationsOnDemand",
+              "id": 15,
               "options": {
                 "proto3_optional": true
               }
@@ -12221,6 +12233,24 @@
               },
               "fields": {
                 "phoneSharingSupported": {
+                  "type": "bool",
+                  "id": 1,
+                  "options": {
+                    "proto3_optional": true
+                  }
+                }
+              }
+            },
+            "RecentConversationsOnDemand": {
+              "oneofs": {
+                "_supported": {
+                  "oneof": [
+                    "supported"
+                  ]
+                }
+              },
+              "fields": {
+                "supported": {
                   "type": "bool",
                   "id": 1,
                   "options": {
@@ -38408,12 +38438,24 @@
               "oneof": [
                 "stanzaId"
               ]
+            },
+            "_keepMediaKey": {
+              "oneof": [
+                "keepMediaKey"
+              ]
             }
           },
           "fields": {
             "stanzaId": {
               "type": "string",
               "id": 1,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "keepMediaKey": {
+              "type": "bool",
+              "id": 2,
               "options": {
                 "proto3_optional": true
               }

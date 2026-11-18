@@ -43989,6 +43989,7 @@ export const proto = $root.proto = (() => {
         DeviceCapabilities.prototype.hostWriteMutationSupport = null;
         DeviceCapabilities.prototype.bizAiWebOnboarding = null;
         DeviceCapabilities.prototype.phoneNumberSharing = null;
+        DeviceCapabilities.prototype.recentConversationsOnDemand = null;
 
         let $oneOfFields;
 
@@ -44076,6 +44077,12 @@ export const proto = $root.proto = (() => {
             set: $util.oneOfSetter($oneOfFields)
         });
 
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(DeviceCapabilities.prototype, "_recentConversationsOnDemand", {
+            get: $util.oneOfGetter($oneOfFields = ["recentConversationsOnDemand"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
         DeviceCapabilities.create = function(properties) {
             return new DeviceCapabilities(properties);
         };
@@ -44115,6 +44122,8 @@ export const proto = $root.proto = (() => {
                 $root.proto.DeviceCapabilities.BizAiWebOnboarding.encode(m.bizAiWebOnboarding, w.uint32(106).fork(), q + 1).ldelim();
             if (m.phoneNumberSharing != null && $Object.hasOwnProperty.call(m, "phoneNumberSharing"))
                 $root.proto.DeviceCapabilities.PhoneNumberSharing.encode(m.phoneNumberSharing, w.uint32(114).fork(), q + 1).ldelim();
+            if (m.recentConversationsOnDemand != null && $Object.hasOwnProperty.call(m, "recentConversationsOnDemand"))
+                $root.proto.DeviceCapabilities.RecentConversationsOnDemand.encode(m.recentConversationsOnDemand, w.uint32(122).fork(), q + 1).ldelim();
             if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                 for (var i = 0; i < m.$unknowns.length; ++i)
                     w.raw(m.$unknowns[i]);
@@ -44246,6 +44255,13 @@ export const proto = $root.proto = (() => {
                         m._phoneNumberSharing = "phoneNumberSharing";
                         continue;
                     }
+                case 15: {
+                        if (u !== 2)
+                            break;
+                        m.recentConversationsOnDemand = $root.proto.DeviceCapabilities.RecentConversationsOnDemand.decode(r, r.size(), $undefined, q + 1, m.recentConversationsOnDemand);
+                        m._recentConversationsOnDemand = "recentConversationsOnDemand";
+                        continue;
+                    }
                 }
                 r.skipType(u, q, t);
                 if (!r.discardUnknown) {
@@ -44367,6 +44383,11 @@ export const proto = $root.proto = (() => {
                     throw $TypeError(".proto.DeviceCapabilities.phoneNumberSharing: object expected");
                 m.phoneNumberSharing = $root.proto.DeviceCapabilities.PhoneNumberSharing.fromObject(d.phoneNumberSharing, q + 1);
             }
+            if (d.recentConversationsOnDemand != null) {
+                if (!$util.isObject(d.recentConversationsOnDemand))
+                    throw $TypeError(".proto.DeviceCapabilities.recentConversationsOnDemand: object expected");
+                m.recentConversationsOnDemand = $root.proto.DeviceCapabilities.RecentConversationsOnDemand.fromObject(d.recentConversationsOnDemand, q + 1);
+            }
             return m;
         };
 
@@ -44419,6 +44440,9 @@ export const proto = $root.proto = (() => {
             }
             if (m.phoneNumberSharing != null && $Object.hasOwnProperty.call(m, "phoneNumberSharing")) {
                 d.phoneNumberSharing = $root.proto.DeviceCapabilities.PhoneNumberSharing.toObject(m.phoneNumberSharing, o, q + 1);
+            }
+            if (m.recentConversationsOnDemand != null && $Object.hasOwnProperty.call(m, "recentConversationsOnDemand")) {
+                d.recentConversationsOnDemand = $root.proto.DeviceCapabilities.RecentConversationsOnDemand.toObject(m.recentConversationsOnDemand, o, q + 1);
             }
             return d;
         };
@@ -46303,6 +46327,138 @@ export const proto = $root.proto = (() => {
             };
 
             return PhoneNumberSharing;
+        })();
+
+        DeviceCapabilities.RecentConversationsOnDemand = (function() {
+
+            const RecentConversationsOnDemand = function (p) {
+                if (p)
+                    for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                        if (p[ks[i]] != null && ks[i] !== "__proto__")
+                            this[ks[i]] = p[ks[i]];
+            };
+
+            RecentConversationsOnDemand.prototype.supported = null;
+
+            let $oneOfFields;
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(RecentConversationsOnDemand.prototype, "_supported", {
+                get: $util.oneOfGetter($oneOfFields = ["supported"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            RecentConversationsOnDemand.create = function(properties) {
+                return new RecentConversationsOnDemand(properties);
+            };
+
+            RecentConversationsOnDemand.encode = function (m, w, q) {
+                if (!w)
+                    w = $Writer.create();
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                if (m.supported != null && $Object.hasOwnProperty.call(m, "supported"))
+                    w.uint32(8).bool(m.supported);
+                if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                    for (var i = 0; i < m.$unknowns.length; ++i)
+                        w.raw(m.$unknowns[i]);
+                return w;
+            };
+
+            RecentConversationsOnDemand.decode = function (r, l, z, q, g) {
+                if (!(r instanceof $Reader))
+                    r = $Reader.create(r);
+                if (q === $undefined)
+                    q = 0;
+                if (q > $Reader.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var c, m;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.proto.DeviceCapabilities.RecentConversationsOnDemand();
+                while (r.pos < c) {
+                    var s = r.pos;
+                    var t = r.tag();
+                    if (t === z) {
+                        z = $undefined;
+                        break;
+                    }
+                    var u = t & 7;
+                    switch (t >>>= 3) {
+                    case 1: {
+                            if (u !== 0)
+                                break;
+                            m.supported = r.bool();
+                            m._supported = "supported";
+                            continue;
+                        }
+                    }
+                    r.skipType(u, q, t);
+                    if (!r.discardUnknown) {
+                        $util.makeProp(m, "$unknowns", false);
+                        (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                    }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
+                }
+                if (z !== $undefined)
+                    throw $Error("missing end group");
+                return m;
+            };
+
+            RecentConversationsOnDemand.fromObject = function (d, q) {
+                if (d instanceof $root.proto.DeviceCapabilities.RecentConversationsOnDemand)
+                    return d;
+                if (!$util.isObject(d))
+                    throw $TypeError(".proto.DeviceCapabilities.RecentConversationsOnDemand: object expected");
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var m = new $root.proto.DeviceCapabilities.RecentConversationsOnDemand();
+                if (d.supported != null) {
+                    m.supported = $Boolean(d.supported);
+                }
+                return m;
+            };
+
+            RecentConversationsOnDemand.toObject = function (m, o, q) {
+                if (!o)
+                    o = {};
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var d = {};
+                if (m.supported != null && $Object.hasOwnProperty.call(m, "supported")) {
+                    d.supported = m.supported;
+                }
+                return d;
+            };
+
+            RecentConversationsOnDemand.prototype.toJSON = function() {
+                return RecentConversationsOnDemand.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            RecentConversationsOnDemand.getTypeUrl = function(prefix) {
+                if (prefix === $undefined)
+                    prefix = "type.googleapis.com";
+                return prefix + "/proto.DeviceCapabilities.RecentConversationsOnDemand";
+            };
+
+            return RecentConversationsOnDemand;
         })();
 
         return DeviceCapabilities;
@@ -141808,12 +141964,19 @@ export const proto = $root.proto = (() => {
         };
 
         ServerErrorReceipt.prototype.stanzaId = null;
+        ServerErrorReceipt.prototype.keepMediaKey = null;
 
         let $oneOfFields;
 
         // Virtual OneOf for proto3 optional field
         $Object.defineProperty(ServerErrorReceipt.prototype, "_stanzaId", {
             get: $util.oneOfGetter($oneOfFields = ["stanzaId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(ServerErrorReceipt.prototype, "_keepMediaKey", {
+            get: $util.oneOfGetter($oneOfFields = ["keepMediaKey"]),
             set: $util.oneOfSetter($oneOfFields)
         });
 
@@ -141830,6 +141993,8 @@ export const proto = $root.proto = (() => {
                 throw $Error("max depth exceeded");
             if (m.stanzaId != null && $Object.hasOwnProperty.call(m, "stanzaId"))
                 w.uint32(10).string(m.stanzaId);
+            if (m.keepMediaKey != null && $Object.hasOwnProperty.call(m, "keepMediaKey"))
+                w.uint32(16).bool(m.keepMediaKey);
             if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                 for (var i = 0; i < m.$unknowns.length; ++i)
                     w.raw(m.$unknowns[i]);
@@ -141870,6 +142035,13 @@ export const proto = $root.proto = (() => {
                         m._stanzaId = "stanzaId";
                         continue;
                     }
+                case 2: {
+                        if (u !== 0)
+                            break;
+                        m.keepMediaKey = r.bool();
+                        m._keepMediaKey = "keepMediaKey";
+                        continue;
+                    }
                 }
                 r.skipType(u, q, t);
                 if (!r.discardUnknown) {
@@ -141900,6 +142072,9 @@ export const proto = $root.proto = (() => {
             if (d.stanzaId != null) {
                 m.stanzaId = $String(d.stanzaId);
             }
+            if (d.keepMediaKey != null) {
+                m.keepMediaKey = $Boolean(d.keepMediaKey);
+            }
             return m;
         };
 
@@ -141913,6 +142088,9 @@ export const proto = $root.proto = (() => {
             var d = {};
             if (m.stanzaId != null && $Object.hasOwnProperty.call(m, "stanzaId")) {
                 d.stanzaId = m.stanzaId;
+            }
+            if (m.keepMediaKey != null && $Object.hasOwnProperty.call(m, "keepMediaKey")) {
+                d.keepMediaKey = m.keepMediaKey;
             }
             return d;
         };

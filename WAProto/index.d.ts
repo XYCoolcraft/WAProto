@@ -6910,6 +6910,7 @@ export namespace proto {
         hostWriteMutationSupport?: (proto.DeviceCapabilities.HostWriteMutationSupport.$Properties|null);
         bizAiWebOnboarding?: (proto.DeviceCapabilities.BizAiWebOnboarding.$Properties|null);
         phoneNumberSharing?: (proto.DeviceCapabilities.PhoneNumberSharing.$Properties|null);
+        recentConversationsOnDemand?: (proto.DeviceCapabilities.RecentConversationsOnDemand.$Properties|null);
         static create(properties: proto.DeviceCapabilities.$Shape): proto.DeviceCapabilities & proto.DeviceCapabilities.$Shape;
         static create(properties?: proto.DeviceCapabilities.$Properties): proto.DeviceCapabilities;
         static encode(m: proto.DeviceCapabilities.$Properties, w?: $protobuf.Writer): $protobuf.Writer;
@@ -6936,6 +6937,7 @@ export namespace proto {
             hostWriteMutationSupport?: (proto.DeviceCapabilities.HostWriteMutationSupport.$Properties|null);
             bizAiWebOnboarding?: (proto.DeviceCapabilities.BizAiWebOnboarding.$Properties|null);
             phoneNumberSharing?: (proto.DeviceCapabilities.PhoneNumberSharing.$Properties|null);
+            recentConversationsOnDemand?: (proto.DeviceCapabilities.RecentConversationsOnDemand.$Properties|null);
             $unknowns?: Uint8Array[];
         }
         type $Shape = proto.DeviceCapabilities.$Properties;
@@ -7277,6 +7279,31 @@ export namespace proto {
                 $unknowns?: Uint8Array[];
             }
             type $Shape = proto.DeviceCapabilities.PhoneNumberSharing.$Properties;
+        }
+
+        interface IRecentConversationsOnDemand extends proto.DeviceCapabilities.RecentConversationsOnDemand.$Properties {
+        }
+
+        class RecentConversationsOnDemand {
+            constructor(p?: proto.DeviceCapabilities.RecentConversationsOnDemand.$Properties);
+            $unknowns?: Uint8Array[];
+            supported?: (boolean|null);
+            static create(properties: proto.DeviceCapabilities.RecentConversationsOnDemand.$Shape): proto.DeviceCapabilities.RecentConversationsOnDemand & proto.DeviceCapabilities.RecentConversationsOnDemand.$Shape;
+            static create(properties?: proto.DeviceCapabilities.RecentConversationsOnDemand.$Properties): proto.DeviceCapabilities.RecentConversationsOnDemand;
+            static encode(m: proto.DeviceCapabilities.RecentConversationsOnDemand.$Properties, w?: $protobuf.Writer): $protobuf.Writer;
+            static decode(r: ($protobuf.Reader|Uint8Array), l?: number): proto.DeviceCapabilities.RecentConversationsOnDemand & proto.DeviceCapabilities.RecentConversationsOnDemand.$Shape;
+            static fromObject(d: { [k: string]: any }): proto.DeviceCapabilities.RecentConversationsOnDemand;
+            static toObject(m: proto.DeviceCapabilities.RecentConversationsOnDemand, o?: $protobuf.IConversionOptions): { [k: string]: any };
+            toJSON(): { [k: string]: any };
+            static getTypeUrl(prefix?: string): string;
+        }
+
+        namespace RecentConversationsOnDemand {
+            interface $Properties {
+                supported?: (boolean|null);
+                $unknowns?: Uint8Array[];
+            }
+            type $Shape = proto.DeviceCapabilities.RecentConversationsOnDemand.$Properties;
         }
     }
 
@@ -22306,6 +22333,7 @@ export namespace proto {
         constructor(p?: proto.ServerErrorReceipt.$Properties);
         $unknowns?: Uint8Array[];
         stanzaId?: (string|null);
+        keepMediaKey?: (boolean|null);
         static create(properties: proto.ServerErrorReceipt.$Shape): proto.ServerErrorReceipt & proto.ServerErrorReceipt.$Shape;
         static create(properties?: proto.ServerErrorReceipt.$Properties): proto.ServerErrorReceipt;
         static encode(m: proto.ServerErrorReceipt.$Properties, w?: $protobuf.Writer): $protobuf.Writer;
@@ -22319,6 +22347,7 @@ export namespace proto {
     namespace ServerErrorReceipt {
         interface $Properties {
             stanzaId?: (string|null);
+            keepMediaKey?: (boolean|null);
             $unknowns?: Uint8Array[];
         }
         type $Shape = proto.ServerErrorReceipt.$Properties;

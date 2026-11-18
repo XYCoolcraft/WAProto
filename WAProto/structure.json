@@ -1,7 +1,7 @@
 {
- "protoVersion": "2.3000.1054995772",
+ "protoVersion": "2.3000.1055156383",
  "counts": {
-  "messages": 815,
+  "messages": 816,
   "enums": 232
  },
  "fields": "[nomor, tipe, label]",
@@ -1333,7 +1333,8 @@
    "newsletterChatsMigration": [11, "NewsletterChatsMigration", "optional"],
    "hostWriteMutationSupport": [12, "HostWriteMutationSupport", "optional"],
    "bizAiWebOnboarding": [13, "BizAiWebOnboarding", "optional"],
-   "phoneNumberSharing": [14, "PhoneNumberSharing", "optional"]
+   "phoneNumberSharing": [14, "PhoneNumberSharing", "optional"],
+   "recentConversationsOnDemand": [15, "RecentConversationsOnDemand", "optional"]
   },
   "DeviceCapabilities.AiFbidMigration": {
    "chatDbMigrationTimestamp": [1, "uint64", "optional"],
@@ -1372,6 +1373,9 @@
   },
   "DeviceCapabilities.PhoneNumberSharing": {
    "phoneSharingSupported": [1, "bool", "optional"]
+  },
+  "DeviceCapabilities.RecentConversationsOnDemand": {
+   "supported": [1, "bool", "optional"]
   },
   "DeviceCapabilities.ReverseHistorySync": {
    "enabledProducts": [1, "Product", "repeated"]
@@ -4406,7 +4410,8 @@
    "private": [2, "bytes", "optional"]
   },
   "ServerErrorReceipt": {
-   "stanzaId": [1, "string", "optional"]
+   "stanzaId": [1, "string", "optional"],
+   "keepMediaKey": [2, "bool", "optional"]
   },
   "SessionStructure": {
    "sessionVersion": [1, "uint32", "optional"],

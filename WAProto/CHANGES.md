@@ -2,6 +2,19 @@
 
 Terbaru di atas. Dibuat otomatis oleh update-proto.mjs.
 
+## 2.3000.1054995772 → 2.3000.1055156383
+
+By: https://t.me/XYCoolcrafts
+
+### Tipe baru (1)
+
+- DeviceCapabilities.RecentConversationsOnDemand
+
+### Field baru (2)
+
+- DeviceCapabilities.recentConversationsOnDemand = 15
+- ServerErrorReceipt.keepMediaKey = 2
+
 ## 2.3000.1054943879 → 2.3000.1054995772
 
 By: https://t.me/XYCoolcrafts
@@ -278,9 +291,3 @@ By: https://t.me/XYCoolcrafts
 ### Field baru (1)
 
 - ContextInfo.foaMutualsSignature = 86
-
-## 2.3000.1053677024 → 2.3000.1053699790
-
-By: https://t.me/XYCoolcrafts
-
-Hanya nomor versi yang naik — tidak ada tipe/field/enum baru.
