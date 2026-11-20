@@ -2,6 +2,12 @@
 
 Terbaru di atas. Dibuat otomatis oleh update-proto.mjs.
 
+## 2.3000.1055538507 → 2.3000.1055574960
+
+By: https://t.me/XYCoolcrafts
+
+Hanya nomor versi yang naik — tidak ada tipe/field/enum baru.
+
 ## 2.3000.1055479463 → 2.3000.1055538507
 
 By: https://t.me/XYCoolcrafts
@@ -234,9 +240,3 @@ By: https://t.me/XYCoolcrafts
 ### Nilai enum baru (1)
 
 - WebMessageInfo.StubType.GROUP_CUSTOM_REACTIONS = 293
-
-## 2.3000.1054085650 → 2.3000.1054172749
-
-By: https://t.me/XYCoolcrafts
-
-Hanya nomor versi yang naik — tidak ada tipe/field/enum baru.
