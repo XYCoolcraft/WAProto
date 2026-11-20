@@ -2,6 +2,12 @@
 
 Terbaru di atas. Dibuat otomatis oleh update-proto.mjs.
 
+## 2.3000.1055479463 → 2.3000.1055538507
+
+By: https://t.me/XYCoolcrafts
+
+Hanya nomor versi yang naik — tidak ada tipe/field/enum baru.
+
 ## 2.3000.1055398528 → 2.3000.1055479463
 
 By: https://t.me/XYCoolcrafts
@@ -234,63 +240,3 @@ By: https://t.me/XYCoolcrafts
 By: https://t.me/XYCoolcrafts
 
 Hanya nomor versi yang naik — tidak ada tipe/field/enum baru.
-
-## 2.3000.1054053575 → 2.3000.1054085650
-
-By: https://t.me/XYCoolcrafts
-
-### Tipe baru (53)
-
-- AddDeviceKeysOutput
-- AddDeviceSyncEpochInput
-- BackwardEdge
-- ComputeClientSealTokenInput
-- ComputeClientSealTokenOutput
-- ComputeClientSealTokenSuccess
-- CreateBackupInput
-- CreateBackupOutput
-- CreateBackupSuccess
-- DecryptMessageInput
-- DecryptMessageOutput
-- DecryptMessageSuccess
-- DeriveEpochsInput
-- DeriveEpochsOutput
-- DeriveEpochsSuccess
-- DeriveMessageKeyInput
-- DeriveMessageKeyOutput
-- DeriveMessageKeySuccess
-- DeriveVirtualDeviceIdInput
-- DeriveVirtualDeviceIdOutput
-- DeriveVirtualDeviceIdSuccess
-- DeviceOutput
-- EncryptMessageInput
-- EncryptMessageOutput
-- EncryptMessageSuccess
-- EncryptedSecretValuesOutput
-- Epoch0Output
-- EpochDerivationEdge
-- EpochIds
-- EpochKey
-- ForwardEdgeInput
-- LabyrinthWaCommand
-- OpenSealedThreadIdInput
-- OpenSealedThreadIdOutput
-- OpenSealedThreadIdSuccess
-- OrfThreadIdInput
-- OrfThreadIdOutput
-- OrfThreadIdSuccess
-- PrepareAddDeviceInput
-- PrepareAddDeviceOutput
-- PrepareAddDeviceSuccess
-- PrepareAddPeerDeviceInput
-- PrepareAddPeerDeviceOutput
-- PrepareAddPeerDeviceSuccess
-- RotateEpochInput
-- RotateEpochMemberEdge
-- RotateEpochMemberInput
-- RotateEpochOutput
-- RotateEpochSuccess
-- SealThreadIdInput
-- SealThreadIdOutput
-- SealThreadIdSuccess
-- VirtualDeviceOutput
