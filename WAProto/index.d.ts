@@ -1792,7 +1792,8 @@ export namespace proto {
             AI_RICH_RESPONSE_READ_ALOUD_ENABLED = 87,
             AI_RICH_RESPONSE_ITEM_LISTS_ENABLED = 88,
             RICH_RESPONSE_SIDE_BY_SIDE_BUFFER_BOTH = 89,
-            AI_MUSE_JARVIS_ENVELOPE_GZIP_ENABLED = 90
+            AI_MUSE_JARVIS_ENVELOPE_GZIP_ENABLED = 90,
+            AI_RICH_RESPONSE_INLINE_MEDIA_LIGHTBOX_ENABLED = 91
         }
     }
 
@@ -14008,6 +14009,7 @@ export namespace proto {
             constructor(p?: proto.Message.InitialSecurityNotificationSettingSync.$Properties);
             $unknowns?: Uint8Array[];
             securityNotificationEnabled?: (boolean|null);
+            initialAppTheme?: (number|null);
             static create(properties: proto.Message.InitialSecurityNotificationSettingSync.$Shape): proto.Message.InitialSecurityNotificationSettingSync & proto.Message.InitialSecurityNotificationSettingSync.$Shape;
             static create(properties?: proto.Message.InitialSecurityNotificationSettingSync.$Properties): proto.Message.InitialSecurityNotificationSettingSync;
             static encode(m: proto.Message.InitialSecurityNotificationSettingSync.$Properties, w?: $protobuf.Writer): $protobuf.Writer;
@@ -14021,6 +14023,7 @@ export namespace proto {
         namespace InitialSecurityNotificationSettingSync {
             interface $Properties {
                 securityNotificationEnabled?: (boolean|null);
+                initialAppTheme?: (number|null);
                 $unknowns?: Uint8Array[];
             }
             type $Shape = proto.Message.InitialSecurityNotificationSettingSync.$Properties;
@@ -16898,6 +16901,7 @@ export namespace proto {
                 $unknowns?: Uint8Array[];
                 optionName?: (string|null);
                 optionHash?: (string|null);
+                optionDatetime?: (number|Long|null);
                 static create(properties: proto.Message.PollCreationMessage.Option.$Shape): proto.Message.PollCreationMessage.Option & proto.Message.PollCreationMessage.Option.$Shape;
                 static create(properties?: proto.Message.PollCreationMessage.Option.$Properties): proto.Message.PollCreationMessage.Option;
                 static encode(m: proto.Message.PollCreationMessage.Option.$Properties, w?: $protobuf.Writer): $protobuf.Writer;
@@ -16912,6 +16916,7 @@ export namespace proto {
                 interface $Properties {
                     optionName?: (string|null);
                     optionHash?: (string|null);
+                    optionDatetime?: (number|Long|null);
                     $unknowns?: Uint8Array[];
                 }
                 type $Shape = proto.Message.PollCreationMessage.Option.$Properties;
@@ -17278,6 +17283,7 @@ export namespace proto {
             groupRootKeyRequest?: (proto.GroupRootKeyRequest.$Properties|null);
             membershipFormKeyFingerprintVerification?: (proto.MembershipFormKeyFingerprintVerification.$Properties|null);
             groupRootKeyShare?: (proto.GroupRootKeyShare.$Properties|null);
+            messageEditDisplayType?: (proto.Message.ProtocolMessage.MessageEditDisplayType|null);
             static create(properties: proto.Message.ProtocolMessage.$Shape): proto.Message.ProtocolMessage & proto.Message.ProtocolMessage.$Shape;
             static create(properties?: proto.Message.ProtocolMessage.$Properties): proto.Message.ProtocolMessage;
             static encode(m: proto.Message.ProtocolMessage.$Properties, w?: $protobuf.Writer): $protobuf.Writer;
@@ -17327,6 +17333,7 @@ export namespace proto {
                 groupRootKeyRequest?: (proto.GroupRootKeyRequest.$Properties|null);
                 membershipFormKeyFingerprintVerification?: (proto.MembershipFormKeyFingerprintVerification.$Properties|null);
                 groupRootKeyShare?: (proto.GroupRootKeyShare.$Properties|null);
+                messageEditDisplayType?: (proto.Message.ProtocolMessage.MessageEditDisplayType|null);
                 $unknowns?: Uint8Array[];
             }
             type $Shape = {
@@ -17367,6 +17374,7 @@ export namespace proto {
               groupRootKeyRequest?: proto.GroupRootKeyRequest.$Shape|null;
               membershipFormKeyFingerprintVerification?: proto.MembershipFormKeyFingerprintVerification.$Shape|null;
               groupRootKeyShare?: proto.GroupRootKeyShare.$Shape|null;
+              messageEditDisplayType?: proto.Message.ProtocolMessage.MessageEditDisplayType|null;
               $unknowns?: Uint8Array[];
             };
 
@@ -17409,6 +17417,11 @@ export namespace proto {
                 GROUP_ROOT_KEY_REQUEST = 42,
                 MEMBERSHIP_FORM_KEY_FINGERPRINT_VERIFICATION = 43,
                 GROUP_ROOT_KEY_SHARE = 44
+            }
+
+            enum MessageEditDisplayType {
+                DEFAULT = 0,
+                LINK_PREVIEW_ONLY = 1
             }
         }
 
@@ -24154,6 +24167,7 @@ export namespace proto {
             pnJid?: (string|null);
             username?: (string|null);
             birthday?: (string|null);
+            nonE2EeType?: (number|null);
             static create(properties: proto.SyncActionValue.ContactAction.$Shape): proto.SyncActionValue.ContactAction & proto.SyncActionValue.ContactAction.$Shape;
             static create(properties?: proto.SyncActionValue.ContactAction.$Properties): proto.SyncActionValue.ContactAction;
             static encode(m: proto.SyncActionValue.ContactAction.$Properties, w?: $protobuf.Writer): $protobuf.Writer;
@@ -24173,6 +24187,7 @@ export namespace proto {
                 pnJid?: (string|null);
                 username?: (string|null);
                 birthday?: (string|null);
+                nonE2EeType?: (number|null);
                 $unknowns?: Uint8Array[];
             }
             type $Shape = proto.SyncActionValue.ContactAction.$Properties;
@@ -24799,6 +24814,7 @@ export namespace proto {
             firstName?: (string|null);
             username?: (string|null);
             birthday?: (string|null);
+            nonE2EeType?: (number|null);
             static create(properties: proto.SyncActionValue.LidContactAction.$Shape): proto.SyncActionValue.LidContactAction & proto.SyncActionValue.LidContactAction.$Shape;
             static create(properties?: proto.SyncActionValue.LidContactAction.$Properties): proto.SyncActionValue.LidContactAction;
             static encode(m: proto.SyncActionValue.LidContactAction.$Properties, w?: $protobuf.Writer): $protobuf.Writer;
@@ -24815,6 +24831,7 @@ export namespace proto {
                 firstName?: (string|null);
                 username?: (string|null);
                 birthday?: (string|null);
+                nonE2EeType?: (number|null);
                 $unknowns?: Uint8Array[];
             }
             type $Shape = proto.SyncActionValue.LidContactAction.$Properties;
@@ -28019,7 +28036,8 @@ export namespace proto {
             SPLIT_PAYMENT_MARKED_AS_PAID = 289,
             POLL_OPTIONS_REMOVED = 290,
             POLL_ADDED_OPTION_REMOVED = 291,
-            GROUP_CUSTOM_REACTIONS = 293
+            GROUP_CUSTOM_REACTIONS = 293,
+            POLL_OPTION_ADDED = 292
         }
     }
 

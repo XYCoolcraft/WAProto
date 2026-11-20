@@ -2,6 +2,27 @@
 
 Terbaru di atas. Dibuat otomatis oleh update-proto.mjs.
 
+## 2.3000.1055398528 → 2.3000.1055479463
+
+By: https://t.me/XYCoolcrafts
+
+### Tipe baru (1)
+
+- Message.ProtocolMessage.MessageEditDisplayType
+
+### Field baru (5)
+
+- Message.InitialSecurityNotificationSettingSync.initialAppTheme = 2
+- Message.PollCreationMessage.Option.optionDatetime = 3
+- Message.ProtocolMessage.messageEditDisplayType = 42
+- SyncActionValue.ContactAction.nonE2EeType = 8
+- SyncActionValue.LidContactAction.nonE2EeType = 5
+
+### Nilai enum baru (2)
+
+- BotCapabilityMetadata.BotCapabilityType.AI_RICH_RESPONSE_INLINE_MEDIA_LIGHTBOX_ENABLED = 91
+- WebMessageInfo.StubType.POLL_OPTION_ADDED = 292
+
 ## 2.3000.1055337841 → 2.3000.1055398528
 
 By: https://t.me/XYCoolcrafts
@@ -273,9 +294,3 @@ By: https://t.me/XYCoolcrafts
 - SealThreadIdOutput
 - SealThreadIdSuccess
 - VirtualDeviceOutput
-
-## 2.3000.1053984976 → 2.3000.1054053575
-
-By: https://t.me/XYCoolcrafts
-
-Hanya nomor versi yang naik — tidak ada tipe/field/enum baru.

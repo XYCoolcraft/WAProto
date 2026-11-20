@@ -2480,7 +2480,8 @@
                 "AI_RICH_RESPONSE_READ_ALOUD_ENABLED": 87,
                 "AI_RICH_RESPONSE_ITEM_LISTS_ENABLED": 88,
                 "RICH_RESPONSE_SIDE_BY_SIDE_BUFFER_BOTH": 89,
-                "AI_MUSE_JARVIS_ENVELOPE_GZIP_ENABLED": 90
+                "AI_MUSE_JARVIS_ENVELOPE_GZIP_ENABLED": 90,
+                "AI_RICH_RESPONSE_INLINE_MEDIA_LIGHTBOX_ENABLED": 91
               }
             }
           }
@@ -24282,12 +24283,24 @@
                   "oneof": [
                     "securityNotificationEnabled"
                   ]
+                },
+                "_initialAppTheme": {
+                  "oneof": [
+                    "initialAppTheme"
+                  ]
                 }
               },
               "fields": {
                 "securityNotificationEnabled": {
                   "type": "bool",
                   "id": 1,
+                  "options": {
+                    "proto3_optional": true
+                  }
+                },
+                "initialAppTheme": {
+                  "type": "int32",
+                  "id": 2,
                   "options": {
                     "proto3_optional": true
                   }
@@ -28998,6 +29011,11 @@
                       "oneof": [
                         "optionHash"
                       ]
+                    },
+                    "_optionDatetime": {
+                      "oneof": [
+                        "optionDatetime"
+                      ]
                     }
                   },
                   "fields": {
@@ -29011,6 +29029,13 @@
                     "optionHash": {
                       "type": "string",
                       "id": 2,
+                      "options": {
+                        "proto3_optional": true
+                      }
+                    },
+                    "optionDatetime": {
+                      "type": "int64",
+                      "id": 3,
                       "options": {
                         "proto3_optional": true
                       }
@@ -29680,6 +29705,11 @@
                   "oneof": [
                     "groupRootKeyShare"
                   ]
+                },
+                "_messageEditDisplayType": {
+                  "oneof": [
+                    "messageEditDisplayType"
+                  ]
                 }
               },
               "fields": {
@@ -29939,6 +29969,13 @@
                   "options": {
                     "proto3_optional": true
                   }
+                },
+                "messageEditDisplayType": {
+                  "type": "MessageEditDisplayType",
+                  "id": 42,
+                  "options": {
+                    "proto3_optional": true
+                  }
                 }
               },
               "nested": {
@@ -29982,6 +30019,12 @@
                     "GROUP_ROOT_KEY_REQUEST": 42,
                     "MEMBERSHIP_FORM_KEY_FINGERPRINT_VERIFICATION": 43,
                     "GROUP_ROOT_KEY_SHARE": 44
+                  }
+                },
+                "MessageEditDisplayType": {
+                  "values": {
+                    "DEFAULT": 0,
+                    "LINK_PREVIEW_ONLY": 1
                   }
                 }
               }
@@ -41761,6 +41804,11 @@
                   "oneof": [
                     "birthday"
                   ]
+                },
+                "_nonE2EeType": {
+                  "oneof": [
+                    "nonE2EeType"
+                  ]
                 }
               },
               "fields": {
@@ -41809,6 +41857,13 @@
                 "birthday": {
                   "type": "string",
                   "id": 7,
+                  "options": {
+                    "proto3_optional": true
+                  }
+                },
+                "nonE2EeType": {
+                  "type": "int32",
+                  "id": 8,
                   "options": {
                     "proto3_optional": true
                   }
@@ -42537,6 +42592,11 @@
                   "oneof": [
                     "birthday"
                   ]
+                },
+                "_nonE2EeType": {
+                  "oneof": [
+                    "nonE2EeType"
+                  ]
                 }
               },
               "fields": {
@@ -42564,6 +42624,13 @@
                 "birthday": {
                   "type": "string",
                   "id": 4,
+                  "options": {
+                    "proto3_optional": true
+                  }
+                },
+                "nonE2EeType": {
+                  "type": "int32",
+                  "id": 5,
                   "options": {
                     "proto3_optional": true
                   }
@@ -47545,7 +47612,8 @@
                 "SPLIT_PAYMENT_MARKED_AS_PAID": 289,
                 "POLL_OPTIONS_REMOVED": 290,
                 "POLL_ADDED_OPTION_REMOVED": 291,
-                "GROUP_CUSTOM_REACTIONS": 293
+                "GROUP_CUSTOM_REACTIONS": 293,
+                "POLL_OPTION_ADDED": 292
               }
             }
           }

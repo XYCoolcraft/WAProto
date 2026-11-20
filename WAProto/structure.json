@@ -1,8 +1,8 @@
 {
- "protoVersion": "2.3000.1055398528",
+ "protoVersion": "2.3000.1055479463",
  "counts": {
   "messages": 816,
-  "enums": 232
+  "enums": 233
  },
  "fields": "[nomor, tipe, label]",
  "messages": {
@@ -2777,7 +2777,8 @@
    "qrUrl": [34, "string", "optional"]
   },
   "Message.InitialSecurityNotificationSettingSync": {
-   "securityNotificationEnabled": [1, "bool", "optional"]
+   "securityNotificationEnabled": [1, "bool", "optional"],
+   "initialAppTheme": [2, "int32", "optional"]
   },
   "Message.InteractiveMessage": {
    "header": [1, "Header", "optional"],
@@ -3296,7 +3297,8 @@
   },
   "Message.PollCreationMessage.Option": {
    "optionName": [1, "string", "optional"],
-   "optionHash": [2, "string", "optional"]
+   "optionHash": [2, "string", "optional"],
+   "optionDatetime": [3, "int64", "optional"]
   },
   "Message.PollEncValue": {
    "encPayload": [1, "bytes", "optional"],
@@ -3389,7 +3391,8 @@
    "additionalPromptIds": [38, "string", "repeated"],
    "groupRootKeyRequest": [39, "GroupRootKeyRequest", "optional"],
    "membershipFormKeyFingerprintVerification": [40, "MembershipFormKeyFingerprintVerification", "optional"],
-   "groupRootKeyShare": [41, "GroupRootKeyShare", "optional"]
+   "groupRootKeyShare": [41, "GroupRootKeyShare", "optional"],
+   "messageEditDisplayType": [42, "MessageEditDisplayType", "optional"]
   },
   "Message.QuestionResponseMessage": {
    "key": [1, "MessageKey", "optional"],
@@ -4763,7 +4766,8 @@
    "saveOnPrimaryAddressbook": [4, "bool", "optional"],
    "pnJid": [5, "string", "optional"],
    "username": [6, "string", "optional"],
-   "birthday": [7, "string", "optional"]
+   "birthday": [7, "string", "optional"],
+   "nonE2EeType": [8, "int32", "optional"]
   },
   "SyncActionValue.ContactManagerMetadataAction": {
    "isHidden": [1, "bool", "optional"]
@@ -4862,7 +4866,8 @@
    "fullName": [1, "string", "optional"],
    "firstName": [2, "string", "optional"],
    "username": [3, "string", "optional"],
-   "birthday": [4, "string", "optional"]
+   "birthday": [4, "string", "optional"],
+   "nonE2EeType": [5, "int32", "optional"]
   },
   "SyncActionValue.LocaleSetting": {
    "locale": [1, "string", "optional"]
@@ -5600,7 +5605,8 @@
    "AI_RICH_RESPONSE_READ_ALOUD_ENABLED": 87,
    "AI_RICH_RESPONSE_ITEM_LISTS_ENABLED": 88,
    "RICH_RESPONSE_SIDE_BY_SIDE_BUFFER_BOTH": 89,
-   "AI_MUSE_JARVIS_ENVELOPE_GZIP_ENABLED": 90
+   "AI_MUSE_JARVIS_ENVELOPE_GZIP_ENABLED": 90,
+   "AI_RICH_RESPONSE_INLINE_MEDIA_LIGHTBOX_ENABLED": 91
   },
   "BotDocumentMessageMetadata.DocumentPluginType": {
    "TEXT_EXTRACTION": 0,
@@ -6668,6 +6674,10 @@
    "POLL": 0,
    "QUIZ": 1
   },
+  "Message.ProtocolMessage.MessageEditDisplayType": {
+   "DEFAULT": 0,
+   "LINK_PREVIEW_ONLY": 1
+  },
   "Message.ProtocolMessage.Type": {
    "REVOKE": 0,
    "EPHEMERAL_SETTING": 3,
@@ -7609,6 +7619,7 @@
    "SPLIT_PAYMENT_MARKED_AS_PAID": 289,
    "POLL_OPTIONS_REMOVED": 290,
    "POLL_ADDED_OPTION_REMOVED": 291,
+   "POLL_OPTION_ADDED": 292,
    "GROUP_CUSTOM_REACTIONS": 293
   }
  }

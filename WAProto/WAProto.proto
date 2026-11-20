@@ -1,7 +1,7 @@
 syntax = "proto3";
 package proto;
 
-/// WhatsApp Version: 2.3000.1055398528
+/// WhatsApp Version: 2.3000.1055479463
 
 message ACP2Setting {
     optional bool enabled = 1;
@@ -520,6 +520,7 @@ message BotCapabilityMetadata {
         AI_RICH_RESPONSE_ITEM_LISTS_ENABLED = 88;
         RICH_RESPONSE_SIDE_BY_SIDE_BUFFER_BOTH = 89;
         AI_MUSE_JARVIS_ENVELOPE_GZIP_ENABLED = 90;
+        AI_RICH_RESPONSE_INLINE_MEDIA_LIGHTBOX_ENABLED = 91;
     }
 }
 
@@ -4051,6 +4052,7 @@ message Message {
     
     message InitialSecurityNotificationSettingSync {
         optional bool securityNotificationEnabled = 1;
+        optional int32 initialAppTheme = 2;
     }
     
     enum InsightDeliveryState {
@@ -4791,6 +4793,7 @@ message Message {
         message Option {
             optional string optionName = 1;
             optional string optionHash = 2;
+            optional int64 optionDatetime = 3;
         }
         
     }
@@ -4900,6 +4903,7 @@ message Message {
         optional GroupRootKeyRequest groupRootKeyRequest = 39;
         optional MembershipFormKeyFingerprintVerification membershipFormKeyFingerprintVerification = 40;
         optional GroupRootKeyShare groupRootKeyShare = 41;
+        optional MessageEditDisplayType messageEditDisplayType = 42;
         enum Type {
             REVOKE = 0;
             EPHEMERAL_SETTING = 3;
@@ -4939,6 +4943,11 @@ message Message {
             GROUP_ROOT_KEY_REQUEST = 42;
             MEMBERSHIP_FORM_KEY_FINGERPRINT_VERIFICATION = 43;
             GROUP_ROOT_KEY_SHARE = 44;
+        }
+
+        enum MessageEditDisplayType {
+            DEFAULT = 0;
+            LINK_PREVIEW_ONLY = 1;
         }
     }
     
@@ -6833,6 +6842,7 @@ message SyncActionValue {
         optional string pnJid = 5;
         optional string username = 6;
         optional string birthday = 7;
+        optional int32 nonE2EeType = 8;
     }
     
     message ContactManagerMetadataAction {
@@ -6981,6 +6991,7 @@ message SyncActionValue {
         optional string firstName = 2;
         optional string username = 3;
         optional string birthday = 4;
+        optional int32 nonE2EeType = 5;
     }
     
     message LocaleSetting {
@@ -8018,6 +8029,7 @@ message WebMessageInfo {
         POLL_OPTIONS_REMOVED = 290;
         POLL_ADDED_OPTION_REMOVED = 291;
         GROUP_CUSTOM_REACTIONS = 293;
+        POLL_OPTION_ADDED = 292;
     }
 }
 

@@ -10629,6 +10629,10 @@ export const proto = $root.proto = (() => {
                     case 90:
                         m.capabilities[m.capabilities.length] = 90;
                         break;
+                    case "AI_RICH_RESPONSE_INLINE_MEDIA_LIGHTBOX_ENABLED":
+                    case 91:
+                        m.capabilities[m.capabilities.length] = 91;
+                        break;
                     default:
                         if (typeof d.capabilities[i] === "number" && (d.capabilities[i] | 0) === d.capabilities[i])
                             m.capabilities[m.capabilities.length] = d.capabilities[i];
@@ -10761,6 +10765,7 @@ export const proto = $root.proto = (() => {
             values[valuesById[88] = "AI_RICH_RESPONSE_ITEM_LISTS_ENABLED"] = 88;
             values[valuesById[89] = "RICH_RESPONSE_SIDE_BY_SIDE_BUFFER_BOTH"] = 89;
             values[valuesById[90] = "AI_MUSE_JARVIS_ENVELOPE_GZIP_ENABLED"] = 90;
+            values[valuesById[91] = "AI_RICH_RESPONSE_INLINE_MEDIA_LIGHTBOX_ENABLED"] = 91;
             return values;
         })();
 
@@ -89492,12 +89497,19 @@ export const proto = $root.proto = (() => {
             };
 
             InitialSecurityNotificationSettingSync.prototype.securityNotificationEnabled = null;
+            InitialSecurityNotificationSettingSync.prototype.initialAppTheme = null;
 
             let $oneOfFields;
 
             // Virtual OneOf for proto3 optional field
             $Object.defineProperty(InitialSecurityNotificationSettingSync.prototype, "_securityNotificationEnabled", {
                 get: $util.oneOfGetter($oneOfFields = ["securityNotificationEnabled"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(InitialSecurityNotificationSettingSync.prototype, "_initialAppTheme", {
+                get: $util.oneOfGetter($oneOfFields = ["initialAppTheme"]),
                 set: $util.oneOfSetter($oneOfFields)
             });
 
@@ -89514,6 +89526,8 @@ export const proto = $root.proto = (() => {
                     throw $Error("max depth exceeded");
                 if (m.securityNotificationEnabled != null && $Object.hasOwnProperty.call(m, "securityNotificationEnabled"))
                     w.uint32(8).bool(m.securityNotificationEnabled);
+                if (m.initialAppTheme != null && $Object.hasOwnProperty.call(m, "initialAppTheme"))
+                    w.uint32(16).int32(m.initialAppTheme);
                 if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                     for (var i = 0; i < m.$unknowns.length; ++i)
                         w.raw(m.$unknowns[i]);
@@ -89554,6 +89568,13 @@ export const proto = $root.proto = (() => {
                             m._securityNotificationEnabled = "securityNotificationEnabled";
                             continue;
                         }
+                    case 2: {
+                            if (u !== 0)
+                                break;
+                            m.initialAppTheme = r.int32();
+                            m._initialAppTheme = "initialAppTheme";
+                            continue;
+                        }
                     }
                     r.skipType(u, q, t);
                     if (!r.discardUnknown) {
@@ -89584,6 +89605,9 @@ export const proto = $root.proto = (() => {
                 if (d.securityNotificationEnabled != null) {
                     m.securityNotificationEnabled = $Boolean(d.securityNotificationEnabled);
                 }
+                if (d.initialAppTheme != null) {
+                    m.initialAppTheme = d.initialAppTheme | 0;
+                }
                 return m;
             };
 
@@ -89597,6 +89621,9 @@ export const proto = $root.proto = (() => {
                 var d = {};
                 if (m.securityNotificationEnabled != null && $Object.hasOwnProperty.call(m, "securityNotificationEnabled")) {
                     d.securityNotificationEnabled = m.securityNotificationEnabled;
+                }
+                if (m.initialAppTheme != null && $Object.hasOwnProperty.call(m, "initialAppTheme")) {
+                    d.initialAppTheme = m.initialAppTheme;
                 }
                 return d;
             };
@@ -107465,6 +107492,7 @@ export const proto = $root.proto = (() => {
 
                 Option.prototype.optionName = null;
                 Option.prototype.optionHash = null;
+                Option.prototype.optionDatetime = null;
 
                 let $oneOfFields;
 
@@ -107477,6 +107505,12 @@ export const proto = $root.proto = (() => {
                 // Virtual OneOf for proto3 optional field
                 $Object.defineProperty(Option.prototype, "_optionHash", {
                     get: $util.oneOfGetter($oneOfFields = ["optionHash"]),
+                    set: $util.oneOfSetter($oneOfFields)
+                });
+
+                // Virtual OneOf for proto3 optional field
+                $Object.defineProperty(Option.prototype, "_optionDatetime", {
+                    get: $util.oneOfGetter($oneOfFields = ["optionDatetime"]),
                     set: $util.oneOfSetter($oneOfFields)
                 });
 
@@ -107495,6 +107529,8 @@ export const proto = $root.proto = (() => {
                         w.uint32(10).string(m.optionName);
                     if (m.optionHash != null && $Object.hasOwnProperty.call(m, "optionHash"))
                         w.uint32(18).string(m.optionHash);
+                    if (m.optionDatetime != null && $Object.hasOwnProperty.call(m, "optionDatetime"))
+                        w.uint32(24).int64(m.optionDatetime);
                     if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                         for (var i = 0; i < m.$unknowns.length; ++i)
                             w.raw(m.$unknowns[i]);
@@ -107542,6 +107578,13 @@ export const proto = $root.proto = (() => {
                                 m._optionHash = "optionHash";
                                 continue;
                             }
+                        case 3: {
+                                if (u !== 0)
+                                    break;
+                                m.optionDatetime = r.int64();
+                                m._optionDatetime = "optionDatetime";
+                                continue;
+                            }
                         }
                         r.skipType(u, q, t);
                         if (!r.discardUnknown) {
@@ -107575,6 +107618,16 @@ export const proto = $root.proto = (() => {
                     if (d.optionHash != null) {
                         m.optionHash = $String(d.optionHash);
                     }
+                    if (d.optionDatetime != null) {
+                        if ($util.Long)
+                            m.optionDatetime = $util.Long.fromValue(d.optionDatetime, false);
+                        else if (typeof d.optionDatetime === "string")
+                            m.optionDatetime = $parseInt(d.optionDatetime, 10);
+                        else if (typeof d.optionDatetime === "number")
+                            m.optionDatetime = d.optionDatetime;
+                        else if (typeof d.optionDatetime === "object")
+                            m.optionDatetime = new $util.LongBits(d.optionDatetime.low >>> 0, d.optionDatetime.high >>> 0).toNumber();
+                    }
                     return m;
                 };
 
@@ -107591,6 +107644,14 @@ export const proto = $root.proto = (() => {
                     }
                     if (m.optionHash != null && $Object.hasOwnProperty.call(m, "optionHash")) {
                         d.optionHash = m.optionHash;
+                    }
+                    if (m.optionDatetime != null && $Object.hasOwnProperty.call(m, "optionDatetime")) {
+                        if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
+                            d.optionDatetime = typeof m.optionDatetime === "number" ? $BigInt(m.optionDatetime) : $util.Long.fromBits(m.optionDatetime.low >>> 0, m.optionDatetime.high >>> 0, false).toBigInt();
+                        else if (typeof m.optionDatetime === "number")
+                            d.optionDatetime = o.longs === $String ? $String(m.optionDatetime) : m.optionDatetime;
+                        else
+                            d.optionDatetime = o.longs === $String ? $util.Long.prototype.toString.call(m.optionDatetime) : o.longs === $Number ? new $util.LongBits(m.optionDatetime.low >>> 0, m.optionDatetime.high >>> 0).toNumber() : m.optionDatetime;
                     }
                     return d;
                 };
@@ -109553,6 +109614,7 @@ export const proto = $root.proto = (() => {
             ProtocolMessage.prototype.groupRootKeyRequest = null;
             ProtocolMessage.prototype.membershipFormKeyFingerprintVerification = null;
             ProtocolMessage.prototype.groupRootKeyShare = null;
+            ProtocolMessage.prototype.messageEditDisplayType = null;
 
             let $oneOfFields;
 
@@ -109772,6 +109834,12 @@ export const proto = $root.proto = (() => {
                 set: $util.oneOfSetter($oneOfFields)
             });
 
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(ProtocolMessage.prototype, "_messageEditDisplayType", {
+                get: $util.oneOfGetter($oneOfFields = ["messageEditDisplayType"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
             ProtocolMessage.create = function(properties) {
                 return new ProtocolMessage(properties);
             };
@@ -109859,6 +109927,8 @@ export const proto = $root.proto = (() => {
                     $root.proto.MembershipFormKeyFingerprintVerification.encode(m.membershipFormKeyFingerprintVerification, w.uint32(322).fork(), q + 1).ldelim();
                 if (m.groupRootKeyShare != null && $Object.hasOwnProperty.call(m, "groupRootKeyShare"))
                     $root.proto.GroupRootKeyShare.encode(m.groupRootKeyShare, w.uint32(330).fork(), q + 1).ldelim();
+                if (m.messageEditDisplayType != null && $Object.hasOwnProperty.call(m, "messageEditDisplayType"))
+                    w.uint32(336).int32(m.messageEditDisplayType);
                 if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                     for (var i = 0; i < m.$unknowns.length; ++i)
                         w.raw(m.$unknowns[i]);
@@ -110150,6 +110220,13 @@ export const proto = $root.proto = (() => {
                                 break;
                             m.groupRootKeyShare = $root.proto.GroupRootKeyShare.decode(r, r.size(), $undefined, q + 1, m.groupRootKeyShare);
                             m._groupRootKeyShare = "groupRootKeyShare";
+                            continue;
+                        }
+                    case 42: {
+                            if (u !== 0)
+                                break;
+                            m.messageEditDisplayType = r.int32();
+                            m._messageEditDisplayType = "messageEditDisplayType";
                             continue;
                         }
                     }
@@ -110524,6 +110601,19 @@ export const proto = $root.proto = (() => {
                         throw $TypeError(".proto.Message.ProtocolMessage.groupRootKeyShare: object expected");
                     m.groupRootKeyShare = $root.proto.GroupRootKeyShare.fromObject(d.groupRootKeyShare, q + 1);
                 }
+                switch (d.messageEditDisplayType) {
+                case "DEFAULT":
+                case 0:
+                    m.messageEditDisplayType = 0;
+                    break;
+                case "LINK_PREVIEW_ONLY":
+                case 1:
+                    m.messageEditDisplayType = 1;
+                    break;
+                default:
+                    if (typeof d.messageEditDisplayType === "number" && (d.messageEditDisplayType | 0) === d.messageEditDisplayType)
+                        m.messageEditDisplayType = d.messageEditDisplayType;
+                }
                 return m;
             };
 
@@ -110662,6 +110752,9 @@ export const proto = $root.proto = (() => {
                 if (m.groupRootKeyShare != null && $Object.hasOwnProperty.call(m, "groupRootKeyShare")) {
                     d.groupRootKeyShare = $root.proto.GroupRootKeyShare.toObject(m.groupRootKeyShare, o, q + 1);
                 }
+                if (m.messageEditDisplayType != null && $Object.hasOwnProperty.call(m, "messageEditDisplayType")) {
+                    d.messageEditDisplayType = o.enums === $String ? $root.proto.Message.ProtocolMessage.MessageEditDisplayType[m.messageEditDisplayType] === $undefined ? m.messageEditDisplayType : $root.proto.Message.ProtocolMessage.MessageEditDisplayType[m.messageEditDisplayType] : m.messageEditDisplayType;
+                }
                 return d;
             };
 
@@ -110715,6 +110808,13 @@ export const proto = $root.proto = (() => {
                 values[valuesById[42] = "GROUP_ROOT_KEY_REQUEST"] = 42;
                 values[valuesById[43] = "MEMBERSHIP_FORM_KEY_FINGERPRINT_VERIFICATION"] = 43;
                 values[valuesById[44] = "GROUP_ROOT_KEY_SHARE"] = 44;
+                return values;
+            })();
+
+            ProtocolMessage.MessageEditDisplayType = (function() {
+                const valuesById = $Object.create(null), values = $Object.create(valuesById);
+                values[valuesById[0] = "DEFAULT"] = 0;
+                values[valuesById[1] = "LINK_PREVIEW_ONLY"] = 1;
                 return values;
             })();
 
@@ -153551,6 +153651,7 @@ export const proto = $root.proto = (() => {
             ContactAction.prototype.pnJid = null;
             ContactAction.prototype.username = null;
             ContactAction.prototype.birthday = null;
+            ContactAction.prototype.nonE2EeType = null;
 
             let $oneOfFields;
 
@@ -153596,6 +153697,12 @@ export const proto = $root.proto = (() => {
                 set: $util.oneOfSetter($oneOfFields)
             });
 
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(ContactAction.prototype, "_nonE2EeType", {
+                get: $util.oneOfGetter($oneOfFields = ["nonE2EeType"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
             ContactAction.create = function(properties) {
                 return new ContactAction(properties);
             };
@@ -153621,6 +153728,8 @@ export const proto = $root.proto = (() => {
                     w.uint32(50).string(m.username);
                 if (m.birthday != null && $Object.hasOwnProperty.call(m, "birthday"))
                     w.uint32(58).string(m.birthday);
+                if (m.nonE2EeType != null && $Object.hasOwnProperty.call(m, "nonE2EeType"))
+                    w.uint32(64).int32(m.nonE2EeType);
                 if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                     for (var i = 0; i < m.$unknowns.length; ++i)
                         w.raw(m.$unknowns[i]);
@@ -153703,6 +153812,13 @@ export const proto = $root.proto = (() => {
                             m._birthday = "birthday";
                             continue;
                         }
+                    case 8: {
+                            if (u !== 0)
+                                break;
+                            m.nonE2EeType = r.int32();
+                            m._nonE2EeType = "nonE2EeType";
+                            continue;
+                        }
                     }
                     r.skipType(u, q, t);
                     if (!r.discardUnknown) {
@@ -153751,6 +153867,9 @@ export const proto = $root.proto = (() => {
                 if (d.birthday != null) {
                     m.birthday = $String(d.birthday);
                 }
+                if (d.nonE2EeType != null) {
+                    m.nonE2EeType = d.nonE2EeType | 0;
+                }
                 return m;
             };
 
@@ -153782,6 +153901,9 @@ export const proto = $root.proto = (() => {
                 }
                 if (m.birthday != null && $Object.hasOwnProperty.call(m, "birthday")) {
                     d.birthday = m.birthday;
+                }
+                if (m.nonE2EeType != null && $Object.hasOwnProperty.call(m, "nonE2EeType")) {
+                    d.nonE2EeType = m.nonE2EeType;
                 }
                 return d;
             };
@@ -157417,6 +157539,7 @@ export const proto = $root.proto = (() => {
             LidContactAction.prototype.firstName = null;
             LidContactAction.prototype.username = null;
             LidContactAction.prototype.birthday = null;
+            LidContactAction.prototype.nonE2EeType = null;
 
             let $oneOfFields;
 
@@ -157444,6 +157567,12 @@ export const proto = $root.proto = (() => {
                 set: $util.oneOfSetter($oneOfFields)
             });
 
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(LidContactAction.prototype, "_nonE2EeType", {
+                get: $util.oneOfGetter($oneOfFields = ["nonE2EeType"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
             LidContactAction.create = function(properties) {
                 return new LidContactAction(properties);
             };
@@ -157463,6 +157592,8 @@ export const proto = $root.proto = (() => {
                     w.uint32(26).string(m.username);
                 if (m.birthday != null && $Object.hasOwnProperty.call(m, "birthday"))
                     w.uint32(34).string(m.birthday);
+                if (m.nonE2EeType != null && $Object.hasOwnProperty.call(m, "nonE2EeType"))
+                    w.uint32(40).int32(m.nonE2EeType);
                 if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                     for (var i = 0; i < m.$unknowns.length; ++i)
                         w.raw(m.$unknowns[i]);
@@ -157524,6 +157655,13 @@ export const proto = $root.proto = (() => {
                             m._birthday = "birthday";
                             continue;
                         }
+                    case 5: {
+                            if (u !== 0)
+                                break;
+                            m.nonE2EeType = r.int32();
+                            m._nonE2EeType = "nonE2EeType";
+                            continue;
+                        }
                     }
                     r.skipType(u, q, t);
                     if (!r.discardUnknown) {
@@ -157563,6 +157701,9 @@ export const proto = $root.proto = (() => {
                 if (d.birthday != null) {
                     m.birthday = $String(d.birthday);
                 }
+                if (d.nonE2EeType != null) {
+                    m.nonE2EeType = d.nonE2EeType | 0;
+                }
                 return m;
             };
 
@@ -157585,6 +157726,9 @@ export const proto = $root.proto = (() => {
                 }
                 if (m.birthday != null && $Object.hasOwnProperty.call(m, "birthday")) {
                     d.birthday = m.birthday;
+                }
+                if (m.nonE2EeType != null && $Object.hasOwnProperty.call(m, "nonE2EeType")) {
+                    d.nonE2EeType = m.nonE2EeType;
                 }
                 return d;
             };
@@ -177240,6 +177384,10 @@ export const proto = $root.proto = (() => {
             case 293:
                 m.messageStubType = 293;
                 break;
+            case "POLL_OPTION_ADDED":
+            case 292:
+                m.messageStubType = 292;
+                break;
             default:
                 if (typeof d.messageStubType === "number" && (d.messageStubType | 0) === d.messageStubType)
                     m.messageStubType = d.messageStubType;
@@ -178208,6 +178356,7 @@ export const proto = $root.proto = (() => {
             values[valuesById[290] = "POLL_OPTIONS_REMOVED"] = 290;
             values[valuesById[291] = "POLL_ADDED_OPTION_REMOVED"] = 291;
             values[valuesById[293] = "GROUP_CUSTOM_REACTIONS"] = 293;
+            values[valuesById[292] = "POLL_OPTION_ADDED"] = 292;
             return values;
         })();
 
