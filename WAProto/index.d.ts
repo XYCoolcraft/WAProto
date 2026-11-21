@@ -1076,6 +1076,7 @@ export namespace proto {
         constructor(p?: proto.AIRichResponseUnifiedResponse.$Properties);
         $unknowns?: Uint8Array[];
         data?: (Uint8Array|null);
+        gzipData?: (Uint8Array|null);
         static create(properties: proto.AIRichResponseUnifiedResponse.$Shape): proto.AIRichResponseUnifiedResponse & proto.AIRichResponseUnifiedResponse.$Shape;
         static create(properties?: proto.AIRichResponseUnifiedResponse.$Properties): proto.AIRichResponseUnifiedResponse;
         static encode(m: proto.AIRichResponseUnifiedResponse.$Properties, w?: $protobuf.Writer): $protobuf.Writer;
@@ -1089,6 +1090,7 @@ export namespace proto {
     namespace AIRichResponseUnifiedResponse {
         interface $Properties {
             data?: (Uint8Array|null);
+            gzipData?: (Uint8Array|null);
             $unknowns?: Uint8Array[];
         }
         type $Shape = proto.AIRichResponseUnifiedResponse.$Properties;
@@ -1793,7 +1795,8 @@ export namespace proto {
             AI_RICH_RESPONSE_ITEM_LISTS_ENABLED = 88,
             RICH_RESPONSE_SIDE_BY_SIDE_BUFFER_BOTH = 89,
             AI_MUSE_JARVIS_ENVELOPE_GZIP_ENABLED = 90,
-            AI_RICH_RESPONSE_INLINE_MEDIA_LIGHTBOX_ENABLED = 91
+            AI_RICH_RESPONSE_INLINE_MEDIA_LIGHTBOX_ENABLED = 91,
+            AI_MUSE_JARVIS_PAYLOAD_GZIP_ENABLED = 93
         }
     }
 
@@ -6912,6 +6915,7 @@ export namespace proto {
         bizAiWebOnboarding?: (proto.DeviceCapabilities.BizAiWebOnboarding.$Properties|null);
         phoneNumberSharing?: (proto.DeviceCapabilities.PhoneNumberSharing.$Properties|null);
         recentConversationsOnDemand?: (proto.DeviceCapabilities.RecentConversationsOnDemand.$Properties|null);
+        aiMuseJarvisGzip?: (proto.DeviceCapabilities.AiMuseJarvisGzip.$Properties|null);
         static create(properties: proto.DeviceCapabilities.$Shape): proto.DeviceCapabilities & proto.DeviceCapabilities.$Shape;
         static create(properties?: proto.DeviceCapabilities.$Properties): proto.DeviceCapabilities;
         static encode(m: proto.DeviceCapabilities.$Properties, w?: $protobuf.Writer): $protobuf.Writer;
@@ -6939,6 +6943,7 @@ export namespace proto {
             bizAiWebOnboarding?: (proto.DeviceCapabilities.BizAiWebOnboarding.$Properties|null);
             phoneNumberSharing?: (proto.DeviceCapabilities.PhoneNumberSharing.$Properties|null);
             recentConversationsOnDemand?: (proto.DeviceCapabilities.RecentConversationsOnDemand.$Properties|null);
+            aiMuseJarvisGzip?: (proto.DeviceCapabilities.AiMuseJarvisGzip.$Properties|null);
             $unknowns?: Uint8Array[];
         }
         type $Shape = proto.DeviceCapabilities.$Properties;
@@ -7305,6 +7310,31 @@ export namespace proto {
                 $unknowns?: Uint8Array[];
             }
             type $Shape = proto.DeviceCapabilities.RecentConversationsOnDemand.$Properties;
+        }
+
+        interface IAiMuseJarvisGzip extends proto.DeviceCapabilities.AiMuseJarvisGzip.$Properties {
+        }
+
+        class AiMuseJarvisGzip {
+            constructor(p?: proto.DeviceCapabilities.AiMuseJarvisGzip.$Properties);
+            $unknowns?: Uint8Array[];
+            supportVersion?: (number|null);
+            static create(properties: proto.DeviceCapabilities.AiMuseJarvisGzip.$Shape): proto.DeviceCapabilities.AiMuseJarvisGzip & proto.DeviceCapabilities.AiMuseJarvisGzip.$Shape;
+            static create(properties?: proto.DeviceCapabilities.AiMuseJarvisGzip.$Properties): proto.DeviceCapabilities.AiMuseJarvisGzip;
+            static encode(m: proto.DeviceCapabilities.AiMuseJarvisGzip.$Properties, w?: $protobuf.Writer): $protobuf.Writer;
+            static decode(r: ($protobuf.Reader|Uint8Array), l?: number): proto.DeviceCapabilities.AiMuseJarvisGzip & proto.DeviceCapabilities.AiMuseJarvisGzip.$Shape;
+            static fromObject(d: { [k: string]: any }): proto.DeviceCapabilities.AiMuseJarvisGzip;
+            static toObject(m: proto.DeviceCapabilities.AiMuseJarvisGzip, o?: $protobuf.IConversionOptions): { [k: string]: any };
+            toJSON(): { [k: string]: any };
+            static getTypeUrl(prefix?: string): string;
+        }
+
+        namespace AiMuseJarvisGzip {
+            interface $Properties {
+                supportVersion?: (number|null);
+                $unknowns?: Uint8Array[];
+            }
+            type $Shape = proto.DeviceCapabilities.AiMuseJarvisGzip.$Properties;
         }
     }
 

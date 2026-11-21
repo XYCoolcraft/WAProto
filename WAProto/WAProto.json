@@ -1602,12 +1602,24 @@
               "oneof": [
                 "data"
               ]
+            },
+            "_gzipData": {
+              "oneof": [
+                "gzipData"
+              ]
             }
           },
           "fields": {
             "data": {
               "type": "bytes",
               "id": 1,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "gzipData": {
+              "type": "bytes",
+              "id": 2,
               "options": {
                 "proto3_optional": true
               }
@@ -2481,7 +2493,8 @@
                 "AI_RICH_RESPONSE_ITEM_LISTS_ENABLED": 88,
                 "RICH_RESPONSE_SIDE_BY_SIDE_BUFFER_BOTH": 89,
                 "AI_MUSE_JARVIS_ENVELOPE_GZIP_ENABLED": 90,
-                "AI_RICH_RESPONSE_INLINE_MEDIA_LIGHTBOX_ENABLED": 91
+                "AI_RICH_RESPONSE_INLINE_MEDIA_LIGHTBOX_ENABLED": 91,
+                "AI_MUSE_JARVIS_PAYLOAD_GZIP_ENABLED": 93
               }
             }
           }
@@ -11807,6 +11820,11 @@
               "oneof": [
                 "recentConversationsOnDemand"
               ]
+            },
+            "_aiMuseJarvisGzip": {
+              "oneof": [
+                "aiMuseJarvisGzip"
+              ]
             }
           },
           "fields": {
@@ -11911,6 +11929,13 @@
             "recentConversationsOnDemand": {
               "type": "RecentConversationsOnDemand",
               "id": 15,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "aiMuseJarvisGzip": {
+              "type": "AiMuseJarvisGzip",
+              "id": 16,
               "options": {
                 "proto3_optional": true
               }
@@ -12253,6 +12278,24 @@
               "fields": {
                 "supported": {
                   "type": "bool",
+                  "id": 1,
+                  "options": {
+                    "proto3_optional": true
+                  }
+                }
+              }
+            },
+            "AiMuseJarvisGzip": {
+              "oneofs": {
+                "_supportVersion": {
+                  "oneof": [
+                    "supportVersion"
+                  ]
+                }
+              },
+              "fields": {
+                "supportVersion": {
+                  "type": "uint32",
                   "id": 1,
                   "options": {
                     "proto3_optional": true

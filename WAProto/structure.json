@@ -1,7 +1,7 @@
 {
- "protoVersion": "2.3000.1055640952",
+ "protoVersion": "2.3000.1055694500",
  "counts": {
-  "messages": 817,
+  "messages": 818,
   "enums": 234
  },
  "fields": "[nomor, tipe, label]",
@@ -187,7 +187,8 @@
    "isHeading": [2, "bool", "optional"]
   },
   "AIRichResponseUnifiedResponse": {
-   "data": [1, "bytes", "optional"]
+   "data": [1, "bytes", "optional"],
+   "gzipData": [2, "bytes", "optional"]
   },
   "AISubscriptionUpsellMetadata": {
    "requestType": [1, "AISubscriptionRequestType", "optional"]
@@ -1334,11 +1335,15 @@
    "hostWriteMutationSupport": [12, "HostWriteMutationSupport", "optional"],
    "bizAiWebOnboarding": [13, "BizAiWebOnboarding", "optional"],
    "phoneNumberSharing": [14, "PhoneNumberSharing", "optional"],
-   "recentConversationsOnDemand": [15, "RecentConversationsOnDemand", "optional"]
+   "recentConversationsOnDemand": [15, "RecentConversationsOnDemand", "optional"],
+   "aiMuseJarvisGzip": [16, "AiMuseJarvisGzip", "optional"]
   },
   "DeviceCapabilities.AiFbidMigration": {
    "chatDbMigrationTimestamp": [1, "uint64", "optional"],
    "supportVersion": [2, "uint32", "optional"]
+  },
+  "DeviceCapabilities.AiMuseJarvisGzip": {
+   "supportVersion": [1, "uint32", "optional"]
   },
   "DeviceCapabilities.AiThread": {
    "supportLevel": [1, "SupportLevel", "optional"]
@@ -5610,7 +5615,8 @@
    "AI_RICH_RESPONSE_ITEM_LISTS_ENABLED": 88,
    "RICH_RESPONSE_SIDE_BY_SIDE_BUFFER_BOTH": 89,
    "AI_MUSE_JARVIS_ENVELOPE_GZIP_ENABLED": 90,
-   "AI_RICH_RESPONSE_INLINE_MEDIA_LIGHTBOX_ENABLED": 91
+   "AI_RICH_RESPONSE_INLINE_MEDIA_LIGHTBOX_ENABLED": 91,
+   "AI_MUSE_JARVIS_PAYLOAD_GZIP_ENABLED": 93
   },
   "BotDocumentMessageMetadata.DocumentPluginType": {
    "TEXT_EXTRACTION": 0,

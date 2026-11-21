@@ -2,6 +2,23 @@
 
 Terbaru di atas. Dibuat otomatis oleh update-proto.mjs.
 
+## 2.3000.1055640952 → 2.3000.1055694500
+
+By: https://t.me/XYCoolcrafts
+
+### Tipe baru (1)
+
+- DeviceCapabilities.AiMuseJarvisGzip
+
+### Field baru (2)
+
+- AIRichResponseUnifiedResponse.gzipData = 2
+- DeviceCapabilities.aiMuseJarvisGzip = 16
+
+### Nilai enum baru (1)
+
+- BotCapabilityMetadata.BotCapabilityType.AI_MUSE_JARVIS_PAYLOAD_GZIP_ENABLED = 93
+
 ## 2.3000.1055574960 → 2.3000.1055640952
 
 By: https://t.me/XYCoolcrafts
@@ -222,30 +239,3 @@ By: https://t.me/XYCoolcrafts
 - GroupMembershipFormQuestion
 - GroupMembershipFormQuestionAnswer
 - GroupMembershipFormSubmission
-
-## 2.3000.1054203907 → 2.3000.1054320313
-
-By: https://t.me/XYCoolcrafts
-
-### Tipe baru (4)
-
-- PollAdditionalMetadata.PollOptionReplayBase
-- PollAdditionalMetadata.PollOptionReplayBase.Option
-- PollAdditionalMetadata.PollOptionReplayEntry
-- PollAdditionalMetadata.PollOptionReplayEntry.Type
-
-### Field baru (7)
-
-- Conversation.isWorkGroup = 67
-- Conversation.nonE2EeType = 68
-- Conversation.contactAccountEncryptionAttestationType = 69
-- DeviceProps.deviceName = 6
-- Message.LinkPreviewMetadata.videoId = 10
-- PollAdditionalMetadata.pollOptionReplayEntries = 4
-- PollAdditionalMetadata.pollOptionReplayBase = 5
-
-### Nilai enum baru (3)
-
-- BotCapabilityMetadata.BotCapabilityType.AI_RICH_RESPONSE_ITEM_LISTS_ENABLED = 88
-- BotCapabilityMetadata.BotCapabilityType.RICH_RESPONSE_SIDE_BY_SIDE_BUFFER_BOTH = 89
-- BotMetricsEntryPoint.BIRTHDAY_BANNER = 60
