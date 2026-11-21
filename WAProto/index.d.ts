@@ -20677,7 +20677,8 @@ export namespace proto {
         SHARE_OWN_PN = 10001,
         BUSINESS_BROADCAST_ACTION = 10002,
         AI_THREAD_DELETE_ACTION = 10003,
-        HATCH_CVM_SECRET_ACTION = 101
+        HATCH_CVM_SECRET_ACTION = 101,
+        BUSINESS_FOLDER_CHAT_PREFERENCE_ACTION = 102
     }
 
     interface INoiseCertificate extends proto.NoiseCertificate.$Properties {
@@ -23307,6 +23308,7 @@ export namespace proto {
         communityNestingStateAction?: (proto.SyncActionValue.CommunityNestingStateAction.$Properties|null);
         sharedDeviceSecretAction?: (proto.SyncActionValue.SharedDeviceSecretAction.$Properties|null);
         hatchCvmSecretAction?: (proto.SyncActionValue.HatchCVMSecretAction.$Properties|null);
+        businessFolderChatPreferenceAction?: (proto.SyncActionValue.BusinessFolderChatPreferenceAction.$Properties|null);
         static create(properties: proto.SyncActionValue.$Shape): proto.SyncActionValue & proto.SyncActionValue.$Shape;
         static create(properties?: proto.SyncActionValue.$Properties): proto.SyncActionValue;
         static encode(m: proto.SyncActionValue.$Properties, w?: $protobuf.Writer): $protobuf.Writer;
@@ -23411,6 +23413,7 @@ export namespace proto {
             communityNestingStateAction?: (proto.SyncActionValue.CommunityNestingStateAction.$Properties|null);
             sharedDeviceSecretAction?: (proto.SyncActionValue.SharedDeviceSecretAction.$Properties|null);
             hatchCvmSecretAction?: (proto.SyncActionValue.HatchCVMSecretAction.$Properties|null);
+            businessFolderChatPreferenceAction?: (proto.SyncActionValue.BusinessFolderChatPreferenceAction.$Properties|null);
             $unknowns?: Uint8Array[];
         }
         type $Shape = {
@@ -23506,6 +23509,7 @@ export namespace proto {
           communityNestingStateAction?: proto.SyncActionValue.CommunityNestingStateAction.$Shape|null;
           sharedDeviceSecretAction?: proto.SyncActionValue.SharedDeviceSecretAction.$Shape|null;
           hatchCvmSecretAction?: proto.SyncActionValue.HatchCVMSecretAction.$Shape|null;
+          businessFolderChatPreferenceAction?: proto.SyncActionValue.BusinessFolderChatPreferenceAction.$Shape|null;
           $unknowns?: Uint8Array[];
         };
 
@@ -26523,6 +26527,38 @@ export namespace proto {
                 $unknowns?: Uint8Array[];
             }
             type $Shape = proto.SyncActionValue.HatchCVMSecretAction.$Properties;
+        }
+
+        interface IBusinessFolderChatPreferenceAction extends proto.SyncActionValue.BusinessFolderChatPreferenceAction.$Properties {
+        }
+
+        class BusinessFolderChatPreferenceAction {
+            constructor(p?: proto.SyncActionValue.BusinessFolderChatPreferenceAction.$Properties);
+            $unknowns?: Uint8Array[];
+            preference?: (proto.SyncActionValue.BusinessFolderChatPreferenceAction.BusinessFolderChatPreference|null);
+            static create(properties: proto.SyncActionValue.BusinessFolderChatPreferenceAction.$Shape): proto.SyncActionValue.BusinessFolderChatPreferenceAction & proto.SyncActionValue.BusinessFolderChatPreferenceAction.$Shape;
+            static create(properties?: proto.SyncActionValue.BusinessFolderChatPreferenceAction.$Properties): proto.SyncActionValue.BusinessFolderChatPreferenceAction;
+            static encode(m: proto.SyncActionValue.BusinessFolderChatPreferenceAction.$Properties, w?: $protobuf.Writer): $protobuf.Writer;
+            static decode(r: ($protobuf.Reader|Uint8Array), l?: number): proto.SyncActionValue.BusinessFolderChatPreferenceAction & proto.SyncActionValue.BusinessFolderChatPreferenceAction.$Shape;
+            static fromObject(d: { [k: string]: any }): proto.SyncActionValue.BusinessFolderChatPreferenceAction;
+            static toObject(m: proto.SyncActionValue.BusinessFolderChatPreferenceAction, o?: $protobuf.IConversionOptions): { [k: string]: any };
+            toJSON(): { [k: string]: any };
+            static getTypeUrl(prefix?: string): string;
+        }
+
+        namespace BusinessFolderChatPreferenceAction {
+            interface $Properties {
+                preference?: (proto.SyncActionValue.BusinessFolderChatPreferenceAction.BusinessFolderChatPreference|null);
+                $unknowns?: Uint8Array[];
+            }
+            type $Shape = proto.SyncActionValue.BusinessFolderChatPreferenceAction.$Properties;
+
+            enum BusinessFolderChatPreference {
+                BUSINESS_FOLDER_CHAT_PREFERENCE_UNKNOWN = 0,
+                BUSINESS_FOLDER_CHAT_PREFERENCE_AUTOMATIC = 1,
+                BUSINESS_FOLDER_CHAT_PREFERENCE_INBOX = 2,
+                BUSINESS_FOLDER_CHAT_PREFERENCE_BUSINESS = 3
+            }
         }
     }
 

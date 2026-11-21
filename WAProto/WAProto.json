@@ -35869,7 +35869,8 @@
             "SHARE_OWN_PN": 10001,
             "BUSINESS_BROADCAST_ACTION": 10002,
             "AI_THREAD_DELETE_ACTION": 10003,
-            "HATCH_CVM_SECRET_ACTION": 101
+            "HATCH_CVM_SECRET_ACTION": 101,
+            "BUSINESS_FOLDER_CHAT_PREFERENCE_ACTION": 102
           }
         },
         "NoiseCertificate": {
@@ -40378,6 +40379,11 @@
               "oneof": [
                 "hatchCvmSecretAction"
               ]
+            },
+            "_businessFolderChatPreferenceAction": {
+              "oneof": [
+                "businessFolderChatPreferenceAction"
+              ]
             }
           },
           "fields": {
@@ -41021,6 +41027,13 @@
             "hatchCvmSecretAction": {
               "type": "HatchCVMSecretAction",
               "id": 101,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "businessFolderChatPreferenceAction": {
+              "type": "BusinessFolderChatPreferenceAction",
+              "id": 102,
               "options": {
                 "proto3_optional": true
               }
@@ -44910,6 +44923,34 @@
                   "id": 2,
                   "options": {
                     "proto3_optional": true
+                  }
+                }
+              }
+            },
+            "BusinessFolderChatPreferenceAction": {
+              "oneofs": {
+                "_preference": {
+                  "oneof": [
+                    "preference"
+                  ]
+                }
+              },
+              "fields": {
+                "preference": {
+                  "type": "BusinessFolderChatPreference",
+                  "id": 1,
+                  "options": {
+                    "proto3_optional": true
+                  }
+                }
+              },
+              "nested": {
+                "BusinessFolderChatPreference": {
+                  "values": {
+                    "BUSINESS_FOLDER_CHAT_PREFERENCE_UNKNOWN": 0,
+                    "BUSINESS_FOLDER_CHAT_PREFERENCE_AUTOMATIC": 1,
+                    "BUSINESS_FOLDER_CHAT_PREFERENCE_INBOX": 2,
+                    "BUSINESS_FOLDER_CHAT_PREFERENCE_BUSINESS": 3
                   }
                 }
               }

@@ -2,6 +2,23 @@
 
 Terbaru di atas. Dibuat otomatis oleh update-proto.mjs.
 
+## 2.3000.1055574960 → 2.3000.1055640952
+
+By: https://t.me/XYCoolcrafts
+
+### Tipe baru (2)
+
+- SyncActionValue.BusinessFolderChatPreferenceAction
+- SyncActionValue.BusinessFolderChatPreferenceAction.BusinessFolderChatPreference
+
+### Field baru (1)
+
+- SyncActionValue.businessFolderChatPreferenceAction = 102
+
+### Nilai enum baru (1)
+
+- MutationProps.BUSINESS_FOLDER_CHAT_PREFERENCE_ACTION = 102
+
 ## 2.3000.1055538507 → 2.3000.1055574960
 
 By: https://t.me/XYCoolcrafts
@@ -232,11 +249,3 @@ By: https://t.me/XYCoolcrafts
 - BotCapabilityMetadata.BotCapabilityType.AI_RICH_RESPONSE_ITEM_LISTS_ENABLED = 88
 - BotCapabilityMetadata.BotCapabilityType.RICH_RESPONSE_SIDE_BY_SIDE_BUFFER_BOTH = 89
 - BotMetricsEntryPoint.BIRTHDAY_BANNER = 60
-
-## 2.3000.1054172749 → 2.3000.1054203907
-
-By: https://t.me/XYCoolcrafts
-
-### Nilai enum baru (1)
-
-- WebMessageInfo.StubType.GROUP_CUSTOM_REACTIONS = 293

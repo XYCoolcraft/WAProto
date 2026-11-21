@@ -131357,6 +131357,7 @@ export const proto = $root.proto = (() => {
         values[valuesById[10002] = "BUSINESS_BROADCAST_ACTION"] = 10002;
         values[valuesById[10003] = "AI_THREAD_DELETE_ACTION"] = 10003;
         values[valuesById[101] = "HATCH_CVM_SECRET_ACTION"] = 101;
+        values[valuesById[102] = "BUSINESS_FOLDER_CHAT_PREFERENCE_ACTION"] = 102;
         return values;
     })();
 
@@ -147665,6 +147666,7 @@ export const proto = $root.proto = (() => {
         SyncActionValue.prototype.communityNestingStateAction = null;
         SyncActionValue.prototype.sharedDeviceSecretAction = null;
         SyncActionValue.prototype.hatchCvmSecretAction = null;
+        SyncActionValue.prototype.businessFolderChatPreferenceAction = null;
 
         let $oneOfFields;
 
@@ -148220,6 +148222,12 @@ export const proto = $root.proto = (() => {
             set: $util.oneOfSetter($oneOfFields)
         });
 
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(SyncActionValue.prototype, "_businessFolderChatPreferenceAction", {
+            get: $util.oneOfGetter($oneOfFields = ["businessFolderChatPreferenceAction"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
         SyncActionValue.create = function(properties) {
             return new SyncActionValue(properties);
         };
@@ -148415,6 +148423,8 @@ export const proto = $root.proto = (() => {
                 $root.proto.SyncActionValue.SharedDeviceSecretAction.encode(m.sharedDeviceSecretAction, w.uint32(802).fork(), q + 1).ldelim();
             if (m.hatchCvmSecretAction != null && $Object.hasOwnProperty.call(m, "hatchCvmSecretAction"))
                 $root.proto.SyncActionValue.HatchCVMSecretAction.encode(m.hatchCvmSecretAction, w.uint32(810).fork(), q + 1).ldelim();
+            if (m.businessFolderChatPreferenceAction != null && $Object.hasOwnProperty.call(m, "businessFolderChatPreferenceAction"))
+                $root.proto.SyncActionValue.BusinessFolderChatPreferenceAction.encode(m.businessFolderChatPreferenceAction, w.uint32(818).fork(), q + 1).ldelim();
             if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                 for (var i = 0; i < m.$unknowns.length; ++i)
                     w.raw(m.$unknowns[i]);
@@ -149092,6 +149102,13 @@ export const proto = $root.proto = (() => {
                         m._hatchCvmSecretAction = "hatchCvmSecretAction";
                         continue;
                     }
+                case 102: {
+                        if (u !== 2)
+                            break;
+                        m.businessFolderChatPreferenceAction = $root.proto.SyncActionValue.BusinessFolderChatPreferenceAction.decode(r, r.size(), $undefined, q + 1, m.businessFolderChatPreferenceAction);
+                        m._businessFolderChatPreferenceAction = "businessFolderChatPreferenceAction";
+                        continue;
+                    }
                 }
                 r.skipType(u, q, t);
                 if (!r.discardUnknown) {
@@ -149584,6 +149601,11 @@ export const proto = $root.proto = (() => {
                     throw $TypeError(".proto.SyncActionValue.hatchCvmSecretAction: object expected");
                 m.hatchCvmSecretAction = $root.proto.SyncActionValue.HatchCVMSecretAction.fromObject(d.hatchCvmSecretAction, q + 1);
             }
+            if (d.businessFolderChatPreferenceAction != null) {
+                if (!$util.isObject(d.businessFolderChatPreferenceAction))
+                    throw $TypeError(".proto.SyncActionValue.businessFolderChatPreferenceAction: object expected");
+                m.businessFolderChatPreferenceAction = $root.proto.SyncActionValue.BusinessFolderChatPreferenceAction.fromObject(d.businessFolderChatPreferenceAction, q + 1);
+            }
             return m;
         };
 
@@ -149875,6 +149897,9 @@ export const proto = $root.proto = (() => {
             }
             if (m.hatchCvmSecretAction != null && $Object.hasOwnProperty.call(m, "hatchCvmSecretAction")) {
                 d.hatchCvmSecretAction = $root.proto.SyncActionValue.HatchCVMSecretAction.toObject(m.hatchCvmSecretAction, o, q + 1);
+            }
+            if (m.businessFolderChatPreferenceAction != null && $Object.hasOwnProperty.call(m, "businessFolderChatPreferenceAction")) {
+                d.businessFolderChatPreferenceAction = $root.proto.SyncActionValue.BusinessFolderChatPreferenceAction.toObject(m.businessFolderChatPreferenceAction, o, q + 1);
             }
             return d;
         };
@@ -167917,6 +167942,165 @@ export const proto = $root.proto = (() => {
             };
 
             return HatchCVMSecretAction;
+        })();
+
+        SyncActionValue.BusinessFolderChatPreferenceAction = (function() {
+
+            const BusinessFolderChatPreferenceAction = function (p) {
+                if (p)
+                    for (var ks = $Object.keys(p), i = 0; i < ks.length; ++i)
+                        if (p[ks[i]] != null && ks[i] !== "__proto__")
+                            this[ks[i]] = p[ks[i]];
+            };
+
+            BusinessFolderChatPreferenceAction.prototype.preference = null;
+
+            let $oneOfFields;
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(BusinessFolderChatPreferenceAction.prototype, "_preference", {
+                get: $util.oneOfGetter($oneOfFields = ["preference"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            BusinessFolderChatPreferenceAction.create = function(properties) {
+                return new BusinessFolderChatPreferenceAction(properties);
+            };
+
+            BusinessFolderChatPreferenceAction.encode = function (m, w, q) {
+                if (!w)
+                    w = $Writer.create();
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                if (m.preference != null && $Object.hasOwnProperty.call(m, "preference"))
+                    w.uint32(8).int32(m.preference);
+                if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
+                    for (var i = 0; i < m.$unknowns.length; ++i)
+                        w.raw(m.$unknowns[i]);
+                return w;
+            };
+
+            BusinessFolderChatPreferenceAction.decode = function (r, l, z, q, g) {
+                if (!(r instanceof $Reader))
+                    r = $Reader.create(r);
+                if (q === $undefined)
+                    q = 0;
+                if (q > $Reader.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var c, m, v;
+                if (l === $undefined)
+                    c = r.len;
+                else {
+                    c = r.pos + l;
+                    if (c > r.len)
+                        throw $RangeError("index out of range");
+                    l = r.len;
+                    r.len = c;
+                }
+                m = g || new $root.proto.SyncActionValue.BusinessFolderChatPreferenceAction();
+                while (r.pos < c) {
+                    var s = r.pos;
+                    var t = r.tag();
+                    if (t === z) {
+                        z = $undefined;
+                        break;
+                    }
+                    var u = t & 7;
+                    switch (t >>>= 3) {
+                    case 1: {
+                            if (u !== 0)
+                                break;
+                            m.preference = r.int32();
+                            m._preference = "preference";
+                            continue;
+                        }
+                    }
+                    r.skipType(u, q, t);
+                    if (!r.discardUnknown) {
+                        $util.makeProp(m, "$unknowns", false);
+                        (m.$unknowns || (m.$unknowns = [])).push(r.raw(s, r.pos));
+                    }
+                }
+                if (l !== $undefined) {
+                    if (r.pos !== c)
+                        throw $RangeError("index out of range");
+                    r.len = l;
+                }
+                if (z !== $undefined)
+                    throw $Error("missing end group");
+                return m;
+            };
+
+            BusinessFolderChatPreferenceAction.fromObject = function (d, q) {
+                if (d instanceof $root.proto.SyncActionValue.BusinessFolderChatPreferenceAction)
+                    return d;
+                if (!$util.isObject(d))
+                    throw $TypeError(".proto.SyncActionValue.BusinessFolderChatPreferenceAction: object expected");
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var m = new $root.proto.SyncActionValue.BusinessFolderChatPreferenceAction();
+                switch (d.preference) {
+                case "BUSINESS_FOLDER_CHAT_PREFERENCE_UNKNOWN":
+                case 0:
+                    m.preference = 0;
+                    break;
+                case "BUSINESS_FOLDER_CHAT_PREFERENCE_AUTOMATIC":
+                case 1:
+                    m.preference = 1;
+                    break;
+                case "BUSINESS_FOLDER_CHAT_PREFERENCE_INBOX":
+                case 2:
+                    m.preference = 2;
+                    break;
+                case "BUSINESS_FOLDER_CHAT_PREFERENCE_BUSINESS":
+                case 3:
+                    m.preference = 3;
+                    break;
+                default:
+                    if (typeof d.preference === "number" && (d.preference | 0) === d.preference)
+                        m.preference = d.preference;
+                }
+                return m;
+            };
+
+            BusinessFolderChatPreferenceAction.toObject = function (m, o, q) {
+                if (!o)
+                    o = {};
+                if (q === $undefined)
+                    q = 0;
+                if (q > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var d = {};
+                if (m.preference != null && $Object.hasOwnProperty.call(m, "preference")) {
+                    d.preference = o.enums === $String ? $root.proto.SyncActionValue.BusinessFolderChatPreferenceAction.BusinessFolderChatPreference[m.preference] === $undefined ? m.preference : $root.proto.SyncActionValue.BusinessFolderChatPreferenceAction.BusinessFolderChatPreference[m.preference] : m.preference;
+                }
+                return d;
+            };
+
+            BusinessFolderChatPreferenceAction.prototype.toJSON = function() {
+                return BusinessFolderChatPreferenceAction.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            BusinessFolderChatPreferenceAction.getTypeUrl = function(prefix) {
+                if (prefix === $undefined)
+                    prefix = "type.googleapis.com";
+                return prefix + "/proto.SyncActionValue.BusinessFolderChatPreferenceAction";
+            };
+
+            BusinessFolderChatPreferenceAction.BusinessFolderChatPreference = (function() {
+                const valuesById = $Object.create(null), values = $Object.create(valuesById);
+                values[valuesById[0] = "BUSINESS_FOLDER_CHAT_PREFERENCE_UNKNOWN"] = 0;
+                values[valuesById[1] = "BUSINESS_FOLDER_CHAT_PREFERENCE_AUTOMATIC"] = 1;
+                values[valuesById[2] = "BUSINESS_FOLDER_CHAT_PREFERENCE_INBOX"] = 2;
+                values[valuesById[3] = "BUSINESS_FOLDER_CHAT_PREFERENCE_BUSINESS"] = 3;
+                return values;
+            })();
+
+            return BusinessFolderChatPreferenceAction;
         })();
 
         return SyncActionValue;

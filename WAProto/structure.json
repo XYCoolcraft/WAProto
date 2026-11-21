@@ -1,8 +1,8 @@
 {
- "protoVersion": "2.3000.1055574960",
+ "protoVersion": "2.3000.1055640952",
  "counts": {
-  "messages": 816,
-  "enums": 233
+  "messages": 817,
+  "enums": 234
  },
  "fields": "[nomor, tipe, label]",
  "messages": {
@@ -4665,7 +4665,8 @@
    "bbProPendingCustomerBaseAction": [98, "BBProPendingCustomerBaseAction", "optional"],
    "communityNestingStateAction": [99, "CommunityNestingStateAction", "optional"],
    "sharedDeviceSecretAction": [100, "SharedDeviceSecretAction", "optional"],
-   "hatchCvmSecretAction": [101, "HatchCVMSecretAction", "optional"]
+   "hatchCvmSecretAction": [101, "HatchCVMSecretAction", "optional"],
+   "businessFolderChatPreferenceAction": [102, "BusinessFolderChatPreferenceAction", "optional"]
   },
   "SyncActionValue.AgentAction": {
    "name": [1, "string", "optional"],
@@ -4740,6 +4741,9 @@
   },
   "SyncActionValue.BusinessFolderActivationAction": {
    "activated": [1, "bool", "optional"]
+  },
+  "SyncActionValue.BusinessFolderChatPreferenceAction": {
+   "preference": [1, "BusinessFolderChatPreference", "optional"]
   },
   "SyncActionValue.CallLogAction": {
    "callLogRecord": [1, "CallLogRecord", "optional"]
@@ -6943,6 +6947,7 @@
    "COMMUNITY_NESTING_STATE_ACTION": 99,
    "SHARED_DEVICE_SECRET_ACTION": 100,
    "HATCH_CVM_SECRET_ACTION": 101,
+   "BUSINESS_FOLDER_CHAT_PREFERENCE_ACTION": 102,
    "SHARE_OWN_PN": 10001,
    "BUSINESS_BROADCAST_ACTION": 10002,
    "AI_THREAD_DELETE_ACTION": 10003
@@ -7155,6 +7160,12 @@
    "PROCESSING": 3,
    "FAILED": 4,
    "SENT": 5
+  },
+  "SyncActionValue.BusinessFolderChatPreferenceAction.BusinessFolderChatPreference": {
+   "BUSINESS_FOLDER_CHAT_PREFERENCE_UNKNOWN": 0,
+   "BUSINESS_FOLDER_CHAT_PREFERENCE_AUTOMATIC": 1,
+   "BUSINESS_FOLDER_CHAT_PREFERENCE_INBOX": 2,
+   "BUSINESS_FOLDER_CHAT_PREFERENCE_BUSINESS": 3
   },
   "SyncActionValue.CommunityNestingStateAction.NestingState": {
    "NESTING_STATE_UNKNOWN": 0,
