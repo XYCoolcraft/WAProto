@@ -2,6 +2,12 @@
 
 Terbaru di atas. Dibuat otomatis oleh update-proto.mjs.
 
+## 2.3000.1055775191 → 2.3000.1055794947
+
+By: https://t.me/XYCoolcrafts
+
+Hanya nomor versi yang naik — tidak ada tipe/field/enum baru.
+
 ## 2.3000.1055757265 → 2.3000.1055775191
 
 By: https://t.me/XYCoolcrafts
@@ -216,20 +222,3 @@ Hanya nomor versi yang naik — tidak ada tipe/field/enum baru.
 By: https://t.me/XYCoolcrafts
 
 Hanya nomor versi yang naik — tidak ada tipe/field/enum baru.
-
-## 2.3000.1054468000 → 2.3000.1054509844
-
-By: https://t.me/XYCoolcrafts
-
-### Tipe baru (2)
-
-- EventInviteAdditionalMetadata.AccessStatus
-- EventInviteAdditionalMetadata.RsvpStatus
-
-### Field baru (5)
-
-- EventInviteAdditionalMetadata.selfAccessStatus = 2
-- EventInviteAdditionalMetadata.selfRsvpStatus = 3
-- EventInviteAdditionalMetadata.selfAdditionalGuestCount = 4
-- EventInviteAdditionalMetadata.selfInviteeLastUpdatedTsUsec = 5
-- Message.DocumentMessage.qrUrl = 23
