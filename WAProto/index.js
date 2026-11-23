@@ -189230,6 +189230,7 @@ export const proto = $root.proto = (() => {
         PrepareAddPeerDeviceSuccess.prototype.enrolment = null;
         PrepareAddPeerDeviceSuccess.prototype.serverDataId = null;
         PrepareAddPeerDeviceSuccess.prototype.companionDeviceBinding = null;
+        PrepareAddPeerDeviceSuccess.prototype.historyStartTime = null;
 
         let $oneOfFields;
 
@@ -189251,6 +189252,12 @@ export const proto = $root.proto = (() => {
             set: $util.oneOfSetter($oneOfFields)
         });
 
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(PrepareAddPeerDeviceSuccess.prototype, "_historyStartTime", {
+            get: $util.oneOfGetter($oneOfFields = ["historyStartTime"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
         PrepareAddPeerDeviceSuccess.create = function(properties) {
             return new PrepareAddPeerDeviceSuccess(properties);
         };
@@ -189268,6 +189275,8 @@ export const proto = $root.proto = (() => {
                 w.uint32(16).uint64(m.serverDataId);
             if (m.companionDeviceBinding != null && $Object.hasOwnProperty.call(m, "companionDeviceBinding"))
                 w.uint32(26).bytes(m.companionDeviceBinding);
+            if (m.historyStartTime != null && $Object.hasOwnProperty.call(m, "historyStartTime"))
+                w.uint32(32).uint64(m.historyStartTime);
             if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                 for (var i = 0; i < m.$unknowns.length; ++i)
                     w.raw(m.$unknowns[i]);
@@ -189322,6 +189331,13 @@ export const proto = $root.proto = (() => {
                         m._companionDeviceBinding = "companionDeviceBinding";
                         continue;
                     }
+                case 4: {
+                        if (u !== 0)
+                            break;
+                        m.historyStartTime = r.uint64();
+                        m._historyStartTime = "historyStartTime";
+                        continue;
+                    }
                 }
                 r.skipType(u, q, t);
                 if (!r.discardUnknown) {
@@ -189370,6 +189386,16 @@ export const proto = $root.proto = (() => {
                 else if (d.companionDeviceBinding.length >= 0)
                     m.companionDeviceBinding = d.companionDeviceBinding;
             }
+            if (d.historyStartTime != null) {
+                if ($util.Long)
+                    m.historyStartTime = $util.Long.fromValue(d.historyStartTime, true);
+                else if (typeof d.historyStartTime === "string")
+                    m.historyStartTime = $parseInt(d.historyStartTime, 10);
+                else if (typeof d.historyStartTime === "number")
+                    m.historyStartTime = d.historyStartTime;
+                else if (typeof d.historyStartTime === "object")
+                    m.historyStartTime = new $util.LongBits(d.historyStartTime.low >>> 0, d.historyStartTime.high >>> 0).toNumber(true);
+            }
             return m;
         };
 
@@ -189394,6 +189420,14 @@ export const proto = $root.proto = (() => {
             }
             if (m.companionDeviceBinding != null && $Object.hasOwnProperty.call(m, "companionDeviceBinding")) {
                 d.companionDeviceBinding = o.bytes === $String ? $util.base64.encode(m.companionDeviceBinding, 0, m.companionDeviceBinding.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.companionDeviceBinding) : m.companionDeviceBinding;
+            }
+            if (m.historyStartTime != null && $Object.hasOwnProperty.call(m, "historyStartTime")) {
+                if (typeof $BigInt !== "undefined" && o.longs === $BigInt)
+                    d.historyStartTime = typeof m.historyStartTime === "number" ? $BigInt(m.historyStartTime) : $util.Long.fromBits(m.historyStartTime.low >>> 0, m.historyStartTime.high >>> 0, true).toBigInt();
+                else if (typeof m.historyStartTime === "number")
+                    d.historyStartTime = o.longs === $String ? $String(m.historyStartTime) : m.historyStartTime;
+                else
+                    d.historyStartTime = o.longs === $String ? $util.Long.prototype.toString.call(m.historyStartTime) : o.longs === $Number ? new $util.LongBits(m.historyStartTime.low >>> 0, m.historyStartTime.high >>> 0).toNumber(true) : m.historyStartTime;
             }
             return d;
         };

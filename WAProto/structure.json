@@ -1,5 +1,5 @@
 {
- "protoVersion": "2.3000.1055794947",
+ "protoVersion": "2.3000.1055812008",
  "counts": {
   "messages": 818,
   "enums": 234
@@ -4256,7 +4256,8 @@
   "PrepareAddPeerDeviceSuccess": {
    "enrolment": [1, "PrepareAddDeviceSuccess", "optional"],
    "serverDataId": [2, "uint64", "optional"],
-   "companionDeviceBinding": [3, "bytes", "optional"]
+   "companionDeviceBinding": [3, "bytes", "optional"],
+   "historyStartTime": [4, "uint64", "optional"]
   },
   "PrimaryEphemeralIdentity": {
    "publicKey": [1, "bytes", "optional"],

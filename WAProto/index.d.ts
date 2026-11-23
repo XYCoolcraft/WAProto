@@ -29843,6 +29843,7 @@ export namespace proto {
         enrolment?: (proto.PrepareAddDeviceSuccess.$Properties|null);
         serverDataId?: (number|Long|null);
         companionDeviceBinding?: (Uint8Array|null);
+        historyStartTime?: (number|Long|null);
         static create(properties: proto.PrepareAddPeerDeviceSuccess.$Shape): proto.PrepareAddPeerDeviceSuccess & proto.PrepareAddPeerDeviceSuccess.$Shape;
         static create(properties?: proto.PrepareAddPeerDeviceSuccess.$Properties): proto.PrepareAddPeerDeviceSuccess;
         static encode(m: proto.PrepareAddPeerDeviceSuccess.$Properties, w?: $protobuf.Writer): $protobuf.Writer;
@@ -29858,6 +29859,7 @@ export namespace proto {
             enrolment?: (proto.PrepareAddDeviceSuccess.$Properties|null);
             serverDataId?: (number|Long|null);
             companionDeviceBinding?: (Uint8Array|null);
+            historyStartTime?: (number|Long|null);
             $unknowns?: Uint8Array[];
         }
         type $Shape = proto.PrepareAddPeerDeviceSuccess.$Properties;

@@ -2,6 +2,14 @@
 
 Terbaru di atas. Dibuat otomatis oleh update-proto.mjs.
 
+## 2.3000.1055794947 → 2.3000.1055812008
+
+By: https://t.me/XYCoolcrafts
+
+### Field baru (1)
+
+- PrepareAddPeerDeviceSuccess.historyStartTime = 4
+
 ## 2.3000.1055775191 → 2.3000.1055794947
 
 By: https://t.me/XYCoolcrafts
@@ -212,12 +220,6 @@ By: https://t.me/XYCoolcrafts
 Hanya nomor versi yang naik — tidak ada tipe/field/enum baru.
 
 ## 2.3000.1054618140 → 2.3000.1054634694
-
-By: https://t.me/XYCoolcrafts
-
-Hanya nomor versi yang naik — tidak ada tipe/field/enum baru.
-
-## 2.3000.1054509844 → 2.3000.1054618140
 
 By: https://t.me/XYCoolcrafts
 

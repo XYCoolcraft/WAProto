@@ -49931,6 +49931,11 @@
               "oneof": [
                 "companionDeviceBinding"
               ]
+            },
+            "_historyStartTime": {
+              "oneof": [
+                "historyStartTime"
+              ]
             }
           },
           "fields": {
@@ -49951,6 +49956,13 @@
             "companionDeviceBinding": {
               "type": "bytes",
               "id": 3,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "historyStartTime": {
+              "type": "uint64",
+              "id": 4,
               "options": {
                 "proto3_optional": true
               }
