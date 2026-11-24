@@ -2,6 +2,12 @@
 
 Terbaru di atas. Dibuat otomatis oleh update-proto.mjs.
 
+## 2.3000.1055923191 → 2.3000.1056008220
+
+By: https://t.me/XYCoolcrafts
+
+Hanya nomor versi yang naik — tidak ada tipe/field/enum baru.
+
 ## 2.3000.1055852612 → 2.3000.1055923191
 
 By: https://t.me/XYCoolcrafts
@@ -216,12 +222,6 @@ By: https://t.me/XYCoolcrafts
 - LabyrinthWaCommand.parseCompanionTestMessageInput = 15
 
 ## 2.3000.1054660005 → 2.3000.1054696247
-
-By: https://t.me/XYCoolcrafts
-
-Hanya nomor versi yang naik — tidak ada tipe/field/enum baru.
-
-## 2.3000.1054648434 → 2.3000.1054660005
 
 By: https://t.me/XYCoolcrafts
 
