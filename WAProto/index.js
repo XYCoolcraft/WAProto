@@ -37861,6 +37861,7 @@ export const proto = $root.proto = (() => {
         Conversation.prototype.isWorkGroup = null;
         Conversation.prototype.nonE2EeType = null;
         Conversation.prototype.contactAccountEncryptionAttestationType = null;
+        Conversation.prototype.unreadReplyToMyMessageCount = null;
 
         let $oneOfFields;
 
@@ -38260,6 +38261,12 @@ export const proto = $root.proto = (() => {
             set: $util.oneOfSetter($oneOfFields)
         });
 
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(Conversation.prototype, "_unreadReplyToMyMessageCount", {
+            get: $util.oneOfGetter($oneOfFields = ["unreadReplyToMyMessageCount"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
         Conversation.create = function(properties) {
             return new Conversation(properties);
         };
@@ -38415,6 +38422,8 @@ export const proto = $root.proto = (() => {
                 w.uint32(544).int32(m.nonE2EeType);
             if (m.contactAccountEncryptionAttestationType != null && $Object.hasOwnProperty.call(m, "contactAccountEncryptionAttestationType"))
                 w.uint32(552).int32(m.contactAccountEncryptionAttestationType);
+            if (m.unreadReplyToMyMessageCount != null && $Object.hasOwnProperty.call(m, "unreadReplyToMyMessageCount"))
+                w.uint32(560).uint32(m.unreadReplyToMyMessageCount);
             if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                 for (var i = 0; i < m.$unknowns.length; ++i)
                     w.raw(m.$unknowns[i]);
@@ -38934,6 +38943,13 @@ export const proto = $root.proto = (() => {
                         m._contactAccountEncryptionAttestationType = "contactAccountEncryptionAttestationType";
                         continue;
                     }
+                case 70: {
+                        if (u !== 0)
+                            break;
+                        m.unreadReplyToMyMessageCount = r.uint32();
+                        m._unreadReplyToMyMessageCount = "unreadReplyToMyMessageCount";
+                        continue;
+                    }
                 }
                 r.skipType(u, q, t);
                 if (!r.discardUnknown) {
@@ -39362,6 +39378,9 @@ export const proto = $root.proto = (() => {
                 if (typeof d.contactAccountEncryptionAttestationType === "number" && (d.contactAccountEncryptionAttestationType | 0) === d.contactAccountEncryptionAttestationType)
                     m.contactAccountEncryptionAttestationType = d.contactAccountEncryptionAttestationType;
             }
+            if (d.unreadReplyToMyMessageCount != null) {
+                m.unreadReplyToMyMessageCount = d.unreadReplyToMyMessageCount >>> 0;
+            }
             return m;
         };
 
@@ -39638,6 +39657,9 @@ export const proto = $root.proto = (() => {
             }
             if (m.contactAccountEncryptionAttestationType != null && $Object.hasOwnProperty.call(m, "contactAccountEncryptionAttestationType")) {
                 d.contactAccountEncryptionAttestationType = o.enums === $String ? $root.proto.NonE2EEAttestation.AccountType[m.contactAccountEncryptionAttestationType] === $undefined ? m.contactAccountEncryptionAttestationType : $root.proto.NonE2EEAttestation.AccountType[m.contactAccountEncryptionAttestationType] : m.contactAccountEncryptionAttestationType;
+            }
+            if (m.unreadReplyToMyMessageCount != null && $Object.hasOwnProperty.call(m, "unreadReplyToMyMessageCount")) {
+                d.unreadReplyToMyMessageCount = m.unreadReplyToMyMessageCount;
             }
             return d;
         };

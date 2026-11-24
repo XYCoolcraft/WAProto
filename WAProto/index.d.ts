@@ -5982,6 +5982,7 @@ export namespace proto {
         isWorkGroup?: (boolean|null);
         nonE2EeType?: (number|null);
         contactAccountEncryptionAttestationType?: (proto.NonE2EEAttestation.AccountType|null);
+        unreadReplyToMyMessageCount?: (number|null);
         static create(properties: proto.Conversation.$Shape): proto.Conversation & proto.Conversation.$Shape;
         static create(properties?: proto.Conversation.$Properties): proto.Conversation;
         static encode(m: proto.Conversation.$Properties, w?: $protobuf.Writer): $protobuf.Writer;
@@ -6063,6 +6064,7 @@ export namespace proto {
             isWorkGroup?: (boolean|null);
             nonE2EeType?: (number|null);
             contactAccountEncryptionAttestationType?: (proto.NonE2EEAttestation.AccountType|null);
+            unreadReplyToMyMessageCount?: (number|null);
             $unknowns?: Uint8Array[];
         }
         type $Shape = {
@@ -6135,6 +6137,7 @@ export namespace proto {
           isWorkGroup?: boolean|null;
           nonE2EeType?: number|null;
           contactAccountEncryptionAttestationType?: proto.NonE2EEAttestation.AccountType|null;
+          unreadReplyToMyMessageCount?: number|null;
           $unknowns?: Uint8Array[];
         };
 

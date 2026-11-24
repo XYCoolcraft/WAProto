@@ -1,5 +1,5 @@
 {
- "protoVersion": "2.3000.1055852612",
+ "protoVersion": "2.3000.1055923191",
  "counts": {
   "messages": 818,
   "enums": 234
@@ -1142,7 +1142,8 @@
    "groupRootKeys": [66, "GroupRootKey", "repeated"],
    "isWorkGroup": [67, "bool", "optional"],
    "nonE2EeType": [68, "int32", "optional"],
-   "contactAccountEncryptionAttestationType": [69, "NonE2EEAttestation.AccountType", "optional"]
+   "contactAccountEncryptionAttestationType": [69, "NonE2EEAttestation.AccountType", "optional"],
+   "unreadReplyToMyMessageCount": [70, "uint32", "optional"]
   },
   "CreateBackupInput": {
    "recoveryCode": [1, "string", "optional"],

@@ -10386,6 +10386,11 @@
               "oneof": [
                 "contactAccountEncryptionAttestationType"
               ]
+            },
+            "_unreadReplyToMyMessageCount": {
+              "oneof": [
+                "unreadReplyToMyMessageCount"
+              ]
             }
           },
           "fields": {
@@ -10862,6 +10867,13 @@
             "contactAccountEncryptionAttestationType": {
               "type": "NonE2EEAttestation.AccountType",
               "id": 69,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "unreadReplyToMyMessageCount": {
+              "type": "uint32",
+              "id": 70,
               "options": {
                 "proto3_optional": true
               }
