@@ -1796,7 +1796,11 @@ export namespace proto {
             RICH_RESPONSE_SIDE_BY_SIDE_BUFFER_BOTH = 89,
             AI_MUSE_JARVIS_ENVELOPE_GZIP_ENABLED = 90,
             AI_RICH_RESPONSE_INLINE_MEDIA_LIGHTBOX_ENABLED = 91,
-            AI_MUSE_JARVIS_PAYLOAD_GZIP_ENABLED = 93
+            AI_MUSE_JARVIS_PAYLOAD_GZIP_ENABLED = 93,
+            HATCH_DEVICE_NODE_HOST = 92,
+            AI_RICH_RESPONSE_A2UI_CARDS_ENABLED = 94,
+            AI_RICH_RESPONSE_READ_ALOUD_LENGTH_APPROXIMATION_ENABLED = 95,
+            AI_RICH_RESPONSE_READ_ALOUD_ACTION_TRAY_ENABLED = 96
         }
     }
 
@@ -5983,6 +5987,7 @@ export namespace proto {
         nonE2EeType?: (number|null);
         contactAccountEncryptionAttestationType?: (proto.NonE2EEAttestation.AccountType|null);
         unreadReplyToMyMessageCount?: (number|null);
+        draft?: (proto.ConversationDraft.$Properties|null);
         static create(properties: proto.Conversation.$Shape): proto.Conversation & proto.Conversation.$Shape;
         static create(properties?: proto.Conversation.$Properties): proto.Conversation;
         static encode(m: proto.Conversation.$Properties, w?: $protobuf.Writer): $protobuf.Writer;
@@ -6065,6 +6070,7 @@ export namespace proto {
             nonE2EeType?: (number|null);
             contactAccountEncryptionAttestationType?: (proto.NonE2EEAttestation.AccountType|null);
             unreadReplyToMyMessageCount?: (number|null);
+            draft?: (proto.ConversationDraft.$Properties|null);
             $unknowns?: Uint8Array[];
         }
         type $Shape = {
@@ -6138,6 +6144,7 @@ export namespace proto {
           nonE2EeType?: number|null;
           contactAccountEncryptionAttestationType?: proto.NonE2EEAttestation.AccountType|null;
           unreadReplyToMyMessageCount?: number|null;
+          draft?: proto.ConversationDraft.$Shape|null;
           $unknowns?: Uint8Array[];
         };
 
@@ -6919,6 +6926,7 @@ export namespace proto {
         phoneNumberSharing?: (proto.DeviceCapabilities.PhoneNumberSharing.$Properties|null);
         recentConversationsOnDemand?: (proto.DeviceCapabilities.RecentConversationsOnDemand.$Properties|null);
         aiMuseJarvisGzip?: (proto.DeviceCapabilities.AiMuseJarvisGzip.$Properties|null);
+        draftSync?: (proto.DeviceCapabilities.DraftSync.$Properties|null);
         static create(properties: proto.DeviceCapabilities.$Shape): proto.DeviceCapabilities & proto.DeviceCapabilities.$Shape;
         static create(properties?: proto.DeviceCapabilities.$Properties): proto.DeviceCapabilities;
         static encode(m: proto.DeviceCapabilities.$Properties, w?: $protobuf.Writer): $protobuf.Writer;
@@ -6947,6 +6955,7 @@ export namespace proto {
             phoneNumberSharing?: (proto.DeviceCapabilities.PhoneNumberSharing.$Properties|null);
             recentConversationsOnDemand?: (proto.DeviceCapabilities.RecentConversationsOnDemand.$Properties|null);
             aiMuseJarvisGzip?: (proto.DeviceCapabilities.AiMuseJarvisGzip.$Properties|null);
+            draftSync?: (proto.DeviceCapabilities.DraftSync.$Properties|null);
             $unknowns?: Uint8Array[];
         }
         type $Shape = proto.DeviceCapabilities.$Properties;
@@ -7339,6 +7348,31 @@ export namespace proto {
             }
             type $Shape = proto.DeviceCapabilities.AiMuseJarvisGzip.$Properties;
         }
+
+        interface IDraftSync extends proto.DeviceCapabilities.DraftSync.$Properties {
+        }
+
+        class DraftSync {
+            constructor(p?: proto.DeviceCapabilities.DraftSync.$Properties);
+            $unknowns?: Uint8Array[];
+            version?: (number|null);
+            static create(properties: proto.DeviceCapabilities.DraftSync.$Shape): proto.DeviceCapabilities.DraftSync & proto.DeviceCapabilities.DraftSync.$Shape;
+            static create(properties?: proto.DeviceCapabilities.DraftSync.$Properties): proto.DeviceCapabilities.DraftSync;
+            static encode(m: proto.DeviceCapabilities.DraftSync.$Properties, w?: $protobuf.Writer): $protobuf.Writer;
+            static decode(r: ($protobuf.Reader|Uint8Array), l?: number): proto.DeviceCapabilities.DraftSync & proto.DeviceCapabilities.DraftSync.$Shape;
+            static fromObject(d: { [k: string]: any }): proto.DeviceCapabilities.DraftSync;
+            static toObject(m: proto.DeviceCapabilities.DraftSync, o?: $protobuf.IConversionOptions): { [k: string]: any };
+            toJSON(): { [k: string]: any };
+            static getTypeUrl(prefix?: string): string;
+        }
+
+        namespace DraftSync {
+            interface $Properties {
+                version?: (number|null);
+                $unknowns?: Uint8Array[];
+            }
+            type $Shape = proto.DeviceCapabilities.DraftSync.$Properties;
+        }
     }
 
     interface IDeviceConsistencyCodeMessage extends proto.DeviceConsistencyCodeMessage.$Properties {
@@ -7508,6 +7542,7 @@ export namespace proto {
             supportUniversalReachChat?: (boolean|null);
             supportOmittedConversationIndex?: (boolean|null);
             supportOmittedConversationMetadata?: (boolean|null);
+            supportDraftSync?: (boolean|null);
             static create(properties: proto.DeviceProps.HistorySyncConfig.$Shape): proto.DeviceProps.HistorySyncConfig & proto.DeviceProps.HistorySyncConfig.$Shape;
             static create(properties?: proto.DeviceProps.HistorySyncConfig.$Properties): proto.DeviceProps.HistorySyncConfig;
             static encode(m: proto.DeviceProps.HistorySyncConfig.$Properties, w?: $protobuf.Writer): $protobuf.Writer;
@@ -7548,6 +7583,7 @@ export namespace proto {
                 supportUniversalReachChat?: (boolean|null);
                 supportOmittedConversationIndex?: (boolean|null);
                 supportOmittedConversationMetadata?: (boolean|null);
+                supportDraftSync?: (boolean|null);
                 $unknowns?: Uint8Array[];
             }
             type $Shape = proto.DeviceProps.HistorySyncConfig.$Properties;
@@ -17317,6 +17353,7 @@ export namespace proto {
             membershipFormKeyFingerprintVerification?: (proto.MembershipFormKeyFingerprintVerification.$Properties|null);
             groupRootKeyShare?: (proto.GroupRootKeyShare.$Properties|null);
             messageEditDisplayType?: (proto.Message.ProtocolMessage.MessageEditDisplayType|null);
+            draftMessageSync?: (proto.DraftMessageSync.$Properties|null);
             static create(properties: proto.Message.ProtocolMessage.$Shape): proto.Message.ProtocolMessage & proto.Message.ProtocolMessage.$Shape;
             static create(properties?: proto.Message.ProtocolMessage.$Properties): proto.Message.ProtocolMessage;
             static encode(m: proto.Message.ProtocolMessage.$Properties, w?: $protobuf.Writer): $protobuf.Writer;
@@ -17367,6 +17404,7 @@ export namespace proto {
                 membershipFormKeyFingerprintVerification?: (proto.MembershipFormKeyFingerprintVerification.$Properties|null);
                 groupRootKeyShare?: (proto.GroupRootKeyShare.$Properties|null);
                 messageEditDisplayType?: (proto.Message.ProtocolMessage.MessageEditDisplayType|null);
+                draftMessageSync?: (proto.DraftMessageSync.$Properties|null);
                 $unknowns?: Uint8Array[];
             }
             type $Shape = {
@@ -17408,6 +17446,7 @@ export namespace proto {
               membershipFormKeyFingerprintVerification?: proto.MembershipFormKeyFingerprintVerification.$Shape|null;
               groupRootKeyShare?: proto.GroupRootKeyShare.$Shape|null;
               messageEditDisplayType?: proto.Message.ProtocolMessage.MessageEditDisplayType|null;
+              draftMessageSync?: proto.DraftMessageSync.$Shape|null;
               $unknowns?: Uint8Array[];
             };
 
@@ -17449,7 +17488,8 @@ export namespace proto {
                 SHARED_DEVICE_CONTACT_HASH_KEY_REQUEST = 41,
                 GROUP_ROOT_KEY_REQUEST = 42,
                 MEMBERSHIP_FORM_KEY_FINGERPRINT_VERIFICATION = 43,
-                GROUP_ROOT_KEY_SHARE = 44
+                GROUP_ROOT_KEY_SHARE = 44,
+                DRAFT_MESSAGE_SYNC = 45
             }
 
             enum MessageEditDisplayType {
@@ -30558,5 +30598,96 @@ export namespace proto {
             $unknowns?: Uint8Array[];
         }
         type $Shape = proto.MembershipFormPublicKeys.$Properties;
+    }
+
+    interface IConversationDraft extends proto.ConversationDraft.$Properties {
+    }
+
+    class ConversationDraft {
+        constructor(p?: proto.ConversationDraft.$Properties);
+        $unknowns?: Uint8Array[];
+        content?: (proto.Message.$Properties|null);
+        editTimestampMs?: (number|Long|null);
+        editorDeviceId?: (number|null);
+        static create(properties: proto.ConversationDraft.$Shape): proto.ConversationDraft & proto.ConversationDraft.$Shape;
+        static create(properties?: proto.ConversationDraft.$Properties): proto.ConversationDraft;
+        static encode(m: proto.ConversationDraft.$Properties, w?: $protobuf.Writer): $protobuf.Writer;
+        static decode(r: ($protobuf.Reader|Uint8Array), l?: number): proto.ConversationDraft & proto.ConversationDraft.$Shape;
+        static fromObject(d: { [k: string]: any }): proto.ConversationDraft;
+        static toObject(m: proto.ConversationDraft, o?: $protobuf.IConversionOptions): { [k: string]: any };
+        toJSON(): { [k: string]: any };
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace ConversationDraft {
+        interface $Properties {
+            content?: (proto.Message.$Properties|null);
+            editTimestampMs?: (number|Long|null);
+            editorDeviceId?: (number|null);
+            $unknowns?: Uint8Array[];
+        }
+        type $Shape = {
+          content?: proto.Message.$Shape|null;
+          editTimestampMs?: number|Long|null;
+          editorDeviceId?: number|null;
+          $unknowns?: Uint8Array[];
+        };
+    }
+
+    interface IDraftMessageSync extends proto.DraftMessageSync.$Properties {
+    }
+
+    class DraftMessageSync {
+        constructor(p?: proto.DraftMessageSync.$Properties);
+        $unknowns?: Uint8Array[];
+        chatJid?: (string|null);
+        altChatJid?: (string|null);
+        action?: (proto.DraftMessageSync.Action|null);
+        editTimestampMs?: (number|Long|null);
+        draft?: (proto.Message.$Properties|null);
+        clearReason?: (proto.DraftMessageSync.ClearReason|null);
+        static create(properties: proto.DraftMessageSync.$Shape): proto.DraftMessageSync & proto.DraftMessageSync.$Shape;
+        static create(properties?: proto.DraftMessageSync.$Properties): proto.DraftMessageSync;
+        static encode(m: proto.DraftMessageSync.$Properties, w?: $protobuf.Writer): $protobuf.Writer;
+        static decode(r: ($protobuf.Reader|Uint8Array), l?: number): proto.DraftMessageSync & proto.DraftMessageSync.$Shape;
+        static fromObject(d: { [k: string]: any }): proto.DraftMessageSync;
+        static toObject(m: proto.DraftMessageSync, o?: $protobuf.IConversionOptions): { [k: string]: any };
+        toJSON(): { [k: string]: any };
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace DraftMessageSync {
+        interface $Properties {
+            chatJid?: (string|null);
+            altChatJid?: (string|null);
+            action?: (proto.DraftMessageSync.Action|null);
+            editTimestampMs?: (number|Long|null);
+            draft?: (proto.Message.$Properties|null);
+            clearReason?: (proto.DraftMessageSync.ClearReason|null);
+            $unknowns?: Uint8Array[];
+        }
+        type $Shape = {
+          chatJid?: string|null;
+          altChatJid?: string|null;
+          action?: proto.DraftMessageSync.Action|null;
+          editTimestampMs?: number|Long|null;
+          draft?: proto.Message.$Shape|null;
+          clearReason?: proto.DraftMessageSync.ClearReason|null;
+          $unknowns?: Uint8Array[];
+        };
+
+        enum Action {
+            ACTION_UNKNOWN = 0,
+            SET = 1,
+            CLEAR = 2
+        }
+
+        enum ClearReason {
+            CLEAR_REASON_UNKNOWN = 0,
+            USER_CLEARED = 1,
+            SENT = 2,
+            CHAT_LOCKED = 3,
+            REPLACED_BY_NON_TEXT = 4
+        }
     }
 }

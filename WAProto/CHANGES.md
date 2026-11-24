@@ -2,6 +2,33 @@
 
 Terbaru di atas. Dibuat otomatis oleh update-proto.mjs.
 
+## 2.3000.1056008220 → 2.3000.1056075170
+
+By: https://t.me/XYCoolcrafts
+
+### Tipe baru (5)
+
+- ConversationDraft
+- DeviceCapabilities.DraftSync
+- DraftMessageSync
+- DraftMessageSync.Action
+- DraftMessageSync.ClearReason
+
+### Field baru (4)
+
+- Conversation.draft = 71
+- DeviceCapabilities.draftSync = 17
+- DeviceProps.HistorySyncConfig.supportDraftSync = 29
+- Message.ProtocolMessage.draftMessageSync = 43
+
+### Nilai enum baru (5)
+
+- BotCapabilityMetadata.BotCapabilityType.HATCH_DEVICE_NODE_HOST = 92
+- BotCapabilityMetadata.BotCapabilityType.AI_RICH_RESPONSE_A2UI_CARDS_ENABLED = 94
+- BotCapabilityMetadata.BotCapabilityType.AI_RICH_RESPONSE_READ_ALOUD_LENGTH_APPROXIMATION_ENABLED = 95
+- BotCapabilityMetadata.BotCapabilityType.AI_RICH_RESPONSE_READ_ALOUD_ACTION_TRAY_ENABLED = 96
+- Message.ProtocolMessage.Type.DRAFT_MESSAGE_SYNC = 45
+
 ## 2.3000.1055923191 → 2.3000.1056008220
 
 By: https://t.me/XYCoolcrafts
@@ -220,9 +247,3 @@ By: https://t.me/XYCoolcrafts
 
 - LabyrinthWaCommand.companionTestMessageThreadIdInput = 14
 - LabyrinthWaCommand.parseCompanionTestMessageInput = 15
-
-## 2.3000.1054660005 → 2.3000.1054696247
-
-By: https://t.me/XYCoolcrafts
-
-Hanya nomor versi yang naik — tidak ada tipe/field/enum baru.

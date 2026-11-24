@@ -2494,7 +2494,11 @@
                 "RICH_RESPONSE_SIDE_BY_SIDE_BUFFER_BOTH": 89,
                 "AI_MUSE_JARVIS_ENVELOPE_GZIP_ENABLED": 90,
                 "AI_RICH_RESPONSE_INLINE_MEDIA_LIGHTBOX_ENABLED": 91,
-                "AI_MUSE_JARVIS_PAYLOAD_GZIP_ENABLED": 93
+                "AI_MUSE_JARVIS_PAYLOAD_GZIP_ENABLED": 93,
+                "HATCH_DEVICE_NODE_HOST": 92,
+                "AI_RICH_RESPONSE_A2UI_CARDS_ENABLED": 94,
+                "AI_RICH_RESPONSE_READ_ALOUD_LENGTH_APPROXIMATION_ENABLED": 95,
+                "AI_RICH_RESPONSE_READ_ALOUD_ACTION_TRAY_ENABLED": 96
               }
             }
           }
@@ -10391,6 +10395,11 @@
               "oneof": [
                 "unreadReplyToMyMessageCount"
               ]
+            },
+            "_draft": {
+              "oneof": [
+                "draft"
+              ]
             }
           },
           "fields": {
@@ -10874,6 +10883,13 @@
             "unreadReplyToMyMessageCount": {
               "type": "uint32",
               "id": 70,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "draft": {
+              "type": "ConversationDraft",
+              "id": 71,
               "options": {
                 "proto3_optional": true
               }
@@ -11837,6 +11853,11 @@
               "oneof": [
                 "aiMuseJarvisGzip"
               ]
+            },
+            "_draftSync": {
+              "oneof": [
+                "draftSync"
+              ]
             }
           },
           "fields": {
@@ -11948,6 +11969,13 @@
             "aiMuseJarvisGzip": {
               "type": "AiMuseJarvisGzip",
               "id": 16,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "draftSync": {
+              "type": "DraftSync",
+              "id": 17,
               "options": {
                 "proto3_optional": true
               }
@@ -12307,6 +12335,24 @@
               },
               "fields": {
                 "supportVersion": {
+                  "type": "uint32",
+                  "id": 1,
+                  "options": {
+                    "proto3_optional": true
+                  }
+                }
+              }
+            },
+            "DraftSync": {
+              "oneofs": {
+                "_version": {
+                  "oneof": [
+                    "version"
+                  ]
+                }
+              },
+              "fields": {
+                "version": {
                   "type": "uint32",
                   "id": 1,
                   "options": {
@@ -12721,6 +12767,11 @@
                   "oneof": [
                     "supportOmittedConversationMetadata"
                   ]
+                },
+                "_supportDraftSync": {
+                  "oneof": [
+                    "supportDraftSync"
+                  ]
                 }
               },
               "fields": {
@@ -12914,6 +12965,13 @@
                 "supportOmittedConversationMetadata": {
                   "type": "bool",
                   "id": 28,
+                  "options": {
+                    "proto3_optional": true
+                  }
+                },
+                "supportDraftSync": {
+                  "type": "bool",
+                  "id": 29,
                   "options": {
                     "proto3_optional": true
                   }
@@ -29765,6 +29823,11 @@
                   "oneof": [
                     "messageEditDisplayType"
                   ]
+                },
+                "_draftMessageSync": {
+                  "oneof": [
+                    "draftMessageSync"
+                  ]
                 }
               },
               "fields": {
@@ -30031,6 +30094,13 @@
                   "options": {
                     "proto3_optional": true
                   }
+                },
+                "draftMessageSync": {
+                  "type": "DraftMessageSync",
+                  "id": 43,
+                  "options": {
+                    "proto3_optional": true
+                  }
                 }
               },
               "nested": {
@@ -30073,7 +30143,8 @@
                     "SHARED_DEVICE_CONTACT_HASH_KEY_REQUEST": 41,
                     "GROUP_ROOT_KEY_REQUEST": 42,
                     "MEMBERSHIP_FORM_KEY_FINGERPRINT_VERIFICATION": 43,
-                    "GROUP_ROOT_KEY_SHARE": 44
+                    "GROUP_ROOT_KEY_SHARE": 44,
+                    "DRAFT_MESSAGE_SYNC": 45
                   }
                 },
                 "MessageEditDisplayType": {
@@ -50788,6 +50859,144 @@
               "id": 2,
               "options": {
                 "proto3_optional": true
+              }
+            }
+          }
+        },
+        "ConversationDraft": {
+          "oneofs": {
+            "_content": {
+              "oneof": [
+                "content"
+              ]
+            },
+            "_editTimestampMs": {
+              "oneof": [
+                "editTimestampMs"
+              ]
+            },
+            "_editorDeviceId": {
+              "oneof": [
+                "editorDeviceId"
+              ]
+            }
+          },
+          "fields": {
+            "content": {
+              "type": "Message",
+              "id": 1,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "editTimestampMs": {
+              "type": "int64",
+              "id": 2,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "editorDeviceId": {
+              "type": "uint32",
+              "id": 3,
+              "options": {
+                "proto3_optional": true
+              }
+            }
+          }
+        },
+        "DraftMessageSync": {
+          "oneofs": {
+            "_chatJid": {
+              "oneof": [
+                "chatJid"
+              ]
+            },
+            "_altChatJid": {
+              "oneof": [
+                "altChatJid"
+              ]
+            },
+            "_action": {
+              "oneof": [
+                "action"
+              ]
+            },
+            "_editTimestampMs": {
+              "oneof": [
+                "editTimestampMs"
+              ]
+            },
+            "_draft": {
+              "oneof": [
+                "draft"
+              ]
+            },
+            "_clearReason": {
+              "oneof": [
+                "clearReason"
+              ]
+            }
+          },
+          "fields": {
+            "chatJid": {
+              "type": "string",
+              "id": 1,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "altChatJid": {
+              "type": "string",
+              "id": 2,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "action": {
+              "type": "Action",
+              "id": 3,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "editTimestampMs": {
+              "type": "int64",
+              "id": 4,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "draft": {
+              "type": "Message",
+              "id": 5,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "clearReason": {
+              "type": "ClearReason",
+              "id": 6,
+              "options": {
+                "proto3_optional": true
+              }
+            }
+          },
+          "nested": {
+            "Action": {
+              "values": {
+                "ACTION_UNKNOWN": 0,
+                "SET": 1,
+                "CLEAR": 2
+              }
+            },
+            "ClearReason": {
+              "values": {
+                "CLEAR_REASON_UNKNOWN": 0,
+                "USER_CLEARED": 1,
+                "SENT": 2,
+                "CHAT_LOCKED": 3,
+                "REPLACED_BY_NON_TEXT": 4
               }
             }
           }

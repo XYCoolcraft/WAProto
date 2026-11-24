@@ -1,8 +1,8 @@
 {
- "protoVersion": "2.3000.1056008220",
+ "protoVersion": "2.3000.1056075170",
  "counts": {
-  "messages": 818,
-  "enums": 234
+  "messages": 821,
+  "enums": 236
  },
  "fields": "[nomor, tipe, label]",
  "messages": {
@@ -1143,7 +1143,13 @@
    "isWorkGroup": [67, "bool", "optional"],
    "nonE2EeType": [68, "int32", "optional"],
    "contactAccountEncryptionAttestationType": [69, "NonE2EEAttestation.AccountType", "optional"],
-   "unreadReplyToMyMessageCount": [70, "uint32", "optional"]
+   "unreadReplyToMyMessageCount": [70, "uint32", "optional"],
+   "draft": [71, "ConversationDraft", "optional"]
+  },
+  "ConversationDraft": {
+   "content": [1, "Message", "optional"],
+   "editTimestampMs": [2, "int64", "optional"],
+   "editorDeviceId": [3, "uint32", "optional"]
   },
   "CreateBackupInput": {
    "recoveryCode": [1, "string", "optional"],
@@ -1337,7 +1343,8 @@
    "bizAiWebOnboarding": [13, "BizAiWebOnboarding", "optional"],
    "phoneNumberSharing": [14, "PhoneNumberSharing", "optional"],
    "recentConversationsOnDemand": [15, "RecentConversationsOnDemand", "optional"],
-   "aiMuseJarvisGzip": [16, "AiMuseJarvisGzip", "optional"]
+   "aiMuseJarvisGzip": [16, "AiMuseJarvisGzip", "optional"],
+   "draftSync": [17, "DraftSync", "optional"]
   },
   "DeviceCapabilities.AiFbidMigration": {
    "chatDbMigrationTimestamp": [1, "uint64", "optional"],
@@ -1365,6 +1372,9 @@
   },
   "DeviceCapabilities.ContactRefresh": {
    "refreshSupported": [1, "bool", "optional"]
+  },
+  "DeviceCapabilities.DraftSync": {
+   "version": [1, "uint32", "optional"]
   },
   "DeviceCapabilities.HostWriteMutationSupport": {
    "mutationNames": [1, "string", "repeated"]
@@ -1460,13 +1470,22 @@
    "supportNewsletter": [25, "bool", "optional"],
    "supportUniversalReachChat": [26, "bool", "optional"],
    "supportOmittedConversationIndex": [27, "bool", "optional"],
-   "supportOmittedConversationMetadata": [28, "bool", "optional"]
+   "supportOmittedConversationMetadata": [28, "bool", "optional"],
+   "supportDraftSync": [29, "bool", "optional"]
   },
   "DisappearingMode": {
    "initiator": [1, "Initiator", "optional"],
    "trigger": [2, "Trigger", "optional"],
    "initiatorDeviceJid": [3, "string", "optional"],
    "initiatedByMe": [4, "bool", "optional"]
+  },
+  "DraftMessageSync": {
+   "chatJid": [1, "string", "optional"],
+   "altChatJid": [2, "string", "optional"],
+   "action": [3, "Action", "optional"],
+   "editTimestampMs": [4, "int64", "optional"],
+   "draft": [5, "Message", "optional"],
+   "clearReason": [6, "ClearReason", "optional"]
   },
   "EmbeddedContent": {
    "embeddedMessage": [1, "EmbeddedMessage", ""],
@@ -3398,7 +3417,8 @@
    "groupRootKeyRequest": [39, "GroupRootKeyRequest", "optional"],
    "membershipFormKeyFingerprintVerification": [40, "MembershipFormKeyFingerprintVerification", "optional"],
    "groupRootKeyShare": [41, "GroupRootKeyShare", "optional"],
-   "messageEditDisplayType": [42, "MessageEditDisplayType", "optional"]
+   "messageEditDisplayType": [42, "MessageEditDisplayType", "optional"],
+   "draftMessageSync": [43, "DraftMessageSync", "optional"]
   },
   "Message.QuestionResponseMessage": {
    "key": [1, "MessageKey", "optional"],
@@ -5618,7 +5638,11 @@
    "RICH_RESPONSE_SIDE_BY_SIDE_BUFFER_BOTH": 89,
    "AI_MUSE_JARVIS_ENVELOPE_GZIP_ENABLED": 90,
    "AI_RICH_RESPONSE_INLINE_MEDIA_LIGHTBOX_ENABLED": 91,
-   "AI_MUSE_JARVIS_PAYLOAD_GZIP_ENABLED": 93
+   "HATCH_DEVICE_NODE_HOST": 92,
+   "AI_MUSE_JARVIS_PAYLOAD_GZIP_ENABLED": 93,
+   "AI_RICH_RESPONSE_A2UI_CARDS_ENABLED": 94,
+   "AI_RICH_RESPONSE_READ_ALOUD_LENGTH_APPROXIMATION_ENABLED": 95,
+   "AI_RICH_RESPONSE_READ_ALOUD_ACTION_TRAY_ENABLED": 96
   },
   "BotDocumentMessageMetadata.DocumentPluginType": {
    "TEXT_EXTRACTION": 0,
@@ -6185,6 +6209,18 @@
    "BIZ_SUPPORTS_FB_HOSTING": 4,
    "UNKNOWN_GROUPS": 5
   },
+  "DraftMessageSync.Action": {
+   "ACTION_UNKNOWN": 0,
+   "SET": 1,
+   "CLEAR": 2
+  },
+  "DraftMessageSync.ClearReason": {
+   "CLEAR_REASON_UNKNOWN": 0,
+   "USER_CLEARED": 1,
+   "SENT": 2,
+   "CHAT_LOCKED": 3,
+   "REPLACED_BY_NON_TEXT": 4
+  },
   "EXTENDED_CONTENT_MESSAGE_CTA_BUTTON_TYPE": {
    "OPEN_NATIVE": 11
   },
@@ -6728,7 +6764,8 @@
    "SHARED_DEVICE_CONTACT_HASH_KEY_REQUEST": 41,
    "GROUP_ROOT_KEY_REQUEST": 42,
    "MEMBERSHIP_FORM_KEY_FINGERPRINT_VERIFICATION": 43,
-   "GROUP_ROOT_KEY_SHARE": 44
+   "GROUP_ROOT_KEY_SHARE": 44,
+   "DRAFT_MESSAGE_SYNC": 45
   },
   "Message.RequestLocationUpdateMessage.UpdateType": {
    "UNKNOWN": 0,
