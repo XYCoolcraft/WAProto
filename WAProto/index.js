@@ -189504,6 +189504,8 @@ export const proto = $root.proto = (() => {
         PrepareAddPeerDeviceSuccess.prototype.serverDataId = null;
         PrepareAddPeerDeviceSuccess.prototype.companionDeviceBinding = null;
         PrepareAddPeerDeviceSuccess.prototype.historyStartTime = null;
+        PrepareAddPeerDeviceSuccess.prototype.identityBindingBlob = null;
+        PrepareAddPeerDeviceSuccess.prototype.bindingSigByLabyrinthDevice = null;
 
         let $oneOfFields;
 
@@ -189531,6 +189533,18 @@ export const proto = $root.proto = (() => {
             set: $util.oneOfSetter($oneOfFields)
         });
 
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(PrepareAddPeerDeviceSuccess.prototype, "_identityBindingBlob", {
+            get: $util.oneOfGetter($oneOfFields = ["identityBindingBlob"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(PrepareAddPeerDeviceSuccess.prototype, "_bindingSigByLabyrinthDevice", {
+            get: $util.oneOfGetter($oneOfFields = ["bindingSigByLabyrinthDevice"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
         PrepareAddPeerDeviceSuccess.create = function(properties) {
             return new PrepareAddPeerDeviceSuccess(properties);
         };
@@ -189550,6 +189564,10 @@ export const proto = $root.proto = (() => {
                 w.uint32(26).bytes(m.companionDeviceBinding);
             if (m.historyStartTime != null && $Object.hasOwnProperty.call(m, "historyStartTime"))
                 w.uint32(32).uint64(m.historyStartTime);
+            if (m.identityBindingBlob != null && $Object.hasOwnProperty.call(m, "identityBindingBlob"))
+                w.uint32(42).bytes(m.identityBindingBlob);
+            if (m.bindingSigByLabyrinthDevice != null && $Object.hasOwnProperty.call(m, "bindingSigByLabyrinthDevice"))
+                w.uint32(50).bytes(m.bindingSigByLabyrinthDevice);
             if (m.$unknowns != null && $Object.hasOwnProperty.call(m, "$unknowns"))
                 for (var i = 0; i < m.$unknowns.length; ++i)
                     w.raw(m.$unknowns[i]);
@@ -189611,6 +189629,20 @@ export const proto = $root.proto = (() => {
                         m._historyStartTime = "historyStartTime";
                         continue;
                     }
+                case 5: {
+                        if (u !== 2)
+                            break;
+                        m.identityBindingBlob = r.bytes();
+                        m._identityBindingBlob = "identityBindingBlob";
+                        continue;
+                    }
+                case 6: {
+                        if (u !== 2)
+                            break;
+                        m.bindingSigByLabyrinthDevice = r.bytes();
+                        m._bindingSigByLabyrinthDevice = "bindingSigByLabyrinthDevice";
+                        continue;
+                    }
                 }
                 r.skipType(u, q, t);
                 if (!r.discardUnknown) {
@@ -189669,6 +189701,18 @@ export const proto = $root.proto = (() => {
                 else if (typeof d.historyStartTime === "object")
                     m.historyStartTime = new $util.LongBits(d.historyStartTime.low >>> 0, d.historyStartTime.high >>> 0).toNumber(true);
             }
+            if (d.identityBindingBlob != null) {
+                if (typeof d.identityBindingBlob === "string")
+                    $util.base64.decode(d.identityBindingBlob, m.identityBindingBlob = $util.newBuffer($util.base64.length(d.identityBindingBlob)), 0);
+                else if (d.identityBindingBlob.length >= 0)
+                    m.identityBindingBlob = d.identityBindingBlob;
+            }
+            if (d.bindingSigByLabyrinthDevice != null) {
+                if (typeof d.bindingSigByLabyrinthDevice === "string")
+                    $util.base64.decode(d.bindingSigByLabyrinthDevice, m.bindingSigByLabyrinthDevice = $util.newBuffer($util.base64.length(d.bindingSigByLabyrinthDevice)), 0);
+                else if (d.bindingSigByLabyrinthDevice.length >= 0)
+                    m.bindingSigByLabyrinthDevice = d.bindingSigByLabyrinthDevice;
+            }
             return m;
         };
 
@@ -189701,6 +189745,12 @@ export const proto = $root.proto = (() => {
                     d.historyStartTime = o.longs === $String ? $String(m.historyStartTime) : m.historyStartTime;
                 else
                     d.historyStartTime = o.longs === $String ? $util.Long.prototype.toString.call(m.historyStartTime) : o.longs === $Number ? new $util.LongBits(m.historyStartTime.low >>> 0, m.historyStartTime.high >>> 0).toNumber(true) : m.historyStartTime;
+            }
+            if (m.identityBindingBlob != null && $Object.hasOwnProperty.call(m, "identityBindingBlob")) {
+                d.identityBindingBlob = o.bytes === $String ? $util.base64.encode(m.identityBindingBlob, 0, m.identityBindingBlob.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.identityBindingBlob) : m.identityBindingBlob;
+            }
+            if (m.bindingSigByLabyrinthDevice != null && $Object.hasOwnProperty.call(m, "bindingSigByLabyrinthDevice")) {
+                d.bindingSigByLabyrinthDevice = o.bytes === $String ? $util.base64.encode(m.bindingSigByLabyrinthDevice, 0, m.bindingSigByLabyrinthDevice.length) : o.bytes === $Array ? $Array.prototype.slice.call(m.bindingSigByLabyrinthDevice) : m.bindingSigByLabyrinthDevice;
             }
             return d;
         };

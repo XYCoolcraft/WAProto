@@ -1,7 +1,7 @@
 syntax = "proto3";
 package proto;
 
-/// WhatsApp Version: 2.3000.1056075170
+/// WhatsApp Version: 2.3000.1056166380
 
 message ACP2Setting {
     optional bool enabled = 1;
@@ -8439,6 +8439,8 @@ message PrepareAddPeerDeviceSuccess {
     optional uint64 serverDataId = 2;
     optional bytes companionDeviceBinding = 3;
     optional uint64 historyStartTime = 4;
+    optional bytes identityBindingBlob = 5;
+    optional bytes bindingSigByLabyrinthDevice = 6;
 }
 
 message RotateEpochInput {

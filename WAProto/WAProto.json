@@ -50019,6 +50019,16 @@
               "oneof": [
                 "historyStartTime"
               ]
+            },
+            "_identityBindingBlob": {
+              "oneof": [
+                "identityBindingBlob"
+              ]
+            },
+            "_bindingSigByLabyrinthDevice": {
+              "oneof": [
+                "bindingSigByLabyrinthDevice"
+              ]
             }
           },
           "fields": {
@@ -50046,6 +50056,20 @@
             "historyStartTime": {
               "type": "uint64",
               "id": 4,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "identityBindingBlob": {
+              "type": "bytes",
+              "id": 5,
+              "options": {
+                "proto3_optional": true
+              }
+            },
+            "bindingSigByLabyrinthDevice": {
+              "type": "bytes",
+              "id": 6,
               "options": {
                 "proto3_optional": true
               }

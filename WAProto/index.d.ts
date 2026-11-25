@@ -29887,6 +29887,8 @@ export namespace proto {
         serverDataId?: (number|Long|null);
         companionDeviceBinding?: (Uint8Array|null);
         historyStartTime?: (number|Long|null);
+        identityBindingBlob?: (Uint8Array|null);
+        bindingSigByLabyrinthDevice?: (Uint8Array|null);
         static create(properties: proto.PrepareAddPeerDeviceSuccess.$Shape): proto.PrepareAddPeerDeviceSuccess & proto.PrepareAddPeerDeviceSuccess.$Shape;
         static create(properties?: proto.PrepareAddPeerDeviceSuccess.$Properties): proto.PrepareAddPeerDeviceSuccess;
         static encode(m: proto.PrepareAddPeerDeviceSuccess.$Properties, w?: $protobuf.Writer): $protobuf.Writer;
@@ -29903,6 +29905,8 @@ export namespace proto {
             serverDataId?: (number|Long|null);
             companionDeviceBinding?: (Uint8Array|null);
             historyStartTime?: (number|Long|null);
+            identityBindingBlob?: (Uint8Array|null);
+            bindingSigByLabyrinthDevice?: (Uint8Array|null);
             $unknowns?: Uint8Array[];
         }
         type $Shape = proto.PrepareAddPeerDeviceSuccess.$Properties;

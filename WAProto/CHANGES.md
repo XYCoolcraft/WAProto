@@ -2,6 +2,15 @@
 
 Terbaru di atas. Dibuat otomatis oleh update-proto.mjs.
 
+## 2.3000.1056075170 → 2.3000.1056166380
+
+By: https://t.me/XYCoolcrafts
+
+### Field baru (2)
+
+- PrepareAddPeerDeviceSuccess.identityBindingBlob = 5
+- PrepareAddPeerDeviceSuccess.bindingSigByLabyrinthDevice = 6
+
 ## 2.3000.1056008220 → 2.3000.1056075170
 
 By: https://t.me/XYCoolcrafts
@@ -229,21 +238,3 @@ By: https://t.me/XYCoolcrafts
 By: https://t.me/XYCoolcrafts
 
 Hanya nomor versi yang naik — tidak ada tipe/field/enum baru.
-
-## 2.3000.1054696247 → 2.3000.1054710185
-
-By: https://t.me/XYCoolcrafts
-
-### Tipe baru (6)
-
-- CompanionTestMessageThreadIdInput
-- CompanionTestMessageThreadIdOutput
-- CompanionTestMessageThreadIdSuccess
-- ParseCompanionTestMessageInput
-- ParseCompanionTestMessageOutput
-- ParseCompanionTestMessageSuccess
-
-### Field baru (2)
-
-- LabyrinthWaCommand.companionTestMessageThreadIdInput = 14
-- LabyrinthWaCommand.parseCompanionTestMessageInput = 15

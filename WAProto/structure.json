@@ -1,5 +1,5 @@
 {
- "protoVersion": "2.3000.1056075170",
+ "protoVersion": "2.3000.1056166380",
  "counts": {
   "messages": 821,
   "enums": 236
@@ -4278,7 +4278,9 @@
    "enrolment": [1, "PrepareAddDeviceSuccess", "optional"],
    "serverDataId": [2, "uint64", "optional"],
    "companionDeviceBinding": [3, "bytes", "optional"],
-   "historyStartTime": [4, "uint64", "optional"]
+   "historyStartTime": [4, "uint64", "optional"],
+   "identityBindingBlob": [5, "bytes", "optional"],
+   "bindingSigByLabyrinthDevice": [6, "bytes", "optional"]
   },
   "PrimaryEphemeralIdentity": {
    "publicKey": [1, "bytes", "optional"],
