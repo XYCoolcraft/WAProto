@@ -2,6 +2,12 @@
 
 Terbaru di atas. Dibuat otomatis oleh update-proto.mjs.
 
+## 2.3000.1056166380 → 2.3000.1056216123
+
+By: https://t.me/XYCoolcrafts
+
+Hanya nomor versi yang naik — tidak ada tipe/field/enum baru.
+
 ## 2.3000.1056075170 → 2.3000.1056166380
 
 By: https://t.me/XYCoolcrafts
@@ -232,9 +238,3 @@ By: https://t.me/XYCoolcrafts
 ### Nilai enum baru (1)
 
 - BotCapabilityMetadata.BotCapabilityType.AI_MUSE_JARVIS_ENVELOPE_GZIP_ENABLED = 90
-
-## 2.3000.1054710185 → 2.3000.1054721061
-
-By: https://t.me/XYCoolcrafts
-
-Hanya nomor versi yang naik — tidak ada tipe/field/enum baru.
