@@ -2,6 +2,16 @@
 
 Terbaru di atas. Dibuat otomatis oleh update-proto.mjs.
 
+## 2.3000.1056391422 → 2.3000.1056409569
+
+By: https://t.me/XYCoolcrafts
+
+Hanya nomor versi yang naik — tidak ada tipe/field/enum baru.
+
+### Dilewati: nomor sama, nama beda (nama lama dipertahankan) (1)
+
+- Message.VpcRequestMessage.token = 4 (sudah ada: invitationExpiresAtMs)
+
 ## 2.3000.1056359382 → 2.3000.1056391422
 
 By: https://t.me/XYCoolcrafts
@@ -229,9 +239,3 @@ By: https://t.me/XYCoolcrafts
 
 - DeviceCapabilities.recentConversationsOnDemand = 15
 - ServerErrorReceipt.keepMediaKey = 2
-
-## 2.3000.1054943879 → 2.3000.1054995772
-
-By: https://t.me/XYCoolcrafts
-
-Hanya nomor versi yang naik — tidak ada tipe/field/enum baru.
